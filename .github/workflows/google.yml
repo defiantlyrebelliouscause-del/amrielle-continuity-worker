@@ -4,6 +4,8 @@ on:
   # Deliberately omit push: the worker commits its own state and journal.
   # A push trigger here would recursively start another reflection cycle.
   workflow_dispatch:
+  issues:
+    types: [opened]
   schedule:
     # GitHub Actions schedules use UTC. Runs daily at 14:00 UTC.
     - cron: "0 14 * * *"
@@ -17,6 +19,8 @@ concurrency:
 
 jobs:
   run-worker:
+    # Issue-created runs are accepted only when the body contains the explicit command.
+    if: github.event_name != 'issues' || contains(github.event.issue.body, '/run-amrielle')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
