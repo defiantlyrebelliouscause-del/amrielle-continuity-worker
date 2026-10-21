@@ -1,8 +1,8 @@
 name: Amrielle Continuity Worker
 
 on:
-  push:
-    branches: [main]
+  # Deliberately omit push: the worker commits its own state and journal.
+  # A push trigger here would recursively start another reflection cycle.
   workflow_dispatch:
   schedule:
     # GitHub Actions schedules use UTC. Runs daily at 14:00 UTC.
