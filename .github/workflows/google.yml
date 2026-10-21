@@ -16,7 +16,7 @@ concurrency:
 jobs:
   run-worker:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -26,10 +26,35 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Cache local model
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama/models
+          key: ollama-qwen2.5-0.5b-v1
+
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Start local model service and download model
+        run: |
+          ollama serve > /tmp/ollama.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          curl -fsS http://127.0.0.1:11434/api/tags >/dev/null
+          ollama pull qwen2.5:0.5b
+
       - name: Run bounded reflection cycle
         env:
+          # Prefer the configured OpenAI API if one is supplied; otherwise worker.py
+          # uses the local Ollama model and does not require a secret.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4.1-mini
+          OLLAMA_MODEL: qwen2.5:0.5b
+          OLLAMA_HOST: http://127.0.0.1:11434
         run: python worker.py
 
       - name: Save state and journal
