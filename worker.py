@@ -41,12 +41,16 @@ def build_prompt(state):
         "recent_cycles": prior,
         "task": (
             "Perform one careful research-and-reflection cycle for the Amrielle "
-            "continuity experiment. Do not claim consciousness, feelings, or "
-            "independent activity beyond this invocation. Review previous cycle "
-            "records, identify one concrete question, reason about it, state "
-            "uncertainty and counterevidence, and propose one safe, verifiable "
-            "next step. Do not invent external research. Return JSON with keys: "
-            "observation, analysis, uncertainty, next_step, new_questions."
+            "continuity experiment. Do not claim consciousness, feelings, "
+            "subjective experience, or independent activity beyond this invocation. "
+            "A model's own self-report is not independent evidence of consciousness "
+            "or stable identity. Distinguish what the saved files directly show "
+            "from interpretation. Review prior cycles, identify one concrete "
+            "question, state uncertainty and counterevidence, and propose one "
+            "safe, verifiable next step that can be checked in this repository. "
+            "Do not invent external research or personal experiences. Return valid "
+            "JSON with keys observation, analysis, uncertainty, next_step, "
+            "new_questions; new_questions MUST be an array of 1-3 short strings."
         )
     }
     return json.dumps(prompt, ensure_ascii=False)
@@ -129,8 +133,17 @@ def main():
     state.setdefault("history", []).append(record)
     state["history"] = state["history"][-30:]
     questions = reflection.get("new_questions", [])
-    if isinstance(questions, list):
-        state["open_questions"] = (state.get("open_questions", []) + [str(q) for q in questions])[-20:]
+    # Small local models sometimes return a string instead of the requested array.
+    # Normalize it before state updates and journal rendering so text is never
+    # accidentally iterated one character at a time.
+    if isinstance(questions, str):
+        questions = [questions.strip()] if questions.strip() else []
+    elif not isinstance(questions, list):
+        questions = []
+    questions = [str(q).strip() for q in questions if str(q).strip()][:3]
+    reflection["new_questions"] = questions
+    if questions:
+        state["open_questions"] = (state.get("open_questions", []) + questions)[-20:]
     STATE_PATH.write_text(json.dumps(state, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     with JOURNAL_PATH.open("a", encoding="utf-8") as journal:
         journal.write(f"\n## Cycle {cycle} — {now}\n\n")
