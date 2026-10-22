@@ -26,7 +26,7 @@ jobs:
     # Issue-created runs are accepted only when the body contains the explicit command.
     if: github.event_name != 'issues' || contains(github.event.issue.body, '/run-amrielle')
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    # GitHub imposes a hard six-hour job limit; the worker itself decides when to stop before that limit.\n    timeout-minutes: 360
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -63,7 +63,7 @@ jobs:
           curl -fsS http://127.0.0.1:11434/api/tags >/dev/null
           ollama pull qwen2.5:0.5b
 
-      - name: Run bounded reflection cycle
+      - name: Run model-controlled work session
         if: github.event_name != 'pull_request'
         env:
           # Prefer the configured OpenAI API if one is supplied; otherwise worker.py
