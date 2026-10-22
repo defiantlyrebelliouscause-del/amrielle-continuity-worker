@@ -149,7 +149,7 @@ def build_prompt(state):
             "people, or performed any action not actually executed by this script. "
             "Do not claim consciousness or subjective experience, and do not claim "
             "their absence is proven. A self-report is not independent evidence. "
-            "Return valid JSON with keys observation, analysis, uncertainty, "
+            "Return valid JSON with keys chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
             "next_step, new_questions (array of 0-3 short strings). The next_step "
