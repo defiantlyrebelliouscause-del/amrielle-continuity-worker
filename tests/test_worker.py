@@ -148,6 +148,22 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertEqual(validated["status"], "awaiting_human_review")
         self.assertIsNone(worker.validate_capability_request({"name": "unbounded access"}))
 
+    def test_session_continues_until_model_explicitly_stops(self):
+        with patch("worker.run_cycle", side_effect=[
+            {"session_decision": "continue"},
+            {"session_decision": "stop"},
+        ]) as run_cycle:
+            worker.main()
+        self.assertEqual(run_cycle.call_count, 2)
+
+    def test_session_missing_decision_defaults_to_continue(self):
+        with patch("worker.run_cycle", side_effect=[
+            {},
+            {"session_decision": "stop"},
+        ]) as run_cycle:
+            worker.main()
+        self.assertEqual(run_cycle.call_count, 2)
+
     def test_audit_reports_inconsistent_state(self):
         state = {
             "cycle": 3,
