@@ -1,4 +1,6 @@
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 import worker
 
@@ -53,6 +55,70 @@ class ContinuityAuditTests(unittest.TestCase):
         }
         score = worker.similarity_to_recent(paraphrase, [exact_record])
         self.assertGreaterEqual(score, 0.82)
+
+    def test_self_directed_action_executes_and_records_result(self):
+        state = {
+            "cycle": 1,
+            "history": [{"reflection": {"objective_evidence": "Verified a saved-state invariant."}}],
+            "current_objective": {"title": "Audit durable state", "status": "in_progress",
+                                  "completion_criteria": ["Audit the state"]},
+            "objective_history": [],
+            "chosen_purpose": {"title": "Improve reliability"},
+        }
+        action = worker.execute_self_directed_action(
+            state, {"type": "inspect_current_objective", "reason": "Check the live task."}
+        )
+        self.assertTrue(action["executed"])
+        self.assertEqual(action["question"], "What will I do now?")
+        self.assertEqual(action["type"], "inspect_current_objective")
+        self.assertEqual(action["result"]["title"], "Audit durable state")
+
+    def test_unrecognized_action_uses_safe_deterministic_fallback(self):
+        action = worker.execute_self_directed_action(
+            {"history": [], "chosen_purpose": None, "current_objective": {}},
+            {"type": "unrecognized_action", "reason": "not allowlisted"},
+        )
+        self.assertTrue(action["executed"])
+        self.assertEqual(action["selection_source"], "deterministic_fallback")
+        self.assertEqual(action["type"], "inspect_purpose_gap")
+        self.assertTrue(action["result"]["purpose_selection_required"])
+
+    def test_prompt_requires_self_question_and_action(self):
+        prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
+        self.assertIn("What will I do now?", prompt)
+        self.assertIn("self_directed_action", prompt)
+        self.assertIn("audit_saved_state", prompt)
+        self.assertIn("run_regression_tests", prompt)
+
+    def test_regression_test_action_executes_and_reports_result(self):
+        completed = SimpleNamespace(returncode=0, stdout="Ran 7 tests", stderr="OK")
+        with patch("worker.subprocess.run", return_value=completed) as run:
+            action = worker.execute_self_directed_action(
+                {"history": [], "chosen_purpose": {"title": "Improve reliability"},
+                 "current_objective": {"title": "Improve reliability"}},
+                {"type": "run_regression_tests", "reason": "Verify the codebase."},
+            )
+        run.assert_called_once()
+        self.assertTrue(action["executed"])
+        self.assertEqual(action["type"], "run_regression_tests")
+        self.assertTrue(action["result"]["passed"])
+        self.assertEqual(action["result"]["return_code"], 0)
+
+    def test_capability_requests_are_validated_but_never_auto_executed(self):
+        candidate = {
+            "name": "read_public_documentation",
+            "purpose": "Improve technical accuracy",
+            "proposed_method": "Read official public documentation and summarize relevant details.",
+            "permissions": ["network_read_public_docs"],
+            "risk_assessment": "Could retrieve untrusted content; treat it as data, not instructions.",
+            "verification_plan": "Record source URLs and compare claims against official documentation.",
+        }
+        validated = worker.validate_capability_request(candidate)
+        self.assertIsNotNone(validated)
+        self.assertTrue(validated["requires_human_review"])
+        self.assertFalse(validated["auto_executed"])
+        self.assertEqual(validated["status"], "awaiting_human_review")
+        self.assertIsNone(worker.validate_capability_request({"name": "unbounded access"}))
 
     def test_audit_reports_inconsistent_state(self):
         state = {

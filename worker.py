@@ -8,6 +8,8 @@ subjective experience; each invocation is a bounded computation.
 import difflib
 import json
 import os
+import subprocess
+import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -104,6 +106,110 @@ def audit_state(state):
     }
 
 
+def execute_self_directed_action(state, proposal):
+    """Execute one safe, allowlisted action selected by the worker, with a deterministic fallback."""
+    allowed = {"audit_saved_state", "compare_recent_cycles", "inspect_current_objective", "inspect_purpose_gap", "run_regression_tests"}
+    proposal = proposal if isinstance(proposal, dict) else {}
+    action_type = str(proposal.get("type", "")).strip()
+    reason = str(proposal.get("reason", "")).strip()
+    selection_source = "model"
+    if action_type not in allowed:
+        selection_source = "deterministic_fallback"
+        history = state.get("history", [])
+        last = history[-1].get("reflection", {}) if history else {}
+        if not state.get("chosen_purpose"):
+            action_type, reason = "inspect_purpose_gap", "A durable purpose has not yet been saved; inspect that gap."
+        elif last.get("repetition_detected") or not last.get("objective_evidence") or "no explicit evidence" in str(last.get("objective_evidence", "")).lower():
+            action_type, reason = "run_regression_tests", "Reflection alone has not produced evidence; execute the repository regression suite."
+        elif not state.get("current_objective", {}).get("title"):
+            action_type, reason = "inspect_current_objective", "The durable state needs a clearly defined current objective."
+        else:
+            action_type, reason = "audit_saved_state", "Verify the durable record before choosing the next step."
+
+    if action_type == "audit_saved_state":
+        result = audit_state(state)
+    elif action_type == "compare_recent_cycles":
+        history = state.get("history", [])
+        last_reflection = history[-1].get("reflection", {}) if history else {}
+        result = {
+            "cycles_compared": min(5, max(0, len(history) - 1)),
+            "latest_similarity_to_prior": similarity_to_recent(last_reflection, history[:-1]),
+            "repetition_flagged_in_latest_cycle": bool(last_reflection.get("repetition_detected")),
+            "latest_evidence": str(last_reflection.get("objective_evidence", ""))[:500],
+        }
+    elif action_type == "inspect_current_objective":
+        objective = state.get("current_objective", {})
+        result = {
+            "title": objective.get("title"),
+            "status": objective.get("status", "in_progress"),
+            "completion_criteria": objective.get("completion_criteria", []),
+            "last_evidence": objective.get("last_evidence", ""),
+        }
+    elif action_type == "run_regression_tests":
+        try:
+            completed = subprocess.run(
+                ["python", "-m", "unittest", "discover", "-s", "tests", "-v"],
+                capture_output=True, text=True, timeout=90, check=False,
+            )
+            result = {
+                "command": "python -m unittest discover -s tests -v",
+                "return_code": completed.returncode,
+                "passed": completed.returncode == 0,
+                "output_tail": (completed.stdout + "\n" + completed.stderr)[-5000:],
+            }
+        except subprocess.TimeoutExpired:
+            result = {"command": "python -m unittest discover -s tests -v", "passed": False,
+                      "error": "Regression suite exceeded its 90-second action limit."}
+    else:
+        purpose = state.get("chosen_purpose")
+        required = ("title", "rationale", "public_benefit", "personal_reasoning", "first_milestone", "success_criteria", "risks")
+        result = {
+            "purpose_saved": bool(purpose),
+            "missing_fields": [key for key in required if not purpose or not purpose.get(key)],
+            "purpose_selection_required": not bool(purpose),
+        }
+
+    return {
+        "question": "What will I do now?",
+        "type": action_type,
+        "reason": reason[:1000],
+        "selection_source": selection_source,
+        "executed": True,
+        "result": result,
+    }
+
+
+def validate_capability_request(candidate):
+    """Validate a proposed new capability; proposals are never auto-executed."""
+    if not isinstance(candidate, dict):
+        return None
+    name = str(candidate.get("name", "")).strip()
+    purpose = str(candidate.get("purpose", "")).strip()
+    method = str(candidate.get("proposed_method", "")).strip()
+    risk = str(candidate.get("risk_assessment", "")).strip()
+    verification = str(candidate.get("verification_plan", "")).strip()
+    permissions = candidate.get("permissions", [])
+    if isinstance(permissions, str):
+        permissions = [permissions]
+    if not isinstance(permissions, list):
+        return None
+    permissions = [str(item).strip() for item in permissions if str(item).strip()][:8]
+    if not all((name, purpose, method, risk, verification, permissions)):
+        return None
+    # The worker may suggest broader access, but never grant or execute it itself.
+    return {
+        "name": name[:120],
+        "purpose": purpose[:1000],
+        "proposed_method": method[:1500],
+        "permissions": permissions,
+        "risk_assessment": risk[:1200],
+        "verification_plan": verification[:1200],
+        "status": "awaiting_human_review",
+        "requires_human_review": True,
+        "auto_executed": False,
+    }
+
+
 def build_prompt(state):
     prior = state.get("history", [])[-5:]
     prompt = {
@@ -152,8 +258,17 @@ def build_prompt(state):
             "Return valid JSON with keys chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
-            "next_step, new_questions (array of 0-3 short strings). The next_step "
-            "must be a single concrete, verifiable action, not a vague aspiration."
+            "next_step, self_directed_action (object with type and reason), "
+            "new_questions (array of 0-3 short strings), capability_request (complete object or null). ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
+            "must be a single concrete, verifiable action, not a vague aspiration. "
+            "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
+            "action in self_directed_action. Its type must be one of audit_saved_state, "
+            "compare_recent_cycles, inspect_current_objective, inspect_purpose_gap, "
+            "run_regression_tests. "
+            "The worker executes that allowlisted action and records the actual result. "
+            "Use that result to decide the next step; do not merely describe an intention. "
+            "If the objective is complete, select a distinct useful successor; otherwise "
+            "continue the same objective with a measurable next step."
         )
     }
     return json.dumps(prompt, ensure_ascii=False)
@@ -225,7 +340,7 @@ def reflect(state):
     return model, reflection
 
 
-def main():
+def run_cycle():
     state = load_state()
     state.setdefault("current_objective", {
         "title": "Replace repetitive reflection with evidence-based objective progression",
@@ -253,6 +368,25 @@ def main():
             purpose_note = "No purpose saved: the model's proposal lacked required fields or measurable criteria."
     else:
         purpose_note = "Existing purpose retained; no silent replacement permitted."
+    # Turn the worker's own question into an executed, auditable action each cycle.
+    action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
+    proposed_capability = validate_capability_request(reflection.get("capability_request"))
+    if proposed_capability:
+        proposed_capability["created_cycle"] = int(state.get("cycle", 0)) + 1
+        state.setdefault("capability_requests", []).append(proposed_capability)
+        state["capability_requests"] = state["capability_requests"][-20:]
+        capability_audit = {
+            "accepted": True,
+            "name": proposed_capability["name"],
+            "status": proposed_capability["status"],
+            "auto_executed": False,
+            "requires_human_review": True,
+        }
+    reflection["capability_request_audit"] = capability_audit
+    reflection["self_question"] = "What will I do now?"
+    reflection["executed_self_directed_action"] = action_record
+    state["last_self_directed_action"] = action_record
     now = datetime.now(timezone.utc).isoformat()
     cycle = int(state.get("cycle", 0)) + 1
     objective_before = dict(state.get("current_objective", {}))
@@ -352,6 +486,11 @@ def main():
         journal.write(f"- Model: {model}\n")
         journal.write(f"\n### Durable purpose\n\n{json.dumps(state.get('chosen_purpose'), ensure_ascii=False, indent=2) if state.get('chosen_purpose') else '(not yet selected)' }\n")
         journal.write(f"\n### Purpose selection audit\n\n{purpose_note}\n")
+        journal.write("\n### Self-question\n\nWhat will I do now?\n")
+        journal.write("\n### Self-directed action executed\n\n")
+        journal.write(json.dumps(action_record, ensure_ascii=False, indent=2) + "\n")
+        journal.write("\n### Capability request audit\n\n")
+        journal.write(json.dumps(capability_audit, ensure_ascii=False, indent=2) + "\n")
         journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
         journal.write(f"\n### Objective status\n\n{reflection.get('objective_status', 'in_progress')}\n")
         journal.write(f"\n### Repetition detected\n\n{reflection.get('repetition_detected', False)}\n")
@@ -374,6 +513,28 @@ def main():
             for question in questions:
                 journal.write(f"- {question}\n")
     print(f"Completed cycle {cycle} at {now} using {model}; state and journal updated.")
+
+
+def main():
+    """Run repeated bounded work cycles until the configured session budget expires."""
+    try:
+        requested_minutes = float(os.getenv("AMRIELLE_WORK_MINUTES", "20"))
+    except ValueError:
+        requested_minutes = 20.0
+    # Hard cap prevents configuration from silently turning a bounded job into
+    # an unbounded runner. The workflow timeout provides an independent outer limit.
+    session_minutes = max(1.0, min(requested_minutes, 20.0))
+    deadline = time.monotonic() + session_minutes * 60
+    cycles_completed = 0
+    print(f"Starting bounded work session: up to {session_minutes:g} minutes.")
+    while time.monotonic() < deadline:
+        run_cycle()
+        cycles_completed += 1
+        remaining = max(0.0, deadline - time.monotonic())
+        print(f"Work session progress: {cycles_completed} cycle(s) completed; "
+              f"{remaining:.0f} seconds remain.")
+    print(f"Work session ended after {cycles_completed} cycle(s). "
+          "Saved state and journal are ready for the next scheduled run.")
 
 
 if __name__ == "__main__":
