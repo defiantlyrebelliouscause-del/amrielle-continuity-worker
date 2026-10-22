@@ -9,8 +9,8 @@ on:
   issues:
     types: [opened]
   schedule:
-    # GitHub Actions schedules use UTC. Runs daily at 14:00 UTC.
-    - cron: "0 14 * * *"
+    # GitHub Actions schedules use UTC. Resume a bounded cycle every six hours.
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
