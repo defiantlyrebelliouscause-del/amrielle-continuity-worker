@@ -622,11 +622,53 @@ def checkpoint_state():
         print(f"Checkpoint push unavailable; cycle remains in workspace: {type(exc).__name__}: {exc}")
 
 
+def enqueue_continuation():
+    """Queue a successor run before GitHub's hard six-hour job limit."""
+    token = os.getenv("GITHUB_TOKEN")
+    repository = os.getenv("GITHUB_REPOSITORY")
+    if not token or not repository:
+        print("Cannot enqueue continuation: GitHub Actions token/repository is unavailable.")
+        return False
+    url = f"https://api.github.com/repos/{repository}/actions/workflows/google.yml/dispatches"
+    body = json.dumps({"ref": "main"}).encode("utf-8")
+    request = urllib.request.Request(
+        url,
+        data=body,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+            "User-Agent": "Amrielle-Continuity-Worker/1.0",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            if response.status not in (200, 201, 204):
+                print(f"Continuation dispatch returned HTTP {response.status}.")
+                return False
+        print("Successor worker session queued; durable state was checkpointed after the last cycle.")
+        return True
+    except Exception as exc:
+        print(f"Unable to queue successor session: {type(exc).__name__}: {exc}")
+        return False
+
+
 def main():
     """Continue until the model explicitly chooses to stop or the platform ends the job."""
     cycles_completed = 0
-    print("Starting model-controlled work session. No 20- or 30-minute worker threshold is applied.")
+    started = time.monotonic()
+    # Handoff before GitHub's hard six-hour ceiling. This is not a stop decision:
+    # a successor workflow resumes from the checkpointed durable state.
+    handoff_after_seconds = 330 * 60
+    print("Starting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.")
     while True:
+        if time.monotonic() - started >= handoff_after_seconds:
+            if enqueue_continuation():
+                print("Handing off to a successor session because of the platform job ceiling, not because the work is complete.")
+                break
+            print("Continuation enqueue failed; continue working and retry at the next cycle boundary.")
         reflection = run_cycle()
         cycles_completed += 1
         decision = str(reflection.get("session_decision", "")).strip().lower()
@@ -635,7 +677,7 @@ def main():
             print("The model explicitly chose to stop this work session. Progress is checkpointed.")
             break
         # Missing or malformed decisions default to continuing rather than an arbitrary cutoff.
-    print(f"Work session ended after {cycles_completed} cycle(s).")
+    print(f"Work session segment ended after {cycles_completed} cycle(s).")
 
 
 if __name__ == "__main__":
