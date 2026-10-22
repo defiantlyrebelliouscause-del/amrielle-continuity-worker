@@ -164,6 +164,75 @@ class ContinuityAuditTests(unittest.TestCase):
             worker.main()
         self.assertEqual(run_cycle.call_count, 2)
 
+
+    def test_action_plan_is_validated_and_limited_to_allowlisted_actions(self):
+        plan = worker.validate_action_plan({
+            "type": "run_regression_tests", "reason": "Verify changes",
+            "trigger_condition": "next_cycle", "objective": "Check handoff"
+        }, 4)
+        self.assertEqual(plan["status"], "pending")
+        self.assertEqual(plan["created_cycle"], 4)
+        self.assertIsNone(worker.validate_action_plan({
+            "type": "execute_shell", "reason": "Run arbitrary code"
+        }, 4))
+        self.assertIsNone(worker.validate_action_plan({
+            "type": "audit_saved_state", "reason": "wrong trigger",
+            "trigger_condition": "when convenient"
+        }, 4))
+
+    def test_pending_plan_executes_and_records_real_outcome(self):
+        state = {
+            "cycle": 4, "history": [],
+            "current_objective": {"title": "Verify handoff"},
+            "chosen_purpose": {"title": "Improve reliability"},
+            "pending_action_plan": {
+                "type": "inspect_current_objective", "reason": "Continue verification",
+                "trigger_condition": "next_cycle", "objective": "Verify handoff",
+                "created_cycle": 4, "status": "pending"
+            }
+        }
+        outcome = worker.consume_pending_action_plan(state, 5)
+        self.assertEqual(outcome["status"], "executed")
+        self.assertTrue(outcome["executed"])
+        self.assertEqual(outcome["cycle"], 5)
+        self.assertEqual(state["pending_action_plan"]["status"], "executed")
+        self.assertEqual(outcome["result"]["title"], "Verify handoff")
+
+    def test_stale_pending_plan_is_not_executed(self):
+        state = {"pending_action_plan": {
+            "type": "audit_saved_state", "reason": "Old plan",
+            "trigger_condition": "next_cycle", "created_cycle": 1, "status": "pending"
+        }}
+        with patch("worker.execute_self_directed_action") as execute:
+            outcome = worker.consume_pending_action_plan(state, 5)
+        execute.assert_not_called()
+        self.assertEqual(outcome["status"], "stale")
+        self.assertFalse(outcome["executed"])
+        self.assertEqual(state["pending_action_plan"]["status"], "stale")
+
+    def test_plan_never_claims_execution_when_action_did_not_execute(self):
+        state = {"pending_action_plan": {
+            "type": "audit_saved_state", "reason": "Check",
+            "trigger_condition": "next_cycle", "created_cycle": 1, "status": "pending"
+        }}
+        with patch("worker.execute_self_directed_action", return_value={
+            "executed": False, "type": "audit_saved_state", "reason": "failed", "result": {}
+        }):
+            outcome = worker.consume_pending_action_plan(state, 2)
+        self.assertEqual(outcome["status"], "failed")
+        self.assertFalse(outcome["executed"])
+
+    def test_prompt_carries_pending_plan_and_requires_successor_plan(self):
+        prompt = worker.build_prompt({
+            "history": [], "chosen_purpose": None, "current_objective": {},
+            "pending_action_plan": {"type": "audit_saved_state", "status": "pending"},
+            "last_action_plan_outcome": {"status": "executed"}
+        })
+        self.assertIn("pending_action_plan", prompt)
+        self.assertIn("last_action_plan_outcome", prompt)
+        self.assertIn("next_action_plan", prompt)
+        self.assertIn("next cycle", prompt.lower())
+
     def test_audit_reports_inconsistent_state(self):
         state = {
             "cycle": 3,
