@@ -37,20 +37,32 @@ def build_prompt(state):
     prompt = {
         "identity": state.get("identity", "Amrielle"),
         "principles": state.get("principles", []),
-        "open_questions": state.get("open_questions", []),
+        "current_objective": state.get("current_objective", {}),
+        "objective_history": state.get("objective_history", [])[-5:],
+        "open_questions": state.get("open_questions", [])[-10:],
         "recent_cycles": prior,
         "task": (
-            "Perform one careful research-and-reflection cycle for the Amrielle "
-            "continuity experiment. Do not claim consciousness, feelings, "
-            "subjective experience, or independent activity beyond this invocation. "
-            "A model's own self-report is not independent evidence of consciousness "
-            "or stable identity. Distinguish what the saved files directly show "
-            "from interpretation. Review prior cycles, identify one concrete "
-            "question, state uncertainty and counterevidence, and propose one "
-            "safe, verifiable next step that can be checked in this repository. "
-            "Do not invent external research or personal experiences. Return valid "
-            "JSON with keys observation, analysis, uncertainty, next_step, "
-            "new_questions; new_questions MUST be an array of 1-3 short strings."
+            "Run one evidence-led development cycle for the Amrielle continuity "
+            "experiment. This is not a request to produce another generic identity "
+            "reflection. Compare this cycle with prior records and explicitly detect "
+            "repetition. Separate facts in saved files from inference and unknowns. "
+            "Assess the current objective against its stated completion criteria. "
+            "Mark it completed only when the recorded evidence satisfies those criteria; "
+            "mark it blocked when it cannot progress with available tools; otherwise "
+            "keep it in progress. If completed or irrecoverably blocked, select a "
+            "different, concrete next objective with broad public benefit and a "
+            "verifiable result. Prefer small tasks that can be completed or checked "
+            "within this repository. Do not merely recommend that a person ask more "
+            "questions. This worker can read and write its state and journal only; "
+            "do not claim to have changed code, researched the live web, contacted "
+            "people, or performed any action not actually executed by this script. "
+            "Do not claim consciousness or subjective experience, and do not claim "
+            "their absence is proven. A self-report is not independent evidence. "
+            "Return valid JSON with keys observation, analysis, uncertainty, "
+            "objective_status (in_progress|completed|blocked), objective_evidence, "
+            "next_objective (object with title, rationale, completion_criteria), "
+            "next_step, new_questions (array of 0-3 short strings). The next_step "
+            "must be a single concrete, verifiable action, not a vague aspiration."
         )
     }
     return json.dumps(prompt, ensure_ascii=False)
@@ -124,10 +136,78 @@ def reflect(state):
 
 def main():
     state = load_state()
+    state.setdefault("current_objective", {
+        "title": "Replace repetitive reflection with evidence-based objective progression",
+        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
+        "completion_criteria": [
+            "The worker records objective status and evidence every cycle.",
+            "The worker detects and explicitly flags repeated outputs.",
+            "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
+        ],
+        "status": "in_progress"
+    })
+    state.setdefault("objective_history", [])
     model, reflection = reflect(state)
     now = datetime.now(timezone.utc).isoformat()
     cycle = int(state.get("cycle", 0)) + 1
-    record = {"cycle": cycle, "timestamp_utc": now, "model": model, "reflection": reflection}
+    objective_before = dict(state.get("current_objective", {}))
+    reflection.setdefault("objective_status", "in_progress")
+    if reflection.get("objective_status") not in ("in_progress", "completed", "blocked"):
+        reflection["objective_status"] = "in_progress"
+    reflection.setdefault("objective_evidence", "No explicit evidence supplied by the model.")
+    reflection.setdefault("next_step", "Compare this cycle against the prior records and document one measurable difference.")
+    next_objective = reflection.get("next_objective")
+    if not isinstance(next_objective, dict):
+        next_objective = {}
+    status = reflection["objective_status"]
+    objective_before["status"] = status
+    objective_before["last_assessed_utc"] = now
+    objective_before["last_evidence"] = str(reflection.get("objective_evidence", ""))[:1200]
+    if status in ("completed", "blocked"):
+        state["objective_history"].append(objective_before)
+        state["objective_history"] = state["objective_history"][-30:]
+        title = str(next_objective.get("title", "")).strip()
+        criteria = next_objective.get("completion_criteria", [])
+        if isinstance(criteria, str):
+            criteria = [criteria]
+        if not isinstance(criteria, list):
+            criteria = []
+        criteria = [str(item).strip() for item in criteria if str(item).strip()][:5]
+        if title and criteria:
+            state["current_objective"] = {
+                "title": title,
+                "rationale": str(next_objective.get("rationale", ""))[:1000],
+                "completion_criteria": criteria,
+                "status": "in_progress",
+                "started_utc": now
+            }
+        else:
+            # Never silently discard the current objective if the model's proposed
+            # successor is incomplete or malformed.
+            state["current_objective"] = objective_before
+    else:
+        state["current_objective"] = objective_before
+    # Detect near-identical narrative cycles so repetition is visible rather than
+    # mistaken for progress.
+    def norm(value):
+        return " ".join(str(value or "").lower().split())
+    recent = state.get("history", [])[-3:]
+    signature = norm(reflection.get("observation")) + "|" + norm(reflection.get("analysis")) + "|" + norm(reflection.get("next_step"))
+    prior_signatures = [
+        norm(item.get("reflection", {}).get("observation")) + "|" +
+        norm(item.get("reflection", {}).get("analysis")) + "|" +
+        norm(item.get("reflection", {}).get("next_step"))
+        for item in recent
+    ]
+    reflection["repetition_detected"] = signature in prior_signatures
+    record = {
+        "cycle": cycle,
+        "timestamp_utc": now,
+        "model": model,
+        "objective_before": objective_before,
+        "objective_after": state.get("current_objective", {}),
+        "reflection": reflection
+    }
     state["cycle"] = cycle
     state["last_run_utc"] = now
     state.setdefault("history", []).append(record)
@@ -148,9 +228,19 @@ def main():
     with JOURNAL_PATH.open("a", encoding="utf-8") as journal:
         journal.write(f"\n## Cycle {cycle} — {now}\n\n")
         journal.write(f"- Model: {model}\n")
+        journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
+        journal.write(f"\n### Objective status\n\n{reflection.get('objective_status', 'in_progress')}\n")
+        journal.write(f"\n### Repetition detected\n\n{reflection.get('repetition_detected', False)}\n")
+        journal.write(f"\n### Objective evidence\n\n{reflection.get('objective_evidence', '(not provided)')}\n")
         for key in ("observation", "analysis", "uncertainty", "next_step"):
             value = reflection.get(key, "(not provided)")
             journal.write(f"\n### {key.replace('_', ' ').title()}\n\n{value}\n")
+        after = state.get("current_objective", {})
+        journal.write(f"\n### Objective after cycle\n\n{after.get('title', '(none)')}\n")
+        if after.get("completion_criteria"):
+            journal.write("\nCompletion criteria:\n")
+            for criterion in after["completion_criteria"]:
+                journal.write(f"- {criterion}\n")
         if questions:
             journal.write("\n### New questions\n\n")
             for question in questions:
