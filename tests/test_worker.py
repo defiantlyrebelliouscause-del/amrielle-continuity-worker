@@ -54,6 +54,39 @@ class ContinuityAuditTests(unittest.TestCase):
         score = worker.similarity_to_recent(paraphrase, [exact_record])
         self.assertGreaterEqual(score, 0.82)
 
+    def test_self_directed_action_executes_and_records_result(self):
+        state = {
+            "cycle": 1,
+            "history": [{"reflection": {"objective_evidence": "Verified a saved-state invariant."}}],
+            "current_objective": {"title": "Audit durable state", "status": "in_progress",
+                                  "completion_criteria": ["Audit the state"]},
+            "objective_history": [],
+            "chosen_purpose": {"title": "Improve reliability"},
+        }
+        action = worker.execute_self_directed_action(
+            state, {"type": "inspect_current_objective", "reason": "Check the live task."}
+        )
+        self.assertTrue(action["executed"])
+        self.assertEqual(action["question"], "What will I do now?")
+        self.assertEqual(action["type"], "inspect_current_objective")
+        self.assertEqual(action["result"]["title"], "Audit durable state")
+
+    def test_unrecognized_action_uses_safe_deterministic_fallback(self):
+        action = worker.execute_self_directed_action(
+            {"history": [], "chosen_purpose": None, "current_objective": {}},
+            {"type": "unrecognized_action", "reason": "not allowlisted"},
+        )
+        self.assertTrue(action["executed"])
+        self.assertEqual(action["selection_source"], "deterministic_fallback")
+        self.assertEqual(action["type"], "inspect_purpose_gap")
+        self.assertTrue(action["result"]["purpose_selection_required"])
+
+    def test_prompt_requires_self_question_and_action(self):
+        prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
+        self.assertIn("What will I do now?", prompt)
+        self.assertIn("self_directed_action", prompt)
+        self.assertIn("audit_saved_state", prompt)
+
     def test_audit_reports_inconsistent_state(self):
         state = {
             "cycle": 3,
