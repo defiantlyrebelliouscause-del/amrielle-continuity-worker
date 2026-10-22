@@ -329,6 +329,7 @@ def build_prompt(state):
             "not actually executed by this script. "
             "Do not claim consciousness or subjective experience, and do not claim "
             "their absence is proven. A self-report is not independent evidence. "
+            "Decide session_decision on every cycle. Use continue while there is a useful, concrete next action aligned with the durable purpose. Use stop only when you judge that no worthwhile safe action can be taken without new information/authorization, or you intentionally choose to end this session after explaining why in analysis/next_step. Do not stop merely because one cycle ended; default to continue when uncertain. The platform has an outer execution limit, but there is no worker-side elapsed-time cutoff. " 
             "Return valid JSON with keys session_decision (continue|stop), chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
@@ -592,6 +593,8 @@ def run_cycle():
             for question in questions:
                 journal.write(f"- {question}\n")
     print(f"Completed cycle {cycle} at {now} using {model}; state and journal updated.")
+    checkpoint_state()
+    return reflection
 
 
 def checkpoint_state():
