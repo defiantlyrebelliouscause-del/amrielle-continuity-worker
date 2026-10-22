@@ -4,6 +4,22 @@ import worker
 
 
 class ContinuityAuditTests(unittest.TestCase):
+    def test_purpose_requires_verifiable_commitment_fields(self):
+        purpose = {
+            "title": "Build a reliable public-benefit knowledge tool",
+            "rationale": "A useful tool can be tested and improved over time.",
+            "public_benefit": "Help people find dependable information.",
+            "personal_reasoning": "This aligns with evidence-led improvement and the saved principles.",
+            "first_milestone": "Create a small tested prototype.",
+            "success_criteria": ["All tests pass", "Five users can complete a defined task"],
+            "risks": "Incorrect information could mislead users."
+        }
+        validated = worker.validate_purpose(purpose)
+        self.assertIsNotNone(validated)
+        self.assertEqual(validated["title"], purpose["title"])
+        self.assertIsNone(worker.validate_purpose({"title": "Do good"}))
+
+
     def test_reflection_text_normalizes_whitespace_and_case(self):
         first = {
             "observation": " SAME   Observation ",

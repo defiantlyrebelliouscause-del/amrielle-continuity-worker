@@ -4,6 +4,8 @@ on:
   # Deliberately omit push: the worker commits its own state and journal.
   # A push trigger here would recursively start another reflection cycle.
   workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
   issues:
     types: [opened]
   schedule:
@@ -36,15 +38,18 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Cache local model
+        if: github.event_name != 'pull_request'
         uses: actions/cache@v4
         with:
           path: ~/.ollama/models
           key: ollama-qwen2.5-0.5b-v1
 
       - name: Install Ollama
+        if: github.event_name != 'pull_request'
         run: curl -fsSL https://ollama.com/install.sh | sh
 
       - name: Start local model service and download model
+        if: github.event_name != 'pull_request'
         run: |
           ollama serve > /tmp/ollama.log 2>&1 &
           for attempt in $(seq 1 30); do
@@ -57,6 +62,7 @@ jobs:
           ollama pull qwen2.5:0.5b
 
       - name: Run bounded reflection cycle
+        if: github.event_name != 'pull_request'
         env:
           # Prefer the configured OpenAI API if one is supplied; otherwise worker.py
           # uses the local Ollama model and does not require a secret.
@@ -67,6 +73,7 @@ jobs:
         run: python worker.py
 
       - name: Save state and journal
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

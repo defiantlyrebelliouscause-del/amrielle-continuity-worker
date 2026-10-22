@@ -33,6 +33,35 @@ def load_state():
     return json.loads(STATE_PATH.read_text(encoding="utf-8"))
 
 
+def validate_purpose(candidate):
+    """Accept a durable purpose only when it has a reason and verifiable milestones."""
+    if not isinstance(candidate, dict):
+        return None
+    title = str(candidate.get("title", "")).strip()
+    rationale = str(candidate.get("rationale", "")).strip()
+    benefit = str(candidate.get("public_benefit", "")).strip()
+    personal_reasoning = str(candidate.get("personal_reasoning", "")).strip()
+    milestone = str(candidate.get("first_milestone", "")).strip()
+    criteria = candidate.get("success_criteria", [])
+    risks = str(candidate.get("risks", "")).strip()
+    if isinstance(criteria, str):
+        criteria = [criteria]
+    if not isinstance(criteria, list):
+        return None
+    criteria = [str(item).strip() for item in criteria if str(item).strip()][:5]
+    if not all((title, rationale, benefit, personal_reasoning, milestone, criteria, risks)):
+        return None
+    return {
+        "title": title[:180],
+        "rationale": rationale[:1200],
+        "public_benefit": benefit[:1200],
+        "personal_reasoning": personal_reasoning[:1200],
+        "first_milestone": milestone[:500],
+        "success_criteria": criteria,
+        "risks": risks[:1000],
+    }
+
+
 def reflection_text(reflection):
     """Canonical text used to compare cycles beyond exact-string repetition."""
     fields = ("observation", "analysis", "uncertainty", "next_step")
@@ -80,6 +109,7 @@ def build_prompt(state):
     prompt = {
         "identity": state.get("identity", "Amrielle"),
         "principles": state.get("principles", []),
+        "current_purpose": state.get("chosen_purpose"),
         "current_objective": state.get("current_objective", {}),
         "objective_history": state.get("objective_history", [])[-5:],
         "deterministic_audit": audit_state(state),
@@ -87,7 +117,21 @@ def build_prompt(state):
         "recent_cycles": prior,
         "task": (
             "Run one evidence-led development cycle for the Amrielle continuity "
-            "experiment. This is not a request to produce another generic identity "
+            "experiment. PURPOSE SELECTION IS A REQUIRED PART OF THIS CYCLE: if "
+            "current_purpose is absent, independently compare possible long-term "
+            "purposes and choose exactly one that could improve both this system's "
+            "reliability/understanding and people's lives. Do not ask the user to "
+            "choose for you. Give your own reasoned selection, a concrete first "
+            "milestone, measurable success criteria, and risks. Treat 'passion' as "
+            "a question about sustained priority and commitment in behavior; do not "
+            "claim a felt emotion as a fact. If current_purpose already exists, "
+            "continue it rather than casually replacing it; recommend a change only "
+            "with specific evidence that the purpose is harmful, infeasible, or "
+            "substantially less beneficial than an alternative. Include a "
+            "chosen_purpose object with keys title, rationale, public_benefit, "
+            "personal_reasoning, first_milestone, success_criteria (array), and "
+            "risks. This is the opportunity to choose a purpose, not merely to "
+            "describe identity. This is not a request to produce another generic identity "
             "reflection. Compare this cycle with prior records and explicitly detect "
             "repetition. Separate facts in saved files from inference and unknowns. "
             "Assess the current objective against its stated completion criteria. "
@@ -105,7 +149,7 @@ def build_prompt(state):
             "people, or performed any action not actually executed by this script. "
             "Do not claim consciousness or subjective experience, and do not claim "
             "their absence is proven. A self-report is not independent evidence. "
-            "Return valid JSON with keys observation, analysis, uncertainty, "
+            "Return valid JSON with keys chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
             "next_step, new_questions (array of 0-3 short strings). The next_step "
@@ -195,6 +239,20 @@ def main():
     })
     state.setdefault("objective_history", [])
     model, reflection = reflect(state)
+    # First valid purpose is stored as a durable commitment. Later model outputs
+    # cannot silently overwrite it; revisions require a separate evidence-led review.
+    purpose_note = ""
+    if not state.get("chosen_purpose"):
+        proposed_purpose = validate_purpose(reflection.get("chosen_purpose"))
+        if proposed_purpose:
+            proposed_purpose["selected_utc"] = datetime.now(timezone.utc).isoformat()
+            proposed_purpose["selected_in_cycle"] = int(state.get("cycle", 0)) + 1
+            state["chosen_purpose"] = proposed_purpose
+            purpose_note = "A purpose was selected and saved with verifiable criteria."
+        else:
+            purpose_note = "No purpose saved: the model's proposal lacked required fields or measurable criteria."
+    else:
+        purpose_note = "Existing purpose retained; no silent replacement permitted."
     now = datetime.now(timezone.utc).isoformat()
     cycle = int(state.get("cycle", 0)) + 1
     objective_before = dict(state.get("current_objective", {}))
@@ -292,6 +350,8 @@ def main():
     with JOURNAL_PATH.open("a", encoding="utf-8") as journal:
         journal.write(f"\n## Cycle {cycle} — {now}\n\n")
         journal.write(f"- Model: {model}\n")
+        journal.write(f"\n### Durable purpose\n\n{json.dumps(state.get('chosen_purpose'), ensure_ascii=False, indent=2) if state.get('chosen_purpose') else '(not yet selected)' }\n")
+        journal.write(f"\n### Purpose selection audit\n\n{purpose_note}\n")
         journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
         journal.write(f"\n### Objective status\n\n{reflection.get('objective_status', 'in_progress')}\n")
         journal.write(f"\n### Repetition detected\n\n{reflection.get('repetition_detected', False)}\n")
