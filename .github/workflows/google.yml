@@ -76,7 +76,7 @@ jobs:
         run: python worker.py
 
       - name: Save state and journal
-        if: github.event_name != 'pull_request'
+        if: always() && github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
