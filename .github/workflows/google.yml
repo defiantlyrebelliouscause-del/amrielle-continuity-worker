@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # Keep PR validation independent from the long-running scheduled worker session.
@@ -72,6 +73,8 @@ jobs:
           OPENAI_MODEL: gpt-4.1-mini
           OLLAMA_MODEL: qwen2.5:0.5b
           OLLAMA_HOST: http://127.0.0.1:11434
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: python worker.py
 
       - name: Save state and journal
