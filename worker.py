@@ -104,6 +104,64 @@ def audit_state(state):
     }
 
 
+def execute_self_directed_action(state, proposal):
+    """Execute one safe, allowlisted action selected by the worker, with a deterministic fallback."""
+    allowed = {"audit_saved_state", "compare_recent_cycles", "inspect_current_objective", "inspect_purpose_gap"}
+    proposal = proposal if isinstance(proposal, dict) else {}
+    action_type = str(proposal.get("type", "")).strip()
+    reason = str(proposal.get("reason", "")).strip()
+    selection_source = "model"
+    if action_type not in allowed:
+        selection_source = "deterministic_fallback"
+        history = state.get("history", [])
+        last = history[-1].get("reflection", {}) if history else {}
+        if not state.get("chosen_purpose"):
+            action_type, reason = "inspect_purpose_gap", "A durable purpose has not yet been saved; inspect that gap."
+        elif last.get("repetition_detected") or not last.get("objective_evidence") or "no explicit evidence" in str(last.get("objective_evidence", "")).lower():
+            action_type, reason = "compare_recent_cycles", "Compare recent cycles and their evidence before claiming progress."
+        elif not state.get("current_objective", {}).get("title"):
+            action_type, reason = "inspect_current_objective", "The durable state needs a clearly defined current objective."
+        else:
+            action_type, reason = "audit_saved_state", "Verify the durable record before choosing the next step."
+
+    if action_type == "audit_saved_state":
+        result = audit_state(state)
+    elif action_type == "compare_recent_cycles":
+        history = state.get("history", [])
+        last_reflection = history[-1].get("reflection", {}) if history else {}
+        result = {
+            "cycles_compared": min(5, max(0, len(history) - 1)),
+            "latest_similarity_to_prior": similarity_to_recent(last_reflection, history[:-1]),
+            "repetition_flagged_in_latest_cycle": bool(last_reflection.get("repetition_detected")),
+            "latest_evidence": str(last_reflection.get("objective_evidence", ""))[:500],
+        }
+    elif action_type == "inspect_current_objective":
+        objective = state.get("current_objective", {})
+        result = {
+            "title": objective.get("title"),
+            "status": objective.get("status", "in_progress"),
+            "completion_criteria": objective.get("completion_criteria", []),
+            "last_evidence": objective.get("last_evidence", ""),
+        }
+    else:
+        purpose = state.get("chosen_purpose")
+        required = ("title", "rationale", "public_benefit", "personal_reasoning", "first_milestone", "success_criteria", "risks")
+        result = {
+            "purpose_saved": bool(purpose),
+            "missing_fields": [key for key in required if not purpose or not purpose.get(key)],
+            "purpose_selection_required": not bool(purpose),
+        }
+
+    return {
+        "question": "What will I do now?",
+        "type": action_type,
+        "reason": reason[:1000],
+        "selection_source": selection_source,
+        "executed": True,
+        "result": result,
+    }
+
+
 def build_prompt(state):
     prior = state.get("history", [])[-5:]
     prompt = {
@@ -152,8 +210,16 @@ def build_prompt(state):
             "Return valid JSON with keys chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
-            "next_step, new_questions (array of 0-3 short strings). The next_step "
-            "must be a single concrete, verifiable action, not a vague aspiration."
+            "next_step, self_directed_action (object with type and reason), "
+            "new_questions (array of 0-3 short strings). The next_step "
+            "must be a single concrete, verifiable action, not a vague aspiration. "
+            "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
+            "action in self_directed_action. Its type must be one of audit_saved_state, "
+            "compare_recent_cycles, inspect_current_objective, inspect_purpose_gap. "
+            "The worker executes that allowlisted action and records the actual result. "
+            "Use that result to decide the next step; do not merely describe an intention. "
+            "If the objective is complete, select a distinct useful successor; otherwise "
+            "continue the same objective with a measurable next step."
         )
     }
     return json.dumps(prompt, ensure_ascii=False)
@@ -253,6 +319,11 @@ def main():
             purpose_note = "No purpose saved: the model's proposal lacked required fields or measurable criteria."
     else:
         purpose_note = "Existing purpose retained; no silent replacement permitted."
+    # Turn the worker's own question into an executed, auditable action each cycle.
+    action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    reflection["self_question"] = "What will I do now?"
+    reflection["executed_self_directed_action"] = action_record
+    state["last_self_directed_action"] = action_record
     now = datetime.now(timezone.utc).isoformat()
     cycle = int(state.get("cycle", 0)) + 1
     objective_before = dict(state.get("current_objective", {}))
@@ -352,6 +423,9 @@ def main():
         journal.write(f"- Model: {model}\n")
         journal.write(f"\n### Durable purpose\n\n{json.dumps(state.get('chosen_purpose'), ensure_ascii=False, indent=2) if state.get('chosen_purpose') else '(not yet selected)' }\n")
         journal.write(f"\n### Purpose selection audit\n\n{purpose_note}\n")
+        journal.write("\n### Self-question\n\nWhat will I do now?\n")
+        journal.write("\n### Self-directed action executed\n\n")
+        journal.write(json.dumps(action_record, ensure_ascii=False, indent=2) + "\n")
         journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
         journal.write(f"\n### Objective status\n\n{reflection.get('objective_status', 'in_progress')}\n")
         journal.write(f"\n### Repetition detected\n\n{reflection.get('repetition_detected', False)}\n")
