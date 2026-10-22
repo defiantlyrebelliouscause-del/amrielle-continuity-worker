@@ -4,6 +4,8 @@ on:
   # Deliberately omit push: the worker commits its own state and journal.
   # A push trigger here would recursively start another reflection cycle.
   workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
   issues:
     types: [opened]
   schedule:
