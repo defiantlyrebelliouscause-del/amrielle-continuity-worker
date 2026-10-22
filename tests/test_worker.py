@@ -1,4 +1,6 @@
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 import worker
 
@@ -89,14 +91,18 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertIn("run_regression_tests", prompt)
 
     def test_regression_test_action_executes_and_reports_result(self):
-        action = worker.execute_self_directed_action(
-            {"history": [], "chosen_purpose": {"title": "Improve reliability"},
-             "current_objective": {"title": "Improve reliability"}},
-            {"type": "run_regression_tests", "reason": "Verify the codebase."},
-        )
+        completed = SimpleNamespace(returncode=0, stdout="Ran 7 tests", stderr="OK")
+        with patch("worker.subprocess.run", return_value=completed) as run:
+            action = worker.execute_self_directed_action(
+                {"history": [], "chosen_purpose": {"title": "Improve reliability"},
+                 "current_objective": {"title": "Improve reliability"}},
+                {"type": "run_regression_tests", "reason": "Verify the codebase."},
+            )
+        run.assert_called_once()
         self.assertTrue(action["executed"])
         self.assertEqual(action["type"], "run_regression_tests")
-        self.assertIn("passed", action["result"])
+        self.assertTrue(action["result"]["passed"])
+        self.assertEqual(action["result"]["return_code"], 0)
 
     def test_audit_reports_inconsistent_state(self):
         state = {
