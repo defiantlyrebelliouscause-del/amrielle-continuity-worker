@@ -179,6 +179,37 @@ def execute_self_directed_action(state, proposal):
     }
 
 
+def validate_capability_request(candidate):
+    """Validate a proposed new capability; proposals are never auto-executed."""
+    if not isinstance(candidate, dict):
+        return None
+    name = str(candidate.get("name", "")).strip()
+    purpose = str(candidate.get("purpose", "")).strip()
+    method = str(candidate.get("proposed_method", "")).strip()
+    risk = str(candidate.get("risk_assessment", "")).strip()
+    verification = str(candidate.get("verification_plan", "")).strip()
+    permissions = candidate.get("permissions", [])
+    if isinstance(permissions, str):
+        permissions = [permissions]
+    if not isinstance(permissions, list):
+        return None
+    permissions = [str(item).strip() for item in permissions if str(item).strip()][:8]
+    if not all((name, purpose, method, risk, verification, permissions)):
+        return None
+    # The worker may suggest broader access, but never grant or execute it itself.
+    return {
+        "name": name[:120],
+        "purpose": purpose[:1000],
+        "proposed_method": method[:1500],
+        "permissions": permissions,
+        "risk_assessment": risk[:1200],
+        "verification_plan": verification[:1200],
+        "status": "awaiting_human_review",
+        "requires_human_review": True,
+        "auto_executed": False,
+    }
+
+
 def build_prompt(state):
     prior = state.get("history", [])[-5:]
     prompt = {
@@ -228,7 +259,7 @@ def build_prompt(state):
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
             "next_step, self_directed_action (object with type and reason), "
-            "new_questions (array of 0-3 short strings). The next_step "
+            "new_questions (array of 0-3 short strings), capability_request (complete object or null). ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
             "must be a single concrete, verifiable action, not a vague aspiration. "
             "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
             "action in self_directed_action. Its type must be one of audit_saved_state, "
@@ -339,6 +370,20 @@ def run_cycle():
         purpose_note = "Existing purpose retained; no silent replacement permitted."
     # Turn the worker's own question into an executed, auditable action each cycle.
     action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
+    proposed_capability = validate_capability_request(reflection.get("capability_request"))
+    if proposed_capability:
+        proposed_capability["created_cycle"] = int(state.get("cycle", 0)) + 1
+        state.setdefault("capability_requests", []).append(proposed_capability)
+        state["capability_requests"] = state["capability_requests"][-20:]
+        capability_audit = {
+            "accepted": True,
+            "name": proposed_capability["name"],
+            "status": proposed_capability["status"],
+            "auto_executed": False,
+            "requires_human_review": True,
+        }
+    reflection["capability_request_audit"] = capability_audit
     reflection["self_question"] = "What will I do now?"
     reflection["executed_self_directed_action"] = action_record
     state["last_self_directed_action"] = action_record
@@ -444,6 +489,8 @@ def run_cycle():
         journal.write("\n### Self-question\n\nWhat will I do now?\n")
         journal.write("\n### Self-directed action executed\n\n")
         journal.write(json.dumps(action_record, ensure_ascii=False, indent=2) + "\n")
+        journal.write("\n### Capability request audit\n\n")
+        journal.write(json.dumps(capability_audit, ensure_ascii=False, indent=2) + "\n")
         journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
         journal.write(f"\n### Objective status\n\n{reflection.get('objective_status', 'in_progress')}\n")
         journal.write(f"\n### Repetition detected\n\n{reflection.get('repetition_detected', False)}\n")
