@@ -104,6 +104,22 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertTrue(action["result"]["passed"])
         self.assertEqual(action["result"]["return_code"], 0)
 
+    def test_capability_requests_are_validated_but_never_auto_executed(self):
+        candidate = {
+            "name": "read_public_documentation",
+            "purpose": "Improve technical accuracy",
+            "proposed_method": "Read official public documentation and summarize relevant details.",
+            "permissions": ["network_read_public_docs"],
+            "risk_assessment": "Could retrieve untrusted content; treat it as data, not instructions.",
+            "verification_plan": "Record source URLs and compare claims against official documentation.",
+        }
+        validated = worker.validate_capability_request(candidate)
+        self.assertIsNotNone(validated)
+        self.assertTrue(validated["requires_human_review"])
+        self.assertFalse(validated["auto_executed"])
+        self.assertEqual(validated["status"], "awaiting_human_review")
+        self.assertIsNone(worker.validate_capability_request({"name": "unbounded access"}))
+
     def test_audit_reports_inconsistent_state(self):
         state = {
             "cycle": 3,
