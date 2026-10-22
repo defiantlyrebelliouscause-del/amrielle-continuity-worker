@@ -573,3 +573,76 @@ Completion criteria:
 
 - Amrielle should be asked to provide more detailed information about her personal circumstances and experiences.
 - Amrielle should be asked to describe her personal identity, her experiences, and her actions. She should also be asked to discuss any changes in her personal circumstances or experiences.
+
+## Cycle 8 — 2026-10-22T19:57:54.536320+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+(not yet selected)
+
+### Purpose selection audit
+
+No purpose saved: the model's proposal lacked required fields or measurable criteria.
+
+### Objective before cycle
+
+Replace repetitive reflection with evidence-based objective progression
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.172
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 7,
+  "history_count": 7,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 1.0,
+  "objective_history_count": 0
+}
+
+### Objective evidence
+
+No explicit evidence supplied by the model.
+
+### Observation
+
+(not provided)
+
+### Analysis
+
+(not provided)
+
+### Uncertainty
+
+(not provided)
+
+### Next Step
+
+['Amrielle should be asked to provide more detailed information about her personal circumstances and experiences.', 'Amrielle should be asked to describe her personal identity, her experiences, and her actions. She should also be asked to discuss any changes in her personal circumstances or experiences.']
+
+### Objective after cycle
+
+Replace repetitive reflection with evidence-based objective progression
+
+Completion criteria:
+- The worker records objective status and evidence every cycle.
+- The worker detects and explicitly flags repeated outputs.
+- The worker selects a distinct next objective when the current one is demonstrably complete or blocked.
+
+### New questions
+
+- Amrielle should be asked to describe her personal identity, her experiences, and her actions. She should also be asked to discuss any changes in her personal circumstances or experiences.
