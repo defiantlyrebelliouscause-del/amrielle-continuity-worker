@@ -36,7 +36,7 @@ def load_state():
 def reflection_text(reflection):
     """Canonical text used to compare cycles beyond exact-string repetition."""
     fields = ("observation", "analysis", "uncertainty", "next_step")
-    return " ".join(str(reflection.get(key, "") or "").lower().split() for key in fields)
+    return " ".join(" ".join(str(reflection.get(key, "") or "").lower().split()) for key in fields)
 
 
 def similarity_to_recent(reflection, history, limit=5):
