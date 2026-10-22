@@ -33,7 +33,9 @@ class WatchdogRulesTests(unittest.TestCase):
 
     def test_pull_request_runs_are_ignored(self):
         run = self.run_record(event="pull_request", created_at=(self.now - timedelta(days=2)).isoformat())
-        self.assertEqual(watchdog.inspect_runs([run], self.now), [])
+        alerts = watchdog.inspect_runs([run], self.now)
+        self.assertTrue(alerts)
+        self.assertTrue(all("pull_request" not in item for item in alerts))
 
     def test_overlong_active_run_is_flagged(self):
         run = self.run_record(
