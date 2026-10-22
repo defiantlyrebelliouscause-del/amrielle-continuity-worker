@@ -247,6 +247,73 @@ def execute_self_directed_action(state, proposal):
     }
 
 
+
+ALLOWED_ACTION_TYPES = {
+    "audit_saved_state", "compare_recent_cycles", "inspect_environment",
+    "inspect_current_objective", "inspect_purpose_gap", "run_regression_tests"
+}
+ACTION_PLAN_MAX_AGE_CYCLES = 2
+
+
+def validate_action_plan(candidate, created_cycle):
+    """Validate a next-cycle handoff; plans can invoke only existing safe actions."""
+    if not isinstance(candidate, dict):
+        return None
+    action_type = str(candidate.get("type", "")).strip()
+    reason = str(candidate.get("reason", "")).strip()
+    trigger = str(candidate.get("trigger_condition", "next_cycle")).strip()
+    objective = str(candidate.get("objective", "")).strip()
+    if action_type not in ALLOWED_ACTION_TYPES or not reason or trigger != "next_cycle":
+        return None
+    return {
+        "type": action_type, "reason": reason[:1000],
+        "trigger_condition": "next_cycle", "objective": objective[:300],
+        "created_cycle": int(created_cycle), "status": "pending",
+    }
+
+
+def consume_pending_action_plan(state, current_cycle):
+    """Execute a current handoff once, or record why it was not executed."""
+    plan = state.get("pending_action_plan")
+    if not isinstance(plan, dict) or plan.get("status") != "pending":
+        return {"status": "none", "executed": False, "reason": "No pending action plan."}
+    try:
+        created_cycle = int(plan.get("created_cycle", -999))
+    except (TypeError, ValueError):
+        created_cycle = -999
+    age = int(current_cycle) - created_cycle
+    if age < 1:
+        outcome = {"status": "deferred", "executed": False,
+                   "reason": "Plan is not eligible before the cycle after its creation."}
+        state["last_action_plan_outcome"] = outcome
+        return outcome
+    if age > ACTION_PLAN_MAX_AGE_CYCLES:
+        plan["status"] = "stale"
+        outcome = {"status": "stale", "executed": False,
+                   "reason": f"Plan age {age} exceeded limit {ACTION_PLAN_MAX_AGE_CYCLES} cycles."}
+        state["last_action_plan_outcome"] = outcome
+        return outcome
+    validated = validate_action_plan(plan, created_cycle)
+    if not validated:
+        plan["status"] = "rejected"
+        outcome = {"status": "rejected", "executed": False,
+                   "reason": "Plan failed schema or allowlist validation."}
+        state["last_action_plan_outcome"] = outcome
+        return outcome
+    action = execute_self_directed_action(
+        state, {"type": validated["type"], "reason": validated["reason"]}
+    )
+    executed = bool(action.get("executed")) and action.get("type") in ALLOWED_ACTION_TYPES
+    plan["status"] = "executed" if executed else "failed"
+    outcome = {
+        "status": plan["status"], "executed": executed, "cycle": int(current_cycle),
+        "type": action.get("type"), "reason": action.get("reason", ""),
+        "result": action.get("result", {}),
+    }
+    state["last_action_plan_outcome"] = outcome
+    return outcome
+
+
 def validate_capability_request(candidate):
     """Validate a proposed new capability; proposals are never auto-executed."""
     if not isinstance(candidate, dict):
@@ -290,6 +357,8 @@ def build_prompt(state):
         "deterministic_audit": audit_state(state),
         "open_questions": state.get("open_questions", [])[-10:],
         "recent_cycles": prior,
+        "pending_action_plan": state.get("pending_action_plan"),
+        "last_action_plan_outcome": state.get("last_action_plan_outcome", {}),
         "task": (
             "Run one evidence-led development cycle for the Amrielle continuity "
             "experiment. PURPOSE SELECTION IS A REQUIRED PART OF THIS CYCLE: if "
@@ -334,7 +403,7 @@ def build_prompt(state):
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
             "next_step, self_directed_action (object with type and reason), "
-            "new_questions (array of 0-3 short strings), capability_request (complete object or null). ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
+            "new_questions (array of 0-3 short strings), next_action_plan (object with type, reason, trigger_condition=next_cycle, objective), capability_request (complete object or null). If a pending_action_plan exists, inspect its recorded outcome and continue from that evidence rather than ignoring it. Create one useful next_action_plan for the following cycle; only choose a type from the same allowlist. The handoff is attempted at the start of the next cycle, and only the actual action result can mark it executed. ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
             "must be a single concrete, verifiable action, not a vague aspiration. "
             "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
             "action in self_directed_action. Its type must be one of audit_saved_state, "
@@ -428,10 +497,14 @@ def run_cycle():
         "status": "in_progress"
     })
     state.setdefault("objective_history", [])
+    # Evaluate the prior cycle handoff before choosing fresh work; only allowlisted actions run.
+    next_cycle = int(state.get("cycle", 0)) + 1
+    handoff_outcome = consume_pending_action_plan(state, next_cycle)
     # Observe external conditions before the model chooses its next action.
     # The source list is fixed, read-only, size-limited, and each request times out.
     state["latest_environment_observation"] = observe_environment()
     model, reflection = reflect(state)
+    reflection["prior_action_plan_outcome"] = handoff_outcome
     # First valid purpose is stored as a durable commitment. Later model outputs
     # cannot silently overwrite it; revisions require a separate evidence-led review.
     purpose_note = ""
@@ -467,6 +540,19 @@ def run_cycle():
     state["last_self_directed_action"] = action_record
     now = datetime.now(timezone.utc).isoformat()
     cycle = int(state.get("cycle", 0)) + 1
+    proposed_plan = validate_action_plan(reflection.get("next_action_plan"), cycle)
+    if proposed_plan is None:
+        proposed_plan = validate_action_plan({
+            "type": action_record.get("type", "audit_saved_state"),
+            "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+            "trigger_condition": "next_cycle",
+            "objective": str(state.get("current_objective", {}).get("title", "")),
+        }, cycle)
+        proposed_plan["selection_source"] = "deterministic_fallback"
+    else:
+        proposed_plan["selection_source"] = "model"
+    state["pending_action_plan"] = proposed_plan
+    reflection["next_action_plan_saved"] = dict(proposed_plan)
     objective_before = dict(state.get("current_objective", {}))
     reflection.setdefault("objective_status", "in_progress")
     proposed_status = reflection.get("objective_status")
@@ -569,6 +655,10 @@ def run_cycle():
         journal.write("\n### Self-question\n\nWhat will I do now?\n")
         journal.write("\n### Self-directed action executed\n\n")
         journal.write(json.dumps(action_record, ensure_ascii=False, indent=2) + "\n")
+        journal.write("\n### Prior action-plan outcome\n\n")
+        journal.write(json.dumps(handoff_outcome, ensure_ascii=False, indent=2) + "\n")
+        journal.write("\n### Next action plan saved for successor cycle\n\n")
+        journal.write(json.dumps(state.get("pending_action_plan", {}), ensure_ascii=False, indent=2) + "\n")
         journal.write("\n### Capability request audit\n\n")
         journal.write(json.dumps(capability_audit, ensure_ascii=False, indent=2) + "\n")
         journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
