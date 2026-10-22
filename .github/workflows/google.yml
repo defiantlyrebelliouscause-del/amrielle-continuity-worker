@@ -84,4 +84,20 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json journal.md
           git diff --cached --quiet || git commit -m "Record continuity worker cycle"
-          git push
+          # A PR merge or other main-branch update can make this checkout stale.
+          # Rebase the local checkpoint and retry a non-fast-forward push up to 3 times.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "Unable to rebase saved state onto latest main; refusing to overwrite remote history."
+              exit 1
+            fi
+            if git push; then
+              echo "State and journal persisted on attempt $attempt."
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; refreshing main and retrying."
+          done
+          echo "Could not persist state after three attempts."
+          exit 1
