@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Amrielle continuity experiment: one bounded, auditable reflection cycle.
+"""Amrielle continuity experiment: auditable, model-controlled work cycles.
 
 Uses the OpenAI API when OPENAI_API_KEY is configured; otherwise uses a local
 Ollama model started by the GitHub Actions workflow. Neither path proves
@@ -329,7 +329,7 @@ def build_prompt(state):
             "not actually executed by this script. "
             "Do not claim consciousness or subjective experience, and do not claim "
             "their absence is proven. A self-report is not independent evidence. "
-            "Return valid JSON with keys chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
+            "Return valid JSON with keys session_decision (continue|stop), chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria), "
             "next_step, self_directed_action (object with type and reason), "
@@ -594,26 +594,45 @@ def run_cycle():
     print(f"Completed cycle {cycle} at {now} using {model}; state and journal updated.")
 
 
-def main():
-    """Run repeated bounded work cycles until the configured session budget expires."""
+def checkpoint_state():
+    """Persist each completed cycle so an outer runner limit cannot erase all progress."""
     try:
-        requested_minutes = float(os.getenv("AMRIELLE_WORK_MINUTES", "20"))
-    except ValueError:
-        requested_minutes = 20.0
-    # Hard cap prevents configuration from silently turning a bounded job into
-    # an unbounded runner. The workflow timeout provides an independent outer limit.
-    session_minutes = max(1.0, min(requested_minutes, 20.0))
-    deadline = time.monotonic() + session_minutes * 60
+        subprocess.run(["git", "config", "user.name", "github-actions[bot]"],
+                       capture_output=True, text=True, timeout=10, check=True)
+        subprocess.run(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"],
+                       capture_output=True, text=True, timeout=10, check=True)
+        subprocess.run(["git", "add", "state.json", "journal.md"],
+                       capture_output=True, text=True, timeout=10, check=True)
+        staged = subprocess.run(["git", "diff", "--cached", "--quiet"],
+                                capture_output=True, text=True, timeout=10)
+        if staged.returncode == 1:
+            subprocess.run(["git", "commit", "-m", "Checkpoint Amrielle work cycle"],
+                           capture_output=True, text=True, timeout=20, check=True)
+            subprocess.run(["git", "push"], capture_output=True, text=True, timeout=30, check=True)
+            print("Cycle checkpoint committed and pushed.")
+        elif staged.returncode != 0:
+            raise RuntimeError(staged.stderr or "Unable to inspect staged changes.")
+        else:
+            print("No state or journal changes to checkpoint.")
+    except Exception as exc:
+        # The workflow's final save step remains a fallback; do not discard the cycle.
+        print(f"Checkpoint push unavailable; cycle remains in workspace: {type(exc).__name__}: {exc}")
+
+
+def main():
+    """Continue until the model explicitly chooses to stop or the platform ends the job."""
     cycles_completed = 0
-    print(f"Starting bounded work session: up to {session_minutes:g} minutes.")
-    while time.monotonic() < deadline:
-        run_cycle()
+    print("Starting model-controlled work session. No 20- or 30-minute worker threshold is applied.")
+    while True:
+        reflection = run_cycle()
         cycles_completed += 1
-        remaining = max(0.0, deadline - time.monotonic())
-        print(f"Work session progress: {cycles_completed} cycle(s) completed; "
-              f"{remaining:.0f} seconds remain.")
-    print(f"Work session ended after {cycles_completed} cycle(s). "
-          "Saved state and journal are ready for the next scheduled run.")
+        decision = str(reflection.get("session_decision", "")).strip().lower()
+        print(f"Session decision after cycle {cycles_completed}: {decision or 'unspecified; continue'}")
+        if decision == "stop":
+            print("The model explicitly chose to stop this work session. Progress is checkpointed.")
+            break
+        # Missing or malformed decisions default to continuing rather than an arbitrary cutoff.
+    print(f"Work session ended after {cycles_completed} cycle(s).")
 
 
 if __name__ == "__main__":
