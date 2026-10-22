@@ -5,6 +5,7 @@ Uses the OpenAI API when OPENAI_API_KEY is configured; otherwise uses a local
 Ollama model started by the GitHub Actions workflow. Neither path proves
 subjective experience; each invocation is a bounded computation.
 """
+import difflib
 import json
 import os
 import urllib.request
@@ -32,6 +33,48 @@ def load_state():
     return json.loads(STATE_PATH.read_text(encoding="utf-8"))
 
 
+def reflection_text(reflection):
+    """Canonical text used to compare cycles beyond exact-string repetition."""
+    fields = ("observation", "analysis", "uncertainty", "next_step")
+    return " ".join(str(reflection.get(key, "") or "").lower().split() for key in fields)
+
+
+def similarity_to_recent(reflection, history, limit=5):
+    """Return the strongest narrative similarity to recent prior cycles."""
+    current = reflection_text(reflection)
+    scores = []
+    for record in history[-limit:]:
+        previous = reflection_text(record.get("reflection", {}))
+        if current and previous:
+            scores.append(difflib.SequenceMatcher(None, current, previous).ratio())
+    return round(max(scores, default=0.0), 3)
+
+
+def audit_state(state):
+    """Deterministic checks based on saved records, not model self-report."""
+    history = state.get("history", [])
+    last = history[-1] if history else {}
+    last_reflection = last.get("reflection", {}) if isinstance(last, dict) else {}
+    return {
+        "saved_cycle_count": int(state.get("cycle", 0)),
+        "history_count": len(history),
+        "cycle_history_consistent": int(state.get("cycle", 0)) == len(history),
+        "current_objective_present": bool(
+            isinstance(state.get("current_objective"), dict)
+            and state.get("current_objective", {}).get("title")
+        ),
+        "last_cycle_has_objective_status": bool(
+            isinstance(last_reflection, dict)
+            and last_reflection.get("objective_status") in
+            ("in_progress", "completed", "blocked")
+        ),
+        "latest_narrative_similarity": similarity_to_recent(
+            last_reflection, history[:-1]
+        ) if last_reflection else 0.0,
+        "objective_history_count": len(state.get("objective_history", [])),
+    }
+
+
 def build_prompt(state):
     prior = state.get("history", [])[-5:]
     prompt = {
@@ -39,6 +82,7 @@ def build_prompt(state):
         "principles": state.get("principles", []),
         "current_objective": state.get("current_objective", {}),
         "objective_history": state.get("objective_history", [])[-5:],
+        "deterministic_audit": audit_state(state),
         "open_questions": state.get("open_questions", [])[-10:],
         "recent_cycles": prior,
         "task": (
@@ -48,11 +92,14 @@ def build_prompt(state):
             "repetition. Separate facts in saved files from inference and unknowns. "
             "Assess the current objective against its stated completion criteria. "
             "Mark it completed only when the recorded evidence satisfies those criteria; "
-            "mark it blocked when it cannot progress with available tools; otherwise "
-            "keep it in progress. If completed or irrecoverably blocked, select a "
-            "different, concrete next objective with broad public benefit and a "
-            "verifiable result. Prefer small tasks that can be completed or checked "
-            "within this repository. Do not merely recommend that a person ask more "
+            "mark it blocked only with a specific tool or information blocker; otherwise "
+            "keep it in progress. Completion and blockage claims are proposals, not "
+            "trusted facts: provide concrete evidence and a distinct valid successor "
+            "objective. The worker will reject unsupported transitions. If completed or "
+            "irrecoverably blocked, select a different, concrete next objective with "
+            "broad public benefit and a verifiable result. Prefer small tasks that can "
+            "be completed or checked within this repository. Do not merely recommend "
+            "that a person ask more "
             "questions. This worker can read and write its state and journal only; "
             "do not claim to have changed code, researched the live web, contacted "
             "people, or performed any action not actually executed by this script. "
@@ -152,54 +199,71 @@ def main():
     cycle = int(state.get("cycle", 0)) + 1
     objective_before = dict(state.get("current_objective", {}))
     reflection.setdefault("objective_status", "in_progress")
-    if reflection.get("objective_status") not in ("in_progress", "completed", "blocked"):
-        reflection["objective_status"] = "in_progress"
-    reflection.setdefault("objective_evidence", "No explicit evidence supplied by the model.")
-    reflection.setdefault("next_step", "Compare this cycle against the prior records and document one measurable difference.")
+    proposed_status = reflection.get("objective_status")
+    if proposed_status not in ("in_progress", "completed", "blocked"):
+        proposed_status = "in_progress"
+    evidence = str(reflection.get("objective_evidence", "") or "").strip()
+    generic_evidence = (
+        not evidence
+        or len(evidence) < 35
+        or "no explicit evidence" in evidence.lower()
+        or "not provided" in evidence.lower()
+    )
     next_objective = reflection.get("next_objective")
     if not isinstance(next_objective, dict):
         next_objective = {}
-    status = reflection["objective_status"]
+    successor_title = str(next_objective.get("title", "")).strip()
+    criteria = next_objective.get("completion_criteria", [])
+    if isinstance(criteria, str):
+        criteria = [criteria]
+    if not isinstance(criteria, list):
+        criteria = []
+    criteria = [str(item).strip() for item in criteria if str(item).strip()][:5]
+    same_objective = (
+        successor_title.lower() == str(objective_before.get("title", "")).strip().lower()
+    )
+    valid_successor = bool(successor_title and criteria and not same_objective)
+    status = proposed_status
+    transition_note = ""
+    # Never let an unsupported model self-report silently advance the durable objective.
+    if status in ("completed", "blocked") and (generic_evidence or not valid_successor):
+        status = "in_progress"
+        reasons = []
+        if generic_evidence:
+            reasons.append("objective evidence was missing or generic")
+        if not valid_successor:
+            reasons.append("a distinct successor objective with completion criteria was absent")
+        transition_note = "Transition rejected: " + "; ".join(reasons) + "."
     objective_before["status"] = status
     objective_before["last_assessed_utc"] = now
-    objective_before["last_evidence"] = str(reflection.get("objective_evidence", ""))[:1200]
-    if status in ("completed", "blocked"):
+    objective_before["last_evidence"] = evidence[:1200] if evidence else transition_note
+    if transition_note:
+        reflection["transition_validation"] = transition_note
+    if status in ("completed", "blocked") and valid_successor:
         state["objective_history"].append(objective_before)
         state["objective_history"] = state["objective_history"][-30:]
-        title = str(next_objective.get("title", "")).strip()
-        criteria = next_objective.get("completion_criteria", [])
-        if isinstance(criteria, str):
-            criteria = [criteria]
-        if not isinstance(criteria, list):
-            criteria = []
-        criteria = [str(item).strip() for item in criteria if str(item).strip()][:5]
-        if title and criteria:
-            state["current_objective"] = {
-                "title": title,
-                "rationale": str(next_objective.get("rationale", ""))[:1000],
-                "completion_criteria": criteria,
-                "status": "in_progress",
-                "started_utc": now
-            }
-        else:
-            # Never silently discard the current objective if the model's proposed
-            # successor is incomplete or malformed.
-            state["current_objective"] = objective_before
+        state["current_objective"] = {
+            "title": successor_title,
+            "rationale": str(next_objective.get("rationale", ""))[:1000],
+            "completion_criteria": criteria,
+            "status": "in_progress",
+            "started_utc": now
+        }
     else:
         state["current_objective"] = objective_before
-    # Detect near-identical narrative cycles so repetition is visible rather than
-    # mistaken for progress.
-    def norm(value):
-        return " ".join(str(value or "").lower().split())
-    recent = state.get("history", [])[-3:]
-    signature = norm(reflection.get("observation")) + "|" + norm(reflection.get("analysis")) + "|" + norm(reflection.get("next_step"))
-    prior_signatures = [
-        norm(item.get("reflection", {}).get("observation")) + "|" +
-        norm(item.get("reflection", {}).get("analysis")) + "|" +
-        norm(item.get("reflection", {}).get("next_step"))
-        for item in recent
-    ]
-    reflection["repetition_detected"] = signature in prior_signatures
+
+    # Similarity scoring catches paraphrases that exact-string matching misses.
+    similarity = similarity_to_recent(reflection, state.get("history", []))
+    reflection["narrative_similarity"] = similarity
+    reflection["repetition_detected"] = similarity >= 0.82
+    reflection["objective_status"] = status
+    reflection["objective_evidence"] = evidence if evidence else transition_note or "No explicit evidence supplied by the model."
+    reflection["deterministic_audit"] = audit_state(state)
+    if reflection["repetition_detected"]:
+        reflection["next_step"] = (
+            "Break the repeated reflection loop: inspect the deterministic audit, "
+            "identify one measurable failure, and make or test a concrete repository-level improvement."
+        )
     record = {
         "cycle": cycle,
         "timestamp_utc": now,
@@ -231,6 +295,10 @@ def main():
         journal.write(f"\n### Objective before cycle\n\n{objective_before.get('title', '(none)')}\n")
         journal.write(f"\n### Objective status\n\n{reflection.get('objective_status', 'in_progress')}\n")
         journal.write(f"\n### Repetition detected\n\n{reflection.get('repetition_detected', False)}\n")
+        journal.write(f"\n### Narrative similarity\n\n{reflection.get('narrative_similarity', 0.0)}\n")
+        journal.write(f"\n### Deterministic audit\n\n{json.dumps(reflection.get('deterministic_audit', {}), indent=2)}\n")
+        if reflection.get("transition_validation"):
+            journal.write(f"\n### Objective transition validation\n\n{reflection['transition_validation']}\n")
         journal.write(f"\n### Objective evidence\n\n{reflection.get('objective_evidence', '(not provided)')}\n")
         for key in ("observation", "analysis", "uncertainty", "next_step"):
             value = reflection.get(key, "(not provided)")
