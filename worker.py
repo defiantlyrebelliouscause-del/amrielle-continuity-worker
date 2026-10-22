@@ -598,27 +598,52 @@ def run_cycle():
 
 
 def checkpoint_state():
-    """Persist each completed cycle so an outer runner limit cannot erase all progress."""
+    """Commit each cycle and rebase safely if main advanced during the run."""
+    def git(*args, timeout=30):
+        return subprocess.run(
+            ["git", *args], capture_output=True, text=True, timeout=timeout, check=True
+        )
+
     try:
-        subprocess.run(["git", "config", "user.name", "github-actions[bot]"],
-                       capture_output=True, text=True, timeout=10, check=True)
-        subprocess.run(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"],
-                       capture_output=True, text=True, timeout=10, check=True)
-        subprocess.run(["git", "add", "state.json", "journal.md"],
-                       capture_output=True, text=True, timeout=10, check=True)
-        staged = subprocess.run(["git", "diff", "--cached", "--quiet"],
-                                capture_output=True, text=True, timeout=10)
-        if staged.returncode == 1:
-            subprocess.run(["git", "commit", "-m", "Checkpoint Amrielle work cycle"],
-                           capture_output=True, text=True, timeout=20, check=True)
-            subprocess.run(["git", "push"], capture_output=True, text=True, timeout=30, check=True)
-            print("Cycle checkpoint committed and pushed.")
-        elif staged.returncode != 0:
-            raise RuntimeError(staged.stderr or "Unable to inspect staged changes.")
-        else:
+        git("config", "user.name", "github-actions[bot]", timeout=10)
+        git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com", timeout=10)
+        git("add", "state.json", "journal.md", timeout=10)
+        staged = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"],
+            capture_output=True, text=True, timeout=10
+        )
+        if staged.returncode == 0:
             print("No state or journal changes to checkpoint.")
+            return
+        if staged.returncode != 1:
+            raise RuntimeError(staged.stderr or "Unable to inspect staged changes.")
+
+        git("commit", "-m", "Checkpoint Amrielle work cycle", timeout=20)
+        for attempt in range(1, 4):
+            git("fetch", "origin", "main")
+            rebase = subprocess.run(
+                ["git", "rebase", "origin/main"],
+                capture_output=True, text=True, timeout=30
+            )
+            if rebase.returncode != 0:
+                subprocess.run(
+                    ["git", "rebase", "--abort"],
+                    capture_output=True, text=True, timeout=10
+                )
+                raise RuntimeError(
+                    "Could not rebase checkpoint onto latest main; preserving workspace "
+                    f"for workflow fallback. {rebase.stderr[-1200:]}"
+                )
+            pushed = subprocess.run(
+                ["git", "push"], capture_output=True, text=True, timeout=30
+            )
+            if pushed.returncode == 0:
+                print(f"Cycle checkpoint committed and pushed (attempt {attempt}).")
+                return
+            print(f"Checkpoint push attempt {attempt} failed: {pushed.stderr[-800:]}")
+        raise RuntimeError("Checkpoint push failed after three fetch/rebase/push attempts.")
     except Exception as exc:
-        # The workflow's final save step remains a fallback; do not discard the cycle.
+        # Keep the local cycle; the workflow final-save step retries persistence.
         print(f"Checkpoint push unavailable; cycle remains in workspace: {type(exc).__name__}: {exc}")
 
 
