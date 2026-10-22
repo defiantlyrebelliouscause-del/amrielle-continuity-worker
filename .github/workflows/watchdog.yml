@@ -1,0 +1,39 @@
+name: Amrielle Independent Watchdog
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run separately from the worker so it can observe worker failures.
+    - cron: "*/15 * * * *"
+
+permissions:
+  actions: read
+  contents: read
+  issues: write
+
+concurrency:
+  group: amrielle-independent-watchdog
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test watchdog rules
+        run: python -m unittest discover -s tests -p 'test_watchdog.py' -v
+
+      - name: Inspect worker runs and alert if needed
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_STEP_SUMMARY: ${{ github.step_summary }}
+        run: python .github/scripts/watchdog.py
