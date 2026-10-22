@@ -72,7 +72,6 @@ jobs:
           OPENAI_MODEL: gpt-4.1-mini
           OLLAMA_MODEL: qwen2.5:0.5b
           OLLAMA_HOST: http://127.0.0.1:11434
-          AMRIELLE_WORK_MINUTES: "20"
         run: python worker.py
 
       - name: Save state and journal
