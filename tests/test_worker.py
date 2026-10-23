@@ -233,10 +233,27 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertIn("next_action_plan", prompt)
         self.assertIn("next cycle", prompt.lower())
 
+    def test_audit_treats_bounded_history_as_consistent(self):
+        history = [
+            {"cycle": cycle, "reflection": {"objective_status": "in_progress"}}
+            for cycle in range(10, 40)
+        ]
+        state = {
+            "cycle": 39,
+            "history": history,
+            "current_objective": {"title": "Run a measurable test"},
+            "objective_history": [],
+        }
+        audit = worker.audit_state(state)
+        self.assertTrue(audit["cycle_history_consistent"])
+        self.assertEqual(audit["history_count"], 30)
+        self.assertEqual(audit["expected_retained_history_count"], 30)
+        self.assertEqual(audit["latest_record_cycle"], 39)
+
     def test_audit_reports_inconsistent_state(self):
         state = {
             "cycle": 3,
-            "history": [{"reflection": {"objective_status": "in_progress"}}],
+            "history": [{"cycle": 3, "reflection": {"objective_status": "in_progress"}}],
             "current_objective": {"title": "Run a measurable test"},
             "objective_history": [],
         }
