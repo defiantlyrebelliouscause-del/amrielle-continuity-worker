@@ -86,10 +86,25 @@ def audit_state(state):
     history = state.get("history", [])
     last = history[-1] if history else {}
     last_reflection = last.get("reflection", {}) if isinstance(last, dict) else {}
+    saved_cycle_count = int(state.get("cycle", 0))
+    # The worker intentionally retains only the latest 30 records. Compare
+    # against the expected retained window, not the lifetime cycle counter.
+    expected_retained_history = min(saved_cycle_count, 30)
+    try:
+        latest_record_cycle = int(last.get("cycle", -1)) if isinstance(last, dict) else -1
+    except (TypeError, ValueError):
+        latest_record_cycle = -1
+    history_consistent = (
+        saved_cycle_count >= 0
+        and len(history) == expected_retained_history
+        and (saved_cycle_count == 0 or latest_record_cycle == saved_cycle_count)
+    )
     return {
-        "saved_cycle_count": int(state.get("cycle", 0)),
+        "saved_cycle_count": saved_cycle_count,
         "history_count": len(history),
-        "cycle_history_consistent": int(state.get("cycle", 0)) == len(history),
+        "expected_retained_history_count": expected_retained_history,
+        "latest_record_cycle": latest_record_cycle if history else None,
+        "cycle_history_consistent": history_consistent,
         "current_objective_present": bool(
             isinstance(state.get("current_objective"), dict)
             and state.get("current_objective", {}).get("title")
