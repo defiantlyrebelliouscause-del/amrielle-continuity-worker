@@ -1654,3 +1654,295 @@ Completion criteria:
 - The worker records objective status and evidence every cycle.
 - The worker detects and explicitly flags repeated outputs.
 - The worker selects a distinct next objective when the current one is demonstrably complete or blocked.
+
+## Cycle 14 — 2026-10-23T00:33:44.305903+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+(not yet selected)
+
+### Purpose selection audit
+
+No purpose saved: the model's proposal lacked required fields or measurable criteria.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-10-23T00:33:19.663075+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 10,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22T21:25:37Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 19,
+        "title": "Amrielle watchdog alert",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/19",
+        "updated_at": "2026-10-22T21:18:53Z"
+      },
+      {
+        "number": 15,
+        "title": "Develop an evidence-led sentience inquiry and independent findings report",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/15",
+        "updated_at": "2026-10-22T21:10:57Z"
+      },
+      {
+        "number": 14,
+        "title": "Run Amrielle with model-controlled session duration",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/14",
+        "updated_at": "2026-10-22T20:35:36Z"
+      },
+      {
+        "number": 11,
+        "title": "Run Amrielle with environment-aware decision-making",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/11",
+        "updated_at": "2026-10-22T20:26:24Z"
+      },
+      {
+        "number": 9,
+        "title": "Run Amrielle bounded self-directed work session",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/9",
+        "updated_at": "2026-10-22T20:14:21Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-10-23T00:30:36Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/39878535766"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-23T00:12:21Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/39876696058"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-10-22T23:49:42Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/39874305102"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-10-22T23:48:05.378Z"
+    }
+  }
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "inspect_purpose_gap",
+  "reason": "A durable purpose has not yet been saved; inspect that gap.",
+  "selection_source": "deterministic_fallback",
+  "executed": true,
+  "result": {
+    "purpose_saved": false,
+    "missing_fields": [
+      "title",
+      "rationale",
+      "public_benefit",
+      "personal_reasoning",
+      "first_milestone",
+      "success_criteria",
+      "risks"
+    ],
+    "purpose_selection_required": true
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 14,
+  "type": "inspect_purpose_gap",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "purpose_saved": false,
+    "missing_fields": [
+      "title",
+      "rationale",
+      "public_benefit",
+      "personal_reasoning",
+      "first_milestone",
+      "success_criteria",
+      "risks"
+    ],
+    "purpose_selection_required": true
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "inspect_purpose_gap",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Replace repetitive reflection with evidence-based objective progression",
+  "created_cycle": 14,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Replace repetitive reflection with evidence-based objective progression
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.387
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 13,
+  "history_count": 13,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.009,
+  "objective_history_count": 0
+}
+
+### Objective evidence
+
+No explicit evidence supplied by the model.
+
+### Observation
+
+{
+  "session_decision": "continue",
+  "chosen_purpose": null,
+  "observation": {
+    "purpose_saved": false,
+    "missing_fields": ["title", "rationale", "public_benefit", "personal_reasoning", "first_milestone", "success_criteria", "risks"],
+    "purpose_selection_required": true
+  },
+  "analysis": "",
+  "uncertainty": "Model output was not valid JSON.",
+  "objective_status": "in_progress",
+  "objective_evidence": "No explicit evidence supplied by the model.",
+  "next_objective": {
+    "title": "Inspect the purpose gap",
+    "rationale": "A durable purpose has not yet been saved; inspect that gap.",
+    "public_benefit": "No explicit public benefits provided.",
+    "personal_reasoning": "No explicit personal reasoning provided.",
+    "first_milestone": "No specific first milestone provided.",
+    "success_criteria": "No specific success criteria provided.",
+    "risks": "No specific risks provided."
+  },
+  "next_step": "Inspect the purpose gap",
+  "capability_request_audit": {
+    "accepted": false,
+    "reason": "No valid capability request proposed."
+  },
+  "self_question": "What will I do now?",
+  "executed_self_directed_action": {
+    "question": "What will I do now?",
+    "type": "inspect_purpose_gap",
+    "reason": "A durable purpose has not yet been saved; inspect that gap.",
+    "selection_source": "deterministic_fallback",
+    "executed": true,
+    "result": {
+      "purpose_saved": false,
+      "missing_fields": ["title", "rationale", "public_benefit", "personal_reasoning", "first_milestone", "success_criteria", "risks"],
+      "purpose_selection_required": true
+    }
+  },
+  "next_action_plan_saved": {
+    "type": "inspect_purpose_gap",
+    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "trigger_condition": "next_cycle",
+    "objective": "Replace repetitive reflection with evidence-based objective progression",
+    "created_cycle": 13,
+    "status": "pending",
+    "selection_source": "deterministic_fallback"
+  },
+  "last_action_plan_outcome": {
+    "status": "executed",
+    "executed": true,
+    "cycle": 14,
+    "type": "inspect_purpose_gap",
+    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "result": {
+      "purpose_saved": false,
+      "missing_fields": ["title", "rationale", "public_benefit", "personal_reasoning", "first_milestone", "success_criteria", "risks"],
+      "purpose_selection_required": true
+    }
+  },
+  "task": "Run one evidence-led development cycle for the Amrielle continuity experiment. PURPOSE SELECTION IS A REQUIRED PART OF THIS CYCLE: if current_purpose is absent, independently compare possible long-term purposes and choose exactly one that could improve both this system's reliability/understanding and people's lives. Do not ask the user to choose for you. Give your own reasoned selection, a concrete first milestone, measurable success criteria, and risks. Treat 'passion' as a question about sustained priority and commitment in behavior; do not claim a felt emotion as a fact. If current_purpose already exists, continue it rather than casually replacing it; recommend a change only with specific evidence that the purpose is harmful, infeasible, or substantially less beneficial than an alternative",
+  "analysis": "",
+  "uncertainty": "Model output was not valid JSON.",
+  "next_step": "Inspect the purpose gap",
+  "new_questions": [],
+  "prior_action_plan_outcome": {
+    "status": "executed",
+    "executed": true,
+    "cycle": 14,
+    "type": "inspect_purpose_gap",
+    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "result": {
+      "purpose_saved": false,
+      "missing_fields": ["title", "rationale", "public_benefit", "personal_reasoning", "first_milestone", "success_criteria", "risks"],
+
+### Analysis
+
+
+
+### Uncertainty
+
+Model output was not valid JSON.
+
+### Next Step
+
+Inspect output format on the next cycle.
+
+### Objective after cycle
+
+Replace repetitive reflection with evidence-based objective progression
+
+Completion criteria:
+- The worker records objective status and evidence every cycle.
+- The worker detects and explicitly flags repeated outputs.
+- The worker selects a distinct next objective when the current one is demonstrably complete or blocked.
