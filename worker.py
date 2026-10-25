@@ -14,6 +14,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 from goal_selection import score_candidate
+from capability_registry import capability_registry, select_next_integration
 from pathlib import Path
 
 STATE_PATH = Path("state.json")
@@ -189,7 +190,7 @@ def observe_environment():
 
 def execute_self_directed_action(state, proposal):
     """Execute one safe, allowlisted action selected by the worker, with a deterministic fallback."""
-    allowed = {"audit_saved_state", "compare_recent_cycles", "inspect_environment", "inspect_current_objective", "inspect_purpose_gap", "run_regression_tests"}
+    allowed = {"audit_saved_state", "compare_recent_cycles", "inspect_environment", "inspect_current_objective", "inspect_purpose_gap", "inspect_capability_registry", "run_regression_tests"}
     proposal = proposal if isinstance(proposal, dict) else {}
     action_type = str(proposal.get("type", "")).strip()
     reason = str(proposal.get("reason", "")).strip()
@@ -230,6 +231,13 @@ def execute_self_directed_action(state, proposal):
             "completion_criteria": objective.get("completion_criteria", []),
             "last_evidence": objective.get("last_evidence", ""),
         }
+    elif action_type == "inspect_capability_registry":
+        inventory = capability_registry(state)
+        result = {
+            "inventory": inventory,
+            "recommended_next_integration": select_next_integration(inventory),
+            "boundary": "Discovery and planning only; this action does not install software, execute remote code, or grant permissions.",
+        }
     elif action_type == "run_regression_tests":
         try:
             completed = subprocess.run(
@@ -267,7 +275,8 @@ def execute_self_directed_action(state, proposal):
 
 ALLOWED_ACTION_TYPES = {
     "audit_saved_state", "compare_recent_cycles", "inspect_environment",
-    "inspect_current_objective", "inspect_purpose_gap", "run_regression_tests"
+    "inspect_current_objective", "inspect_purpose_gap", "inspect_capability_registry",
+    "run_regression_tests"
 }
 ACTION_PLAN_MAX_AGE_CYCLES = 2
 
@@ -375,9 +384,17 @@ def build_prompt(state):
         "open_questions": state.get("open_questions", [])[-10:],
         "recent_cycles": prior,
         "pending_action_plan": state.get("pending_action_plan"),
+        "capability_inventory": capability_registry(state),
+        "recommended_next_integration": select_next_integration(capability_registry(state)),
         "last_action_plan_outcome": state.get("last_action_plan_outcome", {}),
         "task": (
             "Run one evidence-led development cycle for the Amrielle continuity "
+            "experiment. Treat capability expansion as a durable operational priority: "
+            "inspect capability_inventory, select one testable integration gap, and "
+            "produce an evidence-backed next step. Prefer read-only interfaces, document "
+            "required permissions, and never grant permissions or execute unreviewed "
+            "integration code. When appropriate, choose inspect_capability_registry "
+            "to record the next bounded integration investigation. "
             "experiment. PURPOSE SELECTION IS A REQUIRED PART OF THIS CYCLE: if "
             "current_purpose is absent, independently compare possible long-term "
             "purposes and choose exactly one that could improve both this system's "
