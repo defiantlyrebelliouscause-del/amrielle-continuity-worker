@@ -263,5 +263,108 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertTrue(audit["last_cycle_has_objective_status"])
 
 
+
+    def test_run_cycle_rejects_successor_without_goal_selection_evidence(self):
+        from tempfile import TemporaryDirectory
+        from pathlib import Path
+
+        state = {
+            "cycle": 2,
+            "history": [{"cycle": 1, "reflection": {"observation": "Prior", "analysis": "Prior", "uncertainty": "Unknown", "next_step": "Audit"}}],
+            "chosen_purpose": {
+                "title": "Improve reliability",
+                "public_benefit": "Reduce false claims so maintainers can trust verified worker progress."
+            },
+            "current_objective": {
+                "title": "Complete objective A",
+                "rationale": "Test the objective transition gate.",
+                "completion_criteria": ["A transition is verified"],
+                "status": "in_progress"
+            },
+            "objective_history": [],
+            "open_questions": []
+        }
+        reflection = {
+            "session_decision": "stop",
+            "observation": "A testable transition was proposed.",
+            "analysis": "The successor lacks an explicit bounded-risk declaration.",
+            "uncertainty": "Source truth remains unverified.",
+            "next_step": "Add a risk declaration and rerun tests.",
+            "objective_status": "completed",
+            "objective_evidence": "Test file tests/test_worker.py records a transition-gate scenario.",
+            "next_objective": {
+                "title": "Measure worker recovery after invalid model output",
+                "rationale": "Recovery should be checked deterministically.",
+                "completion_criteria": ["At least 3 recovery cases pass"],
+                "public_benefit": "Reduce lost work and improve trust in reliable recovery."
+            },
+            "self_directed_action": {"type": "inspect_current_objective", "reason": "Inspect the objective."},
+            "next_action_plan": {"type": "audit_saved_state", "reason": "Audit state next cycle", "trigger_condition": "next_cycle", "objective": "Audit saved state"},
+            "new_questions": []
+        }
+        with TemporaryDirectory() as directory:
+            with patch("worker.load_state", return_value=state), \
+                 patch("worker.observe_environment", return_value={"sources": {}}), \
+                 patch("worker.reflect", return_value=("test-model", reflection)), \
+                 patch.object(worker, "STATE_PATH", Path(directory) / "state.json"), \
+                 patch.object(worker, "JOURNAL_PATH", Path(directory) / "journal.md"):
+                result = worker.run_cycle()
+                saved = __import__("json").loads((Path(directory) / "state.json").read_text())
+        self.assertEqual(saved["current_objective"]["title"], "Complete objective A")
+        self.assertEqual(result["objective_status"], "in_progress")
+        self.assertFalse(result["goal_selection_audit"]["accepted"])
+        self.assertIn("deterministic goal-selection gate", result["transition_validation"])
+
+    def test_run_cycle_accepts_measurable_bounded_successor(self):
+        from tempfile import TemporaryDirectory
+        from pathlib import Path
+
+        state = {
+            "cycle": 2,
+            "history": [{"cycle": 1, "reflection": {"observation": "Prior", "analysis": "Prior", "uncertainty": "Unknown", "next_step": "Audit"}}],
+            "chosen_purpose": {
+                "title": "Improve reliability",
+                "public_benefit": "Reduce false claims so maintainers can trust verified worker progress."
+            },
+            "current_objective": {
+                "title": "Complete objective A",
+                "rationale": "Test the objective transition gate.",
+                "completion_criteria": ["A transition is verified"],
+                "status": "in_progress"
+            },
+            "objective_history": [],
+            "open_questions": []
+        }
+        reflection = {
+            "session_decision": "stop",
+            "observation": "A testable transition was proposed.",
+            "analysis": "The successor is measurable and bounded.",
+            "uncertainty": "The cited evidence's relevance still requires review.",
+            "next_step": "Verify the benchmark against fixed cases.",
+            "objective_status": "completed",
+            "objective_evidence": "Repository test file tests/test_worker.py covers the transition path.",
+            "next_objective": {
+                "title": "Measure recovery across twelve fixed malformed-output cases",
+                "rationale": "A fixed benchmark makes recovery measurable.",
+                "completion_criteria": ["At least 10 of 12 fixed cases pass"],
+                "public_benefit": "Reduce lost work and improve trust in reliable recovery.",
+                "risk_level": "read_only"
+            },
+            "self_directed_action": {"type": "inspect_current_objective", "reason": "Inspect the objective."},
+            "next_action_plan": {"type": "audit_saved_state", "reason": "Audit state next cycle", "trigger_condition": "next_cycle", "objective": "Audit saved state"},
+            "new_questions": []
+        }
+        with TemporaryDirectory() as directory:
+            with patch("worker.load_state", return_value=state), \
+                 patch("worker.observe_environment", return_value={"sources": {}}), \
+                 patch("worker.reflect", return_value=("test-model", reflection)), \
+                 patch.object(worker, "STATE_PATH", Path(directory) / "state.json"), \
+                 patch.object(worker, "JOURNAL_PATH", Path(directory) / "journal.md"):
+                result = worker.run_cycle()
+                saved = __import__("json").loads((Path(directory) / "state.json").read_text())
+        self.assertEqual(saved["current_objective"]["title"], reflection["next_objective"]["title"])
+        self.assertEqual(result["objective_status"], "completed")
+        self.assertTrue(result["goal_selection_audit"]["accepted"])
+
 if __name__ == "__main__":
     unittest.main()
