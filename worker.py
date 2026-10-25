@@ -442,7 +442,7 @@ def build_prompt(state):
             "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
             "action in self_directed_action. Its type must be one of audit_saved_state, "
             "compare_recent_cycles, inspect_environment, inspect_current_objective, inspect_purpose_gap, "
-            "run_regression_tests. "
+            "inspect_capability_registry, run_regression_tests. "
             "The worker executes that allowlisted action and records the actual result. "
             "Use that result to decide the next step; do not merely describe an intention. "
             "If the objective is complete, select a distinct useful successor; otherwise "
