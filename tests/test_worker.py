@@ -92,6 +92,18 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertEqual(len(snapshot["sources"]), 4)
         self.assertTrue(all("error" in source for source in snapshot["sources"].values()))
 
+    def test_private_contact_is_injected_only_from_runtime_environment(self):
+        with patch.dict("os.environ", {"AMRIELLE_CONTACT_EMAIL": "contact@example.com"}):
+            prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
+        self.assertIn("contact@example.com", prompt)
+        self.assertIn("Private runtime context only", prompt)
+
+    def test_private_contact_is_redacted_recursively(self):
+        value = {"observation": "contact@example.com", "nested": ["mail contact@example.com"]}
+        redacted = worker.redact_private_contact(value, "contact@example.com")
+        self.assertNotIn("contact@example.com", str(redacted))
+        self.assertIn("[private contact redacted]", str(redacted))
+
     def test_prompt_includes_environment_evidence_and_read_only_boundary(self):
         prompt = worker.build_prompt({
             "history": [], "chosen_purpose": None, "current_objective": {},

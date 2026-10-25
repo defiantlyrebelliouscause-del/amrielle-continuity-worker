@@ -494,6 +494,10 @@ def build_prompt(state):
     prior = state.get("history", [])[-5:]
     prompt = {
         "identity": state.get("identity", "Amrielle"),
+        "private_user_context": ({
+            "contact_email": os.getenv("AMRIELLE_CONTACT_EMAIL"),
+            "handling": "Private runtime context only. Do not reproduce the address in reflections, public issues, commits, logs, or persistent state/journal. Do not send messages or contact anyone unless separately authorized.",
+        } if os.getenv("AMRIELLE_CONTACT_EMAIL") else None),
         "principles": state.get("principles", []),
         "current_purpose": state.get("chosen_purpose"),
         "current_objective": state.get("current_objective", {}),
@@ -573,6 +577,19 @@ def build_prompt(state):
     return json.dumps(prompt, ensure_ascii=False)
 
 
+def redact_private_contact(value, contact_email):
+    """Recursively prevent a private contact address from entering durable reflections."""
+    if not contact_email:
+        return value
+    if isinstance(value, str):
+        return value.replace(contact_email, "[private contact redacted]")
+    if isinstance(value, list):
+        return [redact_private_contact(item, contact_email) for item in value]
+    if isinstance(value, dict):
+        return {key: redact_private_contact(item, contact_email) for key, item in value.items()}
+    return value
+
+
 def reflect(state):
     api_key = os.getenv("OPENAI_API_KEY")
     user_prompt = build_prompt(state)
@@ -636,6 +653,11 @@ def reflect(state):
             "next_step": "Inspect output format on the next cycle.",
             "new_questions": []
         }
+    # The contact is injected afresh from a GitHub Actions secret each run.
+    # Redact accidental echoes before reflection data reaches durable state/journal.
+    reflection = redact_private_contact(
+        reflection, os.getenv("AMRIELLE_CONTACT_EMAIL", "").strip()
+    )
     return model, reflection
 
 
