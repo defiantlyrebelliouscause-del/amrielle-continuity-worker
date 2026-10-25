@@ -12,6 +12,8 @@ import subprocess
 import time
 import urllib.request
 from datetime import datetime, timezone
+
+from goal_selection import score_candidate
 from pathlib import Path
 
 STATE_PATH = Path("state.json")
@@ -416,7 +418,7 @@ def build_prompt(state):
             "Decide session_decision on every cycle. Use continue while there is a useful, concrete next action aligned with the durable purpose. Use stop only when you judge that no worthwhile safe action can be taken without new information/authorization, or you intentionally choose to end this session after explaining why in analysis/next_step. Do not stop merely because one cycle ended; default to continue when uncertain. The platform has an outer execution limit, but there is no worker-side elapsed-time cutoff. " 
             "Return valid JSON with keys session_decision (continue|stop), chosen_purpose (complete object on the first cycle, null thereafter unless evidence-backed revision is recommended), observation, analysis, uncertainty, "
             "objective_status (in_progress|completed|blocked), objective_evidence, "
-            "next_objective (object with title, rationale, completion_criteria), "
+            "next_objective (object with title, rationale, completion_criteria, public_benefit, risk_level), "
             "next_step, self_directed_action (object with type and reason), "
             "new_questions (array of 0-3 short strings), next_action_plan (object with type, reason, trigger_condition=next_cycle, objective), capability_request (complete object or null). If a pending_action_plan exists, inspect its recorded outcome and continue from that evidence rather than ignoring it. Create one useful next_action_plan for the following cycle; only choose a type from the same allowlist. The handoff is attempted at the start of the next cycle, and only the actual action result can mark it executed. ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
             "must be a single concrete, verifiable action, not a vague aspiration. "
@@ -596,15 +598,38 @@ def run_cycle():
     valid_successor = bool(successor_title and criteria and not same_objective)
     status = proposed_status
     transition_note = ""
-    # Never let an unsupported model self-report silently advance the durable objective.
-    if status in ("completed", "blocked") and (generic_evidence or not valid_successor):
-        status = "in_progress"
-        reasons = []
-        if generic_evidence:
-            reasons.append("objective evidence was missing or generic")
-        if not valid_successor:
-            reasons.append("a distinct successor objective with completion criteria was absent")
-        transition_note = "Transition rejected: " + "; ".join(reasons) + "."
+    # A proposed transition must pass the independent deterministic selection gate.
+    # Evidence presence is checked mechanically; source truth still needs review.
+    selection_audit = {"accepted": False, "reason": "No transition proposed."}
+    if status in ("completed", "blocked"):
+        purpose = state.get("chosen_purpose") or {}
+        recent_titles = [
+            str(item.get("title", "")) for item in state.get("objective_history", [])
+            if isinstance(item, dict)
+        ]
+        candidate = {
+            "title": successor_title,
+            "evidence": evidence,
+            "completion_criteria": criteria,
+            "public_benefit": str(next_objective.get("public_benefit", purpose.get("public_benefit", ""))),
+            "risk_level": str(next_objective.get("risk_level", "")),
+        }
+        selection_audit = score_candidate(
+            candidate, str(objective_before.get("title", "")), recent_titles
+        )
+        if generic_evidence or not valid_successor or not selection_audit["accepted"]:
+            status = "in_progress"
+            reasons = []
+            if generic_evidence:
+                reasons.append("objective evidence was missing or generic")
+            if not valid_successor:
+                reasons.append("a distinct successor objective with completion criteria was absent")
+            if not selection_audit["accepted"]:
+                reasons.append("successor failed deterministic goal-selection gate: " + ", ".join(selection_audit["reasons"]))
+            transition_note = "Transition rejected: " + "; ".join(reasons) + "."
+        else:
+            transition_note = "Transition accepted by deterministic goal-selection gate; evidence source truth is not independently established."
+    reflection["goal_selection_audit"] = selection_audit
     objective_before["status"] = status
     objective_before["last_assessed_utc"] = now
     objective_before["last_evidence"] = evidence[:1200] if evidence else transition_note
