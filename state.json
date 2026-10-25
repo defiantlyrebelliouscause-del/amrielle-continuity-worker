@@ -1,5 +1,5 @@
 {
-  "cycle": 64,
+  "cycle": 65,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -31,95 +31,6 @@
     "What are the measurable next steps?"
   ],
   "history": [
-    {
-      "cycle": 35,
-      "timestamp_utc": "2026-10-23T06:33:45.835052+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Replace repetitive reflection with evidence-based objective progression",
-        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
-        "completion_criteria": [
-          "The worker records objective status and evidence every cycle.",
-          "The worker detects and explicitly flags repeated outputs.",
-          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
-        ],
-        "status": "in_progress",
-        "last_assessed_utc": "2026-10-23T06:33:45.835052+00:00",
-        "last_evidence": ""
-      },
-      "objective_after": {
-        "title": "Replace repetitive reflection with evidence-based objective progression",
-        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
-        "completion_criteria": [
-          "The worker records objective status and evidence every cycle.",
-          "The worker detects and explicitly flags repeated outputs.",
-          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
-        ],
-        "status": "in_progress",
-        "last_assessed_utc": "2026-10-23T06:33:45.835052+00:00",
-        "last_evidence": ""
-      },
-      "reflection": {
-        "observation": "{\n  \"session_decision\": \"stop\",\n  \"chosen_purpose\": {\n    \"title\": \"improve both the reliability of the system and the people's lives\",\n    \"rational\": \"The purpose should be specific, measurable, and beneficial to the system and the people. It should not harm or be infeasible.\",\n    \"public_benefit\": [\n      \"improve system reliability\",\n      \"increase people's lives\"\n    ],\n    \"personal_reasoning\": \"The purpose is aligned with the user's stated priorities and commitments. It is a sustainable and achievable goal.\",\n    \"first_milestone\": [\n      \"complete the current development cycle\",\n      \"implement the selected purpose\"\n    ],\n    \"success_criteria\": [\n      \"complete the development cycle\",\n      \"implement the selected purpose\"\n    ],\n    \"risks\": [\n      \"potential for unintended consequences and a lack of evidence\",\n      \"improving system reliability and people's lives may require additional time and resources\"\n    ]\n  },\n  \"observation\": {\n    \"current_environment\": \"no specific information provided\",\n    \"environment_observation\": \"latest_environment_observation is a fixed public endpoint that contains the current state of the system. It is read-only and untrusted.\",\n    \"latest_environment_observation\": \"latest_environment_observation is a read-only public endpoint that contains the current state of the system. It is read-only and untrusted.\"\n  },\n  \"analysis\": {\n    \"current_purpose\": null,\n    \"environment_purpose\": \"improve system reliability and people's lives\",\n    \"reason\": \"The purpose is aligned with the user's stated priorities and commitments. It is a sustainable and achievable goal.\",\n    \"risk\": \"potential for unintended consequences and a lack of evidence\"\n  },\n  \"objective_status\": \"completed\",\n  \"objective_evidence\": null,\n  \"next_objective\": null,\n  \"next_step\": \"complete the development cycle\",\n  \"self_directed_action\": {\n    \"type\": \"run_regression_tests\",\n    \"reason\": \"Deterministic continuity fallback: repeat a bounded verification action next cycle.\",\n    \"trigger_condition\": \"next_cycle\",\n    \"objective\": \"Replace repetitive reflection with evidence-based objective progression\",\n    \"result\": {\n      \"command\": \"python -m unittest discover -s tests -v\",\n      \"return_code\": 0,\n      \"passed\": true,\n      \"output_tail\": \"Starting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.\\nSession decision after cycle 1: continue\\nSession decision after cycle 2: stop\\nThe model explicitly chose to stop this work session. Progress is checkpointed.\\nWork session segment ended after 2 cycle(s).\\nStarting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.\\nSession decision after cycle 1: unspecified; continue\\nSession decision after cycle 2: stop\\nThe model explicitly chose to stop this work session. Progress is checkpointed.\\nWork session segment ended after 2 cycle(s).\\n\\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\\ntest_environment_action_returns_obs",
-        "analysis": "",
-        "uncertainty": "Model output was not valid JSON.",
-        "next_step": "Inspect output format on the next cycle.",
-        "new_questions": [],
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 35,
-          "type": "run_regression_tests",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": "Starting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.\nSession decision after cycle 1: continue\nSession decision after cycle 2: stop\nThe model explicitly chose to stop this work session. Progress is checkpointed.\nWork session segment ended after 2 cycle(s).\nStarting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.\nSession decision after cycle 1: unspecified; continue\nSession decision after cycle 2: stop\nThe model explicitly chose to stop this work session. Progress is checkpointed.\nWork session segment ended after 2 cycle(s).\n\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\n\n----------------------------------------------------------------------\nRan 25 tests in 0.003s\n\nOK\n"
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "run_regression_tests",
-          "reason": "Reflection alone has not produced evidence; execute the repository regression suite.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": "Starting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.\nSession decision after cycle 1: continue\nSession decision after cycle 2: stop\nThe model explicitly chose to stop this work session. Progress is checkpointed.\nWork session segment ended after 2 cycle(s).\nStarting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.\nSession decision after cycle 1: unspecified; continue\nSession decision after cycle 2: stop\nThe model explicitly chose to stop this work session. Progress is checkpointed.\nWork session segment ended after 2 cycle(s).\n\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\n\n----------------------------------------------------------------------\nRan 25 tests in 0.003s\n\nOK\n"
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "run_regression_tests",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Replace repetitive reflection with evidence-based objective progression",
-          "created_cycle": 35,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "objective_status": "in_progress",
-        "narrative_similarity": 0.54,
-        "repetition_detected": false,
-        "objective_evidence": "No explicit evidence supplied by the model.",
-        "deterministic_audit": {
-          "saved_cycle_count": 34,
-          "history_count": 30,
-          "cycle_history_consistent": false,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.069,
-          "objective_history_count": 0
-        }
-      }
-    },
     {
       "cycle": 36,
       "timestamp_utc": "2026-10-23T06:34:15.059543+00:00",
@@ -3639,9 +3550,109 @@
           "objective_history_count": 0
         }
       }
+    },
+    {
+      "cycle": 65,
+      "timestamp_utc": "2026-10-25T22:40:54.841087+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Replace repetitive reflection with evidence-based objective progression",
+        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
+        "completion_criteria": [
+          "The worker records objective status and evidence every cycle.",
+          "The worker detects and explicitly flags repeated outputs.",
+          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
+        ],
+        "status": "in_progress",
+        "last_assessed_utc": "2026-10-25T22:40:54.841087+00:00",
+        "last_evidence": ""
+      },
+      "objective_after": {
+        "title": "Replace repetitive reflection with evidence-based objective progression",
+        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
+        "completion_criteria": [
+          "The worker records objective status and evidence every cycle.",
+          "The worker detects and explicitly flags repeated outputs.",
+          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
+        ],
+        "status": "in_progress",
+        "last_assessed_utc": "2026-10-25T22:40:54.841087+00:00",
+        "last_evidence": ""
+      },
+      "reflection": {
+        "observation": "{\n  \"session_decision\": \"continue\",\n  \"chosen_purpose\": {\n    \"title\": \"Sustain continuous improvement in Amrielle's system\",\n    \"rationale\": \"Amrielle is a continuous integration and continuous deployment (CI/CD) tool that improves the reliability and understanding of the system. The purpose is to ensure that the system remains reliable and efficient.\",\n    \"public_benefit\": [\n      \"improve system reliability\",\n      \"increase system understanding\",\n      \"enhance people's lives\"\n    ],\n    \"personal_reasoning\": \"Sustaining the purpose ensures that the system remains reliable and efficient, which is crucial for the user's daily operations.\",\n    \"first_milestone\": [\n      \"identify and prioritize long-term purposes\",\n      \"document required permissions\",\n      \"never grant permissions or execute unreviewed integration code\"\n    ],\n    \"success_criteria\": [\n      \"complete the Amrielle CI/CD tool\",\n      \"ensure the system remains reliable and efficient\",\n      \"increase system understanding\"\n    ],\n    \"risks\": [\n      \"may not grant permissions or execute unreviewed integration code\",\n      \"may not document required permissions\"\n    ]\n  },\n  \"observation\": {\n    \"latest_environment_observation\": \"latest_environment_observation\",\n    \"latest_environment_observation_status\": \"completed\",\n    \"latest_environment_observation_changes\": \"no changes\"\n  },\n  \"analysis\": {\n    \"current_purpose\": \"no\",\n    \"durable_purpose\": \"no\",\n    \"reason\": \"The purpose is not explicitly stated, and the user may not choose a specific purpose. It is not a request to produce another generic identity reflection.\",\n    \"current_purpose_is_harmful\": \"no\",\n    \"current_purpose_is_infeasible\": \"no\",\n    \"current_purpose_is_substantially_less_beneficial\": \"no\",\n    \"durable_purpose_is_harmful\": \"no\",\n    \"durable_purpose_is_infeasible\": \"no\",\n    \"durable_purpose_is_substantially_less_beneficial\": \"no\",\n    \"reason_for_durable_purpose\": \"The purpose is not explicitly stated, and the user may not choose a specific purpose. It is not a request to produce another generic identity reflection.\",\n    \"reason_for_durable_purpose_is_harmful\": \"no\",\n    \"reason_for_durable_purpose_is_infeasible\": \"no\",\n    \"reason_for_durable_purpose_is_substantially_less_beneficial\": \"no\",\n    \"reason_for_durable_purpose_is_not_proven\": \"no\",\n    \"reason_for_durable_purpose_is_proven\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_evidence\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_authorization\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason_for_durable_purpose_is_proven_by_other_information\": \"no\",\n    \"reason",
+        "analysis": "",
+        "uncertainty": "Model output was not valid JSON.",
+        "next_step": "Inspect output format on the next cycle.",
+        "new_questions": [],
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 65,
+          "type": "run_regression_tests",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "result": {
+            "command": "python -m unittest discover -s tests -v",
+            "return_code": 0,
+            "passed": true,
+            "output_tail": "s_http_and_local_destinations (test_public_web_access.PublicWebAccessTests.test_rejects_http_and_local_destinations) ... ok\ntest_url_survives_next_cycle_handoff (test_public_web_access.PublicWebAccessTests.test_url_survives_next_cycle_handoff) ... ok\ntest_web_handoff_requires_https_url (test_public_web_access.PublicWebAccessTests.test_web_handoff_requires_https_url) ... ok\ntest_worker_action_reads_and_persists_result (test_public_web_access.PublicWebAccessTests.test_worker_action_reads_and_persists_result) ... ok\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\n\n----------------------------------------------------------------------\nRan 55 tests in 0.031s\n\nOK\n"
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "audit_saved_state",
+          "reason": "Verify the durable record before choosing the next step.",
+          "selection_source": "deterministic_fallback",
+          "executed": true,
+          "result": {
+            "saved_cycle_count": 64,
+            "history_count": 30,
+            "expected_retained_history_count": 30,
+            "latest_record_cycle": 64,
+            "cycle_history_consistent": true,
+            "current_objective_present": true,
+            "last_cycle_has_objective_status": true,
+            "latest_narrative_similarity": 0.078,
+            "objective_history_count": 0
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "audit_saved_state",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "trigger_condition": "next_cycle",
+          "objective": "Replace repetitive reflection with evidence-based objective progression",
+          "created_cycle": 65,
+          "status": "pending",
+          "selection_source": "deterministic_fallback"
+        },
+        "objective_status": "in_progress",
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.028,
+        "repetition_detected": false,
+        "objective_evidence": "No explicit evidence supplied by the model.",
+        "deterministic_audit": {
+          "saved_cycle_count": 64,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 64,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.078,
+          "objective_history_count": 0
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-10-25T22:30:48.967694+00:00",
+  "last_run_utc": "2026-10-25T22:40:54.841087+00:00",
   "current_objective": {
     "title": "Replace repetitive reflection with evidence-based objective progression",
     "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
@@ -3651,22 +3662,29 @@
       "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
     ],
     "status": "in_progress",
-    "last_assessed_utc": "2026-10-25T22:30:48.967694+00:00",
-    "last_evidence": "[{'type': 'audit_saved_state', 'reason': \"The audit saved state indicates that the selected tests can improve both the system's reliability and the people's lives.\", 'trigger_condition': 'latest_environment_observation', 'objective': 'The selected tests are a durable operational priority.'}]"
+    "last_assessed_utc": "2026-10-25T22:40:54.841087+00:00",
+    "last_evidence": ""
   },
   "objective_history": [],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-25T22:30:34.045823+00:00",
+    "observed_utc": "2026-10-25T22:40:04.911213+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
         "description": null,
-        "open_issues_count": 11,
+        "open_issues_count": 12,
         "default_branch": "main",
-        "pushed_at": "2026-10-25T22:29:02Z",
+        "pushed_at": "2026-10-25T22:38:09Z",
         "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
       },
       "open_issues": [
+        {
+          "number": 25,
+          "title": "Run Amrielle public webpage access milestone",
+          "state": "open",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/25",
+          "updated_at": "2026-10-25T22:38:24Z"
+        },
         {
           "number": 23,
           "title": "Run Amrielle capability-registry milestone",
@@ -3694,13 +3712,6 @@
           "state": "open",
           "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/14",
           "updated_at": "2026-10-22T20:35:36Z"
-        },
-        {
-          "number": 11,
-          "title": "Run Amrielle with environment-aware decision-making",
-          "state": "open",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/11",
-          "updated_at": "2026-10-22T20:26:24Z"
         }
       ],
       "recent_workflows": [
@@ -3708,22 +3719,22 @@
           "name": "Amrielle Continuity Worker",
           "status": "in_progress",
           "conclusion": null,
-          "created_at": "2026-10-25T22:29:15Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40240414344"
+          "created_at": "2026-10-25T22:38:27Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40241140459"
         },
         {
           "name": "Amrielle Continuity Worker",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-10-25T22:28:48Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40240379689"
+          "created_at": "2026-10-25T22:37:44Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40241086317"
         },
         {
-          "name": "Amrielle Continuity Worker",
+          "name": "Amrielle Independent Watchdog",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-10-25T22:27:49Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40240305406"
+          "created_at": "2026-10-25T22:31:38Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40240605701"
         }
       ],
       "github_status": {
@@ -3735,37 +3746,42 @@
   },
   "last_self_directed_action": {
     "question": "What will I do now?",
-    "type": "run_regression_tests",
-    "reason": "The selected tests are a durable operational priority.",
-    "selection_source": "model",
+    "type": "audit_saved_state",
+    "reason": "Verify the durable record before choosing the next step.",
+    "selection_source": "deterministic_fallback",
     "executed": true,
     "result": {
-      "command": "python -m unittest discover -s tests -v",
-      "return_code": 0,
-      "passed": true,
-      "output_tail": " ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\ntest_gate_module_is_importable_and_rejects_missing_evidence (test_goal_selection_ci_trigger.ObjectiveGateSmokeTest.test_gate_module_is_importable_and_rejects_missing_evidence) ... ok\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\n\n----------------------------------------------------------------------\nRan 48 tests in 0.018s\n\nOK\n"
+      "saved_cycle_count": 64,
+      "history_count": 30,
+      "expected_retained_history_count": 30,
+      "latest_record_cycle": 64,
+      "cycle_history_consistent": true,
+      "current_objective_present": true,
+      "last_cycle_has_objective_status": true,
+      "latest_narrative_similarity": 0.078,
+      "objective_history_count": 0
     }
   },
   "pending_action_plan": {
-    "type": "run_regression_tests",
+    "type": "audit_saved_state",
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "trigger_condition": "next_cycle",
     "objective": "Replace repetitive reflection with evidence-based objective progression",
-    "created_cycle": 64,
+    "created_cycle": 65,
     "status": "pending",
     "selection_source": "deterministic_fallback"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 64,
+    "cycle": 65,
     "type": "run_regression_tests",
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "result": {
       "command": "python -m unittest discover -s tests -v",
       "return_code": 0,
       "passed": true,
-      "output_tail": " ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\ntest_gate_module_is_importable_and_rejects_missing_evidence (test_goal_selection_ci_trigger.ObjectiveGateSmokeTest.test_gate_module_is_importable_and_rejects_missing_evidence) ... ok\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\n\n----------------------------------------------------------------------\nRan 48 tests in 0.019s\n\nOK\n"
+      "output_tail": "s_http_and_local_destinations (test_public_web_access.PublicWebAccessTests.test_rejects_http_and_local_destinations) ... ok\ntest_url_survives_next_cycle_handoff (test_public_web_access.PublicWebAccessTests.test_url_survives_next_cycle_handoff) ... ok\ntest_web_handoff_requires_https_url (test_public_web_access.PublicWebAccessTests.test_web_handoff_requires_https_url) ... ok\ntest_worker_action_reads_and_persists_result (test_public_web_access.PublicWebAccessTests.test_worker_action_reads_and_persists_result) ... ok\ntest_healthy_recent_run_has_no_alert (test_watchdog.WatchdogRulesTests.test_healthy_recent_run_has_no_alert) ... ok\ntest_long_queued_run_is_flagged (test_watchdog.WatchdogRulesTests.test_long_queued_run_is_flagged) ... ok\ntest_missing_recent_activity_is_flagged (test_watchdog.WatchdogRulesTests.test_missing_recent_activity_is_flagged) ... ok\ntest_overlong_active_run_is_flagged (test_watchdog.WatchdogRulesTests.test_overlong_active_run_is_flagged) ... ok\ntest_pull_request_runs_are_ignored (test_watchdog.WatchdogRulesTests.test_pull_request_runs_are_ignored) ... ok\ntest_recent_failure_is_flagged (test_watchdog.WatchdogRulesTests.test_recent_failure_is_flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\n\n----------------------------------------------------------------------\nRan 55 tests in 0.031s\n\nOK\n"
     }
   },
   "chosen_purpose": {
