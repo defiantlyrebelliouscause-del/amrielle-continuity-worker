@@ -75,7 +75,7 @@ def score_candidate(
         "bounded_risk": bounded_risk,
     }
     total = sum(scores.values())
-    accepted = total >= 8 and evidence_score == 2 and measurability == 2 and bounded_risk == 2
+    accepted = bool(title) and total >= 8 and novelty == 2 and evidence_score == 2 and measurability == 2 and public_benefit == 2 and bounded_risk == 2
     reasons = []
     if not title:
         reasons.append("missing title")
