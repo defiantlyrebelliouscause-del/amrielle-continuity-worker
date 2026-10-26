@@ -64,6 +64,44 @@ class GoalSelectionTests(unittest.TestCase):
         result = score_candidate(GOOD, "unrelated objective", [GOOD["title"]])
         self.assertFalse(result["accepted"])
 
+    def test_stall_recovery_requires_three_consecutive_rejections(self):
+        from goal_selection import build_stall_recovery_candidate
+
+        self.assertIsNone(build_stall_recovery_candidate(
+            CURRENT,
+            [
+                {"cycle": 1, "transition_accepted": False},
+                {"cycle": 2, "transition_accepted": False},
+            ],
+        ))
+        candidate = build_stall_recovery_candidate(CURRENT, [
+            {"cycle": 1, "transition_accepted": False},
+            {"cycle": 2, "transition_accepted": False},
+            {"cycle": 3, "transition_accepted": False},
+        ])
+        self.assertIsNotNone(candidate)
+        self.assertEqual(candidate["risk_level"], "read_only")
+        self.assertTrue(score_candidate(candidate, CURRENT)["accepted"])
+
+    def test_stall_recovery_does_not_override_a_recent_accepted_transition(self):
+        from goal_selection import build_stall_recovery_candidate
+
+        self.assertIsNone(build_stall_recovery_candidate(CURRENT, [
+            {"cycle": 1, "transition_accepted": False},
+            {"cycle": 2, "transition_accepted": True},
+            {"cycle": 3, "transition_accepted": False},
+        ]))
+
+    def test_stall_recovery_does_not_repeat_when_already_current(self):
+        from goal_selection import build_stall_recovery_candidate
+
+        title = "Validate deterministic recovery from repeated objective-transition stalls"
+        self.assertIsNone(build_stall_recovery_candidate(title, [
+            {"cycle": 1, "transition_accepted": False},
+            {"cycle": 2, "transition_accepted": False},
+            {"cycle": 3, "transition_accepted": False},
+        ]))
+
     def test_evidence_truth_is_not_claimed(self):
         result = score_candidate(GOOD, CURRENT)
         self.assertIn("require review", result["note"])
