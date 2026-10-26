@@ -100,6 +100,49 @@ def score_candidate(
     }
 
 
+def build_stall_recovery_candidate(
+    current_objective: str,
+    transition_history: list[dict[str, Any]] | None,
+    recent_objectives: list[str] | None = None,
+) -> dict[str, Any] | None:
+    """Return a measurable read-only recovery objective after three consecutive stalls.
+
+    This is a deterministic recovery policy, not a claim that the model chose
+    the successor. It abstains when the current objective is already the
+    recovery objective or when recent history contains a similar title.
+    """
+    history = [item for item in (transition_history or []) if isinstance(item, dict)]
+    recent = history[-3:]
+    if len(recent) < 3 or any(item.get("transition_accepted") is True for item in recent):
+        return None
+
+    title = "Validate deterministic recovery from repeated objective-transition stalls"
+    comparisons = [current_objective, *(recent_objectives or [])]
+    if any(similarity(title, old) >= 0.72 for old in comparisons if old):
+        return None
+
+    cycles = [str(item.get("cycle", "?")) for item in recent]
+    candidate = {
+        "title": title,
+        "rationale": "Use the recorded repeated transition failures to run a bounded diagnostic and test the recovery path.",
+        "evidence": (
+            "File state.json records three consecutive rejected objective-transition attempts "
+            f"at cycles {', '.join(cycles)}."
+        ),
+        "completion_criteria": [
+            "At least 3 regression tests cover the repeated-stall recovery decision",
+            "All added recovery tests pass",
+        ],
+        "public_benefit": (
+            "Prevent repeated invalid transitions from consuming worker cycles without "
+            "producing actionable diagnostics."
+        ),
+        "risk_level": "read_only",
+    }
+    audit = score_candidate(candidate, current_objective, recent_objectives)
+    return candidate if audit.get("accepted") else None
+
+
 def select_candidate(
     candidates: list[dict[str, Any]],
     current_objective: str,
