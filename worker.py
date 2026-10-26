@@ -129,6 +129,11 @@ def audit_state(state):
             last_reflection, history[:-1]
         ) if last_reflection else 0.0,
         "objective_history_count": len(state.get("objective_history", [])),
+        "objective_transition_attempt_count": len(state.get("objective_transition_history", [])),
+        "accepted_objective_transition_count": sum(
+            1 for item in state.get("objective_transition_history", [])
+            if isinstance(item, dict) and item.get("transition_accepted") is True
+        ),
     }
 
 
