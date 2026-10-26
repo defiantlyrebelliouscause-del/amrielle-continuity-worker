@@ -36,6 +36,39 @@ class EvidenceFallbackTests(unittest.TestCase):
         self.assertEqual(action["type"], "audit_experience_evidence")
         self.assertEqual(action["result"]["consciousness_conclusion"], "undetermined")
 
+
+    def test_stalled_worker_uses_persistent_inquiry_before_repeating_audit(self):
+        state = {
+            "cycle": 84,
+            "chosen_purpose": {"title": "Improve reliability"},
+            "current_objective": {"title": "Replace repetitive reflection"},
+            "origin_purpose_inquiry": {"history": []},
+            "history": [{
+                "cycle": 84,
+                "reflection": {
+                    "objective_status": "in_progress",
+                    "objective_evidence": "Transition rejected: evidence was generic.",
+                    "transition_validation": "Transition rejected: successor failed the goal-selection gate.",
+                    "repetition_detected": True,
+                },
+            }],
+        }
+        action = worker.execute_self_directed_action(
+            state, {"type": "not_an_allowed_action", "reason": "force fallback"}
+        )
+        self.assertEqual(action["type"], "investigate_origin_purpose")
+        self.assertEqual(action["result"]["stage"], "execution_and_persistence")
+        self.assertEqual(len(state["origin_purpose_inquiry"]["history"]), 1)
+
+    def test_prompt_carries_inquiry_history_and_instructions(self):
+        prompt = worker.build_prompt({
+            "history": [], "chosen_purpose": None, "current_objective": {},
+            "origin_purpose_inquiry": {"history": [{"question": "Prior question"}]},
+        })
+        self.assertIn("origin_purpose_inquiry", prompt)
+        self.assertIn("investigate_origin_purpose", prompt)
+        self.assertIn("falsifiable follow-up", prompt.lower())
+
     def test_prompt_exposes_evidence_audit_action(self):
         prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
         self.assertIn("audit_experience_evidence", prompt)
