@@ -19,7 +19,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-from goal_selection import score_candidate
+from goal_selection import score_candidate, build_stall_recovery_candidate
 from experience_evidence_audit import audit_state as audit_experience_evidence
 from origin_purpose_inquiry import run_inquiry as run_origin_purpose_inquiry
 from capability_registry import capability_registry, select_next_integration
