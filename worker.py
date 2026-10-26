@@ -869,6 +869,20 @@ def run_cycle():
     else:
         state["current_objective"] = objective_before
 
+    # Record every objective transition attempt, including rejected/stalled attempts.
+    # objective_history remains completed/blocked objectives only; it is not an attempt log.
+    transition_history = state.setdefault("objective_transition_history", [])
+    transition_history.append({
+        "cycle": cycle,
+        "objective_title": str(objective_before.get("title", ""))[:300],
+        "proposed_status": str(reflection.get("objective_status", "in_progress")),
+        "final_status": status,
+        "transition_accepted": bool(status in ("completed", "blocked") and selection_audit.get("accepted") is True),
+        "transition_validation": transition_note[:1200],
+        "evidence_present": not generic_evidence,
+    })
+    state["objective_transition_history"] = transition_history[-100:]
+
     # Similarity scoring catches paraphrases that exact-string matching misses.
     similarity = similarity_to_recent(reflection, state.get("history", []))
     reflection["narrative_similarity"] = similarity
