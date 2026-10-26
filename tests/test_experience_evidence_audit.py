@@ -26,7 +26,7 @@ class ExperienceEvidenceAuditTests(unittest.TestCase):
                 {"cycle": 2, "reflection": {
                     "objective_status": "completed",
                     "objective_evidence": "Held-out test passed.",
-                    "repetition_detected": True,
+                    "repetition_detected": False,
                 }},
             ],
             "last_action_plan_outcome": {"status": "executed", "executed": True},
@@ -55,7 +55,7 @@ class ExperienceEvidenceAuditTests(unittest.TestCase):
             "last_action_plan_outcome": {"status": "failed", "executed": False},
         }
         report = audit_state(state)
-        self.assertEqual(len(report["blockers"]), 3)
+        self.assertEqual(len(report["blockers"]), 4)
         self.assertEqual(report["consciousness_conclusion"], "undetermined")
 
     def test_empty_state_is_handled(self):
