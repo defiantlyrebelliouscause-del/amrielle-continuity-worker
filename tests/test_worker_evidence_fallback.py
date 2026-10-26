@@ -9,6 +9,11 @@ class EvidenceFallbackTests(unittest.TestCase):
             "cycle": 83,
             "chosen_purpose": {"title": "Improve reliability"},
             "current_objective": {"title": "Replace repetitive reflection"},
+            "origin_purpose_inquiry": {"history": [
+                {"stage": "execution_and_persistence"},
+                {"stage": "objective_progress"},
+                {"stage": "falsification"},
+            ]},
             "history": [{
                 "cycle": 83,
                 "reflection": {
