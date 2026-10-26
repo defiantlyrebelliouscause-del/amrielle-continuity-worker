@@ -752,6 +752,17 @@ def run_cycle():
             "trigger_condition": "next_cycle",
             "objective": str(state.get("current_objective", {}).get("title", "")),
         }, cycle)
+        if proposed_plan is None:
+            # Never crash a completed work cycle because the chosen action cannot
+            # be serialized as a valid handoff. Use a known-safe allowlisted action.
+            proposed_plan = {
+                "type": "audit_saved_state",
+                "reason": "Fallback plan validation failed; verify durable state before choosing again.",
+                "trigger_condition": "next_cycle",
+                "objective": str(state.get("current_objective", {}).get("title", "")),
+                "created_cycle": cycle,
+                "status": "pending",
+            }
         proposed_plan["selection_source"] = "deterministic_fallback"
     else:
         proposed_plan["selection_source"] = "model"
