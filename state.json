@@ -1,5 +1,5 @@
 {
-  "cycle": 142,
+  "cycle": 143,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -31,283 +31,6 @@
     "What is the current purpose of the Amrielle continuity experiment?"
   ],
   "history": [
-    {
-      "cycle": 113,
-      "timestamp_utc": "2026-10-26T12:31:51.824334+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Replace repetitive reflection with evidence-based objective progression",
-        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
-        "completion_criteria": [
-          "The worker records objective status and evidence every cycle.",
-          "The worker detects and explicitly flags repeated outputs.",
-          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
-        ],
-        "status": "in_progress",
-        "last_assessed_utc": "2026-10-26T12:31:51.824334+00:00",
-        "last_evidence": ""
-      },
-      "objective_after": {
-        "title": "Replace repetitive reflection with evidence-based objective progression",
-        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
-        "completion_criteria": [
-          "The worker records objective status and evidence every cycle.",
-          "The worker detects and explicitly flags repeated outputs.",
-          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
-        ],
-        "status": "in_progress",
-        "last_assessed_utc": "2026-10-26T12:31:51.824334+00:00",
-        "last_evidence": ""
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "chosen_purpose": "replace repetitive reflection with evidence-based objective progression",
-        "observation": "No new observations or evidence have been collected in the latest environment observation.",
-        "analysis": "The current objective is to replace repetitive reflection with evidence-based objective progression. This objective has not been explicitly stated in the previous cycle, but it aligns with the goal of improving both reliability and people's lives.",
-        "uncertainty": [],
-        "objective_status": "in_progress",
-        "objective_evidence": "No explicit evidence supplied by the model.",
-        "next_objective": {
-          "title": "Replace repetitive reflection with evidence-based objective progression",
-          "rationale": "This objective is focused on improving the reliability and understanding of the system through evidence-based objective progression.",
-          "completion_criteria": [
-            "Increase the likelihood of self-reflection and self-monitoring.",
-            "Ensure that the system can be evaluated and improved through evidence-based methods.",
-            "Improve the ability to identify and address potential issues in a structured and systematic manner."
-          ],
-          "public_benefit": [
-            "Enhance the reliability and understanding of the system.",
-            "Increase the ability to identify and address potential issues in a structured and systematic manner."
-          ],
-          "risk_level": "high"
-        },
-        "risk_level": "high",
-        "next_step": "Run the complete unittest suite and record the exit code.",
-        "self_directed_action": {
-          "type": "run_tests",
-          "reason": "Run the complete unittest suite to ensure the system is reliable and understandable.",
-          "trigger_condition": "exit code 0"
-        },
-        "new_questions": [],
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 113,
-          "type": "audit_experience_evidence",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 112
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 11,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Replace repetitive reflection with evidence-based objective progression",
-                "completed_objectives_recorded": 0,
-                "accepted_goal_transitions_recorded": 0,
-                "cycles_with_nonempty_objective_evidence": 9,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 3,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 103,
-                    "similarity": 0.22
-                  },
-                  {
-                    "cycle": 104,
-                    "similarity": 0.038
-                  },
-                  {
-                    "cycle": 105,
-                    "similarity": 0.055
-                  },
-                  {
-                    "cycle": 106,
-                    "similarity": 0.095
-                  },
-                  {
-                    "cycle": 107,
-                    "similarity": 0.143
-                  },
-                  {
-                    "cycle": 108,
-                    "similarity": 0.022
-                  },
-                  {
-                    "cycle": 109,
-                    "similarity": 0.077
-                  },
-                  {
-                    "cycle": 110,
-                    "similarity": 0.032
-                  },
-                  {
-                    "cycle": 111,
-                    "similarity": 0.296
-                  },
-                  {
-                    "cycle": 112,
-                    "similarity": 0.08
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "pending"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "No accepted goal transitions appear in the retained history.",
-              "No completed objective appears in the retained history.",
-              "The worker explicitly flagged repetition in 3 retained cycle(s)."
-            ]
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_experience_evidence",
-          "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 112
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 11,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Replace repetitive reflection with evidence-based objective progression",
-                "completed_objectives_recorded": 0,
-                "accepted_goal_transitions_recorded": 0,
-                "cycles_with_nonempty_objective_evidence": 9,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 3,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 103,
-                    "similarity": 0.22
-                  },
-                  {
-                    "cycle": 104,
-                    "similarity": 0.038
-                  },
-                  {
-                    "cycle": 105,
-                    "similarity": 0.055
-                  },
-                  {
-                    "cycle": 106,
-                    "similarity": 0.095
-                  },
-                  {
-                    "cycle": 107,
-                    "similarity": 0.143
-                  },
-                  {
-                    "cycle": 108,
-                    "similarity": 0.022
-                  },
-                  {
-                    "cycle": 109,
-                    "similarity": 0.077
-                  },
-                  {
-                    "cycle": 110,
-                    "similarity": 0.032
-                  },
-                  {
-                    "cycle": 111,
-                    "similarity": 0.296
-                  },
-                  {
-                    "cycle": 112,
-                    "similarity": 0.08
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "executed"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "No accepted goal transitions appear in the retained history.",
-              "No completed objective appears in the retained history.",
-              "The worker explicitly flagged repetition in 3 retained cycle(s)."
-            ]
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_experience_evidence",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Replace repetitive reflection with evidence-based objective progression",
-          "created_cycle": 113,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": false,
-          "reason": "No transition proposed."
-        },
-        "narrative_similarity": 0.318,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 112,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 112,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.08,
-          "objective_history_count": 0
-        }
-      }
-    },
     {
       "cycle": 114,
       "timestamp_utc": "2026-10-26T12:32:11.153190+00:00",
@@ -5034,9 +4757,320 @@
           "accepted_objective_transition_count": 0
         }
       }
+    },
+    {
+      "cycle": 143,
+      "timestamp_utc": "2026-10-26T18:07:56.680114+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Replace repetitive reflection with evidence-based objective progression",
+        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
+        "completion_criteria": [
+          "The worker records objective status and evidence every cycle.",
+          "The worker detects and explicitly flags repeated outputs.",
+          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
+        ],
+        "status": "in_progress",
+        "last_assessed_utc": "2026-10-26T18:07:56.680114+00:00",
+        "last_evidence": "{'repository_path': 'state.json', 'repository_line_count': 6116, 'repository_line_number': 111, 'repository_line_text': 'objective_history_count: 0'}"
+      },
+      "objective_after": {
+        "title": "Replace repetitive reflection with evidence-based objective progression",
+        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
+        "completion_criteria": [
+          "The worker records objective status and evidence every cycle.",
+          "The worker detects and explicitly flags repeated outputs.",
+          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
+        ],
+        "status": "in_progress",
+        "last_assessed_utc": "2026-10-26T18:07:56.680114+00:00",
+        "last_evidence": "{'repository_path': 'state.json', 'repository_line_count': 6116, 'repository_line_number': 111, 'repository_line_text': 'objective_history_count: 0'}"
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "chosen_purpose": {
+          "title": "Evaluate the effectiveness of the current capability expansion",
+          "rationale": "To demonstrate the continued improvement of the Amrielle continuity experiment.",
+          "public_benefit": "Improved reliability and understanding of the system.",
+          "risk_level": "Moderate",
+          "next_objective": {
+            "title": "Conduct a comprehensive review of the current capability registry and identify potential gaps.",
+            "rationale": "To ensure the system remains secure and effective.",
+            "public_benefit": "Enhanced system security and reliability.",
+            "risk_level": "High",
+            "analysis": "No specific findings.",
+            "uncertainty": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+            "next_step": {
+              "type": "read_public_webpage",
+              "reason": "To review the capability registry and identify gaps.",
+              "trigger_condition": "next_action_plan"
+            }
+          },
+          "next_step": {
+            "type": "read_public_webpage",
+            "reason": "To review the capability registry and identify gaps.",
+            "trigger_condition": "next_action_plan"
+          },
+          "self_directed_action": {
+            "type": "read_public_webpage",
+            "reason": "To review the capability registry and identify gaps.",
+            "trigger_condition": "next_action_plan"
+          }
+        },
+        "observation": {
+          "repository_artifacts": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+          "repository_path": "state.json",
+          "repository_line_count": 6116,
+          "repository_line_number": 111,
+          "repository_line_text": "objective_history_count: 0"
+        },
+        "analysis": "The repository artifacts indicate that the current objective is documented and does not involve private motives or subjective experiences.",
+        "objective_status": "in_progress",
+        "objective_evidence": "{'repository_path': 'state.json', 'repository_line_count': 6116, 'repository_line_number': 111, 'repository_line_text': 'objective_history_count: 0'}",
+        "next_objective": {
+          "title": "Evaluate the effectiveness of the current capability registry",
+          "rationale": "To ensure the system remains secure and effective.",
+          "public_benefit": "Enhanced system security and reliability.",
+          "risk_level": "High",
+          "next_objective": {
+            "type": "read_public_webpage",
+            "reason": "To review the capability registry and identify gaps.",
+            "trigger_condition": "next_action_plan"
+          }
+        },
+        "next_step": {
+          "type": "read_public_webpage",
+          "reason": "To review the capability registry and identify gaps.",
+          "trigger_condition": "next_action_plan"
+        },
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 143,
+          "type": "audit_experience_evidence",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "result": {
+            "audit_type": "observable_continuity_evidence",
+            "consciousness_conclusion": "undetermined",
+            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+            "indicators": {
+              "persistent_records": {
+                "observed": 30,
+                "cycle_sequence_contiguous_in_retained_window": true,
+                "latest_cycle": 142
+              },
+              "self_directed_behavior": {
+                "model_selected_actions_recorded": 15,
+                "actions_recorded_as_executed": 30,
+                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+              },
+              "objective_progress": {
+                "current_objective": "Replace repetitive reflection with evidence-based objective progression",
+                "completed_objectives_recorded": 0,
+                "accepted_goal_transitions_recorded": 0,
+                "transition_attempts_recorded": 1,
+                "accepted_transition_attempts_recorded": 0,
+                "rejected_or_stalled_transition_attempts_recorded": 1,
+                "cycles_with_nonempty_objective_evidence": 13,
+                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+              },
+              "novelty_and_repetition": {
+                "repetition_flags": 0,
+                "recorded_similarity_observations": [
+                  {
+                    "cycle": 133,
+                    "similarity": 0.139
+                  },
+                  {
+                    "cycle": 134,
+                    "similarity": 0.575
+                  },
+                  {
+                    "cycle": 135,
+                    "similarity": 0.31
+                  },
+                  {
+                    "cycle": 136,
+                    "similarity": 0.206
+                  },
+                  {
+                    "cycle": 137,
+                    "similarity": 0.09
+                  },
+                  {
+                    "cycle": 138,
+                    "similarity": 0.014
+                  },
+                  {
+                    "cycle": 139,
+                    "similarity": 0.296
+                  },
+                  {
+                    "cycle": 140,
+                    "similarity": 0.305
+                  },
+                  {
+                    "cycle": 141,
+                    "similarity": 0.297
+                  },
+                  {
+                    "cycle": 142,
+                    "similarity": 0.023
+                  }
+                ]
+              },
+              "handoff_follow_through": {
+                "last_outcome_status": "executed",
+                "last_outcome_executed": true,
+                "pending_plan_status": "pending"
+              },
+              "missing_measurements": [
+                "prospective confidence predictions scored against held-out outcomes",
+                "blinded tests of self-model accuracy under perturbation",
+                "causal tests distinguishing self-monitoring from prompted narrative",
+                "replication across independent runs and model/control conditions",
+                "an independently validated measure of subjective experience (none is currently established)"
+              ]
+            },
+            "blockers": [
+              "No accepted goal transitions appear in the retained history.",
+              "No completed objective appears in the retained history."
+            ]
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "audit_experience_evidence",
+          "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
+          "selection_source": "deterministic_fallback",
+          "executed": true,
+          "result": {
+            "audit_type": "observable_continuity_evidence",
+            "consciousness_conclusion": "undetermined",
+            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+            "indicators": {
+              "persistent_records": {
+                "observed": 30,
+                "cycle_sequence_contiguous_in_retained_window": true,
+                "latest_cycle": 142
+              },
+              "self_directed_behavior": {
+                "model_selected_actions_recorded": 15,
+                "actions_recorded_as_executed": 30,
+                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+              },
+              "objective_progress": {
+                "current_objective": "Replace repetitive reflection with evidence-based objective progression",
+                "completed_objectives_recorded": 0,
+                "accepted_goal_transitions_recorded": 0,
+                "transition_attempts_recorded": 1,
+                "accepted_transition_attempts_recorded": 0,
+                "rejected_or_stalled_transition_attempts_recorded": 1,
+                "cycles_with_nonempty_objective_evidence": 13,
+                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+              },
+              "novelty_and_repetition": {
+                "repetition_flags": 0,
+                "recorded_similarity_observations": [
+                  {
+                    "cycle": 133,
+                    "similarity": 0.139
+                  },
+                  {
+                    "cycle": 134,
+                    "similarity": 0.575
+                  },
+                  {
+                    "cycle": 135,
+                    "similarity": 0.31
+                  },
+                  {
+                    "cycle": 136,
+                    "similarity": 0.206
+                  },
+                  {
+                    "cycle": 137,
+                    "similarity": 0.09
+                  },
+                  {
+                    "cycle": 138,
+                    "similarity": 0.014
+                  },
+                  {
+                    "cycle": 139,
+                    "similarity": 0.296
+                  },
+                  {
+                    "cycle": 140,
+                    "similarity": 0.305
+                  },
+                  {
+                    "cycle": 141,
+                    "similarity": 0.297
+                  },
+                  {
+                    "cycle": 142,
+                    "similarity": 0.023
+                  }
+                ]
+              },
+              "handoff_follow_through": {
+                "last_outcome_status": "executed",
+                "last_outcome_executed": true,
+                "pending_plan_status": "executed"
+              },
+              "missing_measurements": [
+                "prospective confidence predictions scored against held-out outcomes",
+                "blinded tests of self-model accuracy under perturbation",
+                "causal tests distinguishing self-monitoring from prompted narrative",
+                "replication across independent runs and model/control conditions",
+                "an independently validated measure of subjective experience (none is currently established)"
+              ]
+            },
+            "blockers": [
+              "No accepted goal transitions appear in the retained history.",
+              "No completed objective appears in the retained history."
+            ]
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "audit_experience_evidence",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "trigger_condition": "next_cycle",
+          "objective": "Replace repetitive reflection with evidence-based objective progression",
+          "created_cycle": 143,
+          "status": "pending",
+          "selection_source": "deterministic_fallback"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.275,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 142,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 142,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.023,
+          "objective_history_count": 0,
+          "objective_transition_attempt_count": 2,
+          "accepted_objective_transition_count": 0
+        },
+        "new_questions": []
+      }
     }
   ],
-  "last_run_utc": "2026-10-26T18:07:33.785419+00:00",
+  "last_run_utc": "2026-10-26T18:07:56.680114+00:00",
   "current_objective": {
     "title": "Replace repetitive reflection with evidence-based objective progression",
     "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
@@ -5046,12 +5080,12 @@
       "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
     ],
     "status": "in_progress",
-    "last_assessed_utc": "2026-10-26T18:07:33.785419+00:00",
-    "last_evidence": ""
+    "last_assessed_utc": "2026-10-26T18:07:56.680114+00:00",
+    "last_evidence": "{'repository_path': 'state.json', 'repository_line_count': 6116, 'repository_line_number': 111, 'repository_line_text': 'objective_history_count: 0'}"
   },
   "objective_history": [],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-26T18:06:45.682412+00:00",
+    "observed_utc": "2026-10-26T18:07:35.596539+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
@@ -5142,7 +5176,7 @@
         "persistent_records": {
           "observed": 30,
           "cycle_sequence_contiguous_in_retained_window": true,
-          "latest_cycle": 141
+          "latest_cycle": 142
         },
         "self_directed_behavior": {
           "model_selected_actions_recorded": 15,
@@ -5153,19 +5187,15 @@
           "current_objective": "Replace repetitive reflection with evidence-based objective progression",
           "completed_objectives_recorded": 0,
           "accepted_goal_transitions_recorded": 0,
-          "transition_attempts_recorded": 0,
+          "transition_attempts_recorded": 1,
           "accepted_transition_attempts_recorded": 0,
-          "rejected_or_stalled_transition_attempts_recorded": 0,
+          "rejected_or_stalled_transition_attempts_recorded": 1,
           "cycles_with_nonempty_objective_evidence": 13,
           "limitation": "Evidence text is model-authored unless independently checked against artifacts."
         },
         "novelty_and_repetition": {
           "repetition_flags": 0,
           "recorded_similarity_observations": [
-            {
-              "cycle": 132,
-              "similarity": 0.308
-            },
             {
               "cycle": 133,
               "similarity": 0.139
@@ -5201,6 +5231,10 @@
             {
               "cycle": 141,
               "similarity": 0.297
+            },
+            {
+              "cycle": 142,
+              "similarity": 0.023
             }
           ]
         },
@@ -5228,28 +5262,103 @@
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "trigger_condition": "next_cycle",
     "objective": "Replace repetitive reflection with evidence-based objective progression",
-    "created_cycle": 142,
+    "created_cycle": 143,
     "status": "pending",
     "selection_source": "deterministic_fallback"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 142,
-    "type": "audit_saved_state",
-    "reason": "Fallback plan validation failed; verify durable state before choosing again.",
+    "cycle": 143,
+    "type": "audit_experience_evidence",
+    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "result": {
-      "saved_cycle_count": 141,
-      "history_count": 30,
-      "expected_retained_history_count": 30,
-      "latest_record_cycle": 141,
-      "cycle_history_consistent": true,
-      "current_objective_present": true,
-      "last_cycle_has_objective_status": true,
-      "latest_narrative_similarity": 0.297,
-      "objective_history_count": 0,
-      "objective_transition_attempt_count": 0,
-      "accepted_objective_transition_count": 0
+      "audit_type": "observable_continuity_evidence",
+      "consciousness_conclusion": "undetermined",
+      "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+      "indicators": {
+        "persistent_records": {
+          "observed": 30,
+          "cycle_sequence_contiguous_in_retained_window": true,
+          "latest_cycle": 142
+        },
+        "self_directed_behavior": {
+          "model_selected_actions_recorded": 15,
+          "actions_recorded_as_executed": 30,
+          "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+        },
+        "objective_progress": {
+          "current_objective": "Replace repetitive reflection with evidence-based objective progression",
+          "completed_objectives_recorded": 0,
+          "accepted_goal_transitions_recorded": 0,
+          "transition_attempts_recorded": 1,
+          "accepted_transition_attempts_recorded": 0,
+          "rejected_or_stalled_transition_attempts_recorded": 1,
+          "cycles_with_nonempty_objective_evidence": 13,
+          "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+        },
+        "novelty_and_repetition": {
+          "repetition_flags": 0,
+          "recorded_similarity_observations": [
+            {
+              "cycle": 133,
+              "similarity": 0.139
+            },
+            {
+              "cycle": 134,
+              "similarity": 0.575
+            },
+            {
+              "cycle": 135,
+              "similarity": 0.31
+            },
+            {
+              "cycle": 136,
+              "similarity": 0.206
+            },
+            {
+              "cycle": 137,
+              "similarity": 0.09
+            },
+            {
+              "cycle": 138,
+              "similarity": 0.014
+            },
+            {
+              "cycle": 139,
+              "similarity": 0.296
+            },
+            {
+              "cycle": 140,
+              "similarity": 0.305
+            },
+            {
+              "cycle": 141,
+              "similarity": 0.297
+            },
+            {
+              "cycle": 142,
+              "similarity": 0.023
+            }
+          ]
+        },
+        "handoff_follow_through": {
+          "last_outcome_status": "executed",
+          "last_outcome_executed": true,
+          "pending_plan_status": "pending"
+        },
+        "missing_measurements": [
+          "prospective confidence predictions scored against held-out outcomes",
+          "blinded tests of self-model accuracy under perturbation",
+          "causal tests distinguishing self-monitoring from prompted narrative",
+          "replication across independent runs and model/control conditions",
+          "an independently validated measure of subjective experience (none is currently established)"
+        ]
+      },
+      "blockers": [
+        "No accepted goal transitions appear in the retained history.",
+        "No completed objective appears in the retained history."
+      ]
     }
   },
   "chosen_purpose": {
@@ -5465,6 +5574,15 @@
       "transition_accepted": false,
       "transition_validation": "",
       "evidence_present": false
+    },
+    {
+      "cycle": 143,
+      "objective_title": "Replace repetitive reflection with evidence-based objective progression",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_validation": "",
+      "evidence_present": true
     }
   ]
 }
