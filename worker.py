@@ -20,6 +20,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 from goal_selection import score_candidate
+from experience_evidence_audit import audit_state as audit_experience_evidence
 from capability_registry import capability_registry, select_next_integration
 from pathlib import Path
 
@@ -297,7 +298,7 @@ def observe_environment():
 
 def execute_self_directed_action(state, proposal):
     """Execute one safe, allowlisted action selected by the worker, with a deterministic fallback."""
-    allowed = {"audit_saved_state", "compare_recent_cycles", "inspect_environment", "inspect_current_objective", "inspect_purpose_gap", "inspect_capability_registry", "read_public_webpage", "run_regression_tests"}
+    allowed = {"audit_saved_state", "audit_experience_evidence", "compare_recent_cycles", "inspect_environment", "inspect_current_objective", "inspect_purpose_gap", "inspect_capability_registry", "read_public_webpage", "run_regression_tests"}
     proposal = proposal if isinstance(proposal, dict) else {}
     action_type = str(proposal.get("type", "")).strip()
     reason = str(proposal.get("reason", "")).strip()
@@ -308,8 +309,14 @@ def execute_self_directed_action(state, proposal):
         last = history[-1].get("reflection", {}) if history else {}
         if not state.get("chosen_purpose"):
             action_type, reason = "inspect_purpose_gap", "A durable purpose has not yet been saved; inspect that gap."
-        elif last.get("repetition_detected") or not last.get("objective_evidence") or "no explicit evidence" in str(last.get("objective_evidence", "")).lower():
-            action_type, reason = "run_regression_tests", "Reflection alone has not produced evidence; execute the repository regression suite."
+        elif (last.get("repetition_detected")
+              or not last.get("objective_evidence")
+              or "no explicit evidence" in str(last.get("objective_evidence", "")).lower()
+              or str(last.get("transition_validation", "")).startswith("Transition rejected:")):
+            action_type, reason = "audit_experience_evidence", (
+                "Diagnose the recorded evidence and objective-transition failure before selecting another action; "
+                "do not repeat regression tests unless code verification is the identified need."
+            )
         elif not state.get("current_objective", {}).get("title"):
             action_type, reason = "inspect_current_objective", "The durable state needs a clearly defined current objective."
         else:
@@ -317,6 +324,8 @@ def execute_self_directed_action(state, proposal):
 
     if action_type == "audit_saved_state":
         result = audit_state(state)
+    elif action_type == "audit_experience_evidence":
+        result = audit_experience_evidence(state)
     elif action_type == "compare_recent_cycles":
         history = state.get("history", [])
         last_reflection = history[-1].get("reflection", {}) if history else {}
@@ -389,7 +398,7 @@ def execute_self_directed_action(state, proposal):
 
 
 ALLOWED_ACTION_TYPES = {
-    "audit_saved_state", "compare_recent_cycles", "inspect_environment",
+    "audit_saved_state", "audit_experience_evidence", "compare_recent_cycles", "inspect_environment",
     "inspect_current_objective", "inspect_purpose_gap", "inspect_capability_registry",
     "run_regression_tests", "read_public_webpage"
 }
@@ -563,7 +572,7 @@ def build_prompt(state):
             "new_questions (array of 0-3 short strings), next_action_plan (object with type, reason, trigger_condition=next_cycle, objective, optional url for read_public_webpage), capability_request (complete object or null). If a pending_action_plan exists, inspect its recorded outcome and continue from that evidence rather than ignoring it. Create one useful next_action_plan for the following cycle; only choose a type from the same allowlist. The handoff is attempted at the start of the next cycle, and only the actual action result can mark it executed. ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
             "must be a single concrete, verifiable action, not a vague aspiration. "
             "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
-            "action in self_directed_action. Its type must be one of audit_saved_state, "
+            "action in self_directed_action. Its type must be one of audit_saved_state, audit_experience_evidence, "
             "compare_recent_cycles, inspect_environment, inspect_current_objective, inspect_purpose_gap, "
             "inspect_capability_registry, read_public_webpage, run_regression_tests. "
             "The worker executes that allowlisted action and records the actual result. "
