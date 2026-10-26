@@ -129,6 +129,11 @@ def audit_state(state):
             last_reflection, history[:-1]
         ) if last_reflection else 0.0,
         "objective_history_count": len(state.get("objective_history", [])),
+        "objective_transition_attempt_count": len(state.get("objective_transition_history", [])),
+        "accepted_objective_transition_count": sum(
+            1 for item in state.get("objective_transition_history", [])
+            if isinstance(item, dict) and item.get("transition_accepted") is True
+        ),
     }
 
 
@@ -297,6 +302,17 @@ def observe_environment():
     return snapshot
 
 
+def _proposal_url(proposal):
+    """Accept the canonical URL field and common model-emitted aliases."""
+    if not isinstance(proposal, dict):
+        return ""
+    for key in ("url", "optional_url", "optional_url_for_read_public_webpage"):
+        value = str(proposal.get(key, "") or "").strip()
+        if value:
+            return value
+    return ""
+
+
 def execute_self_directed_action(state, proposal):
     """Execute one safe, allowlisted action selected by the worker, with a deterministic fallback."""
     allowed = {"audit_saved_state", "audit_experience_evidence", "compare_recent_cycles", "inspect_environment", "inspect_current_objective", "inspect_purpose_gap", "inspect_capability_registry", "read_public_webpage", "run_regression_tests", "investigate_origin_purpose"}
@@ -367,7 +383,7 @@ def execute_self_directed_action(state, proposal):
         result = run_origin_purpose_inquiry(state)
     elif action_type == "read_public_webpage":
         try:
-            target_url = str(proposal.get("url", "")).strip()
+            target_url = _proposal_url(proposal)
             result = read_public_webpage(target_url)
             state["last_public_web_observation"] = result
         except Exception as exc:
@@ -404,6 +420,7 @@ def execute_self_directed_action(state, proposal):
         "selection_source": selection_source,
         "executed": True,
         "result": result,
+        **({"url": _proposal_url(proposal)} if action_type == "read_public_webpage" and _proposal_url(proposal) else {}),
     }
 
 
@@ -424,7 +441,7 @@ def validate_action_plan(candidate, created_cycle):
     reason = str(candidate.get("reason", "")).strip()
     trigger = str(candidate.get("trigger_condition", "next_cycle")).strip()
     objective = str(candidate.get("objective", "")).strip()
-    url = str(candidate.get("url", "")).strip()
+    url = _proposal_url(candidate)
     if action_type == "read_public_webpage" and (not url.startswith("https://") or len(url) > 1000):
         return None
     if action_type not in ALLOWED_ACTION_TYPES or not reason or trigger != "next_cycle":
@@ -746,12 +763,23 @@ def run_cycle():
     cycle = int(state.get("cycle", 0)) + 1
     proposed_plan = validate_action_plan(reflection.get("next_action_plan"), cycle)
     if proposed_plan is None:
-        proposed_plan = validate_action_plan({
-            "type": action_record.get("type", "audit_saved_state"),
-            "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+        fallback_type = action_record.get("type", "audit_saved_state")
+        fallback_url = action_record.get("url", "")
+        if fallback_type == "read_public_webpage" and not fallback_url:
+            fallback_type = "audit_experience_evidence"
+        fallback_candidate = {
+            "type": fallback_type,
+            "reason": (
+                "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker."
+                if fallback_type == "audit_experience_evidence" and action_record.get("type") == "read_public_webpage"
+                else "Deterministic continuity fallback: repeat a bounded verification action next cycle."
+            ),
             "trigger_condition": "next_cycle",
             "objective": str(state.get("current_objective", {}).get("title", "")),
-        }, cycle)
+        }
+        if fallback_type == "read_public_webpage" and fallback_url:
+            fallback_candidate["url"] = fallback_url
+        proposed_plan = validate_action_plan(fallback_candidate, cycle)
         if proposed_plan is None:
             # Never crash a completed work cycle because the chosen action cannot
             # be serialized as a valid handoff. Use a known-safe allowlisted action.
@@ -845,6 +873,20 @@ def run_cycle():
         }
     else:
         state["current_objective"] = objective_before
+
+    # Record every objective transition attempt, including rejected/stalled attempts.
+    # objective_history remains completed/blocked objectives only; it is not an attempt log.
+    transition_history = state.setdefault("objective_transition_history", [])
+    transition_history.append({
+        "cycle": cycle,
+        "objective_title": str(objective_before.get("title", ""))[:300],
+        "proposed_status": str(reflection.get("objective_status", "in_progress")),
+        "final_status": status,
+        "transition_accepted": bool(status in ("completed", "blocked") and selection_audit.get("accepted") is True),
+        "transition_validation": transition_note[:1200],
+        "evidence_present": not generic_evidence,
+    })
+    state["objective_transition_history"] = transition_history[-100:]
 
     # Similarity scoring catches paraphrases that exact-string matching misses.
     similarity = similarity_to_recent(reflection, state.get("history", []))

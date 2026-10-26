@@ -56,6 +56,10 @@ def audit_state(state: dict[str, Any]) -> dict[str, Any]:
     sequential = bool(cycle_numbers) and all(
         later == earlier + 1 for earlier, later in zip(cycle_numbers, cycle_numbers[1:])
     )
+    transition_history = state.get("objective_transition_history", [])
+    transition_history = [item for item in transition_history if isinstance(item, dict)]
+    accepted_attempts = [item for item in transition_history if item.get("transition_accepted") is True]
+    rejected_attempts = [item for item in transition_history if item.get("transition_accepted") is not True]
     current_objective = state.get("current_objective")
     objective_title = current_objective.get("title") if isinstance(current_objective, dict) else None
     pending = state.get("pending_action_plan")
@@ -77,6 +81,9 @@ def audit_state(state: dict[str, Any]) -> dict[str, Any]:
             "current_objective": objective_title,
             "completed_objectives_recorded": len(completed_objectives),
             "accepted_goal_transitions_recorded": len(accepted_transitions),
+            "transition_attempts_recorded": len(transition_history),
+            "accepted_transition_attempts_recorded": len(accepted_attempts),
+            "rejected_or_stalled_transition_attempts_recorded": len(rejected_attempts),
             "cycles_with_nonempty_objective_evidence": len(explicit_evidence),
             "limitation": "Evidence text is model-authored unless independently checked against artifacts.",
         },
@@ -101,6 +108,8 @@ def audit_state(state: dict[str, Any]) -> dict[str, Any]:
     blockers = []
     if len(accepted_transitions) == 0:
         blockers.append("No accepted goal transitions appear in the retained history.")
+    if len(transition_history) >= 3 and len(accepted_attempts) == 0:
+        blockers.append("At least three objective transition attempts are recorded without an accepted transition.")
     if len(completed_objectives) == 0:
         blockers.append("No completed objective appears in the retained history.")
     if not last_outcome.get("executed"):
