@@ -855,6 +855,35 @@ def run_cycle():
             transition_note = "Transition rejected: " + "; ".join(reasons) + "."
         else:
             transition_note = "Transition accepted by deterministic goal-selection gate; evidence source truth is not independently established."
+    # After three consecutive rejected transition attempts, stop relying on
+    # another unconstrained model proposal alone. Choose a bounded diagnostic
+    # objective deterministically, and record that the recovery was policy-driven.
+    recovery = build_stall_recovery_candidate(
+        str(objective_before.get("title", "")),
+        state.get("objective_transition_history", []),
+        [str(item.get("title", "")) for item in state.get("objective_history", []) if isinstance(item, dict)],
+    )
+    if recovery is not None and status == "in_progress":
+        recovery_audit = score_candidate(
+            recovery, str(objective_before.get("title", "")),
+            [str(item.get("title", "")) for item in state.get("objective_history", []) if isinstance(item, dict)],
+        )
+        if recovery_audit.get("accepted"):
+            successor_title = recovery["title"]
+            criteria = recovery["completion_criteria"]
+            valid_successor = True
+            evidence = recovery["evidence"]
+            generic_evidence = False
+            status = "blocked"
+            selection_audit = dict(recovery_audit)
+            selection_audit["selection_source"] = "deterministic_stall_recovery"
+            transition_note = (
+                "Current objective blocked by repeated objective-transition gate failures; "
+                "deterministic recovery selected a bounded diagnostic objective after "
+                "three consecutive rejected attempts. This is a recovery-policy decision, "
+                "not a model-selected transition."
+            )
+            reflection["objective_transition_source"] = "deterministic_stall_recovery"
     reflection["goal_selection_audit"] = selection_audit
     objective_before["status"] = status
     objective_before["last_assessed_utc"] = now
@@ -883,6 +912,7 @@ def run_cycle():
         "proposed_status": str(reflection.get("objective_status", "in_progress")),
         "final_status": status,
         "transition_accepted": bool(status in ("completed", "blocked") and selection_audit.get("accepted") is True),
+        "transition_source": reflection.get("objective_transition_source", "model"),
         "transition_validation": transition_note[:1200],
         "evidence_present": not generic_evidence,
     })
