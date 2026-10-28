@@ -741,7 +741,7 @@ def run_cycle():
     else:
         purpose_note = "Existing purpose retained; no silent replacement permitted."
     # Turn the worker's own question into an executed, auditable action each cycle.
-    action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    # Deterministic recovery verification is applied in the next patch.
     capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
     proposed_capability = validate_capability_request(reflection.get("capability_request"))
     if proposed_capability:
