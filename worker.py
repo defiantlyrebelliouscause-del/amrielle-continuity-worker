@@ -137,6 +137,43 @@ def audit_state(state):
     }
 
 
+def verify_stall_recovery_objective(state, reflection, action=None):
+    """Require the passing full test suite and all dedicated recovery tests."""
+    if action is None:
+        action = execute_self_directed_action(state, {
+            "type": "run_regression_tests",
+            "reason": "Verify the repeated-transition-stall recovery objective from test output.",
+        })
+    result = action.get("result", {})
+    output = str(result.get("output_tail", ""))
+    required = [
+        "test_stall_recovery_requires_three_consecutive_rejections",
+        "test_stall_recovery_does_not_override_a_recent_accepted_transition",
+        "test_stall_recovery_does_not_repeat_when_already_current",
+    ]
+    verified = result.get("passed") is True and all(name in output for name in required)
+    reflection["objective_status"] = "completed" if verified else "in_progress"
+    reflection["objective_evidence"] = (
+        "Repository test file and verbose test output confirm all three recovery checks passed."
+        if verified else
+        "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
+    )
+    if verified:
+        reflection["next_objective"] = {
+            "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
+            "rationale": "A fixed benchmark measures recovery from invalid model output.",
+            "completion_criteria": ["At least 10 of 12 fixed malformed-output cases pass"],
+            "public_benefit": "Reduce lost work from malformed model output and improve dependable worker recovery.",
+            "risk_level": "read_only",
+        }
+        reflection["next_step"] = "Build and run the twelve-case deterministic recovery benchmark."
+        reflection["objective_transition_source"] = "deterministic_stall_recovery_verification"
+    else:
+        reflection["next_step"] = "Inspect regression output and repair recovery before claiming completion."
+    action["selection_source"] = "deterministic_recovery_policy"
+    return reflection, action
+
+
 def _fetch_public_json(url, timeout=8):
     """Fetch a small JSON response from a fixed public endpoint; never execute returned content."""
     request = urllib.request.Request(
@@ -741,7 +778,11 @@ def run_cycle():
     else:
         purpose_note = "Existing purpose retained; no silent replacement permitted."
     # Turn the worker's own question into an executed, auditable action each cycle.
+    if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
+        reflection["self_directed_action"] = {"type": "run_regression_tests", "reason": "Deterministically verify the stalled recovery objective."}
     action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
+        reflection, action_record = verify_stall_recovery_objective(state, reflection, action_record)
     capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
     proposed_capability = validate_capability_request(reflection.get("capability_request"))
     if proposed_capability:
