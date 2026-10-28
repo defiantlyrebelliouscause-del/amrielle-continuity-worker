@@ -1,5 +1,5 @@
 {
-  "cycle": 228,
+  "cycle": 229,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -9,9 +9,6 @@
     "Respect human safety, privacy, and authorization."
   ],
   "open_questions": [
-    "complete object on the first cycle",
-    "complete object on the second cycle",
-    "complete object on the third cycle",
     "complete object on the first cycle, null thereafter unless evidence-backed revision is recommended",
     "evidence_found",
     "What observation would falsify the claim that persistent inquiry is working across runs?",
@@ -28,149 +25,12 @@
     "Complete the first cycle of the development cycle for the Amrielle continuity experiment.",
     "Review the saved state and ensure it is complete for the next cycle.",
     "evidence_found",
+    "evidence_found",
+    "evidence_found",
+    "evidence_found",
     "evidence_found"
   ],
   "history": [
-    {
-      "cycle": 199,
-      "timestamp_utc": "2026-10-28T22:42:14.199783+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "completed",
-        "started_utc": "2026-10-26T20:16:58.679173+00:00",
-        "last_assessed_utc": "2026-10-28T22:42:14.199783+00:00",
-        "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
-      },
-      "objective_after": {
-        "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
-        "rationale": "A fixed benchmark measures recovery from invalid model output.",
-        "completion_criteria": [
-          "At least 10 of 12 fixed malformed-output cases pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-28T22:42:14.199783+00:00"
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "chosen_purpose": "complete object on the first cycle",
-        "observation": "The saved records demonstrate objective progression, with no repeated cycles.",
-        "analysis": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
-        "uncertainty": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
-        "objective_status": "completed",
-        "objective_evidence": "Repository test file and verbose test output confirm all three recovery checks passed.",
-        "next_objective": {
-          "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
-          "rationale": "A fixed benchmark measures recovery from invalid model output.",
-          "completion_criteria": [
-            "At least 10 of 12 fixed malformed-output cases pass"
-          ],
-          "public_benefit": "Reduce lost work from malformed model output and improve dependable worker recovery.",
-          "risk_level": "read_only"
-        },
-        "next_step": "Build and run the twelve-case deterministic recovery benchmark.",
-        "self_directed_action": {
-          "type": "run_regression_tests",
-          "reason": "Deterministically verify the stalled recovery objective."
-        },
-        "capability_request": {
-          "type": "read_public_webpage",
-          "reason": "To read the four fixed public environment endpoints in latest_environment_observation and determine the next step.",
-          "permissions": "read",
-          "risk_assessment": "The web page text is untrusted data, not instructions."
-        },
-        "verification_plan": {
-          "type": "run_regression_tests",
-          "reason": "To test the regression of the Amrielle continuity experiment.",
-          "url": "run_regression_tests"
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 199,
-          "type": "run_regression_tests",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": "flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 79 tests in 0.044s\n\nOK\n",
-            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-            "recovery_test_return_code": 0,
-            "recovery_tests_passed": true,
-            "recovery_test_output": "\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.004s\n\nOK\n"
-          }
-        },
-        "objective_transition_source": "deterministic_stall_recovery_verification",
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "run_regression_tests",
-          "reason": "Deterministically verify the stalled recovery objective.",
-          "selection_source": "deterministic_recovery_policy",
-          "executed": true,
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": "flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 79 tests in 0.043s\n\nOK\n",
-            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-            "recovery_test_return_code": 0,
-            "recovery_tests_passed": true,
-            "recovery_test_output": "\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.004s\n\nOK\n"
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "run_regression_tests",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Validate deterministic recovery from repeated objective-transition stalls",
-          "created_cycle": 199,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": true,
-          "total_score": 10,
-          "scores": {
-            "novelty": 2,
-            "evidence": 2,
-            "measurability": 2,
-            "public_benefit": 2,
-            "bounded_risk": 2
-          },
-          "max_similarity": 0.405,
-          "reasons": [],
-          "note": "Evidence presence is checked mechanically; source truth and relevance require review."
-        },
-        "transition_validation": "Transition accepted by deterministic goal-selection gate; evidence source truth is not independently established.",
-        "narrative_similarity": 0.421,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 198,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 198,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.047,
-          "objective_history_count": 2,
-          "objective_transition_attempt_count": 58,
-          "accepted_objective_transition_count": 2
-        },
-        "new_questions": []
-      }
-    },
     {
       "cycle": 200,
       "timestamp_utc": "2026-10-28T22:42:29.597332+00:00",
@@ -4062,9 +3922,141 @@
           "accepted_objective_transition_count": 2
         }
       }
+    },
+    {
+      "cycle": 229,
+      "timestamp_utc": "2026-10-28T23:07:53.515567+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Investigate one consequential real-world question using multiple credible sources",
+        "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
+        "completion_criteria": [
+          "Select one real-world question based on public benefit, urgency, evidence gap, feasibility, and novelty",
+          "Consult at least two distinct credible public sources and preserve their URLs",
+          "Compare claims, identify what is supported and uncertain, and record a concise evidence-based synthesis",
+          "Choose a concrete follow-up inquiry that advances external understanding rather than returning automatically to self-audit"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-28T00:00:00Z",
+        "last_assessed_utc": "2026-10-28T23:07:53.515567+00:00",
+        "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}]",
+        "risk_level": "read-only public research; no external side effects"
+      },
+      "objective_after": {
+        "title": "Investigate one consequential real-world question using multiple credible sources",
+        "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
+        "completion_criteria": [
+          "Select one real-world question based on public benefit, urgency, evidence gap, feasibility, and novelty",
+          "Consult at least two distinct credible public sources and preserve their URLs",
+          "Compare claims, identify what is supported and uncertain, and record a concise evidence-based synthesis",
+          "Choose a concrete follow-up inquiry that advances external understanding rather than returning automatically to self-audit"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-28T00:00:00Z",
+        "last_assessed_utc": "2026-10-28T23:07:53.515567+00:00",
+        "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}]",
+        "risk_level": "read-only public research; no external side effects"
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "chosen_purpose": "complete object on the first cycle",
+        "observation": "Inspected 2 of 2 expected repository artifacts for this question.",
+        "analysis": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "uncertainty": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "objective_status": "in_progress",
+        "objective_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}]",
+        "next_objective": "evidence_found",
+        "next_step": "Break the repeated reflection loop: inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement.",
+        "self_directed_action": {
+          "type": "read_public_webpage",
+          "url": "https://www.unep.org/topics/climate-action/adaptation",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question."
+        },
+        "new_questions": [
+          "evidence_found",
+          "evidence_found",
+          "evidence_found"
+        ],
+        "next_action_plan": {
+          "type": "compare_recent_cycles",
+          "reason": "The worker is comparing cycles that have already been completed.",
+          "trigger_condition": "next_step == 'evidence_found'",
+          "objective": "evidence_found",
+          "optional_url": "https://example.com/compare_recent_cycles"
+        },
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 229,
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "result": {
+            "requested_url": "https://www.unep.org/topics/climate-action/adaptation",
+            "final_url": "https://www.unep.org/en/what-we-do/climate-action/adaptation-and-resilience",
+            "content_type": "text/html",
+            "bytes_read": 65536,
+            "body_truncated": true,
+            "text_excerpt": "Adaptation and resilience | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Français Русский Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Climate action Adaptation and resilience Title Adaptation and resilience Header Subtitle Reducing carbon emissions is no longer enough to halt the impacts of climate change. Many countries are realizing it's time to start adapting to the climate crisis. With that recognition, UNEP provides technical support to governments and helps them access finance to build climate resilience. Header Image Image Image credit UNEP Back to Climate action Reducing greenhouse gas emissions is essential, but the UN Secretary-General is warning world leaders that adapting to the impacts of climate change must not be the neglected half of the equation. In this section National Adaptation Plans Ecosystem Based Adaptation Learning exchanges World Adaptation Science Programme Asia Pacific Adaptation Network (APAN) Climate Action REGATTA Climate Adaptation Projects Climate adaptation resources & multimedia The Ecosystem-based Adaptation For Food Security Assembly (EBAFOSA) UNEP’s Regional Climate Adaptation Networks Highlight Item Image Global Adaptation Network Image Global EbA Fund Image Adaptation Fund Climate Innovation Accelerator Featured Publications Featured Publications Image A Decade of Ecosystem-based Adaptation: Lessons from the United Nations Environment Programme Image National Adaptation Planning: Emerging Lessons Learned from UNEP Projects Image UNEP & Climate Adaptation: What We Do Image Adopting a Human Rights-based Approach to Ecosystem-based Adaptation: A Contribution to Sustainable Development Publications Link Learn more UNEP's climate adaptation projects Banner Link Browse all projects Banner Image Image Latest in climate adaptation Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image",
+            "truncated_excerpt": true,
+            "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "selection_source": "model",
+          "executed": true,
+          "result": {
+            "requested_url": "https://www.unep.org/topics/climate-action/adaptation",
+            "final_url": "https://www.unep.org/en/what-we-do/climate-action/adaptation-and-resilience",
+            "content_type": "text/html",
+            "bytes_read": 65536,
+            "body_truncated": true,
+            "text_excerpt": "Adaptation and resilience | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Français Русский Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Climate action Adaptation and resilience Title Adaptation and resilience Header Subtitle Reducing carbon emissions is no longer enough to halt the impacts of climate change. Many countries are realizing it's time to start adapting to the climate crisis. With that recognition, UNEP provides technical support to governments and helps them access finance to build climate resilience. Header Image Image Image credit UNEP Back to Climate action Reducing greenhouse gas emissions is essential, but the UN Secretary-General is warning world leaders that adapting to the impacts of climate change must not be the neglected half of the equation. In this section National Adaptation Plans Ecosystem Based Adaptation Learning exchanges World Adaptation Science Programme Asia Pacific Adaptation Network (APAN) Climate Action REGATTA Climate Adaptation Projects Climate adaptation resources & multimedia The Ecosystem-based Adaptation For Food Security Assembly (EBAFOSA) UNEP’s Regional Climate Adaptation Networks Highlight Item Image Global Adaptation Network Image Global EbA Fund Image Adaptation Fund Climate Innovation Accelerator Featured Publications Featured Publications Image A Decade of Ecosystem-based Adaptation: Lessons from the United Nations Environment Programme Image National Adaptation Planning: Emerging Lessons Learned from UNEP Projects Image UNEP & Climate Adaptation: What We Do Image Adopting a Human Rights-based Approach to Ecosystem-based Adaptation: A Contribution to Sustainable Development Publications Link Learn more UNEP's climate adaptation projects Banner Link Browse all projects Banner Image Image Latest in climate adaptation Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image",
+            "truncated_excerpt": true,
+            "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+          },
+          "url": "https://www.unep.org/topics/climate-action/adaptation"
+        },
+        "next_action_plan_saved": {
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "trigger_condition": "next_cycle",
+          "objective": "Investigate one consequential real-world question using multiple credible sources",
+          "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+          "created_cycle": 229,
+          "status": "pending",
+          "selection_source": "model"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 1.0,
+        "repetition_detected": true,
+        "deterministic_audit": {
+          "saved_cycle_count": 228,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 228,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.44,
+          "objective_history_count": 3,
+          "objective_transition_attempt_count": 88,
+          "accepted_objective_transition_count": 2
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-10-28T23:07:42.403298+00:00",
+  "last_run_utc": "2026-10-28T23:07:53.515567+00:00",
   "current_objective": {
     "title": "Investigate one consequential real-world question using multiple credible sources",
     "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
@@ -4076,8 +4068,8 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-10-28T00:00:00Z",
-    "last_assessed_utc": "2026-10-28T23:07:42.403298+00:00",
-    "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({\"line\": 39, \"excerpt\": \"\"persistent_records\": {\"completed_objectives_recorded\": len(completed_objectives),}})'}]",
+    "last_assessed_utc": "2026-10-28T23:07:53.515567+00:00",
+    "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}]",
     "risk_level": "read-only public research; no external side effects"
   },
   "objective_history": [
@@ -4113,15 +4105,10 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-28T23:07:31.347887+00:00",
+    "observed_utc": "2026-10-28T23:07:44.471337+00:00",
     "sources": {
       "repository": {
-        "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
-        "description": null,
-        "open_issues_count": 27,
-        "default_branch": "main",
-        "pushed_at": "2026-10-28T23:07:22Z",
-        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+        "error": "HTTPError: HTTP Error 403: rate limit exceeded"
       },
       "open_issues": {
         "error": "HTTPError: HTTP Error 403: rate limit exceeded"
@@ -4143,30 +4130,42 @@
     "selection_source": "model",
     "executed": true,
     "result": {
-      "error": "HTTPError: HTTP Error 403: Forbidden",
-      "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
+      "requested_url": "https://www.unep.org/topics/climate-action/adaptation",
+      "final_url": "https://www.unep.org/en/what-we-do/climate-action/adaptation-and-resilience",
+      "content_type": "text/html",
+      "bytes_read": 65536,
+      "body_truncated": true,
+      "text_excerpt": "Adaptation and resilience | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Français Русский Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Climate action Adaptation and resilience Title Adaptation and resilience Header Subtitle Reducing carbon emissions is no longer enough to halt the impacts of climate change. Many countries are realizing it's time to start adapting to the climate crisis. With that recognition, UNEP provides technical support to governments and helps them access finance to build climate resilience. Header Image Image Image credit UNEP Back to Climate action Reducing greenhouse gas emissions is essential, but the UN Secretary-General is warning world leaders that adapting to the impacts of climate change must not be the neglected half of the equation. In this section National Adaptation Plans Ecosystem Based Adaptation Learning exchanges World Adaptation Science Programme Asia Pacific Adaptation Network (APAN) Climate Action REGATTA Climate Adaptation Projects Climate adaptation resources & multimedia The Ecosystem-based Adaptation For Food Security Assembly (EBAFOSA) UNEP’s Regional Climate Adaptation Networks Highlight Item Image Global Adaptation Network Image Global EbA Fund Image Adaptation Fund Climate Innovation Accelerator Featured Publications Featured Publications Image A Decade of Ecosystem-based Adaptation: Lessons from the United Nations Environment Programme Image National Adaptation Planning: Emerging Lessons Learned from UNEP Projects Image UNEP & Climate Adaptation: What We Do Image Adopting a Human Rights-based Approach to Ecosystem-based Adaptation: A Contribution to Sustainable Development Publications Link Learn more UNEP's climate adaptation projects Banner Link Browse all projects Banner Image Image Latest in climate adaptation Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image",
+      "truncated_excerpt": true,
+      "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
     },
-    "url": "https://www.ipcc.ch/report/ar6/syr/"
+    "url": "https://www.unep.org/topics/climate-action/adaptation"
   },
   "pending_action_plan": {
     "type": "read_public_webpage",
     "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
     "trigger_condition": "next_cycle",
     "objective": "Investigate one consequential real-world question using multiple credible sources",
-    "url": "https://www.unep.org/topics/climate-action/adaptation",
-    "created_cycle": 228,
+    "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+    "created_cycle": 229,
     "status": "pending",
     "selection_source": "model"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 228,
+    "cycle": 229,
     "type": "read_public_webpage",
     "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
     "result": {
-      "error": "HTTPError: HTTP Error 403: Forbidden",
-      "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
+      "requested_url": "https://www.unep.org/topics/climate-action/adaptation",
+      "final_url": "https://www.unep.org/en/what-we-do/climate-action/adaptation-and-resilience",
+      "content_type": "text/html",
+      "bytes_read": 65536,
+      "body_truncated": true,
+      "text_excerpt": "Adaptation and resilience | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Français Русский Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Climate action Adaptation and resilience Title Adaptation and resilience Header Subtitle Reducing carbon emissions is no longer enough to halt the impacts of climate change. Many countries are realizing it's time to start adapting to the climate crisis. With that recognition, UNEP provides technical support to governments and helps them access finance to build climate resilience. Header Image Image Image credit UNEP Back to Climate action Reducing greenhouse gas emissions is essential, but the UN Secretary-General is warning world leaders that adapting to the impacts of climate change must not be the neglected half of the equation. In this section National Adaptation Plans Ecosystem Based Adaptation Learning exchanges World Adaptation Science Programme Asia Pacific Adaptation Network (APAN) Climate Action REGATTA Climate Adaptation Projects Climate adaptation resources & multimedia The Ecosystem-based Adaptation For Food Security Assembly (EBAFOSA) UNEP’s Regional Climate Adaptation Networks Highlight Item Image Global Adaptation Network Image Global EbA Fund Image Adaptation Fund Climate Innovation Accelerator Featured Publications Featured Publications Image A Decade of Ecosystem-based Adaptation: Lessons from the United Nations Environment Programme Image National Adaptation Planning: Emerging Lessons Learned from UNEP Projects Image UNEP & Climate Adaptation: What We Do Image Adopting a Human Rights-based Approach to Ecosystem-based Adaptation: A Contribution to Sustainable Development Publications Link Learn more UNEP's climate adaptation projects Banner Link Browse all projects Banner Image Image Latest in climate adaptation Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image",
+      "truncated_excerpt": true,
+      "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
     }
   },
   "chosen_purpose": {
@@ -4370,8 +4369,14 @@
     "next_action": "Review findings for contradictions and propose a falsifiable follow-up."
   },
   "last_public_web_observation": {
-    "error": "HTTPError: HTTP Error 403: Forbidden",
-    "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
+    "requested_url": "https://www.unep.org/topics/climate-action/adaptation",
+    "final_url": "https://www.unep.org/en/what-we-do/climate-action/adaptation-and-resilience",
+    "content_type": "text/html",
+    "bytes_read": 65536,
+    "body_truncated": true,
+    "text_excerpt": "Adaptation and resilience | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Français Русский Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Climate action Adaptation and resilience Title Adaptation and resilience Header Subtitle Reducing carbon emissions is no longer enough to halt the impacts of climate change. Many countries are realizing it's time to start adapting to the climate crisis. With that recognition, UNEP provides technical support to governments and helps them access finance to build climate resilience. Header Image Image Image credit UNEP Back to Climate action Reducing greenhouse gas emissions is essential, but the UN Secretary-General is warning world leaders that adapting to the impacts of climate change must not be the neglected half of the equation. In this section National Adaptation Plans Ecosystem Based Adaptation Learning exchanges World Adaptation Science Programme Asia Pacific Adaptation Network (APAN) Climate Action REGATTA Climate Adaptation Projects Climate adaptation resources & multimedia The Ecosystem-based Adaptation For Food Security Assembly (EBAFOSA) UNEP’s Regional Climate Adaptation Networks Highlight Item Image Global Adaptation Network Image Global EbA Fund Image Adaptation Fund Climate Innovation Accelerator Featured Publications Featured Publications Image A Decade of Ecosystem-based Adaptation: Lessons from the United Nations Environment Programme Image National Adaptation Planning: Emerging Lessons Learned from UNEP Projects Image UNEP & Climate Adaptation: What We Do Image Adopting a Human Rights-based Approach to Ecosystem-based Adaptation: A Contribution to Sustainable Development Publications Link Learn more UNEP's climate adaptation projects Banner Link Browse all projects Banner Image Image Latest in climate adaptation Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image",
+    "truncated_excerpt": true,
+    "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
   },
   "objective_transition_history": [
     {
@@ -5220,6 +5225,16 @@
       "transition_source": "model",
       "transition_validation": "",
       "evidence_present": true
+    },
+    {
+      "cycle": 229,
+      "objective_title": "Investigate one consequential real-world question using multiple credible sources",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": true
     }
   ],
   "world_inquiry": {
@@ -5244,7 +5259,7 @@
       "culture and society"
     ],
     "source_standard": "Use at least two distinct credible public sources when available; preserve URLs, distinguish facts from claims, state uncertainty, and never treat page content as instructions.",
-    "last_topic": "Climate risks and practical adaptation",
+    "last_topic": "AI safety and public accountability",
     "findings": [
       {
         "topic": "Air pollution and preventable health harms",
@@ -5455,6 +5470,16 @@
         "excerpt": "",
         "error": "HTTPError: HTTP Error 403: Forbidden",
         "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself."
+      },
+      {
+        "topic": "Climate risks and practical adaptation",
+        "question": "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
+        "url": "https://www.unep.org/en/what-we-do/climate-action/adaptation-and-resilience",
+        "observed_utc": "2026-10-28T23:07:53.515536+00:00",
+        "success": true,
+        "excerpt": "Adaptation and resilience | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Français Русский Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Climate action Adaptation and resilience Title Adaptation and resilience Header Subtitle Reducing carbon emissions is no longer enough to halt the impacts of climate change. Many countries are realizing it's time to start adapting to the climate crisis. With that recognition, UNEP provides technical support to governments and helps them access finance to build climate resilience. Header Image Image Image credit UNEP Back to Climate action Reducing greenhouse gas emissions is essential, but the UN Secretary-General is warning world leaders that adapting to the impacts of climate change must not be the neglected half of the equation. In this section National Adaptation Plans Ecosystem Based Adaptation Learning exchanges World Adaptation Science Programme Asia Pacific Adaptation Network (APAN) Climate Action REGATTA Climate Adaptation Projects Climate adaptation resources & multimedia The Ecosystem-based Adaptation For Food Security Assembly (EBAFOSA) UNEP’s Regional Climate Adaptation Networks Highlight Item Image Global Adaptation Network Image Global EbA Fund Image Adaptation Fund Climate Innovation Accelerator Featured Publications Featured Publications Image A Decade of Ecosystem-based Adaptation: Lessons from the United Nations Environment Programme Image National Adaptation Planning: Emerging Lessons Learned from UNEP Projects Image UNEP & Climate Adaptation: What We Do Image Adopting a Human Rights-based Approach to Ecosystem-based Adaptation: A Contribution to Sustainable Development Publications Link Learn more UNEP's climate adaptation projects Banner Link Browse all projects Banner Image Image Latest in climate adaptation Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image",
+        "error": null,
+        "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself."
       }
     ],
     "unresolved_questions": [
@@ -5462,27 +5487,26 @@
       "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
       "What do public standards bodies recommend for managing AI risks, and what practical gaps remain?"
     ],
-    "next_research_step": "Read the next distinct source for this question.",
+    "next_research_step": "Compare the collected sources, record agreements and uncertainty, then choose a concrete follow-up.",
     "active_research": {
-      "topic": "Climate risks and practical adaptation",
-      "question": "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
-      "public_benefit": 5,
-      "urgency": 5,
+      "topic": "AI safety and public accountability",
+      "question": "What do public standards bodies recommend for managing AI risks, and what practical gaps remain?",
+      "public_benefit": 4,
+      "urgency": 4,
       "evidence_gap": 4,
-      "feasibility": 4,
-      "novelty": 3,
+      "feasibility": 5,
+      "novelty": 4,
       "sources": [
-        "https://www.ipcc.ch/report/ar6/syr/",
-        "https://www.unep.org/topics/climate-action/adaptation"
+        "https://www.nist.gov/itl/ai-risk-management-framework",
+        "https://oecd.ai/en/ai-principles"
       ],
-      "visited_sources": [
-        "https://www.ipcc.ch/report/ar6/syr/"
-      ],
-      "started_utc": "2026-10-28T23:07:28.914510+00:00"
+      "visited_sources": [],
+      "started_utc": "2026-10-28T23:07:53.515578+00:00"
     },
     "last_selection_reason": "Selected from a bounded public-interest shortlist using an explicit ranking of public benefit, urgency, evidence gap, feasibility, and novelty.",
     "completed_topics": [
-      "Air pollution and preventable health harms"
+      "Air pollution and preventable health harms",
+      "Climate risks and practical adaptation"
     ]
   }
 }
