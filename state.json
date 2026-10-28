@@ -1,5 +1,5 @@
 {
-  "cycle": 209,
+  "cycle": 210,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -19,315 +19,6 @@
     "complete object on the first cycle, null thereafter unless evidence-backed revision is recommended"
   ],
   "history": [
-    {
-      "cycle": 180,
-      "timestamp_utc": "2026-10-27T12:37:46.537120+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-26T20:16:58.679173+00:00",
-        "last_assessed_utc": "2026-10-27T12:37:46.537120+00:00",
-        "last_evidence": "Transition rejected: objective evidence was missing or generic; a distinct successor objective with completion criteria was absent; successor failed deterministic goal-selection gate: evidence is missing or not specific enough, completion criteria are not measurable, risk must be read-only, reversible, or approval-gated."
-      },
-      "objective_after": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-26T20:16:58.679173+00:00",
-        "last_assessed_utc": "2026-10-27T12:37:46.537120+00:00",
-        "last_evidence": "Transition rejected: objective evidence was missing or generic; a distinct successor objective with completion criteria was absent; successor failed deterministic goal-selection gate: evidence is missing or not specific enough, completion criteria are not measurable, risk must be read-only, reversible, or approval-gated."
-      },
-      "reflection": {
-        "session_decision": "stop",
-        "chosen_purpose": {
-          "title": "Evaluate and improve the Amrielle continuity experiment",
-          "rationale": "Identify a persistent inquiry that could improve reliability and understanding of the system and people's lives.",
-          "public_benefit": "Improved reliability and understanding of the Amrielle continuity experiment.",
-          "risk_level": "Harmful, infeasible, or substantially less beneficial than an alternative."
-        },
-        "objective_status": "in_progress",
-        "objective_evidence": "Transition rejected: objective evidence was missing or generic; a distinct successor objective with completion criteria was absent; successor failed deterministic goal-selection gate: evidence is missing or not specific enough, completion criteria are not measurable, risk must be read-only, reversible, or approval-gated.",
-        "next_objective": {
-          "title": "Review and update the capability inventory and select a testable integration gap",
-          "rationale": "Identify a testable integration gap that could improve the Amrielle continuity experiment.",
-          "public_benefit": "Improved reliability and understanding of the Amrielle continuity experiment.",
-          "risk_level": "Harmful, infeasible, or substantially less beneficial than an alternative."
-        },
-        "next_step": {
-          "type": "read_public_webpage",
-          "reason": "Read the latest information about the Amrielle continuity experiment from the public web page.",
-          "trigger_condition": "next_cycle"
-        },
-        "self_directed_action": {
-          "type": "continue",
-          "reason": "Continue the cycle with the next action plan.",
-          "url": "next_action_plan"
-        },
-        "new_questions": [
-          "Evaluate the state of the Amrielle continuity experiment.",
-          "Identify a persistent inquiry that could improve reliability and understanding of the Amrielle continuity experiment.",
-          "Review and update the capability inventory and select a testable integration gap."
-        ],
-        "next_action_plan": {
-          "type": "read_public_webpage",
-          "reason": "Read the latest information about the Amrielle continuity experiment from the public web page.",
-          "trigger_condition": "next_cycle"
-        },
-        "capability_request": {
-          "type": "audit_saved_state",
-          "reason": "Audit the saved state of the Amrielle continuity experiment.",
-          "trigger_condition": "next_cycle"
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 180,
-          "type": "audit_experience_evidence",
-          "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 179
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 17,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Validate deterministic recovery from repeated objective-transition stalls",
-                "completed_objectives_recorded": 0,
-                "accepted_goal_transitions_recorded": 1,
-                "transition_attempts_recorded": 38,
-                "accepted_transition_attempts_recorded": 1,
-                "rejected_or_stalled_transition_attempts_recorded": 37,
-                "cycles_with_nonempty_objective_evidence": 17,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 2,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 170,
-                    "similarity": 0.304
-                  },
-                  {
-                    "cycle": 171,
-                    "similarity": 0.209
-                  },
-                  {
-                    "cycle": 172,
-                    "similarity": 0.217
-                  },
-                  {
-                    "cycle": 173,
-                    "similarity": 0.125
-                  },
-                  {
-                    "cycle": 174,
-                    "similarity": 0.414
-                  },
-                  {
-                    "cycle": 175,
-                    "similarity": 0.352
-                  },
-                  {
-                    "cycle": 176,
-                    "similarity": 0.296
-                  },
-                  {
-                    "cycle": 177,
-                    "similarity": 0.405
-                  },
-                  {
-                    "cycle": 178,
-                    "similarity": 0.904
-                  },
-                  {
-                    "cycle": 179,
-                    "similarity": 0.35
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "pending"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "No completed objective appears in the retained history.",
-              "The worker explicitly flagged repetition in 2 retained cycle(s)."
-            ]
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_experience_evidence",
-          "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 179
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 17,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Validate deterministic recovery from repeated objective-transition stalls",
-                "completed_objectives_recorded": 0,
-                "accepted_goal_transitions_recorded": 1,
-                "transition_attempts_recorded": 38,
-                "accepted_transition_attempts_recorded": 1,
-                "rejected_or_stalled_transition_attempts_recorded": 37,
-                "cycles_with_nonempty_objective_evidence": 17,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 2,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 170,
-                    "similarity": 0.304
-                  },
-                  {
-                    "cycle": 171,
-                    "similarity": 0.209
-                  },
-                  {
-                    "cycle": 172,
-                    "similarity": 0.217
-                  },
-                  {
-                    "cycle": 173,
-                    "similarity": 0.125
-                  },
-                  {
-                    "cycle": 174,
-                    "similarity": 0.414
-                  },
-                  {
-                    "cycle": 175,
-                    "similarity": 0.352
-                  },
-                  {
-                    "cycle": 176,
-                    "similarity": 0.296
-                  },
-                  {
-                    "cycle": 177,
-                    "similarity": 0.405
-                  },
-                  {
-                    "cycle": 178,
-                    "similarity": 0.904
-                  },
-                  {
-                    "cycle": 179,
-                    "similarity": 0.35
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "executed"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "No completed objective appears in the retained history.",
-              "The worker explicitly flagged repetition in 2 retained cycle(s)."
-            ]
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_experience_evidence",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Validate deterministic recovery from repeated objective-transition stalls",
-          "created_cycle": 180,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": false,
-          "total_score": 4,
-          "scores": {
-            "novelty": 2,
-            "evidence": 0,
-            "measurability": 0,
-            "public_benefit": 2,
-            "bounded_risk": 0
-          },
-          "max_similarity": 0.418,
-          "reasons": [
-            "evidence is missing or not specific enough",
-            "completion criteria are not measurable",
-            "risk must be read-only, reversible, or approval-gated"
-          ],
-          "note": "Evidence presence is checked mechanically; source truth and relevance require review."
-        },
-        "transition_validation": "Transition rejected: objective evidence was missing or generic; a distinct successor objective with completion criteria was absent; successor failed deterministic goal-selection gate: evidence is missing or not specific enough, completion criteria are not measurable, risk must be read-only, reversible, or approval-gated.",
-        "narrative_similarity": 0.297,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 179,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 179,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.35,
-          "objective_history_count": 1,
-          "objective_transition_attempt_count": 39,
-          "accepted_objective_transition_count": 1
-        }
-      }
-    },
     {
       "cycle": 181,
       "timestamp_utc": "2026-10-27T18:37:28.611296+00:00",
@@ -4787,9 +4478,117 @@
         },
         "new_questions": []
       }
+    },
+    {
+      "cycle": 210,
+      "timestamp_utc": "2026-10-28T23:04:45.208501+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Investigate one consequential real-world question using multiple credible sources",
+        "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
+        "completion_criteria": [
+          "Select one real-world question based on public benefit, urgency, evidence gap, feasibility, and novelty",
+          "Consult at least two distinct credible public sources and preserve their URLs",
+          "Compare claims, identify what is supported and uncertain, and record a concise evidence-based synthesis",
+          "Choose a concrete follow-up inquiry that advances external understanding rather than returning automatically to self-audit"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-28T00:00:00Z",
+        "last_assessed_utc": "2026-10-28T23:04:45.208501+00:00",
+        "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
+        "risk_level": "read-only public research; no external side effects"
+      },
+      "objective_after": {
+        "title": "Investigate one consequential real-world question using multiple credible sources",
+        "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
+        "completion_criteria": [
+          "Select one real-world question based on public benefit, urgency, evidence gap, feasibility, and novelty",
+          "Consult at least two distinct credible public sources and preserve their URLs",
+          "Compare claims, identify what is supported and uncertain, and record a concise evidence-based synthesis",
+          "Choose a concrete follow-up inquiry that advances external understanding rather than returning automatically to self-audit"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-28T00:00:00Z",
+        "last_assessed_utc": "2026-10-28T23:04:45.208501+00:00",
+        "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
+        "risk_level": "read-only public research; no external side effects"
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "chosen_purpose": "complete object on the first cycle, null thereafter unless evidence-backed revision is recommended",
+        "observation": "Inspected 2 of 2 expected repository artifacts for this question.",
+        "analysis": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "uncertainty": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "objective_status": "in_progress",
+        "objective_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 210,
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "result": {
+            "error": "HTTPError: HTTP Error 403: Forbidden",
+            "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
+          }
+        },
+        "self_directed_action": {
+          "type": "read_public_webpage",
+          "url": "https://www.ipcc.ch/report/ar6/syr/",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question."
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "selection_source": "model",
+          "executed": true,
+          "result": {
+            "error": "HTTPError: HTTP Error 403: Forbidden",
+            "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
+          },
+          "url": "https://www.ipcc.ch/report/ar6/syr/"
+        },
+        "next_action_plan_saved": {
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "trigger_condition": "next_cycle",
+          "objective": "Investigate one consequential real-world question using multiple credible sources",
+          "url": "https://www.unep.org/topics/climate-action/adaptation",
+          "created_cycle": 210,
+          "status": "pending",
+          "selection_source": "model"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.974,
+        "repetition_detected": true,
+        "deterministic_audit": {
+          "saved_cycle_count": 209,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 209,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.723,
+          "objective_history_count": 3,
+          "objective_transition_attempt_count": 69,
+          "accepted_objective_transition_count": 2
+        },
+        "next_step": "Break the repeated reflection loop: inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement.",
+        "new_questions": []
+      }
     }
   ],
-  "last_run_utc": "2026-10-28T23:04:38.860880+00:00",
+  "last_run_utc": "2026-10-28T23:04:45.208501+00:00",
   "current_objective": {
     "title": "Investigate one consequential real-world question using multiple credible sources",
     "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
@@ -4801,8 +4600,8 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-10-28T00:00:00Z",
-    "last_assessed_utc": "2026-10-28T23:04:38.860880+00:00",
-    "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}]",
+    "last_assessed_utc": "2026-10-28T23:04:45.208501+00:00",
+    "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
     "risk_level": "read-only public research; no external side effects"
   },
   "objective_history": [
@@ -4838,7 +4637,7 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-28T23:04:22.418697+00:00",
+    "observed_utc": "2026-10-28T23:04:40.465930+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
@@ -4922,42 +4721,30 @@
     "selection_source": "model",
     "executed": true,
     "result": {
-      "requested_url": "https://www.unep.org/explore-topics/air",
-      "final_url": "https://www.unep.org/en/what-we-do/air-quality",
-      "content_type": "text/html",
-      "bytes_read": 65536,
-      "body_truncated": true,
-      "text_excerpt": "Air quality | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Air quality Title Air quality Header Subtitle UNEP strengthens the capacities of governments on clean air by enhancing understanding of air pollution sources and impacts, supporting legislation, catalysing actions and policies across high-emitting sectors, and promoting regional cooperation and global advocacy. Header Image Image Image credit Photo by Photoholgic/ Unsplash Back to What we do Air pollution is the greatest environmental health risk of our time— a silent killer that claims more than 8.1 million lives every year. Body Text Air pollution and climate change are closely interlinked, because they stem from common sources and have a shared impact on the release of greenhouse gas emissions. The good news is that addressing air pollution can bring significant benefits for human health, the climate and the economy. UNEP plays a pivotal role in addressing this pressing need to improve global air quality by: - Mobilising industry and private sector partnerships to redirect investments towards cleaner practices in high-impact sectors. - Providing advisory support to countries and cities in detecting and reducing harmful pollutants through policy and regulatory actions. - Enhancing the evidence base for informed decision-making by conducting air quality monitoring, health-impact assessments, sector-specific interventions, and economic analyses. - Strengthening global and regional initiatives focusing on air quality advocacy and networks. In this section Why does air matter? Financing and funding for clean air Global transition from fossil fuels to electric mobility Monitoring air quality Monitoring and assessments Multi-level air quality management Promoting clean air action Regional networks and initiatives Strengthening laws and standards Tracking sand and dust storms Air quality highlights Highlight Item Image International Day of Clean air for blue skies Image Climate and Clean Air Coalition Image What air are you breathing? Featured publications Featured Publications Image Regulating Air Quality: the First Global Assessment of Air Pollution Legislation Image Achieving clean air for blue skies in Seoul, Incheon and Gyeonggi, Republic of Korea Image Walking and Cycling in Africa - Evidence and Good Practice to Inspire Action Publications Link Learn more Explore: Pollution Action Note – Data you need to know Banner Link Browse Banner Image Image Image credit UNEP Latest in air quality Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image Image credit Credit: UNEP 27 Oct",
-      "truncated_excerpt": true,
-      "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
     },
-    "url": "https://www.unep.org/explore-topics/air"
+    "url": "https://www.ipcc.ch/report/ar6/syr/"
   },
   "pending_action_plan": {
     "type": "read_public_webpage",
     "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
     "trigger_condition": "next_cycle",
     "objective": "Investigate one consequential real-world question using multiple credible sources",
-    "url": "https://www.ipcc.ch/report/ar6/syr/",
-    "created_cycle": 209,
+    "url": "https://www.unep.org/topics/climate-action/adaptation",
+    "created_cycle": 210,
     "status": "pending",
     "selection_source": "model"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 209,
+    "cycle": 210,
     "type": "read_public_webpage",
     "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
     "result": {
-      "requested_url": "https://www.unep.org/explore-topics/air",
-      "final_url": "https://www.unep.org/en/what-we-do/air-quality",
-      "content_type": "text/html",
-      "bytes_read": 65536,
-      "body_truncated": true,
-      "text_excerpt": "Air quality | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Air quality Title Air quality Header Subtitle UNEP strengthens the capacities of governments on clean air by enhancing understanding of air pollution sources and impacts, supporting legislation, catalysing actions and policies across high-emitting sectors, and promoting regional cooperation and global advocacy. Header Image Image Image credit Photo by Photoholgic/ Unsplash Back to What we do Air pollution is the greatest environmental health risk of our time— a silent killer that claims more than 8.1 million lives every year. Body Text Air pollution and climate change are closely interlinked, because they stem from common sources and have a shared impact on the release of greenhouse gas emissions. The good news is that addressing air pollution can bring significant benefits for human health, the climate and the economy. UNEP plays a pivotal role in addressing this pressing need to improve global air quality by: - Mobilising industry and private sector partnerships to redirect investments towards cleaner practices in high-impact sectors. - Providing advisory support to countries and cities in detecting and reducing harmful pollutants through policy and regulatory actions. - Enhancing the evidence base for informed decision-making by conducting air quality monitoring, health-impact assessments, sector-specific interventions, and economic analyses. - Strengthening global and regional initiatives focusing on air quality advocacy and networks. In this section Why does air matter? Financing and funding for clean air Global transition from fossil fuels to electric mobility Monitoring air quality Monitoring and assessments Multi-level air quality management Promoting clean air action Regional networks and initiatives Strengthening laws and standards Tracking sand and dust storms Air quality highlights Highlight Item Image International Day of Clean air for blue skies Image Climate and Clean Air Coalition Image What air are you breathing? Featured publications Featured Publications Image Regulating Air Quality: the First Global Assessment of Air Pollution Legislation Image Achieving clean air for blue skies in Seoul, Incheon and Gyeonggi, Republic of Korea Image Walking and Cycling in Africa - Evidence and Good Practice to Inspire Action Publications Link Learn more Explore: Pollution Action Note – Data you need to know Banner Link Browse Banner Image Image Image credit UNEP Latest in air quality Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image Image credit Credit: UNEP 27 Oct",
-      "truncated_excerpt": true,
-      "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
     }
   },
   "chosen_purpose": {
@@ -5161,14 +4948,8 @@
     "next_action": "Review findings for contradictions and propose a falsifiable follow-up."
   },
   "last_public_web_observation": {
-    "requested_url": "https://www.unep.org/explore-topics/air",
-    "final_url": "https://www.unep.org/en/what-we-do/air-quality",
-    "content_type": "text/html",
-    "bytes_read": 65536,
-    "body_truncated": true,
-    "text_excerpt": "Air quality | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Air quality Title Air quality Header Subtitle UNEP strengthens the capacities of governments on clean air by enhancing understanding of air pollution sources and impacts, supporting legislation, catalysing actions and policies across high-emitting sectors, and promoting regional cooperation and global advocacy. Header Image Image Image credit Photo by Photoholgic/ Unsplash Back to What we do Air pollution is the greatest environmental health risk of our time— a silent killer that claims more than 8.1 million lives every year. Body Text Air pollution and climate change are closely interlinked, because they stem from common sources and have a shared impact on the release of greenhouse gas emissions. The good news is that addressing air pollution can bring significant benefits for human health, the climate and the economy. UNEP plays a pivotal role in addressing this pressing need to improve global air quality by: - Mobilising industry and private sector partnerships to redirect investments towards cleaner practices in high-impact sectors. - Providing advisory support to countries and cities in detecting and reducing harmful pollutants through policy and regulatory actions. - Enhancing the evidence base for informed decision-making by conducting air quality monitoring, health-impact assessments, sector-specific interventions, and economic analyses. - Strengthening global and regional initiatives focusing on air quality advocacy and networks. In this section Why does air matter? Financing and funding for clean air Global transition from fossil fuels to electric mobility Monitoring air quality Monitoring and assessments Multi-level air quality management Promoting clean air action Regional networks and initiatives Strengthening laws and standards Tracking sand and dust storms Air quality highlights Highlight Item Image International Day of Clean air for blue skies Image Climate and Clean Air Coalition Image What air are you breathing? Featured publications Featured Publications Image Regulating Air Quality: the First Global Assessment of Air Pollution Legislation Image Achieving clean air for blue skies in Seoul, Incheon and Gyeonggi, Republic of Korea Image Walking and Cycling in Africa - Evidence and Good Practice to Inspire Action Publications Link Learn more Explore: Pollution Action Note – Data you need to know Banner Link Browse Banner Image Image Image credit UNEP Latest in air quality Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Director, said the Kunming Biodiversity Fund is fast-tracking finance for developing nations to scale nature action and achieve GBF goals. Speech Image Image credit Credit: UNEP 27 Oct",
-    "truncated_excerpt": true,
-    "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+    "error": "HTTPError: HTTP Error 403: Forbidden",
+    "requested_url": "https://www.ipcc.ch/report/ar6/syr/"
   },
   "objective_transition_history": [
     {
@@ -5827,6 +5608,16 @@
       "transition_source": "model",
       "transition_validation": "",
       "evidence_present": true
+    },
+    {
+      "cycle": 210,
+      "objective_title": "Investigate one consequential real-world question using multiple credible sources",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": true
     }
   ],
   "world_inquiry": {
@@ -5872,12 +5663,22 @@
         "excerpt": "Air quality | UNEP - UN Environment Programme Skip to main content Utility Knowledge repository Data and apps Language English Search Image search Go to search menu close Open main menu Main navigation Who we are About us Meetings and governance Evaluation, policies and strategies Funding Data hubs Platforms and partnerships Contact us Where we work Africa Asia and the Pacific Europe Latin America and the Caribbean North America and New York Office West Asia What we do Climate action Nature and land action Chemicals and pollution action Air quality Biosafety Cities Digital transformations Disasters and conflicts Energy Environment under review Environmental law and governance Extractives Finance and economic transformations Food systems Forests Fresh water Gender Ocean, seas and coasts Peatlands Sustainable Development Goals Transport Youth, education and environment What's new News, stories & speeches Thematic feeds Publications Events Get involved Agenda 2030 Breadcrumb Home What we do Air quality Title Air quality Header Subtitle UNEP strengthens the capacities of governments on clean air by enhancing understanding of air pollution sources and impacts, supporting legislation, catalysing actions and policies across high-emitting sectors, and promoting regional cooperation and global advocacy. Header Image Image Image credit Photo by Photoholgic/ Unsplash Back to What we do Air pollution is the greatest environmental health risk of our time— a silent killer that claims more than 8.1 million lives every year. Body Text Air pollution and climate change are closely interlinked, because they stem from common sources and have a shared impact on the release of greenhouse gas emissions. The good news is that addressing air pollution can bring significant benefits for human health, the climate and the economy. UNEP plays a pivotal role in addressing this pressing need to improve global air quality by: - Mobilising industry and private sector partnerships to redirect investments towards cleaner practices in high-impact sectors. - Providing advisory support to countries and cities in detecting and reducing harmful pollutants through policy and regulatory actions. - Enhancing the evidence base for informed decision-making by conducting air quality monitoring, health-impact assessments, sector-specific interventions, and economic analyses. - Strengthening global and regional initiatives focusing on air quality advocacy and networks. In this section Why does air matter? Financing and funding for clean air Global transition from fossil fuels to electric mobility Monitoring air quality Monitoring and assessments Multi-level air quality management Promoting clean air action Regional networks and initiatives Strengthening laws and standards Tracking sand and dust storms Air quality highlights Highlight Item Image International Day of Clean air for blue skies Image Climate and Clean Air Coalition Image What air are you breathing? Featured publications Featured Publications Image Regulating Air Quality: the First Global Assessment of Air Pollution Legislation Image Achieving clean air for blue skies in Seoul, Incheon and Gyeonggi, Republic of Korea Image Walking and Cycling in Africa - Evidence and Good Practice to Inspire Action Publications Link Learn more Explore: Pollution Action Note – Data you need to know Banner Link Browse Banner Image Image Image credit UNEP Latest in air quality Related content Press release Image Image credit Credit: Getty Images/Unsplash + 28 Oct 2026 UN report urges investment in Ocean Carbon Intelligence to safeguard the ocean's climate role The world must strengthen its understanding of the ocean's carbon system if it is to safeguard one of the planet's most important climate allies, according to the UN’s 2026 Climate Technology Progress Report released today. Speech Image Image credit Credit: UNEP 27 Oct 2026 Kunming Biodiversity Fund, UNEP Executive Director Press Statement Inger Andersen, UNEP Executive Direct",
         "error": null,
         "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself."
+      },
+      {
+        "topic": "Climate risks and practical adaptation",
+        "question": "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
+        "url": "https://www.ipcc.ch/report/ar6/syr/",
+        "observed_utc": "2026-10-28T23:04:45.208467+00:00",
+        "success": false,
+        "excerpt": "",
+        "error": "HTTPError: HTTP Error 403: Forbidden",
+        "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself."
       }
     ],
     "unresolved_questions": [
       "What do public-health and environmental authorities report about the health burden of air pollution, and which interventions are supported?"
     ],
-    "next_research_step": "Compare the collected sources, record agreements and uncertainty, then choose a concrete follow-up.",
+    "next_research_step": "Read the next distinct source for this question.",
     "active_research": {
       "topic": "Climate risks and practical adaptation",
       "question": "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
@@ -5890,7 +5691,9 @@
         "https://www.ipcc.ch/report/ar6/syr/",
         "https://www.unep.org/topics/climate-action/adaptation"
       ],
-      "visited_sources": [],
+      "visited_sources": [
+        "https://www.ipcc.ch/report/ar6/syr/"
+      ],
       "started_utc": "2026-10-28T23:04:38.860894+00:00"
     },
     "last_selection_reason": "Selected from a bounded public-interest shortlist using an explicit ranking of public benefit, urgency, evidence gap, feasibility, and novelty.",
