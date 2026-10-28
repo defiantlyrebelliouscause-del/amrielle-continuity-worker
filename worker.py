@@ -137,6 +137,42 @@ def audit_state(state):
     }
 
 
+def verify_stall_recovery_objective(state, reflection):
+    """Require the passing full test suite and all dedicated recovery tests."""
+    action = execute_self_directed_action(state, {
+        "type": "run_regression_tests",
+        "reason": "Verify the repeated-transition-stall recovery objective from test output.",
+    })
+    result = action.get("result", {})
+    output = str(result.get("output_tail", ""))
+    required = [
+        "test_stall_recovery_requires_three_consecutive_rejections",
+        "test_stall_recovery_does_not_override_a_recent_accepted_transition",
+        "test_stall_recovery_does_not_repeat_when_already_current",
+    ]
+    verified = result.get("passed") is True and all(name in output for name in required)
+    reflection["objective_status"] = "completed" if verified else "in_progress"
+    reflection["objective_evidence"] = (
+        "Full regression suite passed and all three stall-recovery tests were reported."
+        if verified else
+        "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
+    )
+    if verified:
+        reflection["next_objective"] = {
+            "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
+            "rationale": "A fixed benchmark measures recovery from invalid model output.",
+            "completion_criteria": ["At least 10 of 12 fixed malformed-output cases pass"],
+            "public_benefit": "Reduce lost work from malformed model output and improve dependable worker recovery.",
+            "risk_level": "read_only",
+        }
+        reflection["next_step"] = "Build and run the twelve-case deterministic recovery benchmark."
+        reflection["objective_transition_source"] = "deterministic_stall_recovery_verification"
+    else:
+        reflection["next_step"] = "Inspect regression output and repair recovery before claiming completion."
+    action["selection_source"] = "deterministic_recovery_policy"
+    return reflection, action
+
+
 def _fetch_public_json(url, timeout=8):
     """Fetch a small JSON response from a fixed public endpoint; never execute returned content."""
     request = urllib.request.Request(
