@@ -145,13 +145,20 @@ def verify_stall_recovery_objective(state, reflection, action=None):
             "reason": "Verify the repeated-transition-stall recovery objective from test output.",
         })
     result = action.get("result", {})
-    output = str(result.get("output_tail", ""))
+    # The full-suite output is intentionally truncated for bounded state storage.
+    # Verify the dedicated recovery tests separately and persist their own result.
     required = [
         "test_stall_recovery_requires_three_consecutive_rejections",
         "test_stall_recovery_does_not_override_a_recent_accepted_transition",
         "test_stall_recovery_does_not_repeat_when_already_current",
     ]
-    verified = result.get("passed") is True and all(name in output for name in required)
+    recovery_output = str(result.get("recovery_test_output", ""))
+    verified = (
+        result.get("passed") is True
+        and result.get("recovery_tests_passed") is True
+        and result.get("recovery_test_return_code") == 0
+        and all(name in recovery_output for name in required)
+    )
     reflection["objective_status"] = "completed" if verified else "in_progress"
     reflection["objective_evidence"] = (
         "Repository test file and verbose test output confirm all three recovery checks passed."
@@ -432,11 +439,32 @@ def execute_self_directed_action(state, proposal):
                 ["python", "-m", "unittest", "discover", "-s", "tests", "-v"],
                 capture_output=True, text=True, timeout=90, check=False,
             )
+            # Run the full suite, then the dedicated recovery module separately.
+            # The full suite's bounded output tail may omit test names near its start;
+            # the dedicated result is the auditable evidence used by the recovery gate.
+            recovery = subprocess.run(
+                ["python", "-m", "unittest", "discover", "-s", "tests",
+                 "-p", "test_goal_selection.py", "-v"],
+                capture_output=True, text=True, timeout=45, check=False,
+            )
+            recovery_output = recovery.stdout + "\n" + recovery.stderr
+            required_recovery_tests = [
+                "test_stall_recovery_requires_three_consecutive_rejections",
+                "test_stall_recovery_does_not_override_a_recent_accepted_transition",
+                "test_stall_recovery_does_not_repeat_when_already_current",
+            ]
             result = {
                 "command": "python -m unittest discover -s tests -v",
                 "return_code": completed.returncode,
                 "passed": completed.returncode == 0,
                 "output_tail": (completed.stdout + "\n" + completed.stderr)[-5000:],
+                "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
+                "recovery_test_return_code": recovery.returncode,
+                "recovery_tests_passed": (
+                    recovery.returncode == 0
+                    and all(name in recovery_output for name in required_recovery_tests)
+                ),
+                "recovery_test_output": recovery_output[-8000:],
             }
         except subprocess.TimeoutExpired:
             result = {"command": "python -m unittest discover -s tests -v", "passed": False,
