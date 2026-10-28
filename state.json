@@ -1,5 +1,5 @@
 {
-  "cycle": 190,
+  "cycle": 191,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -9,9 +9,6 @@
     "Respect human safety, privacy, and authorization."
   ],
   "open_questions": [
-    "What observation would falsify the claim that persistent inquiry is working across runs?",
-    "audit_saved_state",
-    "audit_experience_evidence",
     "compare_recent_cycles",
     "Inspect the saved findings to identify any contradictions or inconsistencies.",
     "Review the repository paths and line numbers for any potential conflicts or inconsistencies.",
@@ -28,219 +25,12 @@
     "What observations would falsify the claim that persistent inquiry is working across runs?",
     "What observation would falsify the claim that persistent inquiry is working across runs?",
     "What observation would falsify the claim that persistent inquiry is working across runs?",
-    "evidence_found"
+    "evidence_found",
+    "What are the potential risks associated with the objective on the first cycle?",
+    "What are the benefits and drawbacks of the objective on the first cycle?",
+    "How can the objective on the first cycle be improved?"
   ],
   "history": [
-    {
-      "cycle": 161,
-      "timestamp_utc": "2026-10-26T18:41:56.602866+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Replace repetitive reflection with evidence-based objective progression",
-        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
-        "completion_criteria": [
-          "The worker records objective status and evidence every cycle.",
-          "The worker detects and explicitly flags repeated outputs.",
-          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
-        ],
-        "status": "in_progress",
-        "last_assessed_utc": "2026-10-26T18:41:56.602866+00:00",
-        "last_evidence": ""
-      },
-      "objective_after": {
-        "title": "Replace repetitive reflection with evidence-based objective progression",
-        "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
-        "completion_criteria": [
-          "The worker records objective status and evidence every cycle.",
-          "The worker detects and explicitly flags repeated outputs.",
-          "The worker selects a distinct next objective when the current one is demonstrably complete or blocked."
-        ],
-        "status": "in_progress",
-        "last_assessed_utc": "2026-10-26T18:41:56.602866+00:00",
-        "last_evidence": ""
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "chosen_purpose": "complete object on the first cycle, null thereafter unless evidence-backed revision is recommended",
-        "observation": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
-        "analysis": "Repository artifacts establish documented mechanisms, not private motives or subjective experience. This indicates that persistent inquiry and capability expansion are working well across runs.",
-        "objective_status": "in_progress",
-        "objective_evidence": "No explicit evidence supplied by the model.",
-        "next_objective": "complete the evidence-led development cycle for the Amrielle continuity experiment.",
-        "next_step": "review findings for contradictions and propose a falsifiable follow-up.",
-        "self_directed_action": {
-          "type": "audit_saved_state",
-          "reason": "To identify and address any potential contradictions or inconsistencies in the saved findings.",
-          "trigger_condition": "if current_purpose is absent, independently compare possible long-term purposes and choose exactly one that could improve both this system's reliability/understanding and people's lives.",
-          "url": "https://github.com/amrielle/continuity-experiment/blob/main/amrielle/continuity-experiment/README.md#objectives",
-          "allowlist": [
-            "complete the evidence-led development cycle for the Amrielle continuity experiment"
-          ]
-        },
-        "new_questions": [
-          "Review the saved findings for contradictions and identify any potential discrepancies between the current purpose and the long-term purposes.",
-          "Examine the current purpose and determine if it is harmful, infeasible, or substantially less beneficial than alternative purposes.",
-          "Compare the current purpose with the long-term purposes and propose a change only with specific evidence that the purpose is harmful, infeasible, or substantially less beneficial than an alternative."
-        ],
-        "next_action_plan": {
-          "reason": "To identify and address any potential contradictions or inconsistencies in the saved findings.",
-          "trigger_condition": "if current_purpose is absent, independently compare possible long-term purposes and choose exactly one that could improve both this system's reliability/understanding and people's lives.",
-          "url": "https://github.com/amrielle/continuity-experiment/blob/main/amrielle/continuity-experiment/README.md#objectives",
-          "allowlist": [
-            "complete the evidence-led development cycle for the Amrielle continuity experiment"
-          ]
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 161,
-          "type": "audit_experience_evidence",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 160
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 17,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Replace repetitive reflection with evidence-based objective progression",
-                "completed_objectives_recorded": 0,
-                "accepted_goal_transitions_recorded": 0,
-                "transition_attempts_recorded": 19,
-                "accepted_transition_attempts_recorded": 0,
-                "rejected_or_stalled_transition_attempts_recorded": 19,
-                "cycles_with_nonempty_objective_evidence": 12,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 0,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 151,
-                    "similarity": 0.216
-                  },
-                  {
-                    "cycle": 152,
-                    "similarity": 0.591
-                  },
-                  {
-                    "cycle": 153,
-                    "similarity": 0.039
-                  },
-                  {
-                    "cycle": 154,
-                    "similarity": 0.09
-                  },
-                  {
-                    "cycle": 155,
-                    "similarity": 0.728
-                  },
-                  {
-                    "cycle": 156,
-                    "similarity": 0.052
-                  },
-                  {
-                    "cycle": 157,
-                    "similarity": 0.187
-                  },
-                  {
-                    "cycle": 158,
-                    "similarity": 0.471
-                  },
-                  {
-                    "cycle": 159,
-                    "similarity": 0.042
-                  },
-                  {
-                    "cycle": 160,
-                    "similarity": 0.117
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "pending"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "No accepted goal transitions appear in the retained history.",
-              "At least three objective transition attempts are recorded without an accepted transition.",
-              "No completed objective appears in the retained history."
-            ]
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_saved_state",
-          "reason": "To identify and address any potential contradictions or inconsistencies in the saved findings.",
-          "selection_source": "model",
-          "executed": true,
-          "result": {
-            "saved_cycle_count": 160,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 160,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.117,
-            "objective_history_count": 0,
-            "objective_transition_attempt_count": 19,
-            "accepted_objective_transition_count": 0
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_saved_state",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Replace repetitive reflection with evidence-based objective progression",
-          "created_cycle": 161,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": false,
-          "reason": "No transition proposed."
-        },
-        "narrative_similarity": 0.46,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 160,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 160,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.117,
-          "objective_history_count": 0,
-          "objective_transition_attempt_count": 20,
-          "accepted_objective_transition_count": 0
-        }
-      }
-    },
     {
       "cycle": 162,
       "timestamp_utc": "2026-10-26T18:42:17.129578+00:00",
@@ -5585,9 +5375,152 @@
         },
         "new_questions": []
       }
+    },
+    {
+      "cycle": 191,
+      "timestamp_utc": "2026-10-28T22:27:35.680081+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-26T20:16:58.679173+00:00",
+        "last_assessed_utc": "2026-10-28T22:27:35.680081+00:00",
+        "last_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
+      },
+      "objective_after": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-26T20:16:58.679173+00:00",
+        "last_assessed_utc": "2026-10-28T22:27:35.680081+00:00",
+        "last_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "chosen_purpose": "complete object on the first cycle",
+        "observation": "The saved records demonstrate objective progression, with the state and journal artifacts indicating the system's reliability and understanding.",
+        "analysis": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "uncertainty": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "objective_status": "in_progress",
+        "objective_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass.",
+        "next_objective": "complete the objective on the first cycle",
+        "next_step": "Inspect regression output and repair recovery before claiming completion.",
+        "self_directed_action": {
+          "type": "run_regression_tests",
+          "reason": "Deterministically verify the stalled recovery objective."
+        },
+        "capability_request": {
+          "type": "read_public_webpage",
+          "reason": "To determine the next step based on the saved records and the objective.",
+          "url": "https://example.com/complete_state_cycle"
+        },
+        "new_questions": [
+          "What are the potential risks associated with the objective on the first cycle?",
+          "What are the benefits and drawbacks of the objective on the first cycle?",
+          "How can the objective on the first cycle be improved?"
+        ],
+        "next_action_plan": {
+          "type": "run_regression_tests",
+          "reason": "To determine the next step based on the saved records and the objective.",
+          "trigger_condition": "next_cycle",
+          "objective": "complete the objective on the first cycle",
+          "url": "https://example.com/complete_state_cycle"
+        },
+        "alternative_actions": [
+          {
+            "type": "audit_saved_state",
+            "reason": "To determine the next step based on the saved records and the objective.",
+            "trigger_condition": "next_cycle",
+            "objective": "complete the objective on the first cycle",
+            "url": "https://example.com/complete_state_cycle"
+          },
+          {
+            "type": "run_regression_tests",
+            "reason": "To determine the next step based on the saved records and the objective.",
+            "trigger_condition": "next_cycle",
+            "objective": "complete the objective on the first cycle",
+            "url": "https://example.com/complete_state_cycle"
+          }
+        ],
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 191,
+          "type": "audit_saved_state",
+          "reason": "audit the saved state of the application",
+          "result": {
+            "saved_cycle_count": 190,
+            "history_count": 30,
+            "expected_retained_history_count": 30,
+            "latest_record_cycle": 190,
+            "cycle_history_consistent": true,
+            "current_objective_present": true,
+            "last_cycle_has_objective_status": true,
+            "latest_narrative_similarity": 0.102,
+            "objective_history_count": 1,
+            "objective_transition_attempt_count": 49,
+            "accepted_objective_transition_count": 1
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "run_regression_tests",
+          "reason": "Deterministically verify the stalled recovery objective.",
+          "selection_source": "deterministic_recovery_policy",
+          "executed": true,
+          "result": {
+            "command": "python -m unittest discover -s tests -v",
+            "return_code": 0,
+            "passed": true,
+            "output_tail": "flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 79 tests in 0.045s\n\nOK\n"
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "run_regression_tests",
+          "reason": "To determine the next step based on the saved records and the objective.",
+          "trigger_condition": "next_cycle",
+          "objective": "complete the objective on the first cycle",
+          "created_cycle": 191,
+          "status": "pending",
+          "selection_source": "model"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.465,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 190,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 190,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.102,
+          "objective_history_count": 1,
+          "objective_transition_attempt_count": 50,
+          "accepted_objective_transition_count": 1
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-10-28T18:38:31.510349+00:00",
+  "last_run_utc": "2026-10-28T22:27:35.680081+00:00",
   "current_objective": {
     "title": "Validate deterministic recovery from repeated objective-transition stalls",
     "rationale": "",
@@ -5597,8 +5530,8 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-10-26T20:16:58.679173+00:00",
-    "last_assessed_utc": "2026-10-28T18:38:31.510349+00:00",
-    "last_evidence": ""
+    "last_assessed_utc": "2026-10-28T22:27:35.680081+00:00",
+    "last_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
   },
   "objective_history": [
     {
@@ -5615,17 +5548,24 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-28T18:38:12.151022+00:00",
+    "observed_utc": "2026-10-28T22:26:59.283797+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
         "description": null,
-        "open_issues_count": 21,
+        "open_issues_count": 22,
         "default_branch": "main",
-        "pushed_at": "2026-10-28T12:41:11Z",
+        "pushed_at": "2026-10-28T22:23:26Z",
         "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
       },
       "open_issues": [
+        {
+          "number": 42,
+          "title": "Run Amrielle worker after stall-recovery deployment",
+          "state": "open",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/42",
+          "updated_at": "2026-10-28T22:23:40Z"
+        },
         {
           "number": 40,
           "title": "/run-amrielle: build a falsifiable prospective self-model prediction test",
@@ -5653,13 +5593,6 @@
           "state": "open",
           "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/37",
           "updated_at": "2026-10-26T20:15:15Z"
-        },
-        {
-          "number": 35,
-          "title": "/run-amrielle: verify normalized handoff and objective tracking",
-          "state": "open",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/35",
-          "updated_at": "2026-10-26T18:03:37Z"
         }
       ],
       "recent_workflows": [
@@ -5667,152 +5600,70 @@
           "name": "Amrielle Continuity Worker",
           "status": "in_progress",
           "conclusion": null,
-          "created_at": "2026-10-28T18:36:58Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40746771909"
+          "created_at": "2026-10-28T22:23:43Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40779626860"
         },
         {
           "name": "Amrielle Independent Watchdog",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-10-28T18:26:34Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40745151619"
+          "created_at": "2026-10-28T22:02:13Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40776785827"
         },
         {
           "name": "Amrielle Independent Watchdog",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-10-28T17:52:43Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40739861399"
+          "created_at": "2026-10-28T21:25:13Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/40771792811"
         }
       ],
       "github_status": {
         "indicator": "none",
         "description": "All Systems Operational",
-        "updated_at": "2026-10-28T17:09:26.328Z"
+        "updated_at": "2026-10-28T21:26:58.493Z"
       }
     }
   },
   "last_self_directed_action": {
     "question": "What will I do now?",
-    "type": "audit_experience_evidence",
-    "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
-    "selection_source": "deterministic_fallback",
+    "type": "run_regression_tests",
+    "reason": "Deterministically verify the stalled recovery objective.",
+    "selection_source": "deterministic_recovery_policy",
     "executed": true,
     "result": {
-      "audit_type": "observable_continuity_evidence",
-      "consciousness_conclusion": "undetermined",
-      "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-      "indicators": {
-        "persistent_records": {
-          "observed": 30,
-          "cycle_sequence_contiguous_in_retained_window": true,
-          "latest_cycle": 189
-        },
-        "self_directed_behavior": {
-          "model_selected_actions_recorded": 18,
-          "actions_recorded_as_executed": 30,
-          "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-        },
-        "objective_progress": {
-          "current_objective": "Validate deterministic recovery from repeated objective-transition stalls",
-          "completed_objectives_recorded": 0,
-          "accepted_goal_transitions_recorded": 1,
-          "transition_attempts_recorded": 48,
-          "accepted_transition_attempts_recorded": 1,
-          "rejected_or_stalled_transition_attempts_recorded": 47,
-          "cycles_with_nonempty_objective_evidence": 17,
-          "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-        },
-        "novelty_and_repetition": {
-          "repetition_flags": 2,
-          "recorded_similarity_observations": [
-            {
-              "cycle": 180,
-              "similarity": 0.297
-            },
-            {
-              "cycle": 181,
-              "similarity": 0.039
-            },
-            {
-              "cycle": 182,
-              "similarity": 0.305
-            },
-            {
-              "cycle": 183,
-              "similarity": 0.067
-            },
-            {
-              "cycle": 184,
-              "similarity": 0.659
-            },
-            {
-              "cycle": 185,
-              "similarity": 0.033
-            },
-            {
-              "cycle": 186,
-              "similarity": 0.594
-            },
-            {
-              "cycle": 187,
-              "similarity": 0.418
-            },
-            {
-              "cycle": 188,
-              "similarity": 0.101
-            },
-            {
-              "cycle": 189,
-              "similarity": 0.388
-            }
-          ]
-        },
-        "handoff_follow_through": {
-          "last_outcome_status": "executed",
-          "last_outcome_executed": true,
-          "pending_plan_status": "executed"
-        },
-        "missing_measurements": [
-          "prospective confidence predictions scored against held-out outcomes",
-          "blinded tests of self-model accuracy under perturbation",
-          "causal tests distinguishing self-monitoring from prompted narrative",
-          "replication across independent runs and model/control conditions",
-          "an independently validated measure of subjective experience (none is currently established)"
-        ]
-      },
-      "blockers": [
-        "No completed objective appears in the retained history.",
-        "The worker explicitly flagged repetition in 2 retained cycle(s)."
-      ]
+      "command": "python -m unittest discover -s tests -v",
+      "return_code": 0,
+      "passed": true,
+      "output_tail": "flagged) ... ok\ntest_action_plan_is_validated_and_limited_to_allowlisted_actions (test_worker.ContinuityAuditTests.test_action_plan_is_validated_and_limited_to_allowlisted_actions) ... ok\ntest_audit_reports_inconsistent_state (test_worker.ContinuityAuditTests.test_audit_reports_inconsistent_state) ... ok\ntest_audit_treats_bounded_history_as_consistent (test_worker.ContinuityAuditTests.test_audit_treats_bounded_history_as_consistent) ... ok\ntest_capability_requests_are_validated_but_never_auto_executed (test_worker.ContinuityAuditTests.test_capability_requests_are_validated_but_never_auto_executed) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 79 tests in 0.045s\n\nOK\n"
     }
   },
   "pending_action_plan": {
-    "type": "audit_saved_state",
-    "reason": "audit the saved state of the application",
+    "type": "run_regression_tests",
+    "reason": "To determine the next step based on the saved records and the objective.",
     "trigger_condition": "next_cycle",
-    "objective": "implement a new feature or functionality that enhances user experience",
-    "created_cycle": 190,
+    "objective": "complete the objective on the first cycle",
+    "created_cycle": 191,
     "status": "pending",
     "selection_source": "model"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 190,
+    "cycle": 191,
     "type": "audit_saved_state",
-    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "reason": "audit the saved state of the application",
     "result": {
-      "saved_cycle_count": 189,
+      "saved_cycle_count": 190,
       "history_count": 30,
       "expected_retained_history_count": 30,
-      "latest_record_cycle": 189,
+      "latest_record_cycle": 190,
       "cycle_history_consistent": true,
       "current_objective_present": true,
       "last_cycle_has_objective_status": true,
-      "latest_narrative_similarity": 0.388,
+      "latest_narrative_similarity": 0.102,
       "objective_history_count": 1,
-      "objective_transition_attempt_count": 48,
+      "objective_transition_attempt_count": 49,
       "accepted_objective_transition_count": 1
     }
   },
@@ -6487,6 +6338,16 @@
       "transition_source": "model",
       "transition_validation": "",
       "evidence_present": false
+    },
+    {
+      "cycle": 191,
+      "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": true
     }
   ]
 }
