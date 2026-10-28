@@ -131,17 +131,29 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertIn("run_regression_tests", prompt)
 
     def test_regression_test_action_executes_and_reports_result(self):
-        completed = SimpleNamespace(returncode=0, stdout="Ran 7 tests", stderr="OK")
-        with patch("worker.subprocess.run", return_value=completed) as run:
+        full_suite = SimpleNamespace(returncode=0, stdout="Ran 79 tests", stderr="OK")
+        recovery_suite = SimpleNamespace(
+            returncode=0,
+            stdout=(
+                "test_stall_recovery_requires_three_consecutive_rejections ... ok\\n"
+                "test_stall_recovery_does_not_override_a_recent_accepted_transition ... ok\\n"
+                "test_stall_recovery_does_not_repeat_when_already_current ... ok\\n"
+                "Ran 14 tests"
+            ),
+            stderr="OK",
+        )
+        with patch("worker.subprocess.run", side_effect=[full_suite, recovery_suite]) as run:
             action = worker.execute_self_directed_action(
                 {"history": [], "chosen_purpose": {"title": "Improve reliability"},
                  "current_objective": {"title": "Improve reliability"}},
                 {"type": "run_regression_tests", "reason": "Verify the codebase."},
             )
-        run.assert_called_once()
+        self.assertEqual(run.call_count, 2)
+        self.assertIn("test_goal_selection.py", run.call_args_list[1].args[0])
         self.assertTrue(action["executed"])
         self.assertEqual(action["type"], "run_regression_tests")
         self.assertTrue(action["result"]["passed"])
+        self.assertTrue(action["result"]["recovery_tests_passed"])
         self.assertEqual(action["result"]["return_code"], 0)
 
     def test_capability_requests_are_validated_but_never_auto_executed(self):
