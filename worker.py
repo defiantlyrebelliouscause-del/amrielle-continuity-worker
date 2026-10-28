@@ -794,6 +794,101 @@ def reflect(state):
     return model, reflection
 
 
+WORLD_RESEARCH_CANDIDATES = [
+    {
+        "topic": "Air pollution and preventable health harms",
+        "question": "What do public-health and environmental authorities report about the health burden of air pollution, and which interventions are supported?",
+        "public_benefit": 5, "urgency": 5, "evidence_gap": 3, "feasibility": 5, "novelty": 3,
+        "sources": ["https://www.who.int/health-topics/air-pollution", "https://www.unep.org/explore-topics/air"],
+    },
+    {
+        "topic": "Climate risks and practical adaptation",
+        "question": "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
+        "public_benefit": 5, "urgency": 5, "evidence_gap": 4, "feasibility": 4, "novelty": 3,
+        "sources": ["https://www.ipcc.ch/report/ar6/syr/", "https://www.unep.org/topics/climate-action/adaptation"],
+    },
+    {
+        "topic": "AI safety and public accountability",
+        "question": "What do public standards bodies recommend for managing AI risks, and what practical gaps remain?",
+        "public_benefit": 4, "urgency": 4, "evidence_gap": 4, "feasibility": 5, "novelty": 4,
+        "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://oecd.ai/en/ai-principles"],
+    },
+]
+
+
+def prepare_outward_research(state):
+    """Select a consequential public question and deterministically advance its source queue."""
+    inquiry = state.setdefault("world_inquiry", {})
+    completed_topics = set(inquiry.get("completed_topics", []))
+    current = inquiry.get("active_research")
+    if not isinstance(current, dict) or current.get("topic") in completed_topics:
+        available = [item for item in WORLD_RESEARCH_CANDIDATES if item["topic"] not in completed_topics]
+        if not available:
+            completed_topics.clear()
+            inquiry["completed_topics"] = []
+            available = list(WORLD_RESEARCH_CANDIDATES)
+        current = max(
+            available,
+            key=lambda item: (
+                item["public_benefit"] * 3 + item["urgency"] * 2
+                + item["evidence_gap"] + item["feasibility"] + item["novelty"]
+            ),
+        ).copy()
+        current["sources"] = list(current["sources"])
+        current["visited_sources"] = []
+        current["started_utc"] = datetime.now(timezone.utc).isoformat()
+        inquiry["active_research"] = current
+        inquiry["last_topic"] = current["topic"]
+        inquiry["last_selection_reason"] = (
+            "Selected from a bounded public-interest shortlist using an explicit ranking "
+            "of public benefit, urgency, evidence gap, feasibility, and novelty."
+        )
+    visited = set(current.get("visited_sources", []))
+    next_url = next((url for url in current.get("sources", []) if url not in visited), None)
+    if next_url:
+        return {"type": "read_public_webpage", "url": next_url,
+                "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question."}
+    return {"type": "compare_recent_cycles",
+            "reason": "Compare gathered sources and determine whether the evidence supports a useful synthesis."}
+
+
+def record_outward_research_action(state, action_record):
+    """Persist source evidence and advance the topic only after all planned sources are visited."""
+    inquiry = state.setdefault("world_inquiry", {})
+    current = inquiry.get("active_research")
+    if not isinstance(current, dict):
+        return
+    if action_record.get("type") == "read_public_webpage":
+        result = action_record.get("result", {})
+        requested = result.get("requested_url") or action_record.get("url")
+        if requested and requested not in current.setdefault("visited_sources", []):
+            current["visited_sources"].append(requested)
+        finding = {
+            "topic": current.get("topic"), "question": current.get("question"),
+            "url": result.get("final_url") or requested,
+            "observed_utc": datetime.now(timezone.utc).isoformat(),
+            "success": not bool(result.get("error")),
+            "excerpt": str(result.get("text_excerpt", ""))[:4000],
+            "error": result.get("error"),
+            "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself.",
+        }
+        inquiry.setdefault("findings", []).append(finding)
+        inquiry["findings"] = inquiry["findings"][-60:]
+        inquiry["next_research_step"] = (
+            "Read the next distinct source for this question."
+            if any(url not in current["visited_sources"] for url in current.get("sources", []))
+            else "Compare the collected sources, record agreements and uncertainty, then choose a concrete follow-up."
+        )
+    if current.get("sources") and all(url in current.get("visited_sources", []) for url in current["sources"]):
+        inquiry.setdefault("completed_topics", [])
+        if current.get("topic") not in inquiry["completed_topics"]:
+            inquiry["completed_topics"].append(current.get("topic"))
+        inquiry["unresolved_questions"] = list(dict.fromkeys(
+            inquiry.get("unresolved_questions", []) + [current.get("question", "")]
+        ))[-30:]
+        inquiry["active_research"] = None
+
+
 def run_cycle():
     state = load_state()
     state.setdefault("current_objective", {
@@ -829,10 +924,17 @@ def run_cycle():
             purpose_note = "No purpose saved: the model's proposal lacked required fields or measurable criteria."
     else:
         purpose_note = "Existing purpose retained; no silent replacement permitted."
-    # Turn the worker's own question into an executed, auditable action each cycle.
+    # Enforce outward inquiry when that is the active objective. The small local model
+    # repeatedly chose internal audits, so source selection must not depend on its output.
+    objective_title = str(state.get("current_objective", {}).get("title", ""))
+    outward_objective = "consequential real-world question" in objective_title.lower()
+    if outward_objective:
+        reflection["self_directed_action"] = prepare_outward_research(state)
     if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
         reflection["self_directed_action"] = {"type": "run_regression_tests", "reason": "Deterministically verify the stalled recovery objective."}
     action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    if outward_objective:
+        record_outward_research_action(state, action_record)
     if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
         reflection, action_record = verify_stall_recovery_objective(state, reflection, action_record)
     capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
@@ -854,7 +956,13 @@ def run_cycle():
     state["last_self_directed_action"] = action_record
     now = datetime.now(timezone.utc).isoformat()
     cycle = int(state.get("cycle", 0)) + 1
-    proposed_plan = validate_action_plan(reflection.get("next_action_plan"), cycle)
+    if outward_objective:
+        next_action = prepare_outward_research(state)
+        proposed_plan = validate_action_plan({
+            **next_action, "trigger_condition": "next_cycle", "objective": objective_title,
+        }, cycle)
+    else:
+        proposed_plan = validate_action_plan(reflection.get("next_action_plan"), cycle)
     if proposed_plan is None:
         fallback_type = action_record.get("type", "audit_saved_state")
         fallback_url = action_record.get("url", "")
