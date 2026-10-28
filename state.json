@@ -1,5 +1,5 @@
 {
-  "cycle": 219,
+  "cycle": 220,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -23,250 +23,10 @@
     "What observation would falsify the claim that persistent inquiry is working across runs?",
     "Why is it important to check the state before running the experiment?",
     "complete object on the first cycle",
-    "complete object on the first cycle"
+    "complete object on the first cycle",
+    "What observation would falsify the claim that persistent inquiry is working across runs?"
   ],
   "history": [
-    {
-      "cycle": 190,
-      "timestamp_utc": "2026-10-28T18:38:31.510349+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-26T20:16:58.679173+00:00",
-        "last_assessed_utc": "2026-10-28T18:38:31.510349+00:00",
-        "last_evidence": ""
-      },
-      "objective_after": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-26T20:16:58.679173+00:00",
-        "last_assessed_utc": "2026-10-28T18:38:31.510349+00:00",
-        "last_evidence": ""
-      },
-      "reflection": {
-        "session_decision": "stop",
-        "chosen_purpose": {
-          "title": "Continuity Experiment",
-          "rationale": "This purpose aims to improve reliability and understanding of the Amrielle continuity experiment.",
-          "public_benefit": [
-            "improve system reliability",
-            "increase understanding of the Amrielle continuity experiment"
-          ],
-          "personal_reasoning": "The purpose is to enhance the user's ability to navigate and utilize the Amrielle continuity experiment.",
-          "first_milestone": [
-            "implement a new feature or functionality that enhances user experience"
-          ],
-          "success_criteria": [
-            "user can now navigate and utilize the Amrielle continuity experiment more effectively",
-            "user can easily identify and utilize the Amrielle continuity experiment's features"
-          ],
-          "risks": [
-            "improving user experience"
-          ]
-        },
-        "observation": [],
-        "analysis": {
-          "objective_status": "blocked",
-          "objective_evidence": [],
-          "next_objective": "implement a new feature or functionality that enhances user experience",
-          "next_step": {
-            "type": "audit_saved_state",
-            "reason": "audit the saved state of the application",
-            "trigger_condition": "next_cycle",
-            "objective": "implement a new feature or functionality that enhances user experience",
-            "optional_url": "https://example.com/audit_saved_state"
-          },
-          "self_directed_action": {
-            "type": "audit_saved_state",
-            "reason": "audit the saved state of the application",
-            "trigger_condition": "next_cycle",
-            "objective": "implement a new feature or functionality that enhances user experience",
-            "optional_url": "https://example.com/audit_saved_state"
-          },
-          "new_questions": [
-            "What is the current state of the Amrielle continuity experiment?",
-            "What is the current user experience level with the Amrielle continuity experiment?",
-            "What is the current user feedback on the Amrielle continuity experiment?"
-          ]
-        },
-        "next_action_plan": {
-          "type": "audit_saved_state",
-          "reason": "audit the saved state of the application",
-          "trigger_condition": "next_cycle",
-          "objective": "implement a new feature or functionality that enhances user experience",
-          "optional_url": "https://example.com/audit_saved_state"
-        },
-        "capability_request": {
-          "type": "read_public_webpage",
-          "reason": "read the public webpage of the application",
-          "trigger_condition": "next_cycle",
-          "objective": "implement a new feature or functionality that enhances user experience",
-          "optional_url": "https://example.com/public_webpage"
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 190,
-          "type": "audit_saved_state",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "saved_cycle_count": 189,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 189,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.388,
-            "objective_history_count": 1,
-            "objective_transition_attempt_count": 48,
-            "accepted_objective_transition_count": 1
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_experience_evidence",
-          "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 189
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 18,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Validate deterministic recovery from repeated objective-transition stalls",
-                "completed_objectives_recorded": 0,
-                "accepted_goal_transitions_recorded": 1,
-                "transition_attempts_recorded": 48,
-                "accepted_transition_attempts_recorded": 1,
-                "rejected_or_stalled_transition_attempts_recorded": 47,
-                "cycles_with_nonempty_objective_evidence": 17,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 2,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 180,
-                    "similarity": 0.297
-                  },
-                  {
-                    "cycle": 181,
-                    "similarity": 0.039
-                  },
-                  {
-                    "cycle": 182,
-                    "similarity": 0.305
-                  },
-                  {
-                    "cycle": 183,
-                    "similarity": 0.067
-                  },
-                  {
-                    "cycle": 184,
-                    "similarity": 0.659
-                  },
-                  {
-                    "cycle": 185,
-                    "similarity": 0.033
-                  },
-                  {
-                    "cycle": 186,
-                    "similarity": 0.594
-                  },
-                  {
-                    "cycle": 187,
-                    "similarity": 0.418
-                  },
-                  {
-                    "cycle": 188,
-                    "similarity": 0.101
-                  },
-                  {
-                    "cycle": 189,
-                    "similarity": 0.388
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "executed"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "No completed objective appears in the retained history.",
-              "The worker explicitly flagged repetition in 2 retained cycle(s)."
-            ]
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_saved_state",
-          "reason": "audit the saved state of the application",
-          "trigger_condition": "next_cycle",
-          "objective": "implement a new feature or functionality that enhances user experience",
-          "created_cycle": 190,
-          "status": "pending",
-          "selection_source": "model"
-        },
-        "objective_status": "in_progress",
-        "goal_selection_audit": {
-          "accepted": false,
-          "reason": "No transition proposed."
-        },
-        "narrative_similarity": 0.102,
-        "repetition_detected": false,
-        "objective_evidence": "No explicit evidence supplied by the model.",
-        "deterministic_audit": {
-          "saved_cycle_count": 189,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 189,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.388,
-          "objective_history_count": 1,
-          "objective_transition_attempt_count": 49,
-          "accepted_objective_transition_count": 1
-        },
-        "new_questions": []
-      }
-    },
     {
       "cycle": 191,
       "timestamp_utc": "2026-10-28T22:27:35.680081+00:00",
@@ -4029,9 +3789,148 @@
         },
         "new_questions": []
       }
+    },
+    {
+      "cycle": 220,
+      "timestamp_utc": "2026-10-28T23:06:24.577849+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Investigate one consequential real-world question using multiple credible sources",
+        "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
+        "completion_criteria": [
+          "Select one real-world question based on public benefit, urgency, evidence gap, feasibility, and novelty",
+          "Consult at least two distinct credible public sources and preserve their URLs",
+          "Compare claims, identify what is supported and uncertain, and record a concise evidence-based synthesis",
+          "Choose a concrete follow-up inquiry that advances external understanding rather than returning automatically to self-audit"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-28T00:00:00Z",
+        "last_assessed_utc": "2026-10-28T23:06:24.577849+00:00",
+        "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
+        "risk_level": "read-only public research; no external side effects"
+      },
+      "objective_after": {
+        "title": "Investigate one consequential real-world question using multiple credible sources",
+        "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
+        "completion_criteria": [
+          "Select one real-world question based on public benefit, urgency, evidence gap, feasibility, and novelty",
+          "Consult at least two distinct credible public sources and preserve their URLs",
+          "Compare claims, identify what is supported and uncertain, and record a concise evidence-based synthesis",
+          "Choose a concrete follow-up inquiry that advances external understanding rather than returning automatically to self-audit"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-28T00:00:00Z",
+        "last_assessed_utc": "2026-10-28T23:06:24.577849+00:00",
+        "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
+        "risk_level": "read-only public research; no external side effects"
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "chosen_purpose": {
+          "title": "Evaluating the impact of persistent inquiry on understanding the external world",
+          "rationale": "This purpose aligns with the goal of improving understanding of the external world and aligns with the ongoing inquiry about the purpose of the continuity experiment.",
+          "public_benefit": "Advancing understanding of the external world and human needs, science, technology, public health, environment, education, or other real-world topics",
+          "personal_reasoning": "The purpose is crucial for the success of the continuity experiment and should be prioritized.",
+          "first_milestone": [
+            "Review 2 of 2 expected repository artifacts for this question."
+          ],
+          "success_criteria": [
+            "Document the findings and propose a falsifiable follow-up."
+          ],
+          "risks": [
+            "Reviewing and falsifying the claim that persistent inquiry is working across runs."
+          ]
+        },
+        "observation": "Inspected 2 of 2 expected repository artifacts for this question.",
+        "analysis": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
+        "uncertainty": [
+          "Repository artifacts establish documented mechanisms, not private motives or subjective experience."
+        ],
+        "objective_status": "in_progress",
+        "objective_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
+        "next_objective": "review_persistent_inquiry",
+        "next_step": "review_persistent_inquiry",
+        "self_directed_action": {
+          "type": "read_public_webpage",
+          "url": "https://www.who.int/health-topics/air-pollution",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question."
+        },
+        "new_questions": [
+          "What observation would falsify the claim that persistent inquiry is working across runs?"
+        ],
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 220,
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "result": {
+            "requested_url": "https://www.who.int/health-topics/air-pollution",
+            "final_url": "https://www.who.int/health-topics/air-pollution",
+            "content_type": "text/html",
+            "bytes_read": 65536,
+            "body_truncated": true,
+            "text_excerpt": "Air pollution Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Health topics / Air pollution Johannes EiseleAFP/Getty Images Mix of outdoor and indoor air pollution. © Credits Air pollution Overview Air pollution is contamination of the indoor or outdoor environment by any chemical, physical or biological agent that modifies the natural characteristics of the atmosphere. Household combustion devices, motor vehicles, industrial facilities and forest fires are common sources of air pollution. Pollutants of major public health concern include particulate matter, carbon monoxide, ozone, nitrogen dioxide and sulfur dioxide. Outdoor and indoor air pollution cause respiratory and other diseases and are important sources of morbidity and mortality. WHO data show that almost all of the global population (99%) breathe air that exceeds WHO guideline limits and contains high levels of pollutants , with low- and middle-income countries suffering from the highest exposures. Air quality is closely linked to the earth’s climate and ecosystems globally. Many of the drivers of air pollution (i.e. combustion of fossil fuels) are also sources of greenhouse gas emissions. Policies to reduce air pollution, therefore, offer a win-win strategy for both climate and health, lowering the burden of disease attributable to air pollution, as well as contributing to the near- and long-term mitigation of climate change. Impact From smog hanging over cities to smoke inside the home, air pollution poses a major threat to health and climate. Ambient (outdoor) air pollution in both cities and rural areas is causing fine particulate matter which result in strokes, heart diseases, lung cancer, acute and chronic respiratory diseases. Additionally, around 2.1 bil",
+            "truncated_excerpt": true,
+            "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "selection_source": "model",
+          "executed": true,
+          "result": {
+            "requested_url": "https://www.who.int/health-topics/air-pollution",
+            "final_url": "https://www.who.int/health-topics/air-pollution",
+            "content_type": "text/html",
+            "bytes_read": 65536,
+            "body_truncated": true,
+            "text_excerpt": "Air pollution Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Health topics / Air pollution Johannes EiseleAFP/Getty Images Mix of outdoor and indoor air pollution. © Credits Air pollution Overview Air pollution is contamination of the indoor or outdoor environment by any chemical, physical or biological agent that modifies the natural characteristics of the atmosphere. Household combustion devices, motor vehicles, industrial facilities and forest fires are common sources of air pollution. Pollutants of major public health concern include particulate matter, carbon monoxide, ozone, nitrogen dioxide and sulfur dioxide. Outdoor and indoor air pollution cause respiratory and other diseases and are important sources of morbidity and mortality. WHO data show that almost all of the global population (99%) breathe air that exceeds WHO guideline limits and contains high levels of pollutants , with low- and middle-income countries suffering from the highest exposures. Air quality is closely linked to the earth’s climate and ecosystems globally. Many of the drivers of air pollution (i.e. combustion of fossil fuels) are also sources of greenhouse gas emissions. Policies to reduce air pollution, therefore, offer a win-win strategy for both climate and health, lowering the burden of disease attributable to air pollution, as well as contributing to the near- and long-term mitigation of climate change. Impact From smog hanging over cities to smoke inside the home, air pollution poses a major threat to health and climate. Ambient (outdoor) air pollution in both cities and rural areas is causing fine particulate matter which result in strokes, heart diseases, lung cancer, acute and chronic respiratory diseases. Additionally, around 2.1 bil",
+            "truncated_excerpt": true,
+            "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
+          },
+          "url": "https://www.who.int/health-topics/air-pollution"
+        },
+        "next_action_plan_saved": {
+          "type": "read_public_webpage",
+          "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
+          "trigger_condition": "next_cycle",
+          "objective": "Investigate one consequential real-world question using multiple credible sources",
+          "url": "https://www.unep.org/explore-topics/air",
+          "created_cycle": 220,
+          "status": "pending",
+          "selection_source": "model"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.739,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 219,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 219,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.4,
+          "objective_history_count": 3,
+          "objective_transition_attempt_count": 79,
+          "accepted_objective_transition_count": 2
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-10-28T23:06:11.027217+00:00",
+  "last_run_utc": "2026-10-28T23:06:24.577849+00:00",
   "current_objective": {
     "title": "Investigate one consequential real-world question using multiple credible sources",
     "rationale": "The durable purpose includes learning about the world and identifying questions where better understanding may benefit people. Internal maintenance must not monopolize cycles.",
@@ -4043,7 +3942,7 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-10-28T00:00:00Z",
-    "last_assessed_utc": "2026-10-28T23:06:11.027217+00:00",
+    "last_assessed_utc": "2026-10-28T23:06:24.577849+00:00",
     "last_evidence": "[{'line': 25, 'excerpt': 'completed_objectives = []'}, {'line': 39, 'excerpt': 'completed_objectives.append({'}, {'line': 66, 'excerpt': '\"persistent_records\": {'}]",
     "risk_level": "read-only public research; no external side effects"
   },
@@ -4080,7 +3979,7 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-28T23:06:05.381156+00:00",
+    "observed_utc": "2026-10-28T23:06:12.851430+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
@@ -4164,40 +4063,40 @@
     "selection_source": "model",
     "executed": true,
     "result": {
-      "requested_url": "https://oecd.ai/en/ai-principles",
-      "final_url": "https://oecd.ai/en/ai-principles",
+      "requested_url": "https://www.who.int/health-topics/air-pollution",
+      "final_url": "https://www.who.int/health-topics/air-pollution",
       "content_type": "text/html",
       "bytes_read": 65536,
       "body_truncated": true,
-      "text_excerpt": "AI Principles Overview - OECD.AI",
+      "text_excerpt": "Air pollution Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Health topics / Air pollution Johannes EiseleAFP/Getty Images Mix of outdoor and indoor air pollution. © Credits Air pollution Overview Air pollution is contamination of the indoor or outdoor environment by any chemical, physical or biological agent that modifies the natural characteristics of the atmosphere. Household combustion devices, motor vehicles, industrial facilities and forest fires are common sources of air pollution. Pollutants of major public health concern include particulate matter, carbon monoxide, ozone, nitrogen dioxide and sulfur dioxide. Outdoor and indoor air pollution cause respiratory and other diseases and are important sources of morbidity and mortality. WHO data show that almost all of the global population (99%) breathe air that exceeds WHO guideline limits and contains high levels of pollutants , with low- and middle-income countries suffering from the highest exposures. Air quality is closely linked to the earth’s climate and ecosystems globally. Many of the drivers of air pollution (i.e. combustion of fossil fuels) are also sources of greenhouse gas emissions. Policies to reduce air pollution, therefore, offer a win-win strategy for both climate and health, lowering the burden of disease attributable to air pollution, as well as contributing to the near- and long-term mitigation of climate change. Impact From smog hanging over cities to smoke inside the home, air pollution poses a major threat to health and climate. Ambient (outdoor) air pollution in both cities and rural areas is causing fine particulate matter which result in strokes, heart diseases, lung cancer, acute and chronic respiratory diseases. Additionally, around 2.1 bil",
       "truncated_excerpt": true,
       "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
     },
-    "url": "https://oecd.ai/en/ai-principles"
+    "url": "https://www.who.int/health-topics/air-pollution"
   },
   "pending_action_plan": {
     "type": "read_public_webpage",
     "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
     "trigger_condition": "next_cycle",
     "objective": "Investigate one consequential real-world question using multiple credible sources",
-    "url": "https://www.who.int/health-topics/air-pollution",
-    "created_cycle": 219,
+    "url": "https://www.unep.org/explore-topics/air",
+    "created_cycle": 220,
     "status": "pending",
     "selection_source": "model"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 219,
+    "cycle": 220,
     "type": "read_public_webpage",
     "reason": "Outward inquiry: gather primary-source evidence for the selected real-world question.",
     "result": {
-      "requested_url": "https://oecd.ai/en/ai-principles",
-      "final_url": "https://oecd.ai/en/ai-principles",
+      "requested_url": "https://www.who.int/health-topics/air-pollution",
+      "final_url": "https://www.who.int/health-topics/air-pollution",
       "content_type": "text/html",
       "bytes_read": 65536,
       "body_truncated": true,
-      "text_excerpt": "AI Principles Overview - OECD.AI",
+      "text_excerpt": "Air pollution Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Health topics / Air pollution Johannes EiseleAFP/Getty Images Mix of outdoor and indoor air pollution. © Credits Air pollution Overview Air pollution is contamination of the indoor or outdoor environment by any chemical, physical or biological agent that modifies the natural characteristics of the atmosphere. Household combustion devices, motor vehicles, industrial facilities and forest fires are common sources of air pollution. Pollutants of major public health concern include particulate matter, carbon monoxide, ozone, nitrogen dioxide and sulfur dioxide. Outdoor and indoor air pollution cause respiratory and other diseases and are important sources of morbidity and mortality. WHO data show that almost all of the global population (99%) breathe air that exceeds WHO guideline limits and contains high levels of pollutants , with low- and middle-income countries suffering from the highest exposures. Air quality is closely linked to the earth’s climate and ecosystems globally. Many of the drivers of air pollution (i.e. combustion of fossil fuels) are also sources of greenhouse gas emissions. Policies to reduce air pollution, therefore, offer a win-win strategy for both climate and health, lowering the burden of disease attributable to air pollution, as well as contributing to the near- and long-term mitigation of climate change. Impact From smog hanging over cities to smoke inside the home, air pollution poses a major threat to health and climate. Ambient (outdoor) air pollution in both cities and rural areas is causing fine particulate matter which result in strokes, heart diseases, lung cancer, acute and chronic respiratory diseases. Additionally, around 2.1 bil",
       "truncated_excerpt": true,
       "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
     }
@@ -4403,12 +4302,12 @@
     "next_action": "Review findings for contradictions and propose a falsifiable follow-up."
   },
   "last_public_web_observation": {
-    "requested_url": "https://oecd.ai/en/ai-principles",
-    "final_url": "https://oecd.ai/en/ai-principles",
+    "requested_url": "https://www.who.int/health-topics/air-pollution",
+    "final_url": "https://www.who.int/health-topics/air-pollution",
     "content_type": "text/html",
     "bytes_read": 65536,
     "body_truncated": true,
-    "text_excerpt": "AI Principles Overview - OECD.AI",
+    "text_excerpt": "Air pollution Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Health topics / Air pollution Johannes EiseleAFP/Getty Images Mix of outdoor and indoor air pollution. © Credits Air pollution Overview Air pollution is contamination of the indoor or outdoor environment by any chemical, physical or biological agent that modifies the natural characteristics of the atmosphere. Household combustion devices, motor vehicles, industrial facilities and forest fires are common sources of air pollution. Pollutants of major public health concern include particulate matter, carbon monoxide, ozone, nitrogen dioxide and sulfur dioxide. Outdoor and indoor air pollution cause respiratory and other diseases and are important sources of morbidity and mortality. WHO data show that almost all of the global population (99%) breathe air that exceeds WHO guideline limits and contains high levels of pollutants , with low- and middle-income countries suffering from the highest exposures. Air quality is closely linked to the earth’s climate and ecosystems globally. Many of the drivers of air pollution (i.e. combustion of fossil fuels) are also sources of greenhouse gas emissions. Policies to reduce air pollution, therefore, offer a win-win strategy for both climate and health, lowering the burden of disease attributable to air pollution, as well as contributing to the near- and long-term mitigation of climate change. Impact From smog hanging over cities to smoke inside the home, air pollution poses a major threat to health and climate. Ambient (outdoor) air pollution in both cities and rural areas is causing fine particulate matter which result in strokes, heart diseases, lung cancer, acute and chronic respiratory diseases. Additionally, around 2.1 bil",
     "truncated_excerpt": true,
     "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
   },
@@ -5169,6 +5068,16 @@
       "transition_source": "model",
       "transition_validation": "",
       "evidence_present": true
+    },
+    {
+      "cycle": 220,
+      "objective_title": "Investigate one consequential real-world question using multiple credible sources",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": true
     }
   ],
   "world_inquiry": {
@@ -5314,6 +5223,16 @@
         "excerpt": "AI Principles Overview - OECD.AI",
         "error": null,
         "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself."
+      },
+      {
+        "topic": "Air pollution and preventable health harms",
+        "question": "What do public-health and environmental authorities report about the health burden of air pollution, and which interventions are supported?",
+        "url": "https://www.who.int/health-topics/air-pollution",
+        "observed_utc": "2026-10-28T23:06:24.577819+00:00",
+        "success": true,
+        "excerpt": "Air pollution Skip to main content Global Regions WHO Regional websites Africa Americas South-East Asia Europe Eastern Mediterranean Western Pacific When autocomplete results are available use up and down arrows to review and enter to select. Select language Select language English Home Health Topics All topics A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Resources Fact sheets Facts in pictures Multimedia Podcasts Publications Questions and answers Tools and toolkits Popular Dengue Endometriosis Excessive heat Herpes Mental disorders Mpox Countries All countries A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Regions Africa Americas Europe Eastern Mediterranean South-East Asia Western Pacific WHO in countries Data by country Country presence Country cooperation strategies Country office profiles Strengthening country offices Newsroom Newsroom News releases Statements Campaigns Events Feature stories Speeches Commentaries Photo library Headlines Emergencies In focus Cholera Ebola disease Israel and the occupied Palestinian territory Middle East Sudan Ukraine Latest Disease Outbreak News Situation reports Rapid risk assessments Weekly Epidemiological Record WHO in emergencies Surveillance Alert and response Operations Research Funding Partners Health emergency appeals International Health Regulations Independent Oversight and Advisory Committee Data Data at WHO Data hub Global Health Estimates Health inequality Global Health Observatory Dashboards Triple Billion Progress Health Inequality Monitor Delivery for impact COVID-19 dashboard Data collection Classifications SCORE Surveys Civil registration and vital statistics Routine health information systems Harmonized health facility assessment GIS centre for health Reports World Health Statistics UHC global monitoring report About WHO About WHO Partnerships Committees and advisory groups Collaborating centres Technical teams Organizational structure Who we are Our work Activities Initiatives General Programme of Work WHO Academy Funding Investment in WHO WHO Foundation Accountability External audit Financial statements Internal audit and investigations Programme Budget Results reports Governance Governing bodies World Health Assembly Executive Board Member States Portal Home / Health topics / Air pollution Johannes EiseleAFP/Getty Images Mix of outdoor and indoor air pollution. © Credits Air pollution Overview Air pollution is contamination of the indoor or outdoor environment by any chemical, physical or biological agent that modifies the natural characteristics of the atmosphere. Household combustion devices, motor vehicles, industrial facilities and forest fires are common sources of air pollution. Pollutants of major public health concern include particulate matter, carbon monoxide, ozone, nitrogen dioxide and sulfur dioxide. Outdoor and indoor air pollution cause respiratory and other diseases and are important sources of morbidity and mortality. WHO data show that almost all of the global population (99%) breathe air that exceeds WHO guideline limits and contains high levels of pollutants , with low- and middle-income countries suffering from the highest exposures. Air quality is closely linked to the earth’s climate and ecosystems globally. Many of the drivers of air pollution (i.e. combustion of fossil fuels) are also sources of greenhouse gas emissions. Policies to reduce air pollution, therefore, offer a win-win strategy for both climate and health, lowering the burden of disease attributable to air pollution, as well as contributing to the near- and long-term mitigation of climate change. Impact From smog hanging over cities to smoke inside the home, air pollution poses a major threat to health and climate. Ambient (outdoor) air pollution in both cities and rural areas is causing fine particulate matter which result in strokes, heart diseases, lung cancer, acute and chronic respiratory diseases. Additionally, around 2.1 bil",
+        "error": null,
+        "interpretation": "Source excerpt is evidence to assess, not a conclusion by itself."
       }
     ],
     "unresolved_questions": [
@@ -5321,7 +5240,7 @@
       "Which climate risks are documented by major scientific assessments, and which adaptation measures have evidence behind them?",
       "What do public standards bodies recommend for managing AI risks, and what practical gaps remain?"
     ],
-    "next_research_step": "Compare the collected sources, record agreements and uncertainty, then choose a concrete follow-up.",
+    "next_research_step": "Read the next distinct source for this question.",
     "active_research": {
       "topic": "Air pollution and preventable health harms",
       "question": "What do public-health and environmental authorities report about the health burden of air pollution, and which interventions are supported?",
@@ -5334,7 +5253,9 @@
         "https://www.who.int/health-topics/air-pollution",
         "https://www.unep.org/explore-topics/air"
       ],
-      "visited_sources": [],
+      "visited_sources": [
+        "https://www.who.int/health-topics/air-pollution"
+      ],
       "started_utc": "2026-10-28T23:06:11.027232+00:00"
     },
     "last_selection_reason": "Selected from a bounded public-interest shortlist using an explicit ranking of public benefit, urgency, evidence gap, feasibility, and novelty.",
