@@ -154,7 +154,7 @@ def verify_stall_recovery_objective(state, reflection, action=None):
     verified = result.get("passed") is True and all(name in output for name in required)
     reflection["objective_status"] = "completed" if verified else "in_progress"
     reflection["objective_evidence"] = (
-        "Full regression suite passed and all three stall-recovery tests were reported."
+        "Repository test file and verbose test output confirm all three recovery checks passed."
         if verified else
         "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
     )
