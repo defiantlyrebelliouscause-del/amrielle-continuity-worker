@@ -137,12 +137,13 @@ def audit_state(state):
     }
 
 
-def verify_stall_recovery_objective(state, reflection):
+def verify_stall_recovery_objective(state, reflection, action=None):
     """Require the passing full test suite and all dedicated recovery tests."""
-    action = execute_self_directed_action(state, {
-        "type": "run_regression_tests",
-        "reason": "Verify the repeated-transition-stall recovery objective from test output.",
-    })
+    if action is None:
+        action = execute_self_directed_action(state, {
+            "type": "run_regression_tests",
+            "reason": "Verify the repeated-transition-stall recovery objective from test output.",
+        })
     result = action.get("result", {})
     output = str(result.get("output_tail", ""))
     required = [
@@ -781,7 +782,7 @@ def run_cycle():
         reflection["self_directed_action"] = {"type": "run_regression_tests", "reason": "Deterministically verify the stalled recovery objective."}
     action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
     if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
-        reflection, action_record = verify_stall_recovery_objective(state, reflection)
+        reflection, action_record = verify_stall_recovery_objective(state, reflection, action_record)
     capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
     proposed_capability = validate_capability_request(reflection.get("capability_request"))
     if proposed_capability:
