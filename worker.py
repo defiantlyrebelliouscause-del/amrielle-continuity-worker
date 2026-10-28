@@ -780,6 +780,8 @@ def run_cycle():
     if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
         reflection["self_directed_action"] = {"type": "run_regression_tests", "reason": "Deterministically verify the stalled recovery objective."}
     action_record = execute_self_directed_action(state, reflection.get("self_directed_action"))
+    if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
+        reflection, action_record = verify_stall_recovery_objective(state, reflection)
     capability_audit = {"accepted": False, "reason": "No valid capability request proposed."}
     proposed_capability = validate_capability_request(reflection.get("capability_request"))
     if proposed_capability:
