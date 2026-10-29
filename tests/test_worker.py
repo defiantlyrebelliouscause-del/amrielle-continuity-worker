@@ -92,6 +92,67 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertEqual(len(snapshot["sources"]), 4)
         self.assertTrue(all("error" in source for source in snapshot["sources"].values()))
 
+    def test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results(self):
+        payload = {"message": {"items": [{
+            "DOI": "10.1234/example", "title": ["Evidence on AI welfare"],
+            "URL": "https://doi.org/10.1234/example", "publisher": "Example Academic Press",
+            "type": "journal-article", "published": {"date-parts": [[2025, 4, 2]]},
+            "container-title": ["Journal of AI Studies"], "score": 8.5,
+        }]}}
+        with patch("worker._fetch_public_json", return_value=payload) as fetch:
+            result = worker.discover_public_research(" AI welfare evidence ", rows=99)
+        self.assertEqual(result["provider"], "Crossref")
+        self.assertEqual(result["result_count"], 1)
+        self.assertEqual(result["results"][0]["title"], "Evidence on AI welfare")
+        self.assertEqual(result["results"][0]["year"], 2025)
+        self.assertIn("rows=5", fetch.call_args.args[0])
+        self.assertIn("query.bibliographic=AI", fetch.call_args.args[0])
+
+    def test_discovery_action_persists_results_and_marks_new_urls(self):
+        payload = {"message": {"items": [{
+            "DOI": "10.1234/new", "title": ["New AI consciousness study"],
+            "URL": "https://doi.org/10.1234/new", "publisher": "Research Press",
+            "type": "journal-article", "published": {"date-parts": [[2024]]},
+            "container-title": ["Consciousness Research"], "score": 7.2,
+        }]}}
+        state = {"cycle": 5, "history": [], "world_inquiry": {"findings": [{"url": "https://example.org/seed"}]}}
+        with patch("worker._fetch_public_json", return_value=payload):
+            action = worker.execute_self_directed_action(state, {
+                "type": "discover_public_research", "query": "AI consciousness",
+                "reason": "Find scholarly work not already in the source list.",
+            })
+        self.assertTrue(action["executed"])
+        self.assertEqual(action["type"], "discover_public_research")
+        self.assertEqual(action["result"]["newly_discovered_count"], 1)
+        self.assertEqual(len(state["discovery_history"]), 1)
+        self.assertEqual(state["discovery_history"][0]["url"], "https://doi.org/10.1234/new")
+
+    def test_discovery_action_marks_previously_seen_urls_as_not_new(self):
+        payload = {"message": {"items": [{
+            "DOI": "10.1234/old", "title": ["Previously found study"],
+            "URL": "https://doi.org/10.1234/old", "publisher": "Research Press",
+            "type": "journal-article", "published": {"date-parts": [[2023]]},
+            "container-title": ["AI Journal"], "score": 5.0,
+        }]}}
+        state = {"discovery_history": [{"url": "https://doi.org/10.1234/old"}]}
+        with patch("worker._fetch_public_json", return_value=payload):
+            action = worker.execute_self_directed_action(state, {
+                "type": "discover_public_research", "query": "AI consciousness",
+                "reason": "Check whether discovery deduplicates known records.",
+            })
+        self.assertEqual(action["result"]["newly_discovered_count"], 0)
+
+    def test_discovery_action_plan_requires_and_preserves_query(self):
+        self.assertIsNone(worker.validate_action_plan({
+            "type": "discover_public_research", "reason": "Search", "trigger_condition": "next_cycle"
+        }, 2))
+        plan = worker.validate_action_plan({
+            "type": "discover_public_research", "query": "AI welfare",
+            "reason": "Discover new scholarly records", "trigger_condition": "next_cycle",
+        }, 2)
+        self.assertEqual(plan["query"], "AI welfare")
+        self.assertEqual(plan["status"], "pending")
+
     def test_private_contact_is_injected_only_from_runtime_environment(self):
         with patch.dict("os.environ", {"AMRIELLE_CONTACT_EMAIL": "contact@example.com"}):
             prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
