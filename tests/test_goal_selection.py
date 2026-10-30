@@ -92,6 +92,22 @@ class GoalSelectionTests(unittest.TestCase):
             {"cycle": 3, "transition_accepted": False},
         ]))
 
+    def test_stall_recovery_can_be_reused_after_a_prior_completed_episode(self):
+        from goal_selection import build_stall_recovery_candidate
+
+        title = "Validate deterministic recovery from repeated objective-transition stalls"
+        candidate = build_stall_recovery_candidate(
+            CURRENT,
+            [
+                {"cycle": 10, "transition_accepted": False},
+                {"cycle": 11, "transition_accepted": False},
+                {"cycle": 12, "transition_accepted": False},
+            ],
+            [title, "Another previously completed objective"],
+        )
+        self.assertIsNotNone(candidate)
+        self.assertEqual(candidate["title"], title)
+
     def test_stall_recovery_does_not_repeat_when_already_current(self):
         from goal_selection import build_stall_recovery_candidate
 
@@ -101,6 +117,28 @@ class GoalSelectionTests(unittest.TestCase):
             {"cycle": 2, "transition_accepted": False},
             {"cycle": 3, "transition_accepted": False},
         ]))
+
+    def test_fixed_twelve_case_transition_gate_benchmark(self):
+        # A deterministic schema/quality benchmark, not a model-quality or
+        # source-truth benchmark. Expected outcomes are fixed in advance.
+        cases = [
+            (dict(GOOD), True, []),
+            (dict(GOOD, title=""), False, []),
+            (dict(GOOD, evidence=""), False, []),
+            (dict(GOOD, evidence="too short"), False, []),
+            (dict(GOOD, completion_criteria=["Make progress"]), False, []),
+            (dict(GOOD, completion_criteria=[]), False, []),
+            (dict(GOOD, public_benefit="Improve the system"), False, []),
+            (dict(GOOD, risk_level="unrestricted"), False, []),
+            (dict(GOOD, title=CURRENT), False, []),
+            (dict(GOOD), False, [GOOD["title"]]),
+            (dict(GOOD, risk_level="human_approval_required"), True, []),
+            (dict(GOOD, completion_criteria=["At least 2 independent checks pass"]), True, []),
+        ]
+        for index, (candidate, expected, recent) in enumerate(cases, start=1):
+            with self.subTest(case=index):
+                self.assertEqual(score_candidate(candidate, CURRENT, recent)["accepted"], expected)
+        self.assertEqual(len(cases), 12)
 
     def test_evidence_truth_is_not_claimed(self):
         result = score_candidate(GOOD, CURRENT)

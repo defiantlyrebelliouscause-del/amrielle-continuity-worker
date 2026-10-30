@@ -1162,9 +1162,12 @@ def run_cycle():
         [str(item.get("title", "")) for item in state.get("objective_history", []) if isinstance(item, dict)],
     )
     if recovery is not None and status == "in_progress":
+        # Recovery is a repeatable deterministic policy. Historical use of the
+        # same diagnostic objective must not disable it in a later stall episode.
+        # Only reject it when it is already the active objective (handled by the
+        # recovery builder above).
         recovery_audit = score_candidate(
-            recovery, str(objective_before.get("title", "")),
-            [str(item.get("title", "")) for item in state.get("objective_history", []) if isinstance(item, dict)],
+            recovery, str(objective_before.get("title", "")), []
         )
         if recovery_audit.get("accepted"):
             successor_title = recovery["title"]
