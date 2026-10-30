@@ -109,7 +109,8 @@ def build_stall_recovery_candidate(
 
     This is a deterministic recovery policy, not a claim that the model chose
     the successor. It abstains when the current objective is already the
-    recovery objective or when recent history contains a similar title.
+    recovery objective. A previously completed recovery objective may be
+    reused for a new stall episode; historical use must not disable recovery.
     """
     history = [item for item in (transition_history or []) if isinstance(item, dict)]
     recent = history[-3:]
@@ -117,8 +118,7 @@ def build_stall_recovery_candidate(
         return None
 
     title = "Validate deterministic recovery from repeated objective-transition stalls"
-    comparisons = [current_objective, *(recent_objectives or [])]
-    if any(similarity(title, old) >= 0.72 for old in comparisons if old):
+    if similarity(title, current_objective) >= 0.72:
         return None
 
     cycles = [str(item.get("cycle", "?")) for item in recent]
