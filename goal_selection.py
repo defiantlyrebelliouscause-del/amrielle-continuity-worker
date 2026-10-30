@@ -139,7 +139,9 @@ def build_stall_recovery_candidate(
         ),
         "risk_level": "read_only",
     }
-    audit = score_candidate(candidate, current_objective, recent_objectives)
+    # A prior completed recovery objective is not a duplicate of the active
+    # objective. Score this repeatable policy against the active objective only.
+    audit = score_candidate(candidate, current_objective, [])
     return candidate if audit.get("accepted") else None
 
 
