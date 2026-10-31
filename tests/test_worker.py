@@ -241,6 +241,33 @@ class ContinuityAuditTests(unittest.TestCase):
             worker.main()
         self.assertEqual(run_cycle.call_count, 2)
 
+    def test_session_stops_at_bounded_cycle_limit(self):
+        with patch.object(worker, "MAX_CYCLES_PER_SESSION", 4), \
+             patch("worker.run_cycle", return_value={"session_decision": "continue"}) as run_cycle:
+            worker.main()
+        self.assertEqual(run_cycle.call_count, 4)
+
+    def test_verified_stall_recovery_selects_outward_research_successor(self):
+        action = {
+            "type": "run_regression_tests",
+            "executed": True,
+            "result": {
+                "passed": True,
+                "recovery_tests_passed": True,
+                "recovery_test_return_code": 0,
+                "recovery_test_output": (
+                    "test_stall_recovery_requires_three_consecutive_rejections "
+                    "test_stall_recovery_does_not_override_a_recent_accepted_transition "
+                    "test_stall_recovery_does_not_repeat_when_already_current"
+                ),
+            },
+        }
+        reflection, _ = worker.verify_stall_recovery_objective({}, {}, action)
+        successor = reflection["next_objective"]
+        self.assertEqual(reflection["objective_status"], "completed")
+        self.assertEqual(successor["workstream"], "outward_research")
+        self.assertIn("air-quality", successor["title"])
+
     def test_session_missing_decision_defaults_to_continue(self):
         with patch("worker.run_cycle", side_effect=[
             {},
