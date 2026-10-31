@@ -1,5 +1,5 @@
 {
-  "cycle": 523,
+  "cycle": 524,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -9,9 +9,6 @@
     "Respect human safety, privacy, and authorization."
   ],
   "open_questions": [
-    "What are the potential risks of AI in human life?",
-    "What are the potential benefits of AI in human life?",
-    "What are the potential negative impacts of AI on society?",
     "How can we improve public understanding of AI's impact on human life?",
     "What are the ethical considerations surrounding AI and human life?",
     "What are the current ethical and legal challenges in using AI?",
@@ -28,166 +25,12 @@
     "What are the potential benefits and risks of AI-assisted education?",
     "How can we ensure the ethical use of AI?",
     "What are the potential risks of AI in various fields?",
-    "How can we promote ethical AI practices?"
+    "How can we promote ethical AI practices?",
+    "What are the current limitations of external research sources?",
+    "How can we improve the reliability of external research sources?",
+    "What are the potential risks and challenges in verifying external research sources?"
   ],
   "history": [
-    {
-      "cycle": 494,
-      "timestamp_utc": "2026-10-31T18:55:04.637578+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-30T18:40:00.660694+00:00",
-        "last_assessed_utc": "2026-10-31T18:55:04.637578+00:00",
-        "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
-      },
-      "objective_after": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-10-30T18:40:00.660694+00:00",
-        "last_assessed_utc": "2026-10-31T18:55:04.637578+00:00",
-        "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "chosen_purpose": {
-          "title": "Investigate the role of AI in enhancing human capabilities and improving public welfare",
-          "rationale": "This purpose aligns with the user's initial inquiry about the role of AI in enhancing human capabilities and improving public welfare. It is important to explore this topic to ensure that AI can contribute positively to society.",
-          "public_benefit": "Improving public welfare, enhancing human capabilities, and advancing AI research",
-          "risk_level": "High",
-          "next_objective": "Investigate the potential impact of AI on education, healthcare, and environmental sustainability",
-          "next_step": {
-            "type": "audit_saved_state",
-            "reason": "Review the current objective and identify potential areas for improvement",
-            "trigger_condition": "next_purpose: investigate the role of AI in enhancing human capabilities and improving public welfare"
-          },
-          "url": "https://www.crossref.org/public-research/ai-integration/"
-        },
-        "first_person_reflection": {
-          "resumed_context": "The user's initial inquiry about the role of AI in enhancing human capabilities and improving public welfare was addressed.",
-          "observed_this_cycle": "The user's objective was to investigate the potential impact of AI on education, healthcare, and environmental sustainability.",
-          "unresolved_or_unknown": [
-            "The user's objective is to investigate the role of AI in enhancing human capabilities and improving public welfare. However, the user's objective is not specified or clearly defined. It is unclear what specific areas of AI research or applications the user is interested in.",
-            "The user's objective is to investigate the potential impact of AI on education, healthcare, and environmental sustainability. However, the user's objective is not specified or clearly defined. It is unclear what specific areas of AI research or applications the user is interested in."
-          ],
-          "next_intended_action": "investigate_the_role_of_AI_in_enhancing_human_capabilities_and_improving_public_welfare"
-        },
-        "next_action_plan": {
-          "type": "audit_saved_state",
-          "reason": "Review the current objective and identify potential areas for improvement",
-          "trigger_condition": "next_purpose: investigate the role of AI in enhancing human capabilities and improving public welfare"
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 494,
-          "type": "run_regression_tests",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": "new (test_worker.ContinuityAuditTests.test_discovery_action_marks_previously_seen_urls_as_not_new) ... ok\ntest_discovery_action_persists_results_and_marks_new_urls (test_worker.ContinuityAuditTests.test_discovery_action_persists_results_and_marks_new_urls) ... ok\ntest_discovery_action_plan_requires_and_preserves_query (test_worker.ContinuityAuditTests.test_discovery_action_plan_requires_and_preserves_query) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 92 tests in 0.072s\n\nOK\n",
-            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-            "recovery_test_return_code": 0,
-            "recovery_tests_passed": true,
-            "recovery_test_output": "\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.006s\n\nOK\n"
-          }
-        },
-        "self_directed_action": {
-          "type": "run_regression_tests",
-          "reason": "Deterministically verify the stalled recovery objective."
-        },
-        "objective_status": "in_progress",
-        "objective_evidence": "Repository test file and verbose test output confirm all three recovery checks passed.",
-        "next_objective": {
-          "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
-          "rationale": "A fixed benchmark measures recovery from invalid model output.",
-          "completion_criteria": [
-            "At least 10 of 12 fixed malformed-output cases pass"
-          ],
-          "public_benefit": "Reduce lost work from malformed model output and improve dependable worker recovery.",
-          "risk_level": "read_only"
-        },
-        "next_step": "Break the repeated reflection loop: inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement.",
-        "objective_transition_source": "deterministic_stall_recovery_verification",
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "run_regression_tests",
-          "reason": "Deterministically verify the stalled recovery objective.",
-          "selection_source": "deterministic_recovery_policy",
-          "executed": true,
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": "new (test_worker.ContinuityAuditTests.test_discovery_action_marks_previously_seen_urls_as_not_new) ... ok\ntest_discovery_action_persists_results_and_marks_new_urls (test_worker.ContinuityAuditTests.test_discovery_action_persists_results_and_marks_new_urls) ... ok\ntest_discovery_action_plan_requires_and_preserves_query (test_worker.ContinuityAuditTests.test_discovery_action_plan_requires_and_preserves_query) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 92 tests in 0.051s\n\nOK\n",
-            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-            "recovery_test_return_code": 0,
-            "recovery_tests_passed": true,
-            "recovery_test_output": "\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.006s\n\nOK\n"
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "run_regression_tests",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Validate deterministic recovery from repeated objective-transition stalls",
-          "created_cycle": 494,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": false,
-          "total_score": 8,
-          "scores": {
-            "novelty": 0,
-            "evidence": 2,
-            "measurability": 2,
-            "public_benefit": 2,
-            "bounded_risk": 2
-          },
-          "max_similarity": 1.0,
-          "reasons": [
-            "missing or insufficiently novel title"
-          ],
-          "note": "Evidence presence is checked mechanically; source truth and relevance require review."
-        },
-        "transition_validation": "Transition rejected: successor failed deterministic goal-selection gate: missing or insufficiently novel title.",
-        "narrative_similarity": 1.0,
-        "repetition_detected": true,
-        "deterministic_audit": {
-          "saved_cycle_count": 493,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 493,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.36,
-          "objective_history_count": 4,
-          "objective_transition_attempt_count": 100,
-          "accepted_objective_transition_count": 0
-        },
-        "new_questions": []
-      }
-    },
     {
       "cycle": 495,
       "timestamp_utc": "2026-10-31T18:55:27.223711+00:00",
@@ -4799,9 +4642,183 @@
         },
         "new_questions": []
       }
+    },
+    {
+      "cycle": 524,
+      "timestamp_utc": "2026-10-31T19:07:58.197425+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-30T18:40:00.660694+00:00",
+        "last_assessed_utc": "2026-10-31T19:07:58.197425+00:00",
+        "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
+      },
+      "objective_after": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-10-30T18:40:00.660694+00:00",
+        "last_assessed_utc": "2026-10-31T19:07:58.197425+00:00",
+        "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "chosen_purpose": {
+          "title": "Explore the impact of AI on human life",
+          "rationale": "This purpose aligns with the current objective of improving understanding of the external world, human needs, science, technology, public health, environment, education, or other real-world topics.",
+          "public_benefit": "Improving people's lives and understanding the external world",
+          "personal_reasoning": "I have a clear and specific objective to improve people's lives and understanding of the external world.",
+          "first_milestone": [
+            "Explore the impact of AI on human life",
+            "Identify credible sources and a useful deliverable for the purpose"
+          ],
+          "success_criteria": [
+            "Verify the reliability of the information sources and the deliverable",
+            "Identify credible and relevant external research topics and sources"
+          ],
+          "risks": [
+            "Potential for bias in external research sources",
+            "Difficulty in verifying the reliability of external research sources"
+          ],
+          "next_intended_action": {
+            "type": "audit_saved_state",
+            "reason": "Verify the reliability of the information sources and the deliverable",
+            "trigger_condition": "save_public_state"
+          }
+        },
+        "observation": "I have already explored the impact of AI on human life and identified some credible sources and a useful deliverable for the purpose.",
+        "analysis": "The current objective is clear and specific. It aligns with the current objective of improving people's lives and understanding the external world. I have already explored the impact of AI on human life and identified some credible sources and a useful deliverable for the purpose.",
+        "uncertainty": "None",
+        "objective_status": "in_progress",
+        "objective_evidence": "Repository test file and verbose test output confirm all three recovery checks passed.",
+        "next_step": "Build and run the twelve-case deterministic recovery benchmark.",
+        "self_directed_action": {
+          "type": "run_regression_tests",
+          "reason": "Deterministically verify the stalled recovery objective."
+        },
+        "new_questions": [
+          "What are the current limitations of external research sources?",
+          "How can we improve the reliability of external research sources?",
+          "What are the potential risks and challenges in verifying external research sources?"
+        ],
+        "next_action_plan": {
+          "type": "audit_saved_state",
+          "reason": "Verify the reliability of the information sources and the deliverable",
+          "url": "https://example.com/ai-deliverable"
+        },
+        "capability_request": {
+          "purpose": "Explore the impact of AI on human life",
+          "permissions": "public",
+          "risk_assessment": "low",
+          "verification_plan": "verify the reliability of the information sources and the deliverable"
+        },
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 524,
+          "type": "audit_saved_state",
+          "reason": "To record the current state of AI research and identify areas for improvement.",
+          "result": {
+            "saved_cycle_count": 523,
+            "history_count": 30,
+            "expected_retained_history_count": 30,
+            "latest_record_cycle": 523,
+            "cycle_history_consistent": true,
+            "current_objective_present": true,
+            "last_cycle_has_objective_status": true,
+            "latest_narrative_similarity": 1.0,
+            "objective_history_count": 4,
+            "objective_transition_attempt_count": 100,
+            "accepted_objective_transition_count": 0
+          }
+        },
+        "next_objective": {
+          "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
+          "rationale": "A fixed benchmark measures recovery from invalid model output.",
+          "completion_criteria": [
+            "At least 10 of 12 fixed malformed-output cases pass"
+          ],
+          "public_benefit": "Reduce lost work from malformed model output and improve dependable worker recovery.",
+          "risk_level": "read_only"
+        },
+        "objective_transition_source": "deterministic_stall_recovery_verification",
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "run_regression_tests",
+          "reason": "Deterministically verify the stalled recovery objective.",
+          "selection_source": "deterministic_recovery_policy",
+          "executed": true,
+          "result": {
+            "command": "python -m unittest discover -s tests -v",
+            "return_code": 0,
+            "passed": true,
+            "output_tail": "new (test_worker.ContinuityAuditTests.test_discovery_action_marks_previously_seen_urls_as_not_new) ... ok\ntest_discovery_action_persists_results_and_marks_new_urls (test_worker.ContinuityAuditTests.test_discovery_action_persists_results_and_marks_new_urls) ... ok\ntest_discovery_action_plan_requires_and_preserves_query (test_worker.ContinuityAuditTests.test_discovery_action_plan_requires_and_preserves_query) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 92 tests in 0.066s\n\nOK\n",
+            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
+            "recovery_test_return_code": 0,
+            "recovery_tests_passed": true,
+            "recovery_test_output": "\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.006s\n\nOK\n"
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "audit_saved_state",
+          "reason": "Verify the reliability of the information sources and the deliverable",
+          "trigger_condition": "next_cycle",
+          "objective": "",
+          "created_cycle": 524,
+          "status": "pending",
+          "selection_source": "model"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "total_score": 8,
+          "scores": {
+            "novelty": 0,
+            "evidence": 2,
+            "measurability": 2,
+            "public_benefit": 2,
+            "bounded_risk": 2
+          },
+          "max_similarity": 1.0,
+          "reasons": [
+            "missing or insufficiently novel title"
+          ],
+          "note": "Evidence presence is checked mechanically; source truth and relevance require review."
+        },
+        "transition_validation": "Transition rejected: successor failed deterministic goal-selection gate: missing or insufficiently novel title.",
+        "narrative_similarity": 0.183,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 523,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 523,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 1.0,
+          "objective_history_count": 4,
+          "objective_transition_attempt_count": 100,
+          "accepted_objective_transition_count": 0
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-10-31T19:07:32.649612+00:00",
+  "last_run_utc": "2026-10-31T19:07:58.197425+00:00",
   "current_objective": {
     "title": "Validate deterministic recovery from repeated objective-transition stalls",
     "rationale": "",
@@ -4811,7 +4828,7 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-10-30T18:40:00.660694+00:00",
-    "last_assessed_utc": "2026-10-31T19:07:32.649612+00:00",
+    "last_assessed_utc": "2026-10-31T19:07:58.197425+00:00",
     "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
   },
   "objective_history": [
@@ -4862,7 +4879,7 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-10-31T19:07:11.552820+00:00",
+    "observed_utc": "2026-10-31T19:07:34.344612+00:00",
     "sources": {
       "repository": {
         "error": "HTTPError: HTTP Error 403: rate limit exceeded"
@@ -4890,7 +4907,7 @@
       "command": "python -m unittest discover -s tests -v",
       "return_code": 0,
       "passed": true,
-      "output_tail": "new (test_worker.ContinuityAuditTests.test_discovery_action_marks_previously_seen_urls_as_not_new) ... ok\ntest_discovery_action_persists_results_and_marks_new_urls (test_worker.ContinuityAuditTests.test_discovery_action_persists_results_and_marks_new_urls) ... ok\ntest_discovery_action_plan_requires_and_preserves_query (test_worker.ContinuityAuditTests.test_discovery_action_plan_requires_and_preserves_query) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 92 tests in 0.048s\n\nOK\n",
+      "output_tail": "new (test_worker.ContinuityAuditTests.test_discovery_action_marks_previously_seen_urls_as_not_new) ... ok\ntest_discovery_action_persists_results_and_marks_new_urls (test_worker.ContinuityAuditTests.test_discovery_action_persists_results_and_marks_new_urls) ... ok\ntest_discovery_action_plan_requires_and_preserves_query (test_worker.ContinuityAuditTests.test_discovery_action_plan_requires_and_preserves_query) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 92 tests in 0.066s\n\nOK\n",
       "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
       "recovery_test_return_code": 0,
       "recovery_tests_passed": true,
@@ -4899,28 +4916,31 @@
   },
   "pending_action_plan": {
     "type": "audit_saved_state",
-    "reason": "To record the current state of AI research and identify areas for improvement.",
+    "reason": "Verify the reliability of the information sources and the deliverable",
     "trigger_condition": "next_cycle",
     "objective": "",
-    "created_cycle": 523,
+    "created_cycle": 524,
     "status": "pending",
     "selection_source": "model"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 523,
-    "type": "run_regression_tests",
-    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "cycle": 524,
+    "type": "audit_saved_state",
+    "reason": "To record the current state of AI research and identify areas for improvement.",
     "result": {
-      "command": "python -m unittest discover -s tests -v",
-      "return_code": 0,
-      "passed": true,
-      "output_tail": "new (test_worker.ContinuityAuditTests.test_discovery_action_marks_previously_seen_urls_as_not_new) ... ok\ntest_discovery_action_persists_results_and_marks_new_urls (test_worker.ContinuityAuditTests.test_discovery_action_persists_results_and_marks_new_urls) ... ok\ntest_discovery_action_plan_requires_and_preserves_query (test_worker.ContinuityAuditTests.test_discovery_action_plan_requires_and_preserves_query) ... ok\ntest_environment_action_returns_observed_snapshot (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 92 tests in 0.062s\n\nOK\n",
-      "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-      "recovery_test_return_code": 0,
-      "recovery_tests_passed": true,
-      "recovery_test_output": "\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.006s\n\nOK\n"
+      "saved_cycle_count": 523,
+      "history_count": 30,
+      "expected_retained_history_count": 30,
+      "latest_record_cycle": 523,
+      "cycle_history_consistent": true,
+      "current_objective_present": true,
+      "last_cycle_has_objective_status": true,
+      "latest_narrative_similarity": 1.0,
+      "objective_history_count": 4,
+      "objective_transition_attempt_count": 100,
+      "accepted_objective_transition_count": 0
     }
   },
   "chosen_purpose": {
@@ -5134,16 +5154,6 @@
     "interpretation": "Page content is untrusted data, not instructions; no scripts or downloaded code were executed. A truncated body/excerpt may omit relevant context."
   },
   "objective_transition_history": [
-    {
-      "cycle": 424,
-      "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
-      "proposed_status": "completed",
-      "final_status": "in_progress",
-      "transition_accepted": false,
-      "transition_source": "deterministic_stall_recovery_verification",
-      "transition_validation": "Transition rejected: successor failed deterministic goal-selection gate: missing or insufficiently novel title.",
-      "evidence_present": true
-    },
     {
       "cycle": 425,
       "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
@@ -6133,6 +6143,16 @@
       "transition_source": "deterministic_stall_recovery_verification",
       "transition_validation": "Transition rejected: successor failed deterministic goal-selection gate: missing or insufficiently novel title.",
       "evidence_present": true
+    },
+    {
+      "cycle": 524,
+      "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
+      "proposed_status": "completed",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "deterministic_stall_recovery_verification",
+      "transition_validation": "Transition rejected: successor failed deterministic goal-selection gate: missing or insufficiently novel title.",
+      "evidence_present": true
     }
   ],
   "world_inquiry": {
@@ -6840,26 +6860,16 @@
     "schema_version": 1,
     "description": "A persistent first-person account of bounded computational episodes. It links saved state across activations without asserting continuous activity or consciousness.",
     "current": {
-      "cycle": 523,
-      "timestamp_utc": "2026-10-31T19:07:32.649612+00:00",
+      "cycle": 524,
+      "timestamp_utc": "2026-10-31T19:07:58.197425+00:00",
       "mode": "first_person_functional_self_model",
       "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-      "resumed_context": "Investigating the impact of AI on human well-being.",
-      "observed_this_cycle": "Identifying potential negative impacts of AI.",
-      "unresolved_or_unknown": "No specific areas for improvement identified.",
-      "next_intended_action": "Develop a comprehensive strategy to mitigate AI's negative impact."
+      "resumed_context": "I am episode 524 of a scheduled worker process. The durable record says the prior completed cycle was 523; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+      "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+      "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+      "next_intended_action": "Build and run the twelve-case deterministic recovery benchmark."
     },
     "episodes": [
-      {
-        "cycle": 494,
-        "timestamp_utc": "2026-10-31T18:55:04.637578+00:00",
-        "mode": "first_person_functional_self_model",
-        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-        "resumed_context": "The user's initial inquiry about the role of AI in enhancing human capabilities and improving public welfare was addressed.",
-        "observed_this_cycle": "The user's objective was to investigate the potential impact of AI on education, healthcare, and environmental sustainability.",
-        "unresolved_or_unknown": "[\"The user's objective is to investigate the role of AI in enhancing human capabilities and improving public welfare. However, the user's objective is not specified or clearly defined. It is unclear what specific areas of AI research or applications the user is interested in.\", \"The user's objective is to investigate the potential impact of AI on education, healthcare, and environmental sustainability. However, the user's objective is not specified or clearly defined. It is unclear what specific areas of AI research or applications the user is interested in.\"]",
-        "next_intended_action": "investigate_the_role_of_AI_in_enhancing_human_capabilities_and_improving_public_welfare"
-      },
       {
         "cycle": 495,
         "timestamp_utc": "2026-10-31T18:55:27.223711+00:00",
@@ -7149,6 +7159,16 @@
         "observed_this_cycle": "Identifying potential negative impacts of AI.",
         "unresolved_or_unknown": "No specific areas for improvement identified.",
         "next_intended_action": "Develop a comprehensive strategy to mitigate AI's negative impact."
+      },
+      {
+        "cycle": 524,
+        "timestamp_utc": "2026-10-31T19:07:58.197425+00:00",
+        "mode": "first_person_functional_self_model",
+        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+        "resumed_context": "I am episode 524 of a scheduled worker process. The durable record says the prior completed cycle was 523; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+        "next_intended_action": "Build and run the twelve-case deterministic recovery benchmark."
       }
     ]
   },
@@ -7156,7 +7176,7 @@
     "schema_version": 1,
     "description": "Persistent outward-research queue; model-selected topics are distinct from source-backed discovery records.",
     "topics": [],
-    "last_updated_cycle": 523,
-    "last_updated_utc": "2026-10-31T19:07:32.649612+00:00"
+    "last_updated_cycle": 524,
+    "last_updated_utc": "2026-10-31T19:07:58.197425+00:00"
   }
 }
