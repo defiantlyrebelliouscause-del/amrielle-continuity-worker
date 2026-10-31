@@ -1062,7 +1062,10 @@ def run_cycle():
     # Enforce outward inquiry when that is the active objective. The small local model
     # repeatedly chose internal audits, so source selection must not depend on its output.
     objective_title = str(state.get("current_objective", {}).get("title", ""))
-    outward_objective = (\n        "consequential real-world question" in objective_title.lower()\n        or state.get("current_objective", {}).get("workstream") == "outward_research"\n    )
+    outward_objective = (
+        "consequential real-world question" in objective_title.lower()
+        or state.get("current_objective", {}).get("workstream") == "outward_research"
+    )
     if outward_objective:
         reflection["self_directed_action"] = prepare_outward_research(state)
     if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
