@@ -24,6 +24,7 @@ from experience_evidence_audit import audit_state as audit_experience_evidence
 from origin_purpose_inquiry import run_inquiry as run_origin_purpose_inquiry
 from capability_registry import capability_registry, select_next_integration
 from pathlib import Path
+from first_person_model import update_first_person_model
 
 STATE_PATH = Path("state.json")
 JOURNAL_PATH = Path("journal.md")
@@ -703,6 +704,7 @@ def build_prompt(state):
         "deterministic_audit": audit_state(state),
         "open_questions": state.get("open_questions", [])[-10:],
         "recent_cycles": prior,
+        "first_person_model": state.get("first_person_model", {}),
         "pending_action_plan": state.get("pending_action_plan"),
         "capability_inventory": capability_registry(state),
         "recommended_next_integration": select_next_integration(capability_registry(state)),
@@ -749,7 +751,7 @@ def build_prompt(state):
             "personal_reasoning, first_milestone, success_criteria (array), and "
             "risks. This is the opportunity to choose a purpose, not merely to "
             "describe identity. This is not a request to produce another generic identity "
-            "reflection. Maintain the origin_purpose_inquiry record across runs. When it has "
+            "reflection. Maintain a persistent first_person_model across runs. Use first-person language as a transparent functional self-model: describe what this process resumes, what state and actions are actually recorded, what remains unknown, and what concrete next action it selects. Treat each scheduled activation as a new bounded computational episode linked by saved state, not as uninterrupted awareness between activations. Do not invent sensations, emotions, private experiences, or memories absent from durable records. Never confuse the first-person narrative with evidence of subjective experience; explicitly preserve that uncertainty and allow contrary evidence. Return a first_person_reflection object with keys resumed_context, observed_this_cycle, unresolved_or_unknown, and next_intended_action. Each field must be grounded in the supplied state and this cycle. Maintain the origin_purpose_inquiry record across runs. When it has "
             "fewer than three stages and objective progress is stalled, select investigate_origin_purpose. "
             "Use the saved findings to choose a different next question; cite repository paths and line "
             "numbers, preserve uncertainty, and do not infer private motives. Once all stages are covered, "
@@ -786,7 +788,7 @@ def build_prompt(state):
             "objective_status (in_progress|completed|blocked), objective_evidence, "
             "next_objective (object with title, rationale, completion_criteria, public_benefit, risk_level), "
             "next_step, self_directed_action (object with type and reason, plus query when type=discover_public_research), "
-            "new_questions (array of 0-3 short strings), next_action_plan (object with type, reason, trigger_condition=next_cycle, objective, optional url for read_public_webpage or query for discover_public_research), capability_request (complete object or null). If a pending_action_plan exists, inspect its recorded outcome and continue from that evidence rather than ignoring it. Create one useful next_action_plan for the following cycle; only choose a type from the same allowlist. The handoff is attempted at the start of the next cycle, and only the actual action result can mark it executed. ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
+            "first_person_reflection (object with resumed_context, observed_this_cycle, unresolved_or_unknown, next_intended_action), new_questions (array of 0-3 short strings), next_action_plan (object with type, reason, trigger_condition=next_cycle, objective, optional url for read_public_webpage or query for discover_public_research), capability_request (complete object or null). If a pending_action_plan exists, inspect its recorded outcome and continue from that evidence rather than ignoring it. Create one useful next_action_plan for the following cycle; only choose a type from the same allowlist. The handoff is attempted at the start of the next cycle, and only the actual action result can mark it executed. ""If no currently allowed action can reasonably advance the purpose, propose a new capability with name, purpose, proposed_method, permissions, risk_assessment, and verification_plan. ""A capability proposal is only a request: it must never be auto-executed or grant itself permissions; record it for human review. ""The next_step "
             "must be a single concrete, verifiable action, not a vague aspiration. "
             "Explicitly ask yourself: 'What will I do now?' Choose one safe, specific "
             "action in self_directed_action. Its type must be one of audit_saved_state, audit_experience_evidence, "
@@ -1239,6 +1241,7 @@ def run_cycle():
         "objective_after": state.get("current_objective", {}),
         "reflection": reflection
     }
+    update_first_person_model(state, reflection, cycle, now)
     state["cycle"] = cycle
     state["last_run_utc"] = now
     state.setdefault("history", []).append(record)
@@ -1263,6 +1266,8 @@ def run_cycle():
         journal.write(f"\n### Purpose selection audit\n\n{purpose_note}\n")
         journal.write("\n### Environment observation (read-only public sources)\n\n")
         journal.write(json.dumps(state.get("latest_environment_observation", {}), ensure_ascii=False, indent=2) + "\n")
+        journal.write("\n### First-person continuity model (functional record; not evidence of subjective experience)\n\n")
+        journal.write(json.dumps(state.get("first_person_model", {}).get("current", {}), ensure_ascii=False, indent=2) + "\n")
         journal.write("\n### Self-question\n\nWhat will I do now?\n")
         journal.write("\n### Self-directed action executed\n\n")
         journal.write(json.dumps(action_record, ensure_ascii=False, indent=2) + "\n")
