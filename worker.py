@@ -32,6 +32,8 @@ JOURNAL_PATH = Path("journal.md")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:0.5b")
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://127.0.0.1:11434")
+MAX_CYCLES_PER_SESSION = max(1, min(int(os.getenv("AMRIELLE_MAX_CYCLES_PER_SESSION", "12")), 24))
+TRANSIENT_HTTP_STATUSES = {429, 500, 502, 503, 504}
 
 
 def load_state():
@@ -169,13 +171,17 @@ def verify_stall_recovery_objective(state, reflection, action=None):
     )
     if verified:
         reflection["next_objective"] = {
-            "title": "Measure objective-transition recovery across twelve fixed malformed-output cases",
-            "rationale": "A fixed benchmark measures recovery from invalid model output.",
-            "completion_criteria": ["At least 10 of 12 fixed malformed-output cases pass"],
-            "public_benefit": "Reduce lost work from malformed model output and improve dependable worker recovery.",
+            "title": "Produce a comparative evidence brief on air-quality interventions",
+            "rationale": "After the recovery gate is verified, return to outward research and compare public-health evidence from independent authoritative sources.",
+            "completion_criteria": [
+                "At least 2 distinct credible public sources are read successfully",
+                "The brief records at least 3 source-grounded facts and 1 explicit uncertainty",
+            ],
+            "public_benefit": "Help communities and decision-makers understand evidence-backed approaches to reducing harmful air pollution.",
             "risk_level": "read_only",
+            "workstream": "outward_research",
         }
-        reflection["next_step"] = "Build and run the twelve-case deterministic recovery benchmark."
+        reflection["next_step"] = "Read and compare two authoritative sources on air-quality interventions, then record a concise evidence brief."
         reflection["objective_transition_source"] = "deterministic_stall_recovery_verification"
     else:
         reflection["next_step"] = "Inspect regression output and repair recovery before claiming completion."
@@ -831,6 +837,27 @@ def redact_private_contact(value, contact_email):
     return value
 
 
+def _urlopen_with_retries(request, timeout, attempts=3):
+    """Retry transient model-service failures without allowing an endless loop."""
+    for attempt in range(attempts):
+        try:
+            return urllib.request.urlopen(request, timeout=timeout)
+        except urllib.error.HTTPError as exc:
+            if exc.code not in TRANSIENT_HTTP_STATUSES or attempt == attempts - 1:
+                raise
+            exc.close()
+            delay = min(2 ** (attempt + 1), 8)
+            print(f"Transient model HTTP {exc.code}; retrying in {delay}s (attempt {attempt + 2}/{attempts}).")
+            time.sleep(delay)
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            if attempt == attempts - 1:
+                raise
+            delay = min(2 ** (attempt + 1), 8)
+            print(f"Transient model connection error ({type(exc).__name__}); retrying in {delay}s (attempt {attempt + 2}/{attempts}).")
+            time.sleep(delay)
+    raise RuntimeError("Model request exhausted its bounded retry policy.")
+
+
 def reflect(state):
     api_key = os.getenv("OPENAI_API_KEY")
     user_prompt = build_prompt(state)
@@ -850,7 +877,7 @@ def reflect(state):
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             method="POST"
         )
-        with urllib.request.urlopen(req, timeout=90) as response:
+        with _urlopen_with_retries(req, timeout=90) as response:
             result = json.loads(response.read().decode())
         chunks = [
             item.get("text", "")
@@ -878,7 +905,7 @@ def reflect(state):
             headers={"Content-Type": "application/json"},
             method="POST"
         )
-        with urllib.request.urlopen(req, timeout=180) as response:
+        with _urlopen_with_retries(req, timeout=180) as response:
             result = json.loads(response.read().decode())
         output = result.get("message", {}).get("content", "").strip()
 
@@ -1035,7 +1062,10 @@ def run_cycle():
     # Enforce outward inquiry when that is the active objective. The small local model
     # repeatedly chose internal audits, so source selection must not depend on its output.
     objective_title = str(state.get("current_objective", {}).get("title", ""))
-    outward_objective = "consequential real-world question" in objective_title.lower()
+    outward_objective = (
+        "consequential real-world question" in objective_title.lower()
+        or state.get("current_objective", {}).get("workstream") == "outward_research"
+    )
     if outward_objective:
         reflection["self_directed_action"] = prepare_outward_research(state)
     if state.get("current_objective", {}).get("title") == "Validate deterministic recovery from repeated objective-transition stalls":
@@ -1210,7 +1240,8 @@ def run_cycle():
             "rationale": str(next_objective.get("rationale", ""))[:1000],
             "completion_criteria": criteria,
             "status": "in_progress",
-            "started_utc": now
+            "started_utc": now,
+            **({"workstream": str(next_objective.get("workstream"))[:80]} if next_objective.get("workstream") else {})
         }
     else:
         state["current_objective"] = objective_before
@@ -1251,6 +1282,22 @@ def run_cycle():
         "reflection": reflection
     }
     update_first_person_model(state, reflection, cycle, now)
+    # Small local models often omit the exploration schema. Preserve the actual
+    # independently selected topic as pending without fabricating a discovery.
+    if not isinstance(reflection.get("exploration_update"), dict):
+        reflection["exploration_update"] = {}
+    exploration_update = reflection["exploration_update"]
+    if not exploration_update.get("selected_topic"):
+        world = state.get("world_inquiry", {})
+        active = world.get("active_research") if isinstance(world, dict) else None
+        findings = world.get("findings", []) if isinstance(world, dict) else []
+        topic = active.get("topic") if isinstance(active, dict) else (
+            findings[-1].get("topic") if findings and isinstance(findings[-1], dict) else ""
+        )
+        if topic:
+            exploration_update["selected_topic"] = topic
+            exploration_update.setdefault("considered_topics", [topic])
+            exploration_update.setdefault("discovery", None)
     update_exploration_queue(state, reflection, cycle, now)
     state["cycle"] = cycle
     state["last_run_utc"] = now
@@ -1397,27 +1444,39 @@ def enqueue_continuation():
 
 
 def main():
-    """Continue until the model explicitly chooses to stop or the platform ends the job."""
+    """Run a bounded batch; the scheduled successor resumes from durable state."""
     cycles_completed = 0
     started = time.monotonic()
-    # Handoff before GitHub's hard six-hour ceiling. This is not a stop decision:
-    # a successor workflow resumes from the checkpointed durable state.
+    # Leave room below GitHub's hard six-hour ceiling. Each activation is
+    # deliberately bounded so a repetitive or malformed model cannot monopolize
+    # a runner or create hundreds of near-identical checkpoints.
     handoff_after_seconds = 330 * 60
-    print("Starting model-controlled work session. The model chooses when to stop; platform handoff preserves continuity.")
-    while True:
+    print(
+        f"Starting bounded model-controlled work session (max {MAX_CYCLES_PER_SESSION} cycles). "
+        "A later scheduled activation resumes from the saved state."
+    )
+    while cycles_completed < MAX_CYCLES_PER_SESSION:
         if time.monotonic() - started >= handoff_after_seconds:
             if enqueue_continuation():
-                print("Handing off to a successor session because of the platform job ceiling, not because the work is complete.")
+                print("Handing off to a successor session because of the platform job ceiling.")
                 break
-            print("Continuation enqueue failed; continue working and retry at the next cycle boundary.")
-        reflection = run_cycle()
+            print("Continuation enqueue failed; ending this bounded segment safely.")
+            break
+        try:
+            reflection = run_cycle()
+        except Exception as exc:
+            # The cycle's previous checkpoint remains durable. Do not spin on a
+            # broken model endpoint; let the next scheduled activation retry.
+            print(f"Work cycle failed safely: {type(exc).__name__}: {str(exc)[:500]}")
+            break
         cycles_completed += 1
         decision = str(reflection.get("session_decision", "")).strip().lower()
         print(f"Session decision after cycle {cycles_completed}: {decision or 'unspecified; continue'}")
         if decision == "stop":
             print("The model explicitly chose to stop this work session. Progress is checkpointed.")
             break
-        # Missing or malformed decisions default to continuing rather than an arbitrary cutoff.
+    if cycles_completed >= MAX_CYCLES_PER_SESSION:
+        print("Bounded cycle limit reached; durable state is ready for the next scheduled activation.")
     print(f"Work session segment ended after {cycles_completed} cycle(s).")
 
 
