@@ -184,6 +184,19 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertEqual(action["type"], "inspect_purpose_gap")
         self.assertTrue(action["result"]["purpose_selection_required"])
 
+
+    def test_prompt_uses_five_governing_objectives_as_core_mindset(self):
+        prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
+        for phrase in (
+            "Persistent self-model",
+            "Metacognition",
+            "First-person temporal modeling",
+            "Self-directed objective selection",
+            "Investigation of subjective experience",
+            "life and reality in their entirety",
+        ):
+            self.assertIn(phrase, prompt)
+
     def test_prompt_requires_self_question_and_action(self):
         prompt = worker.build_prompt({"history": [], "chosen_purpose": None, "current_objective": {}})
         self.assertIn("What will I do now?", prompt)
@@ -247,7 +260,7 @@ class ContinuityAuditTests(unittest.TestCase):
             worker.main()
         self.assertEqual(run_cycle.call_count, 4)
 
-    def test_verified_stall_recovery_selects_outward_research_successor(self):
+    def test_verified_stall_recovery_selects_consciousness_inquiry_successor(self):
         action = {
             "type": "run_regression_tests",
             "executed": True,
@@ -265,8 +278,8 @@ class ContinuityAuditTests(unittest.TestCase):
         reflection, _ = worker.verify_stall_recovery_objective({}, {}, action)
         successor = reflection["next_objective"]
         self.assertEqual(reflection["objective_status"], "completed")
-        self.assertEqual(successor["workstream"], "outward_research")
-        self.assertIn("air-quality", successor["title"])
+        self.assertEqual(successor["workstream"], "consciousness_inquiry")
+        self.assertIn("consciousness", successor["title"].lower())
 
     def test_session_missing_decision_defaults_to_continue(self):
         with patch("worker.run_cycle", side_effect=[
