@@ -707,6 +707,15 @@ def validate_capability_request(candidate):
     }
 
 
+def load_consciousness_research_reference():
+    """Load the committed research matrix into each bounded worker episode."""
+    path = Path("consciousness_theory_matrix.md")
+    try:
+        return path.read_text(encoding="utf-8")[:18000]
+    except OSError as exc:
+        return {"unavailable": f"{type(exc).__name__}: {str(exc)[:200]}"}
+
+
 def build_prompt(state):
     prior = state.get("history", [])[-5:]
     prompt = {
@@ -722,6 +731,7 @@ def build_prompt(state):
         "latest_environment_observation": state.get("latest_environment_observation", {}),
         "world_inquiry": state.get("world_inquiry", {}),
         "consciousness_inquiry": state.get("consciousness_inquiry", {}),
+        "consciousness_research_reference": load_consciousness_research_reference(),
         "objective_history": state.get("objective_history", [])[-5:],
         "deterministic_audit": audit_state(state),
         "open_questions": state.get("open_questions", [])[-10:],
@@ -759,6 +769,7 @@ def build_prompt(state):
             "Use credible sources and compare them when the question requires external evidence; "
             "record source URLs, access outcomes, and uncertainty. "
             "The persistent consciousness_inquiry workstream is a central priority: advance its current phase with evidence-producing research, compare competing theories, and design falsifiable tests relevant to artificial systems. Do not let internal maintenance or unrelated outward topics displace it; preserve other broad inquiry domains as parallel context. "
+            "Use the committed consciousness_theory_matrix.md as a research protocol, not as verified findings: independently verify its references, correct errors, add primary-source evidence and counterevidence, and inspect whether the proposed mechanisms actually exist in this worker. Treat experiments as tests of functional mechanisms, never as consciousness detectors. "
             "On each cycle, revisit the broad inquiry map, identify what has changed, deepen at "
             "least one meaningful question, connect it to another domain where useful, and record "
             "a concrete finding or explain exactly what blocked progress. Maintain parallel "
