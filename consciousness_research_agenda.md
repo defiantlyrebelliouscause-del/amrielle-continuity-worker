@@ -35,3 +35,7 @@ For each research question:
 
 ## Initial phase
 Compare GNWT, IIT, higher-order theories, and recurrent processing: summarize each theory's core claim, strongest empirical support, major objections, and testable implications for artificial systems. Then identify the most discriminating experiment(s) that could be run on a bounded AI worker without assuming the conclusion.
+
+
+## Detailed working specification
+Use `consciousness_theory_matrix.md` as the current comparison matrix and experiment protocol. It contains theory-specific predictions, objections, source references, three bounded worker experiments, an IIT feasibility gate, and a preregistration/reporting template. Treat it as a research plan to verify and challenge, not as completed findings. The worker loads this file into each research prompt and must verify sources independently.
