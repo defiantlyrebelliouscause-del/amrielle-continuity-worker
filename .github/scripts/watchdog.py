@@ -74,6 +74,51 @@ def inspect_runs(runs: list[dict], now: datetime) -> list[str]:
     return list(dict.fromkeys(alerts))
 
 
+def inspect_progress(state: dict, now: datetime, repeat_limit: int = 10) -> list[str]:
+    """Flag stale checkpoints and long runs that never leave one objective."""
+    alerts: list[str] = []
+    history = state.get("history") or []
+    cycle = state.get("cycle")
+    if not history:
+        return ["Worker checkpoint has no retained cycle history."]
+
+    latest = history[-1]
+    latest_cycle = latest.get("cycle")
+    if cycle is not None and latest_cycle != cycle:
+        alerts.append(
+            f"Checkpoint cycle mismatch: state says {cycle}, "
+            f"latest retained history record says {latest_cycle}."
+        )
+
+    stamp = parse_time(latest.get("timestamp_utc"))
+    if stamp is None:
+        alerts.append("Latest retained worker cycle has no valid UTC timestamp.")
+    elif now - stamp > QUEUED_LIMIT:
+        alerts.append(
+            f"No durable worker checkpoint has advanced in over "
+            f"{QUEUED_LIMIT.total_seconds() / 3600:g} hours "
+            f"(latest retained cycle {latest_cycle} at {stamp.isoformat()})."
+        )
+
+    def objective(record: dict) -> str:
+        after = record.get("objective_after") or {}
+        before = record.get("objective_before") or {}
+        return (after.get("title") or before.get("title") or "").strip()
+
+    latest_objective = objective(latest)
+    consecutive = 0
+    for record in reversed(history):
+        if objective(record) != latest_objective or not latest_objective:
+            break
+        consecutive += 1
+    if consecutive >= repeat_limit:
+        alerts.append(
+            f"The same objective appears in {consecutive} consecutive retained "
+            f"cycles: '{latest_objective}'. Review for a stalled objective loop."
+        )
+    return alerts
+
+
 def api_request(token: str, method: str, path: str, payload: dict | None = None):
     data = json.dumps(payload).encode("utf-8") if payload is not None else None
     req = Request(
