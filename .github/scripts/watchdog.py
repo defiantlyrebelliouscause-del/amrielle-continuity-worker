@@ -153,6 +153,12 @@ def main() -> int:
     runs = response.get("workflow_runs", [])
     now = datetime.now(timezone.utc)
     alerts = inspect_runs(runs, now)
+    try:
+        with open("state.json", "r", encoding="utf-8") as handle:
+            state = json.load(handle)
+        alerts.extend(inspect_progress(state, now))
+    except (OSError, json.JSONDecodeError) as exc:
+        alerts.append(f"Unable to inspect durable worker checkpoint: {exc}")
 
     summary = [
         "# Amrielle watchdog check",
