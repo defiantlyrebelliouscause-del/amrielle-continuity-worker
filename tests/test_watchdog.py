@@ -28,6 +28,43 @@ class WatchdogRulesTests(unittest.TestCase):
         record.update(overrides)
         return record
 
+    def test_recent_checkpoint_with_objective_change_is_healthy(self):
+        state = {
+            "cycle": 2,
+            "history": [
+                {"cycle": 1, "timestamp_utc": (self.now - timedelta(minutes=20)).isoformat(),
+                 "objective_after": {"title": "First objective"}},
+                {"cycle": 2, "timestamp_utc": (self.now - timedelta(minutes=5)).isoformat(),
+                 "objective_after": {"title": "Second objective"}},
+            ],
+        }
+        self.assertEqual(watchdog.inspect_progress(state, self.now), [])
+
+    def test_stale_checkpoint_is_flagged(self):
+        state = {"cycle": 1, "history": [
+            {"cycle": 1, "timestamp_utc": (self.now - timedelta(hours=9)).isoformat(),
+             "objective_after": {"title": "Research"}}
+        ]}
+        alerts = watchdog.inspect_progress(state, self.now)
+        self.assertTrue(any("No durable worker checkpoint" in item for item in alerts))
+
+    def test_repeated_objective_loop_is_flagged(self):
+        state = {"cycle": 12, "history": [
+            {"cycle": i, "timestamp_utc": (self.now - timedelta(minutes=12-i)).isoformat(),
+             "objective_after": {"title": "Repeat same task"}}
+            for i in range(1, 13)
+        ]}
+        alerts = watchdog.inspect_progress(state, self.now)
+        self.assertTrue(any("12 consecutive" in item for item in alerts))
+
+    def test_checkpoint_cycle_mismatch_is_flagged(self):
+        state = {"cycle": 9, "history": [
+            {"cycle": 8, "timestamp_utc": self.now.isoformat(),
+             "objective_after": {"title": "Research"}}
+        ]}
+        alerts = watchdog.inspect_progress(state, self.now)
+        self.assertTrue(any("cycle mismatch" in item for item in alerts))
+
     def test_healthy_recent_run_has_no_alert(self):
         self.assertEqual(watchdog.inspect_runs([self.run_record()], self.now), [])
 
