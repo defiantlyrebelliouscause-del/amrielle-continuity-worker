@@ -145,6 +145,25 @@ def build_stall_recovery_candidate(
     return candidate if audit.get("accepted") else None
 
 
+
+def recent_objective_titles_for_novelty(objective_history: list[dict[str, Any]] | None) -> list[str]:
+    """Return prior titles that should block duplicate work.
+
+    A blocked objective is eligible to be resumed after its blocker is resolved;
+    completed objectives remain in the novelty history and cannot be repeated.
+    Unknown/legacy statuses are treated conservatively as prior work.
+    """
+    titles = []
+    for item in objective_history or []:
+        if not isinstance(item, dict):
+            continue
+        title = str(item.get("title", "")).strip()
+        status = str(item.get("status", "")).strip().lower()
+        if title and status != "blocked":
+            titles.append(title)
+    return titles
+
+
 def select_candidate(
     candidates: list[dict[str, Any]],
     current_objective: str,
