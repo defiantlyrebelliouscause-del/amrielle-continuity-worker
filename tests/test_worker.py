@@ -280,6 +280,8 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertEqual(reflection["objective_status"], "completed")
         self.assertEqual(successor["workstream"], "consciousness_inquiry")
         self.assertIn("consciousness", successor["title"].lower())
+        self.assertEqual(reflection["next_action_plan"]["type"], "discover_public_research")
+        self.assertIn("global neuronal workspace", reflection["next_action_plan"]["query"])
 
     def test_session_missing_decision_defaults_to_continue(self):
         with patch("worker.run_cycle", side_effect=[
