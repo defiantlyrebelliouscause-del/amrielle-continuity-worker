@@ -195,6 +195,11 @@ def verify_stall_recovery_objective(state, reflection, action=None):
             "workstream": "consciousness_inquiry",
         }
         reflection["next_step"] = "Compare three leading explanatory frameworks for consciousness, noting their evidence, limits, and implications for artificial systems."
+        reflection["next_action_plan"] = {
+            "type": "discover_public_research",
+            "query": "global neuronal workspace theory integrated information theory artificial consciousness",
+            "reason": "Begin the resumed consciousness inquiry with bounded scholarly discovery; record bibliographic metadata for subsequent source review.",
+        }
         reflection["objective_transition_source"] = "deterministic_stall_recovery_verification"
     else:
         reflection["next_step"] = "Inspect regression output and repair recovery before claiming completion."
