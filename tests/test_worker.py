@@ -279,7 +279,9 @@ class ContinuityAuditTests(unittest.TestCase):
         successor = reflection["next_objective"]
         self.assertEqual(reflection["objective_status"], "completed")
         self.assertEqual(successor["workstream"], "consciousness_inquiry")
-        self.assertIn("consciousness", successor["title"].lower())
+        self.assertIn("self-model", successor["title"].lower())
+        self.assertIn("held-out reasoning calibration", successor["title"].lower())
+        self.assertGreaterEqual(len(successor["completion_criteria"]), 3)
 
     def test_session_missing_decision_defaults_to_continue(self):
         with patch("worker.run_cycle", side_effect=[
