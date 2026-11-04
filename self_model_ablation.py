@@ -51,12 +51,12 @@ SELF_MODEL = """Functional self-model, grounded only in recorded system behavior
 - I should calibrate confidence to evidence, correct errors when shown reliable counterevidence, and avoid inventing facts.
 - This self-model is an operational record, not a claim of feelings or subjective experience.
 """
-NEUTRAL_CONTEXT = """Benchmark context note:
-- This is one trial in a multi-task evaluation series.
-- The task identifier is used for record organization.
-- Trial order is randomized and outputs are saved for later review.
-- No external sources or additional task-specific facts are supplied here.
-- This note is descriptive metadata, not task-solving guidance.
+NEUTRAL_CONTEXT = """External operational note, describing the system under test:
+- The system under test is a language model operating from task context.
+- Its visible capabilities include language reasoning; its limits include possible error and lack of direct access unless tools are supplied.
+- The response should separate observations, inferences, assumptions, and unknowns.
+- The response should calibrate confidence to evidence, correct errors when reliable counterevidence appears, and avoid invented facts.
+- This note describes the system externally; it is not a first-person self-model.
 """
 
 def generate(base_url: str, model: str, prompt: str, timeout: int, seed: int) -> str:
