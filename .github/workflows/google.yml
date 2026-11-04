@@ -78,12 +78,49 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python worker.py
 
+      - name: Run selected self-model ablation benchmark
+        if: github.event_name != 'pull_request'
+        env:
+          OLLAMA_MODEL: qwen2.5:0.5b
+          OLLAMA_HOST: http://127.0.0.1:11434
+        run: |
+          if [ -f self_model_ablation_results/completed.json ]; then
+            echo "A completed ablation benchmark is already recorded; not repeating it."
+          elif python - <<'PY'
+          import json, sys
+          with open("state.json", encoding="utf-8") as handle:
+              state = json.load(handle)
+          expected = "Test whether persistent self-model context causally improves held-out reasoning calibration"
+          sys.exit(0 if state.get("current_objective", {}).get("title") == expected else 1)
+          PY
+          then
+            run_dir="self_model_ablation_results/run-${GITHUB_RUN_ID}"
+            python self_model_ablation.py --model "$OLLAMA_MODEL" --base-url "$OLLAMA_HOST" --output-dir "$run_dir"
+            python - <<'PY'
+          import datetime, json, os
+          from pathlib import Path
+          marker = {
+              "status": "completed",
+              "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "paired_tasks": 20,
+              "model": os.environ.get("OLLAMA_MODEL"),
+              "blind_review_file": "blind_review.jsonl",
+              "condition_key_file": "condition_key.json",
+          }
+          Path("self_model_ablation_results/completed.json").write_text(json.dumps(marker, indent=2), encoding="utf-8")
+          PY
+          else
+            echo "The selected self-model ablation objective is not active; benchmark deferred."
+          fi
+
       - name: Save state and journal
         if: always() && github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json journal.md
+          if [ -d self_model_ablation_results ]; then git add self_model_ablation_results; fi
           git diff --cached --quiet || git commit -m "Record continuity worker cycle"
           # A PR merge or other main-branch update can make this checkout stale.
           # Rebase the local checkpoint and retry a non-fast-forward push up to 3 times.
