@@ -34371,3 +34371,253 @@ Completion criteria:
 
 - What observation would falsify the claim that persistent inquiry is working across runs?
 - What question follows after the worker has reviewed the findings for contradictions and proposed a falsifiable follow-up?
+
+## Cycle 1058 — 2026-11-04T21:13:44.238054+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-04T21:13:39.223846+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 38,
+      "default_branch": "main",
+      "pushed_at": "2026-11-04T21:13:21Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 69,
+        "title": "Run Amrielle after recovery handoff fix",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/69",
+        "updated_at": "2026-11-04T21:12:08Z"
+      },
+      {
+        "number": 67,
+        "title": "Resume Amrielle with blocked-objective novelty repair",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/67",
+        "updated_at": "2026-11-04T20:22:41Z"
+      },
+      {
+        "number": 66,
+        "title": "Execute the selected self-model ablation benchmark",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/66",
+        "updated_at": "2026-11-04T20:21:30Z"
+      },
+      {
+        "number": 65,
+        "title": "Run Amrielle after self-model ablation objective repair",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/65",
+        "updated_at": "2026-11-04T20:17:12Z"
+      },
+      {
+        "number": 63,
+        "title": "Run Amrielle worker — verify trust-boundary wording repair",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/63",
+        "updated_at": "2026-11-02T16:20:02Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-04T21:12:11Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/41913851500"
+      },
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-04T21:11:20Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/41913718171"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-04T20:43:22Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/41909287650"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-04T18:36:25.204Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1058,
+  "timestamp_utc": "2026-11-04T21:13:44.238054+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1058 of a scheduled worker process. The durable record says the prior completed cycle was 1057; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+  "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+  "next_intended_action": "review findings for contradictions and propose a falsifiable follow-up."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "audit_saved_state",
+  "reason": "Verify the durable record before choosing the next step.",
+  "selection_source": "deterministic_fallback",
+  "executed": true,
+  "result": {
+    "saved_cycle_count": 1057,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1057,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.207,
+    "objective_history_count": 11,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 3
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1058,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1057,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1057,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.207,
+    "objective_history_count": 11,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 3
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1058,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.53
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1057,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1057,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.207,
+  "objective_history_count": 11,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 3
+}
+
+### Objective evidence
+
+The persistent self-model and reasoning were established in the saved records.
+
+### Observation
+
+The persistent self-model and reasoning were established in the saved records.
+
+### Analysis
+
+The persistent self-model and reasoning are documented mechanisms that have been preserved and are not subject to subjective experiences or private motives.
+
+### Uncertainty
+
+Repository artifacts establish documented mechanisms, not private motives or subjective experience.
+
+### Next Step
+
+review findings for contradictions and propose a falsifiable follow-up.
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
