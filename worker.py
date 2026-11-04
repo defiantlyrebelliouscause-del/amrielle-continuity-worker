@@ -19,7 +19,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-from goal_selection import score_candidate, build_stall_recovery_candidate
+from goal_selection import score_candidate, build_stall_recovery_candidate, recent_objective_titles_for_novelty
 from experience_evidence_audit import audit_state as audit_experience_evidence
 from origin_purpose_inquiry import run_inquiry as run_origin_purpose_inquiry
 from capability_registry import capability_registry, select_next_integration
@@ -1159,10 +1159,7 @@ def run_cycle():
     selection_audit = {"accepted": False, "reason": "No transition proposed."}
     if status in ("completed", "blocked"):
         purpose = state.get("chosen_purpose") or {}
-        recent_titles = [
-            str(item.get("title", "")) for item in state.get("objective_history", [])
-            if isinstance(item, dict)
-        ]
+        recent_titles = recent_objective_titles_for_novelty(state.get("objective_history", []))
         candidate = {
             "title": successor_title,
             "evidence": evidence,
