@@ -282,6 +282,11 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertIn("self-model", successor["title"].lower())
         self.assertIn("held-out reasoning calibration", successor["title"].lower())
         self.assertGreaterEqual(len(successor["completion_criteria"]), 3)
+        plan = reflection["next_action_plan"]
+        self.assertEqual(plan["type"], "discover_public_research")
+        self.assertEqual(plan["trigger_condition"], "next_cycle")
+        self.assertEqual(plan["objective"], successor["title"])
+        self.assertIsNotNone(worker.validate_action_plan(plan, 5))
 
     def test_session_missing_decision_defaults_to_continue(self):
         with patch("worker.run_cycle", side_effect=[

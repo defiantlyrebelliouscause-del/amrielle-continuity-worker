@@ -196,6 +196,16 @@ def verify_stall_recovery_objective(state, reflection, action=None):
             "workstream": "consciousness_inquiry",
         }
         reflection["next_step"] = "Run a counterbalanced ablation comparing matched held-out reasoning tasks with persistent self-model context present versus removed, then score the raw outputs blind."
+        # Carry the verified successor into an executable, allowlisted next-cycle action.
+        # Include every field required by validate_action_plan; otherwise the generic
+        # fallback would repeat regression tests and strand the inquiry again.
+        reflection["next_action_plan"] = {
+            "type": "discover_public_research",
+            "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+            "reason": "Resume the consciousness inquiry with scholarly evidence before evaluating the proposed self-model ablation.",
+            "trigger_condition": "next_cycle",
+            "objective": reflection["next_objective"]["title"],
+        }
         reflection["objective_transition_source"] = "deterministic_stall_recovery_verification"
     else:
         reflection["next_step"] = "Inspect regression output and repair recovery before claiming completion."
