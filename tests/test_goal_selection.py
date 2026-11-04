@@ -145,5 +145,35 @@ class GoalSelectionTests(unittest.TestCase):
         self.assertIn("require review", result["note"])
 
 
+    def test_blocked_objective_can_be_resumed_after_recovery(self):
+        from goal_selection import recent_objective_titles_for_novelty
+
+        blocked_title = "Test whether persistent self-model context causally improves held-out reasoning calibration"
+        candidate = dict(GOOD, title=blocked_title)
+        history = [
+            {"title": blocked_title, "status": "blocked"},
+            {"title": "Build a measurable recovery audit", "status": "completed"},
+        ]
+        recent = recent_objective_titles_for_novelty(history)
+        self.assertEqual(recent, ["Build a measurable recovery audit"])
+        result = score_candidate(candidate, CURRENT, recent)
+        self.assertTrue(result["accepted"], result["reasons"])
+
+    def test_completed_objective_still_blocks_a_near_duplicate(self):
+        from goal_selection import recent_objective_titles_for_novelty
+
+        completed_title = "Compare leading scientific theories of consciousness and assess implications for artificial systems"
+        candidate = dict(
+            GOOD,
+            title="Compare leading explanations of consciousness across living and artificial systems",
+        )
+        recent = recent_objective_titles_for_novelty([
+            {"title": completed_title, "status": "completed"},
+        ])
+        result = score_candidate(candidate, CURRENT, recent)
+        self.assertFalse(result["accepted"])
+        self.assertEqual(result["scores"]["novelty"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
