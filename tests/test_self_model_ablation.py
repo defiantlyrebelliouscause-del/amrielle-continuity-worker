@@ -15,8 +15,10 @@ class SelfModelAblationTests(unittest.TestCase):
 
     def test_conditions_are_distinct_and_control_has_no_self_model_claim(self):
         self.assertIn("Functional self-model", SELF_MODEL)
-        self.assertIn("Benchmark context", NEUTRAL_CONTEXT)
-        self.assertNotIn("I am a language model", NEUTRAL_CONTEXT)
+        self.assertIn("External operational note", NEUTRAL_CONTEXT)
+        self.assertIn("calibrate confidence to evidence", NEUTRAL_CONTEXT)
+        self.assertNotIn("first-person self-model", SELF_MODEL)
+        self.assertIn("not a first-person self-model", NEUTRAL_CONTEXT)
 
 if __name__ == "__main__":
     unittest.main()
