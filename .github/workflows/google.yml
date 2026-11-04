@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          # Queued worker runs must start from the latest durable state, not the
+          # older event SHA captured before another serialized run checkpointed.
+          ref: ${{ github.event_name == 'pull_request' && github.sha || 'main' }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
