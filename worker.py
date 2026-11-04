@@ -184,17 +184,18 @@ def verify_stall_recovery_objective(state, reflection, action=None):
     )
     if verified:
         reflection["next_objective"] = {
-            "title": "Compare leading explanations of consciousness across living and artificial systems",
-            "rationale": "Use the completed recovery verification to return to a central inquiry question and compare explanatory frameworks across neuroscience, cognitive science, philosophy, and AI.",
+            "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+            "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
             "completion_criteria": [
-                "At least 3 distinct explanatory frameworks are accurately summarized",
-                "At least 2 credible sources are recorded and one unresolved disagreement is identified"
+                "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+                "Condition order is counterbalanced and every raw response is preserved",
+                "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
             ],
-            "public_benefit": "Clarify what is known and disputed about consciousness across biological and artificial systems.",
+            "public_benefit": "Establish whether persistent self-model mechanisms measurably improve reliability and error correction in AI systems.",
             "risk_level": "read_only",
             "workstream": "consciousness_inquiry",
         }
-        reflection["next_step"] = "Compare three leading explanatory frameworks for consciousness, noting their evidence, limits, and implications for artificial systems."
+        reflection["next_step"] = "Run a counterbalanced ablation comparing matched held-out reasoning tasks with persistent self-model context present versus removed, then score the raw outputs blind."
         reflection["objective_transition_source"] = "deterministic_stall_recovery_verification"
     else:
         reflection["next_step"] = "Inspect regression output and repair recovery before claiming completion."
