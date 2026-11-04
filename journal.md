@@ -28493,3 +28493,323 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1035 — 2026-11-04T20:19:31.003961+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-04T20:19:23.375156+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 36,
+      "default_branch": "main",
+      "pushed_at": "2026-11-04T20:18:56Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 65,
+        "title": "Run Amrielle after self-model ablation objective repair",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/65",
+        "updated_at": "2026-11-04T20:17:12Z"
+      },
+      {
+        "number": 63,
+        "title": "Run Amrielle worker — verify trust-boundary wording repair",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/63",
+        "updated_at": "2026-11-02T16:20:02Z"
+      },
+      {
+        "number": 62,
+        "title": "Run Amrielle worker — verify repaired main branch",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/62",
+        "updated_at": "2026-11-02T16:03:11Z"
+      },
+      {
+        "number": 61,
+        "title": "Manual Amrielle inquiry session — broad life inquiry",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/61",
+        "updated_at": "2026-11-01T04:45:32Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-04T20:17:16Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/41905154035"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-04T19:59:18Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/41902220299"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-04T19:03:50Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/41893265191"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-04T18:36:25.204Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1035,
+  "timestamp_utc": "2026-11-04T20:19:31.003961+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1035 of a scheduled worker process. The durable record says the prior completed cycle was 1034; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+  "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+  "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+  "next_intended_action": "state.json"
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "audit_saved_state",
+  "reason": "Verify the durable record before choosing the next step.",
+  "selection_source": "deterministic_fallback",
+  "executed": true,
+  "result": {
+    "saved_cycle_count": 1034,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1034,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.225,
+    "objective_history_count": 9,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 1
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1035,
+  "type": "audit_experience_evidence",
+  "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
+  "result": {
+    "audit_type": "observable_continuity_evidence",
+    "consciousness_conclusion": "undetermined",
+    "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+    "indicators": {
+      "persistent_records": {
+        "observed": 30,
+        "cycle_sequence_contiguous_in_retained_window": true,
+        "latest_cycle": 1034
+      },
+      "self_directed_behavior": {
+        "model_selected_actions_recorded": 1,
+        "actions_recorded_as_executed": 30,
+        "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+      },
+      "objective_progress": {
+        "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "completed_objectives_recorded": 1,
+        "accepted_goal_transitions_recorded": 1,
+        "transition_attempts_recorded": 100,
+        "accepted_transition_attempts_recorded": 1,
+        "rejected_or_stalled_transition_attempts_recorded": 99,
+        "cycles_with_nonempty_objective_evidence": 30,
+        "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+      },
+      "novelty_and_repetition": {
+        "repetition_flags": 7,
+        "recorded_similarity_observations": [
+          {
+            "cycle": 1025,
+            "similarity": 1.0
+          },
+          {
+            "cycle": 1026,
+            "similarity": 0.663
+          },
+          {
+            "cycle": 1027,
+            "similarity": 0.661
+          },
+          {
+            "cycle": 1028,
+            "similarity": 0.418
+          },
+          {
+            "cycle": 1029,
+            "similarity": 0.013
+          },
+          {
+            "cycle": 1030,
+            "similarity": 0.646
+          },
+          {
+            "cycle": 1031,
+            "similarity": 0.281
+          },
+          {
+            "cycle": 1032,
+            "similarity": 0.308
+          },
+          {
+            "cycle": 1033,
+            "similarity": 0.468
+          },
+          {
+            "cycle": 1034,
+            "similarity": 0.225
+          }
+        ]
+      },
+      "handoff_follow_through": {
+        "last_outcome_status": "executed",
+        "last_outcome_executed": true,
+        "pending_plan_status": "pending"
+      },
+      "missing_measurements": [
+        "prospective confidence predictions scored against held-out outcomes",
+        "blinded tests of self-model accuracy under perturbation",
+        "causal tests distinguishing self-monitoring from prompted narrative",
+        "replication across independent runs and model/control conditions",
+        "an independently validated measure of subjective experience (none is currently established)"
+      ]
+    },
+    "blockers": [
+      "The worker explicitly flagged repetition in 7 retained cycle(s)."
+    ]
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1035,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+blocked
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.368
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1034,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1034,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.225,
+  "objective_history_count": 10,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 2
+}
+
+### Objective transition validation
+
+Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.
+
+### Objective evidence
+
+File state.json records three consecutive rejected objective-transition attempts at cycles 1032, 1033, 1034.
+
+### Observation
+
+State and journal persisted on attempt 1.
+
+### Analysis
+
+The persistent self-model was established, and the state and journal persisted on the first attempt.
+
+### Uncertainty
+
+Repository artifacts establish documented mechanisms, not private motives or subjective experience.
+
+### Next Step
+
+state.json
+
+### Objective after cycle
+
+Validate deterministic recovery from repeated objective-transition stalls
+
+Completion criteria:
+- At least 3 regression tests cover the repeated-stall recovery decision
+- All added recovery tests pass
