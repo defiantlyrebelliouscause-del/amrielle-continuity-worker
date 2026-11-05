@@ -1029,6 +1029,7 @@ def record_outward_research_action(state, action_record):
 
 def run_cycle():
     state = load_state()
+    state['shared_journal_context'] = load_shared_journal_context()
     state.setdefault("current_objective", {
         "title": "Replace repetitive reflection with evidence-based objective progression",
         "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
