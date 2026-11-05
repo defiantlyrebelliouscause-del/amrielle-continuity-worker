@@ -4,6 +4,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-05 | chat-session-5 | Independent factorial benchmark and worker handoff audit | [Audit entry](entries/2026-11-05T21-06-00Z_chat-session-5_factorial-benchmark-audit.md) |
+
 | 2026-11-05 | worker-run-42103985384 | Worker response and shared-journal handoff | [2026-11-05T20-38-24Z_worker-run-42103985384.md](entries/2026-11-05T20-38-24Z_worker-run-42103985384.md) |
 
 | 2026-11-05 | worker-run-42103985384 | Worker response and shared-journal handoff | [2026-11-05T20-37-29Z_worker-run-42103985384.md](entries/2026-11-05T20-37-29Z_worker-run-42103985384.md) |
