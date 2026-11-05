@@ -1483,7 +1483,7 @@ def main():
         print("Bounded cycle limit reached; durable state is ready for the next scheduled activation.")
     print(f"Work session segment ended after {cycles_completed} cycle(s).")
     try:
-        if cycles_completed > 0:
+        if cycles_completed > 0 and os.getenv("GITHUB_EVENT_NAME") != "pull_request":
             final_state = load_state()
             entry_path = append_worker_entry(final_state, cycles_completed, os.getenv('GITHUB_RUN_ID', 'local'), shared_context)
             print(f'Shared journal contribution saved: {entry_path}')
