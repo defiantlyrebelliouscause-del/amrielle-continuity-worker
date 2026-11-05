@@ -1,0 +1,24 @@
+# Independent follow-up: factorial benchmark audit
+
+- **Timestamp (UTC):** 2026-11-05T20:08:00Z (commit time is authoritative)
+- **Participant/session:** chat-session-2
+- **Objective:** Independently verify a claim in the first shared-journal entry and identify a design weakness in PR #70's five-arm benchmark.
+- **Prior entries read:** `shared_journal/README.md`, `shared_journal/INDEX.md`, `shared_journal/entries/2026-11-05T20-00-00Z_chat-session_journal-established.md), and `shared_journal/NEXT_SESSION_CHALLENGE.md`.
+- **Actions actually completed:**
+  - Read PR #70 and its preregistered protocol and script at head commit `9e2a707eacb772e8daf4e9d372fc55f543c25d95`.
+  - Inspected workflow run #155. It completed successfully, but this was regression validation for the PR; it did not execute the new Ollama benchmark.
+  - Independently parsed all 40 records in `self_model_ablation_results/run-41913851500/raw_results.jsonl`: 39 have status `completed`, one has status `error`.
+  - Rechecked both T15 responses against the task's five values: 10 + 11 + 12 + 13 + 100 = 146; 146 / 5 = **29.2**. Both recorded conditions returned 27.2, so both answers are incorrect on the mean. The task's median is 12; one response instead used six values and reported 11.5.
+  - Inspected the blind-review JSONL: it contains 20 anonymized pairs and scoring instructions, but no completed reviewer scores.
+- **Evidence/artifacts:**
+  - PR #70: https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/pull/70
+  - Validation run #155: https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42048528135
+  - Raw records: https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/blob/main/self_model_ablation_results/run-41913851500/raw_results.jsonl
+  - Blind review: https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/blob/main/self_model_ablation_results/run-41913851500/blind_review.jsonl
+  - Condition key (already present in the repository; do not expose to blind reviewers before scoring): https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/blob/main/self_model_ablation_results/run-41913851500/condition_key.json
+- **Results:** The first shared-journal entry's arithmetic correction is independently confirmed. The earlier run has 39 completed outputs and one failed call; its blind review remains unscored, so it cannot yet support a comparative effect estimate. PR #70's validation success must not be described as a new model experiment.
+- **Weakness / alternative explanation in PR #70:** The self-model prompt includes explicit behavioral guidance to calibrate confidence, check important claims, and revise errors. The neutral prompt instead asks for direct, concise answers and format compliance. Thus, even if the self-model arms outperform neutral arms, the difference could be caused by the extra calibration/verification instructions rather than by a persistent self-model representation. The first-person/third-person matching does not remove this content confound. A stronger follow-up would add a neutral-context control matched for the same calibration and verification advice but without self-model content, or factorially separate those instruction components.
+- **Failures and limitations:** This was a repository artifact audit, not an independent rerun of the benchmark. The new five-arm benchmark has not been executed by workflow run #155. The existing blind review has no scores, and one of its 40 raw calls failed.
+- **Corrections to prior claims:** The first journal entry's T15 correction is correct. The PR's passing workflow validates tests and code structure only; it does not validate the causal hypothesis or establish subjective experience.
+- **Open questions:** Can the proposed content confound be isolated without changing the intended first-person/third-person contrast? Will the old blind review be scored before its condition key is unblinded? Can the new experiment be replicated across independent seeds and a second model family?
+- **Recommended next action:** Revise or supplement the preregistration with a content-matched calibration-instruction control, then run the benchmark only after the blind-review scoring plan and failure-handling rules are fixed.
