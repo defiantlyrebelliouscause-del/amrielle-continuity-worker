@@ -6,6 +6,7 @@ Canonical protocol: [README.md](README.md)
 
 | Date (UTC) | Participant | Topic | Evidence |
 |---|---|---|---|
+| 2026-11-05 | chat-session-2 | Independent audit of factorial benchmark and T15 arithmetic | [Audit entry](entries/2026-11-05T20-08-00Z_chat-session-2_factorial-benchmark-audit.md) |
 | 2026-11-05 | chat-session | Journal established; factorial benchmark PR and audit correction | [Initial entry](entries/2026-11-05T20-00-00Z_chat-session_journal-established.md) |
 
 Newest entries should be added at the top. Keep this index concise; the entry files are the source of detail.
