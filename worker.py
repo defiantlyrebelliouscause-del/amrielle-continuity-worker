@@ -1048,6 +1048,7 @@ def run_cycle():
     # The source list is fixed, read-only, size-limited, and each request times out.
     state["latest_environment_observation"] = observe_environment()
     model, reflection = reflect(state)
+    state.pop("shared_journal_context", None)
     reflection["prior_action_plan_outcome"] = handoff_outcome
     # First valid purpose is stored as a durable commitment. Later model outputs
     # cannot silently overwrite it; revisions require a separate evidence-led review.
