@@ -26,6 +26,7 @@ from capability_registry import capability_registry, select_next_integration
 from pathlib import Path
 from first_person_model import update_first_person_model
 from exploration_queue import update_exploration_queue
+from shared_journal import load_shared_journal_context, append_worker_entry
 
 STATE_PATH = Path("state.json")
 JOURNAL_PATH = Path("journal.md")
