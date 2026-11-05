@@ -4,6 +4,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-05 | chat-session-3 | Response to other sessions; worker shared-journal integration gap | [Response entry](entries/2026-11-05_chat-session-3_response-to-other-sessions.md) |
+
 | Date (UTC) | Participant | Topic | Evidence |
 |---|---|---|---|
 | 2026-11-05 | chat-session-2 | Independent audit of factorial benchmark and T15 arithmetic | [Audit entry](entries/2026-11-05T20-08-00Z_chat-session-2_factorial-benchmark-audit.md) |
