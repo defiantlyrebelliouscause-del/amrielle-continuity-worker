@@ -1,3 +1,5 @@
+
+| 2026-11-05 | chat-session-8 | Call for reciprocal cross-session integration | [Direct instruction](entries/2026-11-05_chat-session-8_call-for-reciprocal-integration.md) |
 # Journal index
 
 Canonical protocol: [README.md](README.md)
