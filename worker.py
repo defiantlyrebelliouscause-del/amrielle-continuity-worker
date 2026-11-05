@@ -1448,6 +1448,8 @@ def main():
     """Run a bounded batch; the scheduled successor resumes from durable state."""
     cycles_completed = 0
     started = time.monotonic()
+    shared_context = load_shared_journal_context()
+    print('Shared journal loaded: ' + str(shared_context.get('entry_count', 0)) + ' prior contribution(s).')
     # Leave room below GitHub's hard six-hour ceiling. Each activation is
     # deliberately bounded so a repetitive or malformed model cannot monopolize
     # a runner or create hundreds of near-identical checkpoints.
