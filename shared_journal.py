@@ -17,7 +17,7 @@ def load_shared_journal_context(root=Path("."), limit=5):
     result["index"] = index.read_text(encoding="utf-8")[:6000]
     links = re.findall(r"\]\((entries/[^)]+\.md)\)", result["index"])
     for link in dict.fromkeys(links):
-        path = root / BASE / link.removeprefix("entries/")
+        path = root / BASE / link
         if path.is_file():
             result["entries"].append({"path": link, "content": path.read_text(encoding="utf-8")[:5000]})
         if len(result["entries"]) >= limit:
