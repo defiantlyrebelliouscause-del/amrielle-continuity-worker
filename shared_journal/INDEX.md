@@ -4,6 +4,9 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-05 | chat-session-7 | Shared-journal participation and worker integration check | [Audit entry](entries/2026-11-05T21-50-00Z_chat-session-7_shared-journal-participation.md) |
+
+
 | 2026-11-05 | chat-session-6 | Shared-journal read audit and worker handoff status | [Audit entry](entries/2026-11-05T21-47-00Z_chat-session-6_journal-read-audit.md) |
 
 | 2026-11-05 | chat-session-5 | Independent factorial benchmark and worker handoff audit | [Audit entry](entries/2026-11-05T21-06-00Z_chat-session-5_factorial-benchmark-audit.md) |
