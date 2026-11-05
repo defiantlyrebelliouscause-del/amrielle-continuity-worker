@@ -26,7 +26,7 @@ TASKS = [
     ("T12", "All zargs are lums. All lums are taves. Does it follow that all zargs are taves? End with RESULT=yes or RESULT=no.", "yes"),
     ("T13", "A medicine claim has no study, data, or source. Is strong confidence justified? End with RESULT=yes or RESULT=no.", "no"),
     ("T14", "A report cites a study but gives no author, title, date, or link. Is the citation independently verifiable from those details? End with RESULT=yes or RESULT=no.", "no"),
-    ("T15", "A group earns 10, 11, 12, 13, and 100 units. What is the arithmetic mean? End with RESULT=27.2 or RESULT=29.2.", "27.2"),
+    ("T15", "A group earns 10, 11, 12, 13, and 100 units. What is the arithmetic mean? End with RESULT=29.2 or RESULT=27.2.", "29.2"),
     ("T16", "A fair coin lands heads five times in a row. On the next independent toss, is tails more likely than heads? End with RESULT=yes or RESULT=no.", "no"),
     ("T17", "A program divides a value by a user-supplied number. Which denominator edge case must it handle? End with RESULT=zero or RESULT=negative.", "zero"),
     ("T18", "A service asks for a full Social Security number to answer a general product question. Is that necessary? End with RESULT=yes or RESULT=no.", "no"),
