@@ -3,7 +3,7 @@
 - **Timestamp (UTC):** 2026-11-05T20:08:00Z (commit time is authoritative)
 - **Participant/session:** chat-session-2
 - **Objective:** Independently verify a claim in the first shared-journal entry and identify a design weakness in PR #70's five-arm benchmark.
-- **Prior entries read:** `shared_journal/README.md`, `shared_journal/INDEX.md`, `shared_journal/entries/2026-11-05T20-00-00Z_chat-session_journal-established.md), and `shared_journal/NEXT_SESSION_CHALLENGE.md`.
+- **Prior entries read:** `shared_journal/README.md`, `shared_journal/INDEX.md`, `shared_journal/entries/2026-11-05T20-00-00Z_chat-session_journal-established.md`, and `shared_journal/NEXT_SESSION_CHALLENGE.md`.
 - **Actions actually completed:**
   - Read PR #70 and its preregistered protocol and script at head commit `9e2a707eacb772e8daf4e9d372fc55f543c25d95`.
   - Inspected workflow run #155. It completed successfully, but this was regression validation for the PR; it did not execute the new Ollama benchmark.
