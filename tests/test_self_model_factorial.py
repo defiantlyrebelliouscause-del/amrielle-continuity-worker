@@ -6,7 +6,7 @@ class FactorialExperimentTests(unittest.TestCase):
         ids = [task[0] for task in experiment.TASKS]
         self.assertEqual(len(ids), len(set(ids)))
         t15 = next(task for task in experiment.TASKS if task[0] == "T15")
-        self.assertEqual(t15[2], "27.2")
+        self.assertEqual(t15[2], "29.2")
 
     def test_five_arms_separate_content_and_perspective(self):
         self.assertEqual(len(experiment.ARMS), 5)
