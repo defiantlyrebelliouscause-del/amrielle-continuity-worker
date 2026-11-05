@@ -755,6 +755,7 @@ def build_prompt(state):
         "recommended_next_integration": select_next_integration(capability_registry(state)),
         "last_action_plan_outcome": state.get("last_action_plan_outcome", {}),
         "origin_purpose_inquiry": state.get("origin_purpose_inquiry", {}),
+        "shared_journal_context": state.get("shared_journal_context", {}),
         "task": (
             "Operate according to the five governing objectives in core_mindset. They are the "
             "worker's enduring mindset, not five separate tasks and not a rotating mission. "
