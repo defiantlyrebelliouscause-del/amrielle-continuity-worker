@@ -1483,10 +1483,13 @@ def main():
         print("Bounded cycle limit reached; durable state is ready for the next scheduled activation.")
     print(f"Work session segment ended after {cycles_completed} cycle(s).")
     try:
-        final_state = load_state()
-        entry_path = append_worker_entry(final_state, cycles_completed, os.getenv('GITHUB_RUN_ID', 'local'), shared_context)
-        print(f'Shared journal contribution saved: {entry_path}')
-        checkpoint_state()
+        if cycles_completed > 0:
+            final_state = load_state()
+            entry_path = append_worker_entry(final_state, cycles_completed, os.getenv('GITHUB_RUN_ID', 'local'), shared_context)
+            print(f'Shared journal contribution saved: {entry_path}')
+            checkpoint_state()
+        else:
+            print("No shared-journal contribution published because no work cycle completed.")
     except Exception as exc:
         print(f'Shared journal contribution failed safely: {type(exc).__name__}: {str(exc)[:400]}')
 
