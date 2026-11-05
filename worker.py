@@ -1371,7 +1371,7 @@ def checkpoint_state():
     try:
         git("config", "user.name", "github-actions[bot]", timeout=10)
         git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com", timeout=10)
-        git("add", "state.json", "journal.md", timeout=10)
+        git("add", "state.json", "journal.md", "shared_journal", timeout=10)
         staged = subprocess.run(
             ["git", "diff", "--cached", "--quiet"],
             capture_output=True, text=True, timeout=10
