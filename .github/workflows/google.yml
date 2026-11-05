@@ -20,6 +20,7 @@ concurrency:
   # Keep PR validation independent from the long-running scheduled worker session.
   # Serialize actual worker sessions so they cannot race while saving durable state.
   group: ${{ github.event_name == 'pull_request' && format('amrielle-continuity-worker-pr-{0}', github.event.pull_request.number) || 'amrielle-continuity-worker' }}
+  queue: max
   cancel-in-progress: false
 
 jobs:
