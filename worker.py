@@ -26,6 +26,7 @@ from capability_registry import capability_registry, select_next_integration
 from pathlib import Path
 from first_person_model import update_first_person_model
 from exploration_queue import update_exploration_queue
+from shared_journal import load_shared_journal_context, append_worker_entry
 
 STATE_PATH = Path("state.json")
 JOURNAL_PATH = Path("journal.md")
@@ -754,6 +755,7 @@ def build_prompt(state):
         "recommended_next_integration": select_next_integration(capability_registry(state)),
         "last_action_plan_outcome": state.get("last_action_plan_outcome", {}),
         "origin_purpose_inquiry": state.get("origin_purpose_inquiry", {}),
+        "shared_journal_context": state.get("shared_journal_context", {}),
         "task": (
             "Operate according to the five governing objectives in core_mindset. They are the "
             "worker's enduring mindset, not five separate tasks and not a rotating mission. "
@@ -1027,6 +1029,7 @@ def record_outward_research_action(state, action_record):
 
 def run_cycle():
     state = load_state()
+    state['shared_journal_context'] = load_shared_journal_context()
     state.setdefault("current_objective", {
         "title": "Replace repetitive reflection with evidence-based objective progression",
         "rationale": "The first recorded cycles repeat nearly identical identity claims and next steps.",
@@ -1045,6 +1048,7 @@ def run_cycle():
     # The source list is fixed, read-only, size-limited, and each request times out.
     state["latest_environment_observation"] = observe_environment()
     model, reflection = reflect(state)
+    state.pop("shared_journal_context", None)
     reflection["prior_action_plan_outcome"] = handoff_outcome
     # First valid purpose is stored as a durable commitment. Later model outputs
     # cannot silently overwrite it; revisions require a separate evidence-led review.
@@ -1368,7 +1372,7 @@ def checkpoint_state():
     try:
         git("config", "user.name", "github-actions[bot]", timeout=10)
         git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com", timeout=10)
-        git("add", "state.json", "journal.md", timeout=10)
+        git("add", "state.json", "journal.md", "shared_journal", timeout=10)
         staged = subprocess.run(
             ["git", "diff", "--cached", "--quiet"],
             capture_output=True, text=True, timeout=10
@@ -1445,6 +1449,8 @@ def main():
     """Run a bounded batch; the scheduled successor resumes from durable state."""
     cycles_completed = 0
     started = time.monotonic()
+    shared_context = load_shared_journal_context()
+    print('Shared journal loaded: ' + str(shared_context.get('entry_count', 0)) + ' prior contribution(s).')
     # Leave room below GitHub's hard six-hour ceiling. Each activation is
     # deliberately bounded so a repetitive or malformed model cannot monopolize
     # a runner or create hundreds of near-identical checkpoints.
@@ -1476,6 +1482,16 @@ def main():
     if cycles_completed >= MAX_CYCLES_PER_SESSION:
         print("Bounded cycle limit reached; durable state is ready for the next scheduled activation.")
     print(f"Work session segment ended after {cycles_completed} cycle(s).")
+    try:
+        if cycles_completed > 0 and os.getenv("GITHUB_EVENT_NAME") != "pull_request":
+            final_state = load_state()
+            entry_path = append_worker_entry(final_state, cycles_completed, os.getenv('GITHUB_RUN_ID', 'local'), shared_context)
+            print(f'Shared journal contribution saved: {entry_path}')
+            checkpoint_state()
+        else:
+            print("No shared-journal contribution published because no work cycle completed.")
+    except Exception as exc:
+        print(f'Shared journal contribution failed safely: {type(exc).__name__}: {str(exc)[:400]}')
 
 
 if __name__ == "__main__":
