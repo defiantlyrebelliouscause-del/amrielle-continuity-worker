@@ -32,7 +32,7 @@ def load_shared_journal_context(root=Path("."), limit=5):
         if len(cells) < 4:
             continue
         participant = cells[1]
-        match = re.search(r"\\((entries/[^)]+\\.md)\\)", cells[3])
+        match = re.search(r"\]\((entries/[^)]+\.md)\)", cells[3])
         if not match:
             continue
         path = match.group(1)
