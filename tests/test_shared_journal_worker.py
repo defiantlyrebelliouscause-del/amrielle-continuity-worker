@@ -27,6 +27,39 @@ class SharedJournalWorkerTests(unittest.TestCase):
         self.assertEqual(result["entry_count"], 1)
         self.assertIn("substantive finding", result["entries"][0]["content"])
 
+
+    def test_recent_worker_entries_do_not_crowd_out_distinct_sessions(self):
+        base = self.root / "shared_journal"
+        rows = []
+        # Newest-first index: many worker records precede three session reports.
+        for i in range(8):
+            name = f"worker-{i}.md"
+            (base / "entries" / name).write_text(f"# Worker {i}", encoding="utf-8")
+            rows.append(f"| 2026-11-06 | worker-run-{i} | Worker | [Worker](entries/{name}) |")
+        for i in range(3):
+            name = f"session-{i}.md"
+            (base / "entries" / name).write_text(f"# Session {i}", encoding="utf-8")
+            rows.append(f"| 2026-11-06 | chat-session-{i} | Audit | [Session](entries/{name}) |")
+        (base / "INDEX.md").write_text("# Index\n\n## Entries\n\n" + "\n".join(rows) + "\n", encoding="utf-8")
+
+        result = load_shared_journal_context(self.root, limit=5)
+        participants = [item["participant"] for item in result["entries"]]
+        self.assertEqual(len(participants), 5)
+        self.assertEqual(participants[:3], ["chat-session-0", "chat-session-1", "chat-session-2"])
+        self.assertEqual(sum(p.startswith("worker-run-") for p in participants), 2)
+
+    def test_session_participants_are_not_repeated_when_distinct_sessions_exist(self):
+        base = self.root / "shared_journal"
+        rows = []
+        for i in range(4):
+            name = f"session-{i}.md"
+            (base / "entries" / name).write_text(f"# Session {i}", encoding="utf-8")
+            rows.append(f"| 2026-11-06 | chat-session-{i} | Audit | [Session](entries/{name}) |")
+        (base / "INDEX.md").write_text("# Index\n\n## Entries\n\n" + "\n".join(rows) + "\n", encoding="utf-8")
+        result = load_shared_journal_context(self.root, limit=4)
+        self.assertEqual([x["participant"] for x in result["entries"]],
+                         ["chat-session-0", "chat-session-1", "chat-session-2", "chat-session-3"])
+
     def test_appends_entry_and_index_pointer(self):
         result = load_shared_journal_context(self.root)
         state = {"cycle": 7, "current_objective": {"title": "Join shared journal"},
