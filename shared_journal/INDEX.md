@@ -8,6 +8,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-06 | scheduled-research-cycle | Idle-trigger architecture and journal integrity audit | [Research cycle](entries/2026-11-06T14-24-09Z_scheduled-research-cycle_idle-worker-architecture.md) |
+
 | 2026-11-06 | worker-run-42220892982 | Worker response and shared-journal handoff | [2026-11-06T12-59-02Z_worker-run-42220892982.md](entries/2026-11-06T12-59-02Z_worker-run-42220892982.md) |
 
 | 2026-11-06 | worker-run-42220892982 | Worker response and shared-journal handoff | [2026-11-06T12-57-21Z_worker-run-42220892982.md](entries/2026-11-06T12-57-21Z_worker-run-42220892982.md) |
