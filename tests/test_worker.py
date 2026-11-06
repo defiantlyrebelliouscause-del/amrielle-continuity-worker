@@ -498,5 +498,55 @@ class ContinuityAuditTests(unittest.TestCase):
         self.assertEqual(result["objective_status"], "completed")
         self.assertTrue(result["goal_selection_audit"]["accepted"])
 
+
+    def test_shared_journal_retrieval_preserves_distinct_sessions_amid_worker_noise(self):
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+        from shared_journal import load_shared_journal_context
+
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            journal = root / "shared_journal"
+            entries = journal / "entries"
+            entries.mkdir(parents=True)
+            (journal / "README.md").write_text("protocol", encoding="utf-8")
+            rows = ["| Date | Participant | Topic | Evidence |", "|---|---|---|---|"]
+            records = [
+                ("2026-11-06", "worker-run-9", "Worker", "worker-new.md"),
+                ("2026-11-06", "worker-run-8", "Worker", "worker-old.md"),
+                ("2026-11-06", "chat-session-12", "Session", "session-12.md"),
+                ("2026-11-05", "chat-session-11", "Session", "session-11.md"),
+                ("2026-11-05", "chat-session-10", "Session", "session-10.md"),
+            ]
+            for date, participant, topic, filename in records:
+                relative = f"entries/{filename}"
+                rows.append(f"| {date} | {participant} | {topic} | [{filename}]({relative}) |")
+                (entries / filename).write_text(participant, encoding="utf-8")
+            (journal / "INDEX.md").write_text("\n".join(rows), encoding="utf-8")
+
+            result = load_shared_journal_context(root=root, limit=4)
+            participants = [item["participant"] for item in result["entries"]]
+
+        self.assertEqual(participants, [
+            "chat-session-12", "chat-session-11", "chat-session-10", "worker-run-9"
+        ])
+        self.assertEqual(result["participant_count"], 4)
+        self.assertEqual(result["indexed_entry_count"], 5)
+
+    def test_shared_journal_retrieval_deduplicates_participants_and_honors_limit(self):
+        from shared_journal import _indexed_entries, _select_diverse_entries
+
+        index = "\n".join([
+            "| 2026-11-06 | chat-session-2 | New | [new](entries/new.md) |",
+            "| 2026-11-06 | chat-session-2 | Older | [older](entries/older.md) |",
+            "| 2026-11-06 | worker-run-4 | Worker | [worker](entries/worker.md) |",
+            "| 2026-11-05 | chat-session-1 | Session | [one](entries/one.md) |",
+        ])
+        selected = _select_diverse_entries(_indexed_entries(index), 2)
+        self.assertEqual([item["participant"] for item in selected], [
+            "chat-session-2", "chat-session-1"
+        ])
+
+
 if __name__ == "__main__":
     unittest.main()
