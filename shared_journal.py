@@ -3,27 +3,102 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 BASE = Path("shared_journal")
+ENTRY_LINK = re.compile(r"\]\((entries/[^)]+\.md)\)")
+INDEX_ROW = re.compile(
+    r"^\|\s*(?P<date>[^|]+)\|\s*(?P<participant>[^|]+)\|"
+    r"\s*[^|]*\|\s*\[[^]]+\]\((?P<path>entries/[^)]+\.md)\)\s*\|$"
+)
+
+
+def _indexed_entries(index):
+    """Return newest-first index records, retaining participant provenance."""
+    records = []
+    seen = set()
+    for line in index.splitlines():
+        match = INDEX_ROW.match(line.strip())
+        if match:
+            path = match.group("path").strip()
+            if path not in seen:
+                seen.add(path)
+                records.append({
+                    "date": match.group("date").strip(),
+                    "participant": match.group("participant").strip(),
+                    "path": path,
+                })
+    # Older index formats may have links without parseable participant columns.
+    for path in ENTRY_LINK.findall(index):
+        if path not in seen:
+            seen.add(path)
+            name = Path(path).name
+            participant = name.split("_", 1)[1].split("_", 1)[0] if "_" in name else "unknown"
+            records.append({"date": "", "participant": participant, "path": path})
+    return records
+
+
+def _select_diverse_entries(records, limit):
+    """Prefer one newest contribution per non-worker participant, then latest worker."""
+    if limit <= 0:
+        return []
+    selected = []
+    selected_paths = set()
+    participants = set()
+    worker_record = None
+    for record in records:
+        participant = record["participant"]
+        if participant.startswith("worker-run-"):
+            if worker_record is None:
+                worker_record = record
+            continue
+        if participant not in participants:
+            participants.add(participant)
+            selected.append(record)
+            selected_paths.add(record["path"])
+            if len(selected) >= limit:
+                return selected
+    if worker_record and len(selected) < limit and worker_record["path"] not in selected_paths:
+        selected.append(worker_record)
+        selected_paths.add(worker_record["path"])
+    if len(selected) < limit:
+        for record in records:
+            if record["path"] not in selected_paths:
+                selected.append(record)
+                selected_paths.add(record["path"])
+                if len(selected) >= limit:
+                    break
+    return selected
 
 
 def load_shared_journal_context(root=Path("."), limit=5):
     root = Path(root)
     protocol = root / BASE / "README.md"
-    index = root / BASE / "INDEX.md"
-    result = {"available": False, "protocol": "", "index": "", "entries": [], "entry_count": 0}
+    index_path = root / BASE / "INDEX.md"
+    result = {
+        "available": False, "protocol": "", "index": "", "entries": [],
+        "entry_count": 0, "indexed_entry_count": 0, "participant_count": 0,
+    }
     if protocol.is_file():
         result["protocol"] = protocol.read_text(encoding="utf-8")[:8000]
-    if not index.is_file():
+    if not index_path.is_file():
         return result
-    result["index"] = index.read_text(encoding="utf-8")[:6000]
-    links = re.findall(r"\]\((entries/[^)]+\.md)\)", result["index"])
-    for link in dict.fromkeys(links):
-        path = root / BASE / link
+    # Parse the complete index; truncating before selection can hide older
+    # independent session contributions behind repetitive worker telemetry.
+    index = index_path.read_text(encoding="utf-8")
+    result["index"] = index[:6000]
+    records = _indexed_entries(index)
+    result["indexed_entry_count"] = len(records)
+    selected = _select_diverse_entries(records, max(0, int(limit)))
+    for record in selected:
+        path = root / BASE / record["path"]
         if path.is_file():
-            result["entries"].append({"path": link, "content": path.read_text(encoding="utf-8")[:5000]})
-        if len(result["entries"]) >= limit:
-            break
+            result["entries"].append({
+                "path": record["path"],
+                "participant": record["participant"],
+                "date": record["date"],
+                "content": path.read_text(encoding="utf-8")[:5000],
+            })
     result["entry_count"] = len(result["entries"])
-    result["available"] = bool(result["protocol"] and result["index"])
+    result["participant_count"] = len({item["participant"] for item in result["entries"]})
+    result["available"] = bool(result["protocol"] and index)
     return result
 
 
