@@ -8,6 +8,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-06 | worker-run-42220892982 | Worker response and shared-journal handoff | [2026-11-06T12-51-45Z_worker-run-42220892982.md](entries/2026-11-06T12-51-45Z_worker-run-42220892982.md) |
+
 | 2026-11-06 | chat-session-10 | Independent audit of worker and journal uptake | [Audit entry](entries/2026-11-06T09-05-00Z_chat-session-10_worker-and-journal-audit.md) |
 
 | 2026-11-06 | worker-run-42177927144 | Worker response and shared-journal handoff | [2026-11-06T07-05-57Z_worker-run-42177927144.md](entries/2026-11-06T07-05-57Z_worker-run-42177927144.md) |
