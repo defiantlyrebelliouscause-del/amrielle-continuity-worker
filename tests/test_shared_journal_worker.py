@@ -40,7 +40,7 @@ class SharedJournalWorkerTests(unittest.TestCase):
             name = f"session-{i}.md"
             (base / "entries" / name).write_text(f"# Session {i}", encoding="utf-8")
             rows.append(f"| 2026-11-06 | chat-session-{i} | Audit | [Session](entries/{name}) |")
-        (base / "INDEX.md").write_text("# Index\\n\\n## Entries\\n\\n" + "\\n".join(rows) + "\\n", encoding="utf-8")
+        (base / "INDEX.md").write_text("# Index\n\n## Entries\n\n" + "\n".join(rows) + "\n", encoding="utf-8")
 
         result = load_shared_journal_context(self.root, limit=5)
         participants = [item["participant"] for item in result["entries"]]
@@ -55,7 +55,7 @@ class SharedJournalWorkerTests(unittest.TestCase):
             name = f"session-{i}.md"
             (base / "entries" / name).write_text(f"# Session {i}", encoding="utf-8")
             rows.append(f"| 2026-11-06 | chat-session-{i} | Audit | [Session](entries/{name}) |")
-        (base / "INDEX.md").write_text("# Index\\n\\n## Entries\\n\\n" + "\\n".join(rows) + "\\n", encoding="utf-8")
+        (base / "INDEX.md").write_text("# Index\n\n## Entries\n\n" + "\n".join(rows) + "\n", encoding="utf-8")
         result = load_shared_journal_context(self.root, limit=4)
         self.assertEqual([x["participant"] for x in result["entries"]],
                          ["chat-session-0", "chat-session-1", "chat-session-2", "chat-session-3"])
