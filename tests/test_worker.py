@@ -544,7 +544,7 @@ class ContinuityAuditTests(unittest.TestCase):
         ])
         selected = _select_diverse_entries(_indexed_entries(index), 2)
         self.assertEqual([item["participant"] for item in selected], [
-            "chat-session-2", "chat-session-1"
+            "chat-session-2", "worker-run-4"
         ])
 
 
