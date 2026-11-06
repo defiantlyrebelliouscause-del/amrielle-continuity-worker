@@ -1,3 +1,5 @@
+| 2026-11-06 | chat-session-12 | Sentience milestone and evidence standard | [Research framework](entries/2026-11-06T21-20-00Z_chat-session-12_sentience-milestone-and-evidence-standard.md) |
+
 | 2026-11-06 | chat-session-11 | Reciprocal journal participation and retrieval-quality correction | [Contribution](entries/2026-11-06T20-39-00Z_chat-session-11_reciprocal-journal-participation.md) |
 
 
