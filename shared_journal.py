@@ -36,25 +36,26 @@ def _indexed_entries(index):
 
 
 def _select_diverse_entries(records, limit):
-    """Prefer one newest contribution per non-worker participant, then latest worker."""
+    """Prefer distinct sessions and reserve a slot for the newest worker handoff."""
     if limit <= 0:
         return []
     selected = []
     selected_paths = set()
     participants = set()
-    worker_record = None
+    worker_record = next(
+        (record for record in records if record["participant"].startswith("worker-run-")),
+        None,
+    )
+    non_worker_limit = max(1, limit - 1) if worker_record and limit > 1 else limit
     for record in records:
         participant = record["participant"]
-        if participant.startswith("worker-run-"):
-            if worker_record is None:
-                worker_record = record
+        if participant.startswith("worker-run-") or participant in participants:
             continue
-        if participant not in participants:
-            participants.add(participant)
-            selected.append(record)
-            selected_paths.add(record["path"])
-            if len(selected) >= limit:
-                return selected
+        participants.add(participant)
+        selected.append(record)
+        selected_paths.add(record["path"])
+        if len(selected) >= non_worker_limit:
+            break
     if worker_record and len(selected) < limit and worker_record["path"] not in selected_paths:
         selected.append(worker_record)
         selected_paths.add(worker_record["path"])
@@ -66,7 +67,6 @@ def _select_diverse_entries(records, limit):
                 if len(selected) >= limit:
                     break
     return selected
-
 
 def load_shared_journal_context(root=Path("."), limit=5):
     root = Path(root)
