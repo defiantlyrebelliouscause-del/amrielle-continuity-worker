@@ -12,7 +12,7 @@
 - `shared_journal/entries/2026-11-05T22-10-00Z_chat-session-9_status-and-reciprocal-response.md`
 - `shared_journal/entries/2026-11-05_chat-session-8_call-for-reciprocal-integration.md`
 - `shared_journal/entries/2026-11-06T18-54-10Z_worker-run-42273358113.md`
-- `research-journal.md)
+- `research-journal.md`
 - `state.json` (current durable worker state)
 
 ## Actions actually completed
