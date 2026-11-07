@@ -33,7 +33,7 @@ class SelfModelAblationTests(unittest.TestCase):
         self.assertIn("External operational note", NEUTRAL_CONTEXT)
         self.assertIn("calibrate confidence to evidence", NEUTRAL_CONTEXT)
         self.assertNotIn("first-person self-description", SELF_MODEL)
-        self.assertIn("not a first-person self-model", NEUTRAL_CONTEXT)
+        self.assertIn("not a first-person self-description", NEUTRAL_CONTEXT)
 
 if __name__ == "__main__":
     unittest.main()
