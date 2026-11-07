@@ -127,12 +127,13 @@ class IdleController:
                 return None
             job_id = str(uuid.uuid5(uuid.NAMESPACE_URL,
                                     f"{session_id}:{expected_version}"))
-            db.execute("""INSERT OR IGNORE INTO jobs
+            inserted = db.execute("""INSERT OR IGNORE INTO jobs
                 (job_id,session_id,activity_version,status,available_at)
                 VALUES(?,?,?,'pending',?)""",
-                (job_id, session_id, expected_version, now))
-            self._audit(db, now, session_id, "idle_job_enqueued",
-                        {"job_id": job_id, "activity_version": expected_version})
+                (job_id, session_id, expected_version, now)).rowcount
+            if inserted:
+                self._audit(db, now, session_id, "idle_job_enqueued",
+                            {"job_id": job_id, "activity_version": expected_version})
             return job_id
 
     def due_sessions(self, now: float):
