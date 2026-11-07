@@ -95,7 +95,7 @@ jobs:
           import json, sys
           with open("state.json", encoding="utf-8") as handle:
               state = json.load(handle)
-          expected = "Test whether first-person self-description framing changes held-out reasoning calibration"
+          expected = "Test whether first-person self-model wording changes held-out reasoning calibration"
           sys.exit(0 if state.get("current_objective", {}).get("title") == expected else 1)
           PY
           then
