@@ -28,7 +28,7 @@ A successful scheduled activation, a high durable cycle count, and a watchdog's 
 ## Evidence boundary and next steps
 
 - The change is proposed, not merged or deployed.
-- CI must pass on PR #77 before merge.
+- PR workflow run [42411479086](https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42411479086) completed successfully; the deterministic regression-test step passed. The PR remains open and unmerged.
 - After CI, test the quality gate against a fixed set of valid, malformed, truncated, and semantically empty outputs.
 - Separately audit the self-model ablation objective: verify the exact state read by the benchmark step, preserve raw paired outputs, and require blind scoring.
 - The event-driven idle controller remains a separate host-integration prototype; ChatGPT conversation inactivity is not currently exposed to this repository.
