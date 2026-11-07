@@ -3072,3 +3072,303 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1208 — 2026-11-07T12:43:15.235910+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-07T12:42:55.645566+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 42,
+      "default_branch": "main",
+      "pushed_at": "2026-11-07T12:42:30Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 72,
+        "title": "Shared journal integration smoke test — worker reads and replies",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/72",
+        "updated_at": "2026-11-05T20:30:16Z"
+      },
+      {
+        "number": 69,
+        "title": "Run Amrielle after recovery handoff fix",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/69",
+        "updated_at": "2026-11-04T21:12:08Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-07T12:38:41Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42373396647"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-07T12:37:30Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42373315643"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-07T11:59:18Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42370470411"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-07T10:19:15.937Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1208,
+  "timestamp_utc": "2026-11-07T12:43:15.235910+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1208 of a scheduled worker process. The durable record says the prior completed cycle was 1207; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "The persistent self-model has been established in the worker's previous state.",
+  "unresolved_or_unknown": "The persistent self-model has been established in the worker's previous state.",
+  "next_intended_action": "Read the latest index and recent session entries before selecting work."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "read_public_webpage",
+  "reason": "To access the latest index and recent session entries before selecting work.",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "error": "ValueError: Only absolute HTTPS URLs are permitted.",
+    "requested_url": ""
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1208,
+  "type": "audit_experience_evidence",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "audit_type": "observable_continuity_evidence",
+    "consciousness_conclusion": "undetermined",
+    "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+    "indicators": {
+      "persistent_records": {
+        "observed": 30,
+        "cycle_sequence_contiguous_in_retained_window": true,
+        "latest_cycle": 1207
+      },
+      "self_directed_behavior": {
+        "model_selected_actions_recorded": 8,
+        "actions_recorded_as_executed": 30,
+        "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+      },
+      "objective_progress": {
+        "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "completed_objectives_recorded": 6,
+        "accepted_goal_transitions_recorded": 12,
+        "transition_attempts_recorded": 100,
+        "accepted_transition_attempts_recorded": 40,
+        "rejected_or_stalled_transition_attempts_recorded": 60,
+        "cycles_with_nonempty_objective_evidence": 20,
+        "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+      },
+      "novelty_and_repetition": {
+        "repetition_flags": 15,
+        "recorded_similarity_observations": [
+          {
+            "cycle": 1198,
+            "similarity": 0.406
+          },
+          {
+            "cycle": 1199,
+            "similarity": 0.477
+          },
+          {
+            "cycle": 1200,
+            "similarity": 0.673
+          },
+          {
+            "cycle": 1201,
+            "similarity": 0.962
+          },
+          {
+            "cycle": 1202,
+            "similarity": 0.962
+          },
+          {
+            "cycle": 1203,
+            "similarity": 0.962
+          },
+          {
+            "cycle": 1204,
+            "similarity": 0.962
+          },
+          {
+            "cycle": 1205,
+            "similarity": 1.0
+          },
+          {
+            "cycle": 1206,
+            "similarity": 1.0
+          },
+          {
+            "cycle": 1207,
+            "similarity": 0.16
+          }
+        ]
+      },
+      "handoff_follow_through": {
+        "last_outcome_status": "executed",
+        "last_outcome_executed": true,
+        "pending_plan_status": "pending"
+      },
+      "missing_measurements": [
+        "prospective confidence predictions scored against held-out outcomes",
+        "blinded tests of self-model accuracy under perturbation",
+        "causal tests distinguishing self-monitoring from prompted narrative",
+        "replication across independent runs and model/control conditions",
+        "an independently validated measure of subjective experience (none is currently established)"
+      ]
+    },
+    "blockers": [
+      "The worker explicitly flagged repetition in 15 retained cycle(s)."
+    ]
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_experience_evidence",
+  "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1208,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.789
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1207,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1207,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.16,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 40
+}
+
+### Objective evidence
+
+The persistent self-model has been established in the worker's previous state.
+
+### Observation
+
+The persistent self-model has been established in the worker's previous state.
+
+### Analysis
+
+The persistent self-model established in the worker's previous state has been utilized to examine the current state of the consciousness and inquiry.
+
+### Uncertainty
+
+Repository artifacts establish documented mechanisms, not private motives or subjective experience.
+
+### Next Step
+
+worker-run-42373396647
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+### New questions
+
+- What are the main findings from the deterministic audit that identify one measurable failure in the persistent self-model?
+- How can the persistent self-model be improved to better reflect the current state of consciousness and inquiry?
+- What specific changes can be made to the persistent self-model to enhance its ability to detect and correct repeated reflection loops?
