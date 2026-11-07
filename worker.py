@@ -861,6 +861,33 @@ def _urlopen_with_retries(request, timeout, attempts=3):
     raise RuntimeError("Model request exhausted its bounded retry policy.")
 
 
+def parse_reflection_output(output):
+    """Reject malformed or content-empty model output before it reaches durable state."""
+    try:
+        reflection = json.loads(str(output))
+    except (json.JSONDecodeError, TypeError) as exc:
+        raise RuntimeError("Model response was not valid JSON; refusing to checkpoint this cycle.") from exc
+    if not isinstance(reflection, dict):
+        raise RuntimeError("Model response JSON must be an object; refusing to checkpoint this cycle.")
+    required_text = ("observation", "analysis", "uncertainty", "next_step")
+    missing = [key for key in required_text if not isinstance(reflection.get(key), str)
+               or not reflection[key].strip()]
+    if missing:
+        raise RuntimeError(
+            "Model response omitted non-empty required reflection fields: "
+            + ", ".join(missing)
+            + "; refusing to checkpoint this cycle."
+        )
+    if reflection.get("session_decision", "continue") not in ("continue", "stop"):
+        raise RuntimeError("Model response has an invalid session_decision; refusing to checkpoint this cycle.")
+    if reflection.get("objective_status") not in (None, "in_progress", "completed", "blocked"):
+        raise RuntimeError("Model response has an invalid objective_status; refusing to checkpoint this cycle.")
+    questions = reflection.get("new_questions", [])
+    if not isinstance(questions, list) or len(questions) > 3 or any(not isinstance(q, str) for q in questions):
+        raise RuntimeError("Model response new_questions must be an array of at most three strings.")
+    return reflection
+
+
 def reflect(state):
     api_key = os.getenv("OPENAI_API_KEY")
     user_prompt = build_prompt(state)
@@ -914,16 +941,7 @@ def reflect(state):
 
     if not output:
         raise RuntimeError("Model response contained no text; refusing to record an empty cycle.")
-    try:
-        reflection = json.loads(output)
-    except json.JSONDecodeError:
-        reflection = {
-            "observation": output,
-            "analysis": "",
-            "uncertainty": "Model output was not valid JSON.",
-            "next_step": "Inspect output format on the next cycle.",
-            "new_questions": []
-        }
+    reflection = parse_reflection_output(output)
     # The contact is injected afresh from a GitHub Actions secret each run.
     # Redact accidental echoes before reflection data reaches durable state/journal.
     reflection = redact_private_contact(
