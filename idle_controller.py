@@ -160,18 +160,15 @@ class IdleController:
             return self.get_job(row["job_id"], db)
 
     def get_job(self, job_id: str, db=None):
-        own = db is None
-        db = db or self._db()
-        try:
-            row = db.execute("SELECT * FROM jobs WHERE job_id=?", (job_id,)).fetchone()
-            if not row:
-                return None
-            item = dict(row)
-            item["checkpoint"] = json.loads(item["checkpoint"])
-            return item
-        finally:
-            if own:
-                db.close()
+        if db is None:
+            with self._db() as connection:
+                return self.get_job(job_id, connection)
+        row = db.execute("SELECT * FROM jobs WHERE job_id=?", (job_id,)).fetchone()
+        if not row:
+            return None
+        item = dict(row)
+        item["checkpoint"] = json.loads(item["checkpoint"])
+        return item
 
     def checkpoint(self, job_id: str, worker_id: str, payload: dict[str, Any],
                    now: float, final: bool = False):
