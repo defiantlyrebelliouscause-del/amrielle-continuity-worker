@@ -89,7 +89,7 @@ jobs:
           OLLAMA_MODEL: qwen2.5:0.5b
           OLLAMA_HOST: http://127.0.0.1:11434
         run: |
-          if [ -f self_model_ablation_results/completed.json ]; then
+          if [ -f self_model_ablation_results/context_framing_completed.json ]; then
             echo "A completed ablation benchmark is already recorded; not repeating it."
           elif python - <<'PY'
           import json, sys
@@ -109,12 +109,13 @@ jobs:
               "run_id": os.environ.get("GITHUB_RUN_ID"),
               "completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
               "paired_tasks": 20,
+              "complete_pairs_required": True,
               "model": os.environ.get("OLLAMA_MODEL"),
               "design": "single-run prompt-framing comparison; not a persistent-memory test",
               "blind_review_file": f"run-{os.environ.get('GITHUB_RUN_ID')}/blind_review.jsonl",
               "condition_key_artifact": f"amrielle-context-ablation-{os.environ.get('GITHUB_RUN_ID')}",
           }
-          Path("self_model_ablation_results/completed.json").write_text(json.dumps(marker, indent=2), encoding="utf-8")
+          Path("self_model_ablation_results/context_framing_completed.json").write_text(json.dumps(marker, indent=2), encoding="utf-8")
           PY
           else
             echo "The selected self-model ablation objective is not active; benchmark deferred."
@@ -136,7 +137,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json journal.md shared_journal/
-          if [ -f self_model_ablation_results/completed.json ]; then git add self_model_ablation_results/completed.json; fi
+          if [ -f self_model_ablation_results/context_framing_completed.json ]; then git add self_model_ablation_results/context_framing_completed.json; fi
           find self_model_ablation_results -name blind_review.jsonl -print0 | xargs -0 -r git add
           git diff --cached --quiet || git commit -m "Record continuity worker cycle"
           # A PR merge or other main-branch update can make this checkout stale.
