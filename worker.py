@@ -185,7 +185,7 @@ def verify_stall_recovery_objective(state, reflection, action=None):
     )
     if verified:
         reflection["next_objective"] = {
-            "title": "Test whether first-person self-description framing changes held-out reasoning calibration",
+            "title": "Test whether first-person self-model wording changes held-out reasoning calibration",
             "rationale": "The current benchmark compares first-person self-description wording with a third-person operational note. It does not test persistent memory or longitudinal identity. Compare matched tasks with preregistered scoring and preserved raw outputs.",
             "completion_criteria": [
                 "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
