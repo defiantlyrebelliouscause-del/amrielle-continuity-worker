@@ -66,12 +66,47 @@ def make_handler(controller: IdleController, secret: str,
             return self._reply(404, {"error": "not_found"})
 
         def do_POST(self):
-            if self.path not in ("/v1/sessions", "/v1/activity"):
+            if self.path not in ("/v1/sessions", "/v1/activity", "/v1/consent",
+                                  "/v1/jobs/claim") and
+                    not (self.path.startswith("/v1/jobs/") and
+                         self.path.endswith("/checkpoint")) and
+                    not (self.path.startswith("/v1/jobs/") and
+                         self.path.endswith("/failure")):
                 return self._reply(404, {"error": "not_found"})
             data, error = self._read_json()
             if error:
                 return self._reply(401 if error == "invalid_signature" else 400,
                                    {"error": error})
+            if self.path == "/v1/jobs/claim":
+                worker_id = data.get("worker_id")
+                if not isinstance(worker_id, str) or not worker_id or len(worker_id) > 128:
+                    return self._reply(400, {"error": "invalid_worker_id"})
+                job = controller.claim(worker_id, now)
+                return self._reply(200, {"job": job})
+
+            if self.path.startswith("/v1/jobs/"):
+                parts = self.path.strip("/").split("/")
+                if len(parts) != 3 or not parts[1] or len(parts[1]) > 128:
+                    return self._reply(404, {"error": "not_found"})
+                job_id, operation = parts[1], parts[2]
+                worker_id = data.get("worker_id")
+                if not isinstance(worker_id, str) or not worker_id or len(worker_id) > 128:
+                    return self._reply(400, {"error": "invalid_worker_id"})
+                if operation == "checkpoint":
+                    payload = data.get("payload")
+                    final = data.get("final", False)
+                    if not isinstance(payload, dict) or not isinstance(final, bool):
+                        return self._reply(400, {"error": "invalid_checkpoint"})
+                    status = controller.checkpoint(job_id, worker_id, payload, now, final)
+                    return self._reply(200, {"status": status})
+                if operation == "failure":
+                    error_message = data.get("error")
+                    if not isinstance(error_message, str):
+                        return self._reply(400, {"error": "invalid_error"})
+                    status = controller.fail(job_id, worker_id, error_message, now)
+                    return self._reply(200, {"status": status})
+                return self._reply(404, {"error": "not_found"})
+
             session_id = data.get("session_id")
             if not isinstance(session_id, str) or not session_id or len(session_id) > 128:
                 return self._reply(400, {"error": "invalid_session_id"})
@@ -83,6 +118,12 @@ def make_handler(controller: IdleController, secret: str,
                         return self._reply(400, {"error": "explicit_opt_in_required"})
                     controller.register(session_id, now, opted_in)
                     return self._reply(201, {"registered": True})
+                if self.path == "/v1/consent":
+                    enabled = data.get("enabled")
+                    if not isinstance(enabled, bool):
+                        return self._reply(400, {"error": "explicit_consent_boolean_required"})
+                    controller.set_opt_in(session_id, enabled, now)
+                    return self._reply(200, {"opted_in": enabled})
                 event_id = data.get("event_id")
                 if not isinstance(event_id, str) or not event_id or len(event_id) > 128:
                     return self._reply(400, {"error": "invalid_event_id"})
