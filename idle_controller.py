@@ -135,6 +135,14 @@ class IdleController:
                         {"job_id": job_id, "activity_version": expected_version})
             return job_id
 
+    def due_sessions(self, now: float):
+        """Return opted-in sessions whose persisted idle deadline has passed."""
+        with self._db() as db:
+            rows = db.execute("""SELECT session_id,activity_version FROM sessions
+                WHERE opted_in=1 AND last_activity + ? <= ?""",
+                (self.idle_seconds, now)).fetchall()
+            return [(row["session_id"], row["activity_version"]) for row in rows]
+
     def claim(self, worker_id: str, now: float):
         """Claim one due job; expired leases are recoverable after a crash."""
         with self._db() as db:
