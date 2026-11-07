@@ -68,10 +68,18 @@ curl -X POST http://127.0.0.1:8765/v1/sessions \
 ```
 
 On each human message, the host adapter sends a fresh unique event ID to
-`POST /v1/activity` with the same signature scheme. Send opaque session IDs,
-not message text, credentials, or personal data. The server persists activity;
-its scheduler loop checks due deadlines and enqueues work. A separate worker
-consumer must claim and execute those jobs.
+`POST /v1/activity` with the same signature scheme. Revoke consent through
+`POST /v1/consent` with `{"session_id":"...","enabled":false}`. Send opaque
+session IDs, not message text, credentials, or personal data.
+
+The server persists activity; its scheduler loop checks due deadlines and
+enqueues work. A separate worker can claim a job through
+`POST /v1/jobs/claim` with `{"worker_id":"worker-1"}`, then checkpoint using
+`POST /v1/jobs/{job_id}/checkpoint` with `worker_id`, a complete checkpoint
+`payload`, and optional `final`. Retryable errors can be reported through
+`POST /v1/jobs/{job_id}/failure` with `worker_id` and `error`. All endpoints
+require the same HMAC signature. The worker must check the returned status
+after each tool call and must not apply late tool results after yielding.
 
 **Deployment boundary:** this adapter is not deployed by this repository change.
 It is a host-side integration point. It must run behind TLS/authenticated
