@@ -6,6 +6,7 @@ It schedules bounded jobs; it does not run continuously or infer consciousness.
 from __future__ import annotations
 
 import json
+from contextlib import contextmanager
 import sqlite3
 import uuid
 from pathlib import Path
@@ -45,12 +46,20 @@ class IdleController:
             );
             """)
 
+    @contextmanager
     def _db(self):
         db = sqlite3.connect(self.database, timeout=15, isolation_level="IMMEDIATE")
         db.row_factory = sqlite3.Row
-        db.execute("PRAGMA journal_mode=WAL")
-        db.execute("PRAGMA foreign_keys=ON")
-        return db
+        try:
+            db.execute("PRAGMA journal_mode=WAL")
+            db.execute("PRAGMA foreign_keys=ON")
+            yield db
+            db.commit()
+        except Exception:
+            db.rollback()
+            raise
+        finally:
+            db.close()
 
     @staticmethod
     def _audit(db, now, session_id, event, detail):
