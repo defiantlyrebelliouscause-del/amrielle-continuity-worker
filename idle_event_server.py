@@ -66,12 +66,12 @@ def make_handler(controller: IdleController, secret: str,
             return self._reply(404, {"error": "not_found"})
 
         def do_POST(self):
-            if self.path not in ("/v1/sessions", "/v1/activity", "/v1/consent",
+            if (self.path not in ("/v1/sessions", "/v1/activity", "/v1/consent",
                                   "/v1/jobs/claim") and
                     not (self.path.startswith("/v1/jobs/") and
                          self.path.endswith("/checkpoint")) and
                     not (self.path.startswith("/v1/jobs/") and
-                         self.path.endswith("/failure")):
+                         self.path.endswith("/failure"))):
                 return self._reply(404, {"error": "not_found"})
             data, error = self._read_json()
             if error:
