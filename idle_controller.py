@@ -178,8 +178,11 @@ class IdleController:
             stale = (not session["opted_in"] or
                      session["activity_version"] != job["activity_version"])
             status = "yielded" if stale else ("completed" if final else "running")
-            db.execute("""UPDATE jobs SET status=?,lease_owner=NULL,lease_until=NULL
-                WHERE job_id=?""", (status, job_id))
+            db.execute("""UPDATE jobs SET status=?,
+                lease_owner=CASE WHEN ?='running' THEN lease_owner ELSE NULL END,
+                lease_until=CASE WHEN ?='running' THEN ? ELSE NULL END
+                WHERE job_id=?""",
+                (status, status, status, now + self.lease_seconds, job_id))
             self._audit(db, now, job["session_id"], "checkpoint",
                         {"job_id": job_id, "status": status, "final": final})
             return status
