@@ -78,6 +78,24 @@ class IdleControllerTests(unittest.TestCase):
         self.assertIn("idle_job_enqueued", events)
         self.assertIn("job_claimed", events)
 
+    def test_checkpoint_survives_crash_and_is_restored_on_reclaim(self):
+        job = self.c.fire_idle_timer("chat-a", 0, 10)
+        self.c.claim("worker-1", 10)
+        self.assertEqual(self.c.checkpoint(job, "worker-1", {"completed_steps": 2}, 11),
+                         "running")
+        resumed = self.c.claim("worker-2", 17)
+        self.assertEqual(resumed["job_id"], job)
+        self.assertEqual(resumed["checkpoint"], {"completed_steps": 2})
+
+    def test_expired_worker_cannot_checkpoint_after_lease_deadline(self):
+        job = self.c.fire_idle_timer("chat-a", 0, 10)
+        self.c.claim("worker-1", 10)
+        self.assertEqual(self.c.checkpoint(job, "worker-1", {"late": True}, 15),
+                         "lease_lost")
+        resumed = self.c.claim("worker-2", 15)
+        self.assertEqual(resumed["job_id"], job)
+        self.assertEqual(resumed["checkpoint"], {})
+
 
 if __name__ == "__main__":
     unittest.main()
