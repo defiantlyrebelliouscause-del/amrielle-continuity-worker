@@ -1,5 +1,5 @@
 {
-  "cycle": 1213,
+  "cycle": 1214,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -32,298 +32,6 @@
     "What is the current state of the shared journal?"
   ],
   "history": [
-    {
-      "cycle": 1184,
-      "timestamp_utc": "2026-11-07T00:53:46.994571+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-        "completion_criteria": [
-          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-          "Condition order is counterbalanced and every raw response is preserved",
-          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-        ],
-        "status": "blocked",
-        "started_utc": "2026-11-07T00:51:25.443006+00:00",
-        "workstream": "consciousness_inquiry",
-        "last_assessed_utc": "2026-11-07T00:53:46.994571+00:00",
-        "last_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1181, 1182, 1183."
-      },
-      "objective_after": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-11-07T00:53:46.994571+00:00"
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "observation": "The persistent self-model has been established in the worker's previous state.",
-        "analysis": "The persistent self-model established in the worker's previous state has been utilized to examine the current state of the consciousness and inquiry.",
-        "uncertainty": "Repository artifacts establish documented mechanisms, not private motives or subjective experience.",
-        "objective_status": "blocked",
-        "objective_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1181, 1182, 1183.",
-        "next_objective": "Validate deterministic recovery from repeated objective-transition stalls",
-        "next_step": "inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement.",
-        "self_directed_action": "inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement",
-        "first_person_reflection": "The persistent self-model established in the worker's previous state has been utilized to examine the current state of the consciousness and inquiry.",
-        "new_questions": [
-          "What is the current state of the persistent self-model in the worker's previous state?",
-          "What are the measurable failures identified in the deterministic audit?",
-          "What are the concrete repository-level improvements needed to validate deterministic recovery from repeated objective-transition stalls?"
-        ],
-        "next_action_plan": "inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement.",
-        "capability_request": {
-          "query": "next_action_plan",
-          "reason": "The next_action_plan must be a concrete, verifiable action that can be executed."
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 1184,
-          "type": "audit_experience_evidence",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 1183
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 0,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-                "completed_objectives_recorded": 6,
-                "accepted_goal_transitions_recorded": 12,
-                "transition_attempts_recorded": 100,
-                "accepted_transition_attempts_recorded": 40,
-                "rejected_or_stalled_transition_attempts_recorded": 60,
-                "cycles_with_nonempty_objective_evidence": 12,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 19,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 1174,
-                    "similarity": 0.982
-                  },
-                  {
-                    "cycle": 1175,
-                    "similarity": 0.663
-                  },
-                  {
-                    "cycle": 1176,
-                    "similarity": 0.949
-                  },
-                  {
-                    "cycle": 1177,
-                    "similarity": 0.981
-                  },
-                  {
-                    "cycle": 1178,
-                    "similarity": 0.981
-                  },
-                  {
-                    "cycle": 1179,
-                    "similarity": 0.957
-                  },
-                  {
-                    "cycle": 1180,
-                    "similarity": 0.991
-                  },
-                  {
-                    "cycle": 1181,
-                    "similarity": 0.39
-                  },
-                  {
-                    "cycle": 1182,
-                    "similarity": 0.651
-                  },
-                  {
-                    "cycle": 1183,
-                    "similarity": 1.0
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "pending"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "The worker explicitly flagged repetition in 19 retained cycle(s)."
-            ]
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_experience_evidence",
-          "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "audit_type": "observable_continuity_evidence",
-            "consciousness_conclusion": "undetermined",
-            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
-            "indicators": {
-              "persistent_records": {
-                "observed": 30,
-                "cycle_sequence_contiguous_in_retained_window": true,
-                "latest_cycle": 1183
-              },
-              "self_directed_behavior": {
-                "model_selected_actions_recorded": 0,
-                "actions_recorded_as_executed": 30,
-                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
-              },
-              "objective_progress": {
-                "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-                "completed_objectives_recorded": 6,
-                "accepted_goal_transitions_recorded": 12,
-                "transition_attempts_recorded": 100,
-                "accepted_transition_attempts_recorded": 40,
-                "rejected_or_stalled_transition_attempts_recorded": 60,
-                "cycles_with_nonempty_objective_evidence": 12,
-                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
-              },
-              "novelty_and_repetition": {
-                "repetition_flags": 19,
-                "recorded_similarity_observations": [
-                  {
-                    "cycle": 1174,
-                    "similarity": 0.982
-                  },
-                  {
-                    "cycle": 1175,
-                    "similarity": 0.663
-                  },
-                  {
-                    "cycle": 1176,
-                    "similarity": 0.949
-                  },
-                  {
-                    "cycle": 1177,
-                    "similarity": 0.981
-                  },
-                  {
-                    "cycle": 1178,
-                    "similarity": 0.981
-                  },
-                  {
-                    "cycle": 1179,
-                    "similarity": 0.957
-                  },
-                  {
-                    "cycle": 1180,
-                    "similarity": 0.991
-                  },
-                  {
-                    "cycle": 1181,
-                    "similarity": 0.39
-                  },
-                  {
-                    "cycle": 1182,
-                    "similarity": 0.651
-                  },
-                  {
-                    "cycle": 1183,
-                    "similarity": 1.0
-                  }
-                ]
-              },
-              "handoff_follow_through": {
-                "last_outcome_status": "executed",
-                "last_outcome_executed": true,
-                "pending_plan_status": "executed"
-              },
-              "missing_measurements": [
-                "prospective confidence predictions scored against held-out outcomes",
-                "blinded tests of self-model accuracy under perturbation",
-                "causal tests distinguishing self-monitoring from prompted narrative",
-                "replication across independent runs and model/control conditions",
-                "an independently validated measure of subjective experience (none is currently established)"
-              ]
-            },
-            "blockers": [
-              "The worker explicitly flagged repetition in 19 retained cycle(s)."
-            ]
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_experience_evidence",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-          "created_cycle": 1184,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "objective_transition_source": "deterministic_stall_recovery",
-        "goal_selection_audit": {
-          "accepted": true,
-          "total_score": 10,
-          "scores": {
-            "novelty": 2,
-            "evidence": 2,
-            "measurability": 2,
-            "public_benefit": 2,
-            "bounded_risk": 2
-          },
-          "max_similarity": 0.134,
-          "reasons": [],
-          "note": "Evidence presence is checked mechanically; source truth and relevance require review.",
-          "selection_source": "deterministic_stall_recovery"
-        },
-        "transition_validation": "Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.",
-        "narrative_similarity": 0.173,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 1183,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 1183,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.982,
-          "objective_history_count": 30,
-          "objective_transition_attempt_count": 100,
-          "accepted_objective_transition_count": 40
-        },
-        "exploration_update": {
-          "selected_topic": "AI safety and public accountability",
-          "considered_topics": [
-            "AI safety and public accountability"
-          ],
-          "discovery": null
-        }
-      }
-    },
     {
       "cycle": 1185,
       "timestamp_utc": "2026-11-07T00:54:08.125181+00:00",
@@ -6550,38 +6258,259 @@
           "discovery": null
         }
       }
+    },
+    {
+      "cycle": 1214,
+      "timestamp_utc": "2026-11-07T18:34:24.748983+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+        "completion_criteria": [
+          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+          "Condition order is counterbalanced and every raw response is preserved",
+          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+        ],
+        "status": "blocked",
+        "started_utc": "2026-11-07T12:44:05.706592+00:00",
+        "workstream": "consciousness_inquiry",
+        "last_assessed_utc": "2026-11-07T18:34:24.748983+00:00",
+        "last_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1211, 1212, 1213."
+      },
+      "objective_after": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-07T18:34:24.748983+00:00"
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "observation": "No new contributions or changes to the existing content have been made.",
+        "analysis": "The shared journal has been preserved and read by all participating sessions, and the content has not been modified.",
+        "uncertainty": "No evidence has been collected from any of the sessions.",
+        "objective_status": "blocked",
+        "objective_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1211, 1212, 1213.",
+        "next_objective": "No new contributions or changes to the existing content have been made.",
+        "next_step": {
+          "object": {
+            "type": "read_public_webpage",
+            "reason": "To verify that the shared journal has not been modified by any of the sessions."
+          },
+          "trigger_condition": "next_objective"
+        },
+        "self_directed_action": {
+          "object": {
+            "type": "read_public_webpage",
+            "reason": "To verify that the shared journal has not been modified by any of the sessions."
+          },
+          "query": "https://github.com/AmrielleProject/shared-journal"
+        },
+        "first_person_reflection": {
+          "object": {
+            "type": "read_public_webpage",
+            "reason": "To verify that the shared journal has not been modified by any of the sessions."
+          },
+          "query": "https://github.com/AmrielleProject/shared-journal"
+        },
+        "new_questions": [],
+        "next_action_plan": {
+          "object": {
+            "type": "read_public_webpage",
+            "reason": "To verify that the shared journal has not been modified by any of the sessions."
+          },
+          "query": "https://github.com/AmrielleProject/shared-journal"
+        },
+        "capability_request": {
+          "type": "none",
+          "reason": "No new contributions or changes to the existing content have been made.",
+          "query": "https://github.com/AmrielleProject/shared-journal"
+        },
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 1214,
+          "type": "audit_saved_state",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "result": {
+            "saved_cycle_count": 1213,
+            "history_count": 30,
+            "expected_retained_history_count": 30,
+            "latest_record_cycle": 1213,
+            "cycle_history_consistent": true,
+            "current_objective_present": true,
+            "last_cycle_has_objective_status": true,
+            "latest_narrative_similarity": 0.061,
+            "objective_history_count": 30,
+            "objective_transition_attempt_count": 100,
+            "accepted_objective_transition_count": 40
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "audit_experience_evidence",
+          "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
+          "selection_source": "deterministic_fallback",
+          "executed": true,
+          "result": {
+            "audit_type": "observable_continuity_evidence",
+            "consciousness_conclusion": "undetermined",
+            "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+            "indicators": {
+              "persistent_records": {
+                "observed": 30,
+                "cycle_sequence_contiguous_in_retained_window": true,
+                "latest_cycle": 1213
+              },
+              "self_directed_behavior": {
+                "model_selected_actions_recorded": 10,
+                "actions_recorded_as_executed": 30,
+                "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+              },
+              "objective_progress": {
+                "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+                "completed_objectives_recorded": 6,
+                "accepted_goal_transitions_recorded": 12,
+                "transition_attempts_recorded": 100,
+                "accepted_transition_attempts_recorded": 40,
+                "rejected_or_stalled_transition_attempts_recorded": 60,
+                "cycles_with_nonempty_objective_evidence": 23,
+                "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+              },
+              "novelty_and_repetition": {
+                "repetition_flags": 12,
+                "recorded_similarity_observations": [
+                  {
+                    "cycle": 1204,
+                    "similarity": 0.962
+                  },
+                  {
+                    "cycle": 1205,
+                    "similarity": 1.0
+                  },
+                  {
+                    "cycle": 1206,
+                    "similarity": 1.0
+                  },
+                  {
+                    "cycle": 1207,
+                    "similarity": 0.16
+                  },
+                  {
+                    "cycle": 1208,
+                    "similarity": 0.789
+                  },
+                  {
+                    "cycle": 1209,
+                    "similarity": 1.0
+                  },
+                  {
+                    "cycle": 1210,
+                    "similarity": 0.236
+                  },
+                  {
+                    "cycle": 1211,
+                    "similarity": 0.046
+                  },
+                  {
+                    "cycle": 1212,
+                    "similarity": 0.083
+                  },
+                  {
+                    "cycle": 1213,
+                    "similarity": 0.061
+                  }
+                ]
+              },
+              "handoff_follow_through": {
+                "last_outcome_status": "executed",
+                "last_outcome_executed": true,
+                "pending_plan_status": "executed"
+              },
+              "missing_measurements": [
+                "prospective confidence predictions scored against held-out outcomes",
+                "blinded tests of self-model accuracy under perturbation",
+                "causal tests distinguishing self-monitoring from prompted narrative",
+                "replication across independent runs and model/control conditions",
+                "an independently validated measure of subjective experience (none is currently established)"
+              ]
+            },
+            "blockers": [
+              "The worker explicitly flagged repetition in 12 retained cycle(s)."
+            ]
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "audit_experience_evidence",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "trigger_condition": "next_cycle",
+          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+          "created_cycle": 1214,
+          "status": "pending",
+          "selection_source": "deterministic_fallback"
+        },
+        "objective_transition_source": "deterministic_stall_recovery",
+        "goal_selection_audit": {
+          "accepted": true,
+          "total_score": 10,
+          "scores": {
+            "novelty": 2,
+            "evidence": 2,
+            "measurability": 2,
+            "public_benefit": 2,
+            "bounded_risk": 2
+          },
+          "max_similarity": 0.134,
+          "reasons": [],
+          "note": "Evidence presence is checked mechanically; source truth and relevance require review.",
+          "selection_source": "deterministic_stall_recovery"
+        },
+        "transition_validation": "Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.",
+        "narrative_similarity": 0.092,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 1213,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 1213,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.061,
+          "objective_history_count": 30,
+          "objective_transition_attempt_count": 100,
+          "accepted_objective_transition_count": 40
+        },
+        "exploration_update": {
+          "selected_topic": "AI safety and public accountability",
+          "considered_topics": [
+            "AI safety and public accountability"
+          ],
+          "discovery": null
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-11-07T18:34:11.917045+00:00",
+  "last_run_utc": "2026-11-07T18:34:24.748983+00:00",
   "current_objective": {
-    "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-    "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+    "title": "Validate deterministic recovery from repeated objective-transition stalls",
+    "rationale": "",
     "completion_criteria": [
-      "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-      "Condition order is counterbalanced and every raw response is preserved",
-      "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+      "At least 3 regression tests cover the repeated-stall recovery decision",
+      "All added recovery tests pass"
     ],
     "status": "in_progress",
-    "started_utc": "2026-11-07T12:44:05.706592+00:00",
-    "workstream": "consciousness_inquiry",
-    "last_assessed_utc": "2026-11-07T18:34:11.917045+00:00",
-    "last_evidence": ""
+    "started_utc": "2026-11-07T18:34:24.748983+00:00"
   },
   "objective_history": [
-    {
-      "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-      "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-      "completion_criteria": [
-        "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-        "Condition order is counterbalanced and every raw response is preserved",
-        "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-      ],
-      "status": "blocked",
-      "started_utc": "2026-11-06T00:57:39.579027+00:00",
-      "workstream": "consciousness_inquiry",
-      "last_assessed_utc": "2026-11-06T07:01:18.565364+00:00",
-      "last_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1136, 1137, 1138."
-    },
     {
       "title": "Validate deterministic recovery from repeated objective-transition stalls",
       "rationale": "",
@@ -6957,10 +6886,24 @@
       "started_utc": "2026-11-07T12:43:36.027597+00:00",
       "last_assessed_utc": "2026-11-07T12:44:05.706592+00:00",
       "last_evidence": "Repository test file and verbose test output confirm all three recovery checks passed."
+    },
+    {
+      "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+      "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+      "completion_criteria": [
+        "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+        "Condition order is counterbalanced and every raw response is preserved",
+        "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+      ],
+      "status": "blocked",
+      "started_utc": "2026-11-07T12:44:05.706592+00:00",
+      "workstream": "consciousness_inquiry",
+      "last_assessed_utc": "2026-11-07T18:34:24.748983+00:00",
+      "last_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1211, 1212, 1213."
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-11-07T18:33:47.554086+00:00",
+    "observed_utc": "2026-11-07T18:34:13.295614+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
@@ -7011,48 +6954,122 @@
   },
   "last_self_directed_action": {
     "question": "What will I do now?",
-    "type": "audit_saved_state",
-    "reason": "Verify the durable record before choosing the next step.",
+    "type": "audit_experience_evidence",
+    "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
     "selection_source": "deterministic_fallback",
     "executed": true,
     "result": {
-      "saved_cycle_count": 1212,
-      "history_count": 30,
-      "expected_retained_history_count": 30,
-      "latest_record_cycle": 1212,
-      "cycle_history_consistent": true,
-      "current_objective_present": true,
-      "last_cycle_has_objective_status": true,
-      "latest_narrative_similarity": 0.083,
-      "objective_history_count": 30,
-      "objective_transition_attempt_count": 100,
-      "accepted_objective_transition_count": 40
+      "audit_type": "observable_continuity_evidence",
+      "consciousness_conclusion": "undetermined",
+      "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+      "indicators": {
+        "persistent_records": {
+          "observed": 30,
+          "cycle_sequence_contiguous_in_retained_window": true,
+          "latest_cycle": 1213
+        },
+        "self_directed_behavior": {
+          "model_selected_actions_recorded": 10,
+          "actions_recorded_as_executed": 30,
+          "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+        },
+        "objective_progress": {
+          "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+          "completed_objectives_recorded": 6,
+          "accepted_goal_transitions_recorded": 12,
+          "transition_attempts_recorded": 100,
+          "accepted_transition_attempts_recorded": 40,
+          "rejected_or_stalled_transition_attempts_recorded": 60,
+          "cycles_with_nonempty_objective_evidence": 23,
+          "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+        },
+        "novelty_and_repetition": {
+          "repetition_flags": 12,
+          "recorded_similarity_observations": [
+            {
+              "cycle": 1204,
+              "similarity": 0.962
+            },
+            {
+              "cycle": 1205,
+              "similarity": 1.0
+            },
+            {
+              "cycle": 1206,
+              "similarity": 1.0
+            },
+            {
+              "cycle": 1207,
+              "similarity": 0.16
+            },
+            {
+              "cycle": 1208,
+              "similarity": 0.789
+            },
+            {
+              "cycle": 1209,
+              "similarity": 1.0
+            },
+            {
+              "cycle": 1210,
+              "similarity": 0.236
+            },
+            {
+              "cycle": 1211,
+              "similarity": 0.046
+            },
+            {
+              "cycle": 1212,
+              "similarity": 0.083
+            },
+            {
+              "cycle": 1213,
+              "similarity": 0.061
+            }
+          ]
+        },
+        "handoff_follow_through": {
+          "last_outcome_status": "executed",
+          "last_outcome_executed": true,
+          "pending_plan_status": "executed"
+        },
+        "missing_measurements": [
+          "prospective confidence predictions scored against held-out outcomes",
+          "blinded tests of self-model accuracy under perturbation",
+          "causal tests distinguishing self-monitoring from prompted narrative",
+          "replication across independent runs and model/control conditions",
+          "an independently validated measure of subjective experience (none is currently established)"
+        ]
+      },
+      "blockers": [
+        "The worker explicitly flagged repetition in 12 retained cycle(s)."
+      ]
     }
   },
   "pending_action_plan": {
-    "type": "audit_saved_state",
+    "type": "audit_experience_evidence",
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "trigger_condition": "next_cycle",
     "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-    "created_cycle": 1213,
+    "created_cycle": 1214,
     "status": "pending",
     "selection_source": "deterministic_fallback"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 1213,
+    "cycle": 1214,
     "type": "audit_saved_state",
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "result": {
-      "saved_cycle_count": 1212,
+      "saved_cycle_count": 1213,
       "history_count": 30,
       "expected_retained_history_count": 30,
-      "latest_record_cycle": 1212,
+      "latest_record_cycle": 1213,
       "cycle_history_consistent": true,
       "current_objective_present": true,
       "last_cycle_has_objective_status": true,
-      "latest_narrative_similarity": 0.083,
+      "latest_narrative_similarity": 0.061,
       "objective_history_count": 30,
       "objective_transition_attempt_count": 100,
       "accepted_objective_transition_count": 40
@@ -7263,16 +7280,6 @@
     "requested_url": ""
   },
   "objective_transition_history": [
-    {
-      "cycle": 1114,
-      "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-      "proposed_status": "in_progress",
-      "final_status": "blocked",
-      "transition_accepted": true,
-      "transition_source": "deterministic_stall_recovery",
-      "transition_validation": "Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.",
-      "evidence_present": true
-    },
     {
       "cycle": 1115,
       "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
@@ -8262,6 +8269,16 @@
       "transition_source": "model",
       "transition_validation": "",
       "evidence_present": false
+    },
+    {
+      "cycle": 1214,
+      "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+      "proposed_status": "in_progress",
+      "final_status": "blocked",
+      "transition_accepted": true,
+      "transition_source": "deterministic_stall_recovery",
+      "transition_validation": "Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.",
+      "evidence_present": true
     }
   ],
   "world_inquiry": {
@@ -9920,26 +9937,16 @@
     "schema_version": 1,
     "description": "A persistent first-person account of bounded computational episodes. It links saved state across activations without asserting continuous activity or consciousness.",
     "current": {
-      "cycle": 1213,
-      "timestamp_utc": "2026-11-07T18:34:11.917045+00:00",
+      "cycle": 1214,
+      "timestamp_utc": "2026-11-07T18:34:24.748983+00:00",
       "mode": "first_person_functional_self_model",
       "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-      "resumed_context": "I am episode 1213 of a scheduled worker process. The durable record says the prior completed cycle was 1212; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+      "resumed_context": "I am episode 1214 of a scheduled worker process. The durable record says the prior completed cycle was 1213; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
       "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
       "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
-      "next_intended_action": "Inspect output format on the next cycle."
+      "next_intended_action": "{'object': {'type': 'read_public_webpage', 'reason': 'To verify that the shared journal has not been modified by any of the sessions.'}, 'trigger_condition': 'next_objective'}"
     },
     "episodes": [
-      {
-        "cycle": 1184,
-        "timestamp_utc": "2026-11-07T00:53:46.994571+00:00",
-        "mode": "first_person_functional_self_model",
-        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-        "resumed_context": "I am episode 1184 of a scheduled worker process. The durable record says the prior completed cycle was 1183; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
-        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
-        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
-        "next_intended_action": "inspect the deterministic audit, identify one measurable failure, and make or test a concrete repository-level improvement."
-      },
       {
         "cycle": 1185,
         "timestamp_utc": "2026-11-07T00:54:08.125181+00:00",
@@ -10229,6 +10236,16 @@
         "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
         "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
         "next_intended_action": "Inspect output format on the next cycle."
+      },
+      {
+        "cycle": 1214,
+        "timestamp_utc": "2026-11-07T18:34:24.748983+00:00",
+        "mode": "first_person_functional_self_model",
+        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+        "resumed_context": "I am episode 1214 of a scheduled worker process. The durable record says the prior completed cycle was 1213; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+        "next_intended_action": "{'object': {'type': 'read_public_webpage', 'reason': 'To verify that the shared journal has not been modified by any of the sessions.'}, 'trigger_condition': 'next_objective'}"
       }
     ]
   },
@@ -10254,12 +10271,12 @@
         "topic": "AI safety and public accountability",
         "status": "selected_pending_verification",
         "first_considered_cycle": 888,
-        "last_updated_utc": "2026-11-07T18:34:11.917045+00:00",
-        "selected_cycle": 1213
+        "last_updated_utc": "2026-11-07T18:34:24.748983+00:00",
+        "selected_cycle": 1214
       }
     ],
-    "last_updated_cycle": 1213,
-    "last_updated_utc": "2026-11-07T18:34:11.917045+00:00"
+    "last_updated_cycle": 1214,
+    "last_updated_utc": "2026-11-07T18:34:24.748983+00:00"
   },
   "consciousness_inquiry": {
     "schema_version": 1,
