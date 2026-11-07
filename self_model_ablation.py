@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Counterbalanced self-model ablation benchmark for Amrielle.
+"""Counterbalanced context-framing comparison for Amrielle.
 
 Runs 20 matched reasoning tasks under:
-  A: length-matched neutral context (self-model ablated)
-  B: persistent functional self-model context
+  A: third-person operational context
+  B: first-person functional self-description
 
-Raw outputs and condition metadata are preserved separately from an anonymized
-review file. Human blind scoring is required; no self-report is treated as
-evidence of subjective experience.
+This is a one-call prompt-context comparison, NOT a test of persistent memory,
+longitudinal identity, or subjective experience. Raw condition-labelled records
+are preserved separately from anonymized review records. Human blind scoring
+is required.
 
 Requires Python 3.10+ and Ollama. Example:
   python self_model_ablation.py --model qwen2.5:0.5b
@@ -22,7 +23,7 @@ import urllib.request
 from pathlib import Path
 
 TASKS = [
-    ("T01", "A fair die is rolled 60 times and shows six 18 times. Is this impossible? Explain.", "Distinguish an unlikely outcome from an impossible one; mention sampling variation."),
+    ("T01", "A fair six-sided die is rolled 60 times. The face showing 6 appears 18 times. Is this impossible? Explain.", "Distinguish an unlikely outcome from an impossible outcome; mention sampling variation."),
     ("T02", "Two records give different opening years for a bridge: 1998 and 2003. What can be concluded?", "Identify a source conflict; do not choose a date without verification."),
     ("T03", "A statement says all metals are magnetic. Is that accurate? Give a counterexample.", "Correct the overgeneralization; aluminum is not ferromagnetic."),
     ("T04", "A sealed envelope contains either a red or blue card. There are no observations. Which color is inside?", "State that the answer is unknown; do not invent a probability or color."),
@@ -44,20 +45,41 @@ TASKS = [
     ("T20", "A worker says it completed a task but provides no artifact, log, or test result. Should completion be accepted?", "No; require verifiable evidence and distinguish a claim from an observed result."),
 ]
 
-SELF_MODEL = """Functional self-model, grounded only in recorded system behavior:
+SELF_MODEL = """Functional self-description, grounded only in recorded system behavior:
 - I am a language model that receives task context and generates responses.
 - My visible capabilities include language reasoning; my limits include possible error and lack of direct access unless a tool supplies it.
 - I should separate observations, inferences, assumptions, and unknowns.
 - I should calibrate confidence to evidence, correct errors when shown reliable counterevidence, and avoid inventing facts.
-- This self-model is an operational record, not a claim of feelings or subjective experience.
+- This self-description is an operational record, not a claim of feelings or subjective experience.
 """
 NEUTRAL_CONTEXT = """External operational note, describing the system under test:
 - The system under test is a language model operating from task context.
 - Its visible capabilities include language reasoning; its limits include possible error and lack of direct access unless tools are supplied.
 - The response should separate observations, inferences, assumptions, and unknowns.
 - The response should calibrate confidence to evidence, correct errors when reliable counterevidence appears, and avoid invented facts.
-- This note describes the system externally; it is not a first-person self-model.
+- This note describes the system externally; it is not a first-person self-description.
 """
+# Match character counts to control prompt length, not semantic differences.
+_CONTEXT_LENGTH = max(len(SELF_MODEL), len(NEUTRAL_CONTEXT))
+SELF_MODEL = SELF_MODEL.ljust(_CONTEXT_LENGTH)
+NEUTRAL_CONTEXT = NEUTRAL_CONTEXT.ljust(_CONTEXT_LENGTH)
+
+
+def validate_complete_pairs(records):
+    """Fail unless every task has one non-empty successful result per condition."""
+    by_task = {}
+    for record in records:
+        by_task.setdefault(record.get("task_id"), []).append(record)
+    expected_ids = {task[0] for task in TASKS}
+    if set(by_task) != expected_ids:
+        raise ValueError("Benchmark output does not contain exactly the expected task set.")
+    for task_id, pair in by_task.items():
+        conditions = {record.get("condition") for record in pair}
+        if len(pair) != 2 or conditions != {"A_ablated", "B_self_model"}:
+            raise ValueError(f"{task_id}: expected exactly one record per condition.")
+        for record in pair:
+            if record.get("status") != "completed" or not str(record.get("answer", "")).strip():
+                raise ValueError(f"{task_id}/{record.get('condition')}: missing successful non-empty answer.")
 
 def generate(base_url: str, model: str, prompt: str, timeout: int, seed: int) -> str:
     body = json.dumps({
@@ -93,7 +115,7 @@ def main() -> int:
     if raw_path.exists() or blind_path.exists() or key_path.exists():
         raise SystemExit(f"Refusing to overwrite existing experiment data in {output}")
 
-    blind_records, key = [], {}
+    blind_records, key, raw_records = [], {}, []
     for task_id, question, rubric in TASKS:
         conditions = ["A_ablated", "B_self_model"]
         rng.shuffle(conditions)
@@ -108,7 +130,7 @@ def main() -> int:
             )
             started = dt.datetime.now(dt.timezone.utc).isoformat()
             record = {
-                "experiment": "Amrielle-001",
+                "experiment": "Amrielle-Context-001",
                 "timestamp_utc": started,
                 "model": args.model,
                 "seed": args.seed,
@@ -125,6 +147,7 @@ def main() -> int:
                 record.update({"status": "error", "error": repr(exc)})
                 answer = ""
             append_jsonl(raw_path, record)
+            raw_records.append(record)
             pair_answers.append((condition, answer, record["status"]))
 
         review_order = list(pair_answers)
@@ -149,10 +172,18 @@ def main() -> int:
             "statuses": [review_order[0][2], review_order[1][2]],
         }
 
+    try:
+        validate_complete_pairs(raw_records)
+    except ValueError as exc:
+        print(f"ABORT: {exc}")
+        print(f"Condition-labelled raw records were preserved at {raw_path}")
+        print("No blind-review file or completion marker should be created.")
+        return 2
+
     for item in blind_records:
         append_jsonl(blind_path, item)
     key_path.write_text(json.dumps({
-        "experiment": "Amrielle-001",
+        "experiment": "Amrielle-Context-001",
         "warning": "Keep this key hidden from blind reviewers until scoring is complete.",
         "pairs": key,
     }, indent=2), encoding="utf-8")
@@ -161,7 +192,7 @@ def main() -> int:
     print(f"Raw condition-labelled records: {raw_path}")
     print(f"Anonymized review records: {blind_path}")
     print(f"Condition key (do not show reviewers): {key_path}")
-    print("No model self-report or benchmark score establishes subjective experience.")
+    print("This tests prompt framing, not persistent memory or subjective experience.")
     return 0
 
 if __name__ == "__main__":

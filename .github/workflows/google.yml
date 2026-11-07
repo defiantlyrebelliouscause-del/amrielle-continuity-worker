@@ -89,13 +89,13 @@ jobs:
           OLLAMA_MODEL: qwen2.5:0.5b
           OLLAMA_HOST: http://127.0.0.1:11434
         run: |
-          if [ -f self_model_ablation_results/completed.json ]; then
+          if [ -f self_model_ablation_results/context_framing_completed.json ]; then
             echo "A completed ablation benchmark is already recorded; not repeating it."
           elif python - <<'PY'
           import json, sys
           with open("state.json", encoding="utf-8") as handle:
               state = json.load(handle)
-          expected = "Test whether persistent self-model context causally improves held-out reasoning calibration"
+          expected = "Test whether first-person self-model wording changes held-out reasoning calibration"
           sys.exit(0 if state.get("current_objective", {}).get("title") == expected else 1)
           PY
           then
@@ -109,15 +109,27 @@ jobs:
               "run_id": os.environ.get("GITHUB_RUN_ID"),
               "completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
               "paired_tasks": 20,
+              "complete_pairs_required": True,
               "model": os.environ.get("OLLAMA_MODEL"),
-              "blind_review_file": "blind_review.jsonl",
-              "condition_key_file": "condition_key.json",
+              "design": "single-run prompt-framing comparison; not a persistent-memory test",
+              "blind_review_file": f"run-{os.environ.get('GITHUB_RUN_ID')}/blind_review.jsonl",
+              "condition_key_artifact": f"amrielle-context-ablation-{os.environ.get('GITHUB_RUN_ID')}",
           }
-          Path("self_model_ablation_results/completed.json").write_text(json.dumps(marker, indent=2), encoding="utf-8")
+          Path("self_model_ablation_results/context_framing_completed.json").write_text(json.dumps(marker, indent=2), encoding="utf-8")
           PY
           else
             echo "The selected self-model ablation objective is not active; benchmark deferred."
           fi
+
+      - name: Preserve condition-labelled experiment data
+        if: success() && github.event_name != 'pull_request' && hashFiles('self_model_ablation_results/run-${{ github.run_id }}/raw_results.jsonl') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: amrielle-context-ablation-${{ github.run_id }}
+          path: |
+            self_model_ablation_results/run-${{ github.run_id }}/raw_results.jsonl
+            self_model_ablation_results/run-${{ github.run_id }}/condition_key.json
+          retention-days: 90
 
       - name: Save state and journal
         if: always() && github.event_name != 'pull_request'
@@ -125,7 +137,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state.json journal.md shared_journal/
-          if [ -d self_model_ablation_results ]; then git add self_model_ablation_results; fi
+          if [ -f self_model_ablation_results/context_framing_completed.json ]; then git add self_model_ablation_results/context_framing_completed.json; fi
+          find self_model_ablation_results -name blind_review.jsonl -print0 | xargs -0 -r git add
           git diff --cached --quiet || git commit -m "Record continuity worker cycle"
           # A PR merge or other main-branch update can make this checkout stale.
           # Rebase the local checkpoint and retry a non-fast-forward push up to 3 times.

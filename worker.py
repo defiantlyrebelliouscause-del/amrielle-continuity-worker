@@ -185,8 +185,8 @@ def verify_stall_recovery_objective(state, reflection, action=None):
     )
     if verified:
         reflection["next_objective"] = {
-            "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-            "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+            "title": "Test whether first-person self-model wording changes held-out reasoning calibration",
+            "rationale": "The current benchmark compares first-person self-description wording with a third-person operational note. It does not test persistent memory or longitudinal identity. Compare matched tasks with preregistered scoring and preserved raw outputs.",
             "completion_criteria": [
                 "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
                 "Condition order is counterbalanced and every raw response is preserved",
