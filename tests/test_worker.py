@@ -6,6 +6,33 @@ import worker
 
 
 class ContinuityAuditTests(unittest.TestCase):
+    def test_reflection_parser_rejects_invalid_json(self):
+        with self.assertRaisesRegex(RuntimeError, "not valid JSON"):
+            worker.parse_reflection_output("observation without JSON")
+
+    def test_reflection_parser_rejects_empty_analysis_instead_of_saving_it(self):
+        output = {
+            "observation": "A cycle began.",
+            "analysis": "",
+            "uncertainty": "The evidence is incomplete.",
+            "next_step": "Inspect the missing evidence.",
+            "new_questions": [],
+        }
+        with self.assertRaisesRegex(RuntimeError, "analysis"):
+            worker.parse_reflection_output(__import__("json").dumps(output))
+
+    def test_reflection_parser_accepts_complete_structured_output(self):
+        output = {
+            "session_decision": "continue",
+            "observation": "A source was inspected.",
+            "analysis": "The source supports one narrow finding.",
+            "uncertainty": "Independent replication remains open.",
+            "next_step": "Compare the source with a second primary source.",
+            "objective_status": "in_progress",
+            "new_questions": ["Does the second source agree?"],
+        }
+        self.assertEqual(worker.parse_reflection_output(__import__("json").dumps(output)), output)
+
     def test_purpose_requires_verifiable_commitment_fields(self):
         purpose = {
             "title": "Build a reliable public-benefit knowledge tool",
