@@ -140,6 +140,10 @@ class IdleController:
         with self._db() as db:
             db.execute("""UPDATE jobs SET status='pending',lease_owner=NULL,lease_until=NULL
                 WHERE status='running' AND lease_until<=?""", (now,))
+            db.execute("""UPDATE jobs SET status='yielded'
+                WHERE status='pending' AND session_id IN
+                (SELECT session_id FROM sessions
+                 WHERE opted_in=0 OR activity_version != jobs.activity_version)""")
             row = db.execute("""SELECT j.*,s.activity_version AS current_version,
                 s.opted_in FROM jobs j JOIN sessions s USING(session_id)
                 WHERE j.status='pending' AND j.available_at<=?
@@ -175,7 +179,9 @@ class IdleController:
         """Persist progress, then re-check activity before allowing more work."""
         with self._db() as db:
             job = db.execute("SELECT * FROM jobs WHERE job_id=?", (job_id,)).fetchone()
-            if not job or job["status"] != "running" or job["lease_owner"] != worker_id:
+            if (not job or job["status"] != "running"
+                    or job["lease_owner"] != worker_id
+                    or job["lease_until"] is None or job["lease_until"] <= now):
                 return "lease_lost"
             session = db.execute("SELECT * FROM sessions WHERE session_id=?",
                                  (job["session_id"],)).fetchone()
@@ -198,7 +204,9 @@ class IdleController:
         """Bounded retry with durable error record; exhausted work becomes failed."""
         with self._db() as db:
             job = db.execute("SELECT * FROM jobs WHERE job_id=?", (job_id,)).fetchone()
-            if not job or job["status"] != "running" or job["lease_owner"] != worker_id:
+            if (not job or job["status"] != "running"
+                    or job["lease_owner"] != worker_id
+                    or job["lease_until"] is None or job["lease_until"] <= now):
                 return "lease_lost"
             exhausted = job["attempts"] >= max_attempts
             status = "failed" if exhausted else "pending"
