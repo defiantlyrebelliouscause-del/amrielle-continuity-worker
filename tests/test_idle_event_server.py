@@ -78,6 +78,25 @@ class EventServerTests(unittest.TestCase):
         job = self.controller.fire_idle_timer("opaque-4", 0, 10)
         self.assertIsNotNone(job)
 
+    def test_consent_can_be_revoked_through_signed_endpoint(self):
+        self.post("/v1/sessions", {"session_id": "opaque-5", "opted_in": True})
+        status, result = self.post("/v1/consent",
+                                   {"session_id": "opaque-5", "enabled": False})
+        self.assertEqual(status, 200)
+        self.assertFalse(result["opted_in"])
+
+    def test_worker_can_claim_and_checkpoint_through_signed_api(self):
+        self.controller.register("opaque-6", now=0, opted_in=True)
+        job_id = self.controller.fire_idle_timer("opaque-6", 0, 10)
+        status, result = self.post("/v1/jobs/claim", {"worker_id": "worker-api"})
+        self.assertEqual(status, 200)
+        self.assertEqual(result["job"]["job_id"], job_id)
+        status, result = self.post(
+            "/v1/jobs/" + job_id + "/checkpoint",
+            {"worker_id": "worker-api", "payload": {"stage": "research"}, "final": True})
+        self.assertEqual(status, 200)
+        self.assertEqual(result["status"], "completed")
+
 
 if __name__ == "__main__":
     unittest.main()
