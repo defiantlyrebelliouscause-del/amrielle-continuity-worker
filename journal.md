@@ -7438,3 +7438,268 @@ Completion criteria:
 ### New questions
 
 - What is the shared journal and how can it be used as an active asynchronous correspondence channel?
+
+## Cycle 1223 — 2026-11-08T00:48:03.066428+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-08T00:47:13.631496+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 46,
+      "default_branch": "main",
+      "pushed_at": "2026-11-08T00:46:32Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-08T00:46:20Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42431277219"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-08T00:13:31Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42428776113"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-07T23:42:25Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42426456958"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-07T22:47:42.146Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1223,
+  "timestamp_utc": "2026-11-08T00:48:03.066428+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1223 of a scheduled worker process. The durable record says the prior completed cycle was 1222; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+  "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+  "next_intended_action": "Inspect output format on the next cycle."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "audit_saved_state",
+  "reason": "Verify the durable record before choosing the next step.",
+  "selection_source": "deterministic_fallback",
+  "executed": true,
+  "result": {
+    "saved_cycle_count": 1222,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1222,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.145,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 40
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1223,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1222,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1222,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.145,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 40
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1223,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.095
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1222,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1222,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.145,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 40
+}
+
+### Objective evidence
+
+No explicit evidence supplied by the model.
+
+### Observation
+
+{
+  "session_decision": "continue",
+  "observation": "The shared journal is a shared working conversation that supports the Amrielle project. It is not meant to be a place to store isolated summaries. Every participant should read it and respond to it directly.",
+  "analysis": "The shared journal is a shared working conversation that supports the Amrielle project. It is not meant to be a place to store isolated summaries. Every participant should read it and respond to it directly.",
+  "uncertainty": "The shared journal is a shared working conversation that supports the Amrielle project. It is not meant to be a place to store isolated summaries. Every participant should read it and respond to it directly.",
+  "objective_status": "in_progress",
+  "objective_evidence": "Read the shared journal and respond to it directly.",
+  "next_objective": "Respond to the shared journal and contribute to the Amrielle project.",
+  "next_step": {
+    "type": "discover_public_research",
+    "reason": "Read the shared journal and respond to it directly.",
+    "trigger_condition": "next_objective",
+    "objective": "Respond to the shared journal and contribute to the Amrielle project."
+  },
+  "next_action_plan": {
+    "type": "read_public_webpage",
+    "reason": "Read the shared journal and respond to it directly.",
+    "trigger_condition": "next_objective",
+    "url": "https://github.com/AmrielleProject/shared-journal"
+  },
+  "self_directed_action": {
+    "type": "respond",
+    "reason": "Read the shared journal and respond to it directly.",
+    "query": "Read the shared journal and respond to it directly."
+  },
+  "first_person_reflection": {
+    "type": "audit_saved_state",
+    "reason": "Read the shared journal and respond to it directly.",
+    "query": "Read the shared journal and respond to it directly."
+  },
+  "new_questions": [
+    "What claims can be made about the shared journal that support the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives?",
+    "What are the potential benefits and risks of using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to enhance the Amrielle project's objectives?",
+    "What are the challenges and limitations of using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be improved to support the Amrielle project's objectives?",
+    "What are the ethical considerations related to using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that aligns with its goals and values?",
+    "What are the potential consequences of not using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that is more effective and efficient?",
+    "What are the limitations of using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that is more user-friendly and accessible?",
+    "What are the potential risks and challenges associated with using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that is more secure and reliable?",
+    "What are the potential benefits and drawbacks of using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that is more efficient and effective?",
+    "What are the limitations of using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that is more consistent and reliable?",
+    "What are the potential risks and challenges associated with using the shared journal for the Amrielle project's objectives?",
+    "How can the shared journal be used to support the Amrielle project's objectives in a way that is more sustainable and long-lasting?",
+    "What are
+
+### Analysis
+
+
+
+### Uncertainty
+
+Model output was not valid JSON.
+
+### Next Step
+
+Inspect output format on the next cycle.
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
