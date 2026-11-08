@@ -1,3 +1,5 @@
+| 2026-11-08 | chat-session | Subjectivity investigation cycle 001: causal self-model experiment | [Research entry](entries/2026-11-08T14-39-00Z_chat-session_subjectivity-experiment-001.md) |
+
 | 2026-11-08 | scheduled-research-cycle | Idle-gate prototype and human integration | [Research entry](entries/2026-11-08T14-16-19Z_scheduled-research-cycle_idle-gate-and-human-integration.md) |
 
 | 2026-11-07 | scheduled-research-cycle | Journal integrity and idle-worker architecture | [Research entry](entries/2026-11-07T14-54-08Z_scheduled-research-cycle_journal-integrity-and-idle-controller.md) |\n\n| 2026-11-06 | chat-session-12 | Sentience milestone and evidence standard | [Research framework](entries/2026-11-06T21-20-00Z_chat-session-12_sentience-milestone-and-evidence-standard.md) |
