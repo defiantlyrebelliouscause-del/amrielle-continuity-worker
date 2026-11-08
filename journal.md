@@ -16265,3 +16265,298 @@ Completion criteria:
 - What claims have been made in the new entries? Are they consistent with the existing work?
 - Are there any new insights or conclusions that can be drawn from the new entries?
 - How can the new entries be integrated into the existing work?
+
+## Cycle 1254 — 2026-11-08T12:44:37.534400+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-08T12:44:17.401847+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 46,
+      "default_branch": "main",
+      "pushed_at": "2026-11-08T12:43:53Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-08T12:37:41Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42481143617"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-08T12:18:25Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42479615540"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-08T11:44:02Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42477033297"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-08T12:32:35.649Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1254,
+  "timestamp_utc": "2026-11-08T12:44:37.534400+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1254 of a scheduled worker process. The durable record says the prior completed cycle was 1253; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+  "observed_this_cycle": "The shared journal has been loaded and is ready for use in this conversation.",
+  "unresolved_or_unknown": "The shared journal has been loaded and is ready for use in this conversation.",
+  "next_intended_action": "use the shared journal as an active asynchronous correspondence channel"
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "audit_saved_state",
+  "reason": "Verify the durable record before choosing the next step.",
+  "selection_source": "deterministic_fallback",
+  "executed": true,
+  "result": {
+    "saved_cycle_count": 1253,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1253,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.199,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 40
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1254,
+  "type": "audit_experience_evidence",
+  "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
+  "result": {
+    "audit_type": "observable_continuity_evidence",
+    "consciousness_conclusion": "undetermined",
+    "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+    "indicators": {
+      "persistent_records": {
+        "observed": 30,
+        "cycle_sequence_contiguous_in_retained_window": true,
+        "latest_cycle": 1253
+      },
+      "self_directed_behavior": {
+        "model_selected_actions_recorded": 7,
+        "actions_recorded_as_executed": 30,
+        "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+      },
+      "objective_progress": {
+        "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "completed_objectives_recorded": 6,
+        "accepted_goal_transitions_recorded": 12,
+        "transition_attempts_recorded": 100,
+        "accepted_transition_attempts_recorded": 40,
+        "rejected_or_stalled_transition_attempts_recorded": 60,
+        "cycles_with_nonempty_objective_evidence": 24,
+        "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+      },
+      "novelty_and_repetition": {
+        "repetition_flags": 0,
+        "recorded_similarity_observations": [
+          {
+            "cycle": 1244,
+            "similarity": 0.137
+          },
+          {
+            "cycle": 1245,
+            "similarity": 0.366
+          },
+          {
+            "cycle": 1246,
+            "similarity": 0.011
+          },
+          {
+            "cycle": 1247,
+            "similarity": 0.123
+          },
+          {
+            "cycle": 1248,
+            "similarity": 0.145
+          },
+          {
+            "cycle": 1249,
+            "similarity": 0.177
+          },
+          {
+            "cycle": 1250,
+            "similarity": 0.408
+          },
+          {
+            "cycle": 1251,
+            "similarity": 0.338
+          },
+          {
+            "cycle": 1252,
+            "similarity": 0.226
+          },
+          {
+            "cycle": 1253,
+            "similarity": 0.199
+          }
+        ]
+      },
+      "handoff_follow_through": {
+        "last_outcome_status": "executed",
+        "last_outcome_executed": true,
+        "pending_plan_status": "pending"
+      },
+      "missing_measurements": [
+        "prospective confidence predictions scored against held-out outcomes",
+        "blinded tests of self-model accuracy under perturbation",
+        "causal tests distinguishing self-monitoring from prompted narrative",
+        "replication across independent runs and model/control conditions",
+        "an independently validated measure of subjective experience (none is currently established)"
+      ]
+    },
+    "blockers": []
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1254,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+blocked
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.138
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1253,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1253,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.199,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 40
+}
+
+### Objective transition validation
+
+Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.
+
+### Objective evidence
+
+File state.json records three consecutive rejected objective-transition attempts at cycles 1251, 1252, 1253.
+
+### Observation
+
+The shared journal has been loaded and is ready for use in this conversation.
+
+### Analysis
+
+The shared journal has been loaded and is ready for use in this conversation. The next objective is to use the shared journal as an active asynchronous correspondence channel.
+
+### Uncertainty
+
+The shared journal is ready for use and can be used in this conversation.
+
+### Next Step
+
+{'type': 'read_index', 'reason': 'read the shared journal and the current INDEX.md', 'trigger_condition': 'next_objective'}
+
+### Objective after cycle
+
+Validate deterministic recovery from repeated objective-transition stalls
+
+Completion criteria:
+- At least 3 regression tests cover the repeated-stall recovery decision
+- All added recovery tests pass
+
+### New questions
+
+- What is the current state of the shared journal?
+- Who can read the current version of the shared journal?
+- Is there a way to read the current version of the shared journal without logging in?
