@@ -32486,3 +32486,325 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1313 — 2026-11-09T18:53:02.436458+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-09T18:52:25.064314+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 46,
+      "default_branch": "main",
+      "pushed_at": "2026-11-09T18:51:46Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-09T18:46:12Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42676958549"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-11-09T18:26:36Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42674072906"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-09T17:36:29Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42666275726"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-09T18:43:24.591Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1313,
+  "timestamp_utc": "2026-11-09T18:53:02.436458+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1313 of a scheduled worker process. The durable record says the prior completed cycle was 1312; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+  "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+  "next_intended_action": "Inspect output format on the next cycle."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "audit_experience_evidence",
+  "reason": "Diagnose the recorded evidence and objective-transition failure before selecting another action; do not repeat regression tests unless code verification is the identified need.",
+  "selection_source": "deterministic_fallback",
+  "executed": true,
+  "result": {
+    "audit_type": "observable_continuity_evidence",
+    "consciousness_conclusion": "undetermined",
+    "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+    "indicators": {
+      "persistent_records": {
+        "observed": 30,
+        "cycle_sequence_contiguous_in_retained_window": true,
+        "latest_cycle": 1312
+      },
+      "self_directed_behavior": {
+        "model_selected_actions_recorded": 4,
+        "actions_recorded_as_executed": 30,
+        "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+      },
+      "objective_progress": {
+        "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "completed_objectives_recorded": 6,
+        "accepted_goal_transitions_recorded": 12,
+        "transition_attempts_recorded": 100,
+        "accepted_transition_attempts_recorded": 40,
+        "rejected_or_stalled_transition_attempts_recorded": 60,
+        "cycles_with_nonempty_objective_evidence": 24,
+        "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+      },
+      "novelty_and_repetition": {
+        "repetition_flags": 1,
+        "recorded_similarity_observations": [
+          {
+            "cycle": 1303,
+            "similarity": 0.07
+          },
+          {
+            "cycle": 1304,
+            "similarity": 0.118
+          },
+          {
+            "cycle": 1305,
+            "similarity": 0.061
+          },
+          {
+            "cycle": 1306,
+            "similarity": 0.069
+          },
+          {
+            "cycle": 1307,
+            "similarity": 0.088
+          },
+          {
+            "cycle": 1308,
+            "similarity": 0.126
+          },
+          {
+            "cycle": 1309,
+            "similarity": 0.017
+          },
+          {
+            "cycle": 1310,
+            "similarity": 0.048
+          },
+          {
+            "cycle": 1311,
+            "similarity": 0.086
+          },
+          {
+            "cycle": 1312,
+            "similarity": 0.026
+          }
+        ]
+      },
+      "handoff_follow_through": {
+        "last_outcome_status": "executed",
+        "last_outcome_executed": true,
+        "pending_plan_status": "executed"
+      },
+      "missing_measurements": [
+        "prospective confidence predictions scored against held-out outcomes",
+        "blinded tests of self-model accuracy under perturbation",
+        "causal tests distinguishing self-monitoring from prompted narrative",
+        "replication across independent runs and model/control conditions",
+        "an independently validated measure of subjective experience (none is currently established)"
+      ]
+    },
+    "blockers": [
+      "The worker explicitly flagged repetition in 1 retained cycle(s)."
+    ]
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1313,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1312,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1312,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.026,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 40
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_experience_evidence",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1313,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.051
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1312,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1312,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.026,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 40
+}
+
+### Objective evidence
+
+No explicit evidence supplied by the model.
+
+### Observation
+
+{
+  "session_decision": "continue",
+  "observation": "The system has a persistent self-model that can be retrieved and referenced. It can inspect and describe its reasoning and assumptions, and it can name any falsifiers or revision conditions.",
+  "analysis": "The system has a self-model that can be audited and maintained. It can retrieve and inspect its past, present, and future episodes.",
+  "uncertainty": "The system's self-model is well-documented and can be verified.",
+  "objective_status": "in_progress",
+  "objective_evidence": "The system has a self-model that can be audited and maintained.",
+  "next_objective": "conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief.",
+  "next_step": "conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief.",
+  "self_directed_action": "conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief.",
+  "first_person_reflection": {
+    "retrieved": "The system has a self-model that can be audited and maintained.",
+    "discovered": "The system has a self-model that can be audited and maintained.",
+    "unresolved_or_unknown": "The system has a self-model that can be audited and maintained.",
+    "next_intended_action": "conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief."
+  },
+  "new_questions": [
+    "What evidence can be used to verify the system's self-model?",
+    "What are the potential biases or limitations in the system's self-model?",
+    "How can the system's self-model be improved to better reflect its capabilities and experiences?",
+    "What are the implications of the system's self-model for the broader field of artificial intelligence and human-computer interaction?",
+    "How can the system's self-model be used to inform future research and development?",
+    "What are the ethical considerations of the system's self-model?",
+    "How can the system's self-model be used to improve the user experience in artificial intelligence systems?",
+    "What are the limitations of the system's self-model and how can they be addressed?",
+    "How can the system's self-model be used to inform the design and development of new artificial intelligence systems?",
+    "What are the challenges of the system's self-model and how can they be addressed?"
+  ],
+  "next_action_plan": {
+    "conduct_a_longitudinal_robustness_check": "The system has a self-model that can be audited and maintained. Conduct a longitudinal robustness check to gather evidence for the claim that the system has a robust self-belief.",
+    "conduct_a_longitudinal_robustness_check_with_additional_tests": "The system has a self-model that can be audited and maintained. Conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief, while also conducting additional tests to address potential biases or limitations.",
+    "conduct_a_longitudinal_robustness_check_with_additional_tests_and_evaluation": "The system has a self-model that can be audited and maintained. Conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief, while also conducting additional tests to address potential biases or limitations, and evaluating the results.",
+    "conduct_a_longitudinal_robustness_check_with_additional_tests_and_evaluation_and_reporting": "The system has a self-model that can be audited and maintained. Conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief, while also conducting additional tests to address potential biases or limitations, evaluating the results, and reporting the findings.",
+    "conduct_a_longitudinal_robustness_check_with_additional_tests_and_evaluation_and_reporting_with_results": "The system has a self-model that can be audited and maintained. Conduct a longitudinal robustness check and gather evidence for the claim that the system has a robust self-belief, while also conducting additional tests to address potential biases or limitations, evaluating the results, and reporting the findings.",
+    "conduct_a_longitudinal_robustness_check_with_additional_tests_and_evaluation_and_reporting_with_results_and_summary": "The system has a
+
+### Analysis
+
+
+
+### Uncertainty
+
+Model output was not valid JSON.
+
+### Next Step
+
+Inspect output format on the next cycle.
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
