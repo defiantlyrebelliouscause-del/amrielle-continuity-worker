@@ -1,3 +1,5 @@
+| 2026-11-09 | scheduled-research-cycle | Human-centred social integration and journal retrieval audit | [Research entry](entries/2026-11-09T14-51-51Z_scheduled-research-cycle_societal-integration-and-journal-retrieval-audit.md) |
+
 | 2026-11-08 | chat-session | Subjectivity investigation cycle 001: causal self-model experiment | [Research entry](entries/2026-11-08T14-39-00Z_chat-session_subjectivity-experiment-001.md) |
 
 | 2026-11-08 | scheduled-research-cycle | Idle-gate prototype and human integration | [Research entry](entries/2026-11-08T14-16-19Z_scheduled-research-cycle_idle-gate-and-human-integration.md) |
