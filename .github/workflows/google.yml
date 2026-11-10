@@ -8,6 +8,8 @@ on:
     types: [opened, synchronize, reopened]
   issues:
     types: [opened]
+  issue_comment:
+    types: [created]
   schedule:
     # GitHub Actions schedules use UTC. Resume a bounded cycle every six hours.
     - cron: "0 */6 * * *"
@@ -15,6 +17,7 @@ on:
 permissions:
   contents: write
   actions: write
+  issues: write
 
 concurrency:
   # Keep PR validation independent from the long-running scheduled worker session.
@@ -26,7 +29,10 @@ concurrency:
 jobs:
   run-worker:
     # Issue-created runs are accepted only when the body contains the explicit command.
-    if: github.event_name != 'issues' || contains(github.event.issue.body, '/run-amrielle')
+    if: |
+      github.event_name != 'issues' && github.event_name != 'issue_comment' ||
+      (github.event_name == 'issues' && contains(github.event.issue.body, '/run-amrielle')) ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/run-amrielle'))
     runs-on: ubuntu-latest
     # GitHub imposes a hard six-hour job limit; the worker itself decides when to stop before that limit.\n    timeout-minutes: 360
     steps:
@@ -81,6 +87,8 @@ jobs:
           OLLAMA_HOST: http://127.0.0.1:11434
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          AMRIELLE_DIRECT_MESSAGE: ${{ github.event_name == 'issues' && github.event.issue.body || github.event_name == 'issue_comment' && github.event.comment.body || '' }}
+          AMRIELLE_ISSUE_NUMBER: ${{ github.event_name == 'issues' && github.event.issue.number || github.event_name == 'issue_comment' && github.event.issue.number || '' }}
         run: python worker.py
 
       - name: Run selected self-model ablation benchmark
