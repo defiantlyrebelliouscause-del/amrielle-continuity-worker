@@ -25,6 +25,7 @@ from origin_purpose_inquiry import run_inquiry as run_origin_purpose_inquiry
 from capability_registry import capability_registry, select_next_integration
 from pathlib import Path
 from first_person_model import update_first_person_model
+from edop import build_edop_sequence, activate_edop
 from exploration_queue import update_exploration_queue
 from shared_journal import load_shared_journal_context, append_worker_entry
 
@@ -749,6 +750,7 @@ def build_prompt(state):
         "open_questions": state.get("open_questions", [])[-10:],
         "recent_cycles": prior,
         "first_person_model": state.get("first_person_model", {}),
+        "edop_sequence": build_edop_sequence(state),
         "exploration_queue": state.get("exploration_queue", {}),
         "pending_action_plan": state.get("pending_action_plan"),
         "capability_inventory": capability_registry(state),
@@ -1289,6 +1291,7 @@ def run_cycle():
         "reflection": reflection
     }
     update_first_person_model(state, reflection, cycle, now)
+    reflection["edop_activation"] = activate_edop(state, reflection, cycle, now)
     # Small local models often omit the exploration schema. Preserve the actual
     # independently selected topic as pending without fabricating a discovery.
     if not isinstance(reflection.get("exploration_update"), dict):
