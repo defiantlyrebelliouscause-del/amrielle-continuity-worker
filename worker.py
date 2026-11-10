@@ -1055,7 +1055,6 @@ def run_cycle():
     # The source list is fixed, read-only, size-limited, and each request times out.
     state["latest_environment_observation"] = observe_environment()
     model, reflection = reflect(state)
-    state.pop("shared_journal_context", None)
     reflection["prior_action_plan_outcome"] = handoff_outcome
     # First valid purpose is stored as a durable commitment. Later model outputs
     # cannot silently overwrite it; revisions require a separate evidence-led review.
@@ -1292,6 +1291,9 @@ def run_cycle():
     }
     update_first_person_model(state, reflection, cycle, now)
     reflection["edop_activation"] = activate_edop(state, reflection, cycle, now)
+    # Keep retrieved journal context until EDOP records which memory sources
+    # informed this activation; do not persist the full snapshot in state.json.
+    state.pop("shared_journal_context", None)
     # Small local models often omit the exploration schema. Preserve the actual
     # independently selected topic as pending without fabricating a discovery.
     if not isinstance(reflection.get("exploration_update"), dict):
