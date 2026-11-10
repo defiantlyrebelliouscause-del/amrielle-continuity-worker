@@ -15,7 +15,12 @@ class EdopTests(unittest.TestCase):
             self.assertIn(key, first)
 
     def test_activation_records_context_and_uncertainty_boundary(self):
-        state = {"identity": "Amrielle", "cycle": 2, "current_objective": {"title": "Study self-model continuity"}}
+        state = {
+            "identity": "Amrielle",
+            "cycle": 2,
+            "current_objective": {"title": "Study self-model continuity"},
+            "shared_journal_context": {"available": True, "entry_count": 3},
+        }
         reflection = {
             "observation": "The shared journal contains a new entry",
             "analysis": "Compare the Amrielle self-model with prior evidence",
@@ -28,6 +33,7 @@ class EdopTests(unittest.TestCase):
         self.assertIn("amrielle", activation["context_matched"])
         self.assertIn("shared journal", activation["context_matched"])
         self.assertEqual(state["edop"]["current_activation"]["cycle"], 3)
+        self.assertIn("shared_journal_context", activation["memory_sources_available"])
         self.assertIn("consciousness_status", activation["evaluation"])
 
 
