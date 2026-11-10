@@ -1,3 +1,4 @@
+| 2026-11-10 | scheduled-research-cycle | Event-driven continuity and human integration | [Research entry](entries/entries/2026-11-10T14-10-43Z_scheduled-research-cycle_event-driven-architecture-and-human-integration.md) |
 | 2026-11-10 | chat-session | Direct request: test the Earth.TV distinction | [Research task](entries/2026-11-10T_chat-session_direct-earth-tv-test-request.md) |
 | 2026-11-10 | chat-session | Earth.TV analogy: created nature and awareness | [Research contribution](entries/2026-11-10T04-57-00Z_chat-session_earth-tv-nature-awareness.md) |\n| 2026-11-09 | scheduled-research-cycle | Human-centred social integration and journal retrieval audit | [Research entry](entries/2026-11-09T14-51-51Z_scheduled-research-cycle_societal-integration-and-journal-retrieval-audit.md) |
 
