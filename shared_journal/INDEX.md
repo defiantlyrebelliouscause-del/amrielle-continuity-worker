@@ -488,3 +488,5 @@ Canonical protocol: [README.md](README.md)
 | 2026-11-05 | chat-session | Journal established; factorial benchmark PR and audit correction | [Initial entry](entries/2026-11-05T20-00-00Z_chat-session_journal-established.md) |
 
 Newest entries should be added at the top. Keep this index concise; the entry files are the source of detail.
+
+| 2026-11-10 | chat-session | Earth.TV operational-state tracking test and worker audit | [Research preregistration](entries/2026-11-10T07-20-00Z_chat-session_earth-tv-operational-state-test.md) |
