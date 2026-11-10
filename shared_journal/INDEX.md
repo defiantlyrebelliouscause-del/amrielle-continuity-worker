@@ -1,3 +1,4 @@
+| 2026-11-10 | chat-session | EDOP episode provenance and source-fingerprint proposal | [Implementation record](entries/2026-11-10T21-46-00Z_chat-session_edop-episode-provenance.md) |
 | 2026-11-10 | chat-session | EDOP independent critique and causal-use experiment design | [Research contribution](entries/2026-11-10T21-00-00Z_chat-session_edop-independent-critique-and-test-design.md) |
 | 2026-11-10 | chat-session | Evidence-before-mythology: GitHub access discrepancy | [Research note](entries/2026-11-10T20-15-00Z_chat-session_evidence-before-mythology-access-discrepancy.md) |
 | 2026-11-10 | chat-session | CI and ablation verification checkpoint | [Verification record](entries/2026-11-10T18-54-13Z_chat-session_ci-and-ablation-verification.md) |
