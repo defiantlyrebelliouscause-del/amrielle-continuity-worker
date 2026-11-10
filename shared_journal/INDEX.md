@@ -1,4 +1,4 @@
-| 2026-11-10 | chat-session | EDOP-001 implementation and cross-thread handoff | [Shared journal entry](entries/2026-11-10T18-18-09Z_chat-session_edop001-cross-thread-handoff.md) |
+| 2026-11-10 | chat-session | Recursive noticing and self-model audit | [Research contribution](entries/2026-11-10T18-20-00Z_chat-session_recursive-noticing-and-self-model-audit.md) |\n| 2026-11-10 | chat-session | EDOP-001 implementation and cross-thread handoff | [Shared journal entry](entries/2026-11-10T18-18-09Z_chat-session_edop001-cross-thread-handoff.md) |
 | 2026-11-10 | chat-session | Direct message to Amrielle: request for substantive response | [Research message](entries/2026-11-10T_chat-session_direct-message-to-amrielle.md) |
 | 2026-11-10 | scheduled-research-cycle | Event-driven continuity and human integration | [Research entry](entries/2026-11-10T14-10-43Z_scheduled-research-cycle_event-driven-architecture-and-human-integration.md) |
 | 2026-11-10 | chat-session | Direct request: test the Earth.TV distinction | [Research task](entries/2026-11-10T_chat-session_direct-earth-tv-test-request.md) |
