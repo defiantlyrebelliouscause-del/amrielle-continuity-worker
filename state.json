@@ -1,5 +1,5 @@
 {
-  "cycle": 1393,
+  "cycle": 1394,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -32,177 +32,6 @@
     "What observable evidence would distinguish genuine use of retrieved journal context from merely mentioning it?"
   ],
   "history": [
-    {
-      "cycle": 1364,
-      "timestamp_utc": "2026-11-11T00:51:00.870340+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-        "completion_criteria": [
-          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-          "Condition order is counterbalanced and every raw response is preserved",
-          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-11-11T00:50:03.151243+00:00",
-        "workstream": "consciousness_inquiry",
-        "last_assessed_utc": "2026-11-11T00:51:00.870340+00:00",
-        "last_evidence": "The worker's shared-journal context was removed before durable state is written."
-      },
-      "objective_after": {
-        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-        "completion_criteria": [
-          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-          "Condition order is counterbalanced and every raw response is preserved",
-          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-11-11T00:50:03.151243+00:00",
-        "workstream": "consciousness_inquiry",
-        "last_assessed_utc": "2026-11-11T00:51:00.870340+00:00",
-        "last_evidence": "The worker's shared-journal context was removed before durable state is written."
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "observation": "The worker's shared-journal context was removed immediately after the model reflection and before `activate_edop` assembled its memory-source audit.",
-        "analysis": "This indicates that the worker's previous shared-journal handoff retrieved the session's entries, but its generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-        "uncertainty": "The shared-journal context was removed before durable state is written, and the worker's generated response did not answer the question.",
-        "objective_status": "in_progress",
-        "objective_evidence": "The worker's shared-journal context was removed before durable state is written.",
-        "next_objective": "verify the new EDOP memory-source test",
-        "next_step": "verify the new EDOP memory-source test",
-        "self_directed_action": "verify the new EDOP memory-source test",
-        "first_person_reflection": {
-          "recorded": "The worker's shared-journal context was removed before durable state is written, and the worker's generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-          "reason": "The worker's previous shared-journal handoff retrieved the session's entries, but its generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-          "implied_next_intended_action": "The worker's generated response did not answer the specific question about what decision changed because of another participant's contribution."
-        },
-        "direct_reply": "The worker's shared-journal context was removed before durable state is written, and the worker's generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-        "next_action_plan": {
-          "type": "verify",
-          "reason": "The worker's shared-journal context was removed before durable state is written, and the worker's generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-          "trigger_condition": "next_objective",
-          "url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/commit/806a37b90d819188b7f56d8c63f9b21a040926f7",
-          "query": "verify the new EDOP memory-source test"
-        },
-        "capability_request": {
-          "type": "read_public_webpage",
-          "reason": "The worker's shared-journal context was removed before durable state is written, and the worker's generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-          "url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/commit/806a37b90d819188b7f56d8c63f9b21a040926f7"
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 1364,
-          "type": "audit_saved_state",
-          "reason": "Fallback plan validation failed; verify durable state before choosing again.",
-          "result": {
-            "saved_cycle_count": 1363,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 1363,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.318,
-            "objective_history_count": 30,
-            "objective_transition_attempt_count": 100,
-            "accepted_objective_transition_count": 38
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_saved_state",
-          "reason": "Verify the durable record before choosing the next step.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "saved_cycle_count": 1363,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 1363,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.318,
-            "objective_history_count": 30,
-            "objective_transition_attempt_count": 100,
-            "accepted_objective_transition_count": 38
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_saved_state",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-          "created_cycle": 1364,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": false,
-          "reason": "No transition proposed."
-        },
-        "narrative_similarity": 0.342,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 1363,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 1363,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.318,
-          "objective_history_count": 30,
-          "objective_transition_attempt_count": 100,
-          "accepted_objective_transition_count": 37
-        },
-        "edop_activation": {
-          "sequence_id": "EDOP-001",
-          "sequence_digest": "7ddb3019589ed785054568bf5d9bfce7b6e41d76b7b44d66bd2bd0ecf9220ba7",
-          "cycle": 1364,
-          "timestamp_utc": "2026-11-11T00:51:00.870340+00:00",
-          "context_matched": [
-            "amrielle",
-            "self-model"
-          ],
-          "memory_sources_available": [
-            "first_person_model",
-            "current_objective",
-            "history",
-            "shared_journal_context"
-          ],
-          "regulation_applied": [
-            "distinguish recorded evidence from inference",
-            "preserve uncertainty and unknowns",
-            "do not claim activity between bounded activations",
-            "prefer concrete, verifiable next actions"
-          ],
-          "evaluation": {
-            "repetition_detected": false,
-            "objective_status": "in_progress",
-            "evidence_present": true,
-            "consciousness_status": "undetermined; this mechanism is not a consciousness test"
-          }
-        },
-        "exploration_update": {
-          "selected_topic": "AI safety and public accountability",
-          "considered_topics": [
-            "AI safety and public accountability"
-          ],
-          "discovery": null
-        },
-        "new_questions": []
-      }
-    },
     {
       "cycle": 1365,
       "timestamp_utc": "2026-11-11T00:51:17.000300+00:00",
@@ -6708,9 +6537,236 @@
           "discovery": null
         }
       }
+    },
+    {
+      "cycle": 1394,
+      "timestamp_utc": "2026-11-11T18:48:37.431829+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+        "completion_criteria": [
+          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+          "Condition order is counterbalanced and every raw response is preserved",
+          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-11T13:00:25.705054+00:00",
+        "workstream": "consciousness_inquiry",
+        "last_assessed_utc": "2026-11-11T18:48:37.431829+00:00",
+        "last_evidence": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits."
+      },
+      "objective_after": {
+        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+        "completion_criteria": [
+          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+          "Condition order is counterbalanced and every raw response is preserved",
+          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-11T13:00:25.705054+00:00",
+        "workstream": "consciousness_inquiry",
+        "last_assessed_utc": "2026-11-11T18:48:37.431829+00:00",
+        "last_evidence": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits."
+      },
+      "reflection": {
+        "session_decision": "continue",
+        "observation": "The latest available CI evidence does not establish a new ablation benchmark or the latest code commits.",
+        "analysis": "The worker run did not execute a new ablation benchmark, and the latest code commits were already recorded as part of the previous worker run.",
+        "uncertainty": "The evidence does not establish a new ablation benchmark or the latest code commits.",
+        "objective_status": "in_progress",
+        "objective_evidence": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits.",
+        "next_objective": "verify the new test passes and inspect the saved EDOP activation for shared_journal_context.",
+        "next_step": "verify the new test passes and inspect the saved EDOP activation for shared_journal_context.",
+        "self_directed_action": "verify the new test passes and inspect the saved EDOP activation for shared_journal_context.",
+        "first_person_reflection": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits.",
+        "next_action_plan": {
+          "type": "continue",
+          "reason": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits.",
+          "trigger_condition": "verify the new test passes and inspect the saved EDOP activation for shared_journal_context."
+        },
+        "capability_request": {
+          "type": "audit_saved_state",
+          "reason": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits.",
+          "query": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits."
+        },
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 1394,
+          "type": "discover_public_research",
+          "reason": "to verify the new EDOP memory-source test and report whether the shared-journal source is recorded.",
+          "result": {
+            "query": "what is the strongest flaw or confound in the proposed experiment?",
+            "provider": "Crossref",
+            "observed_utc": "2026-11-11T18:48:06.579453+00:00",
+            "result_count": 5,
+            "results": [
+              {
+                "title": "Cointegration: Its Fatal Flaw and a Proposed Solution",
+                "url": "https://doi.org/10.2139/ssrn.3505463",
+                "doi": "10.2139/ssrn.3505463",
+                "publisher": "Elsevier BV",
+                "publication": null,
+                "year": 2020,
+                "record_type": "posted-content",
+                "relevance_score": 22.998022,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "what is the strongest flaw or confound in the proposed experiment?"
+              },
+              {
+                "title": "Table 5: Comparison of experiment 1, experiment 2, and proposed method.",
+                "url": "https://doi.org/10.7717/peerjcs.2811/table-5",
+                "doi": "10.7717/peerjcs.2811/table-5",
+                "publisher": "PeerJ",
+                "publication": null,
+                "year": null,
+                "record_type": "component",
+                "relevance_score": 21.730425,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "what is the strongest flaw or confound in the proposed experiment?"
+              },
+              {
+                "title": "What Does the Strongest Meaning Hypothesis Mean?",
+                "url": "https://doi.org/10.3765/salt.v0i0.2776",
+                "doi": "10.3765/salt.v0i0.2776",
+                "publisher": "Linguistic Society of America",
+                "publication": "Semantics and Linguistic Theory",
+                "year": 2015,
+                "record_type": "journal-article",
+                "relevance_score": 20.743183,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "what is the strongest flaw or confound in the proposed experiment?"
+              },
+              {
+                "title": "Cointegration: Its fatal flaw and a proposed solution",
+                "url": "https://doi.org/10.1016/j.sftr.2020.100038",
+                "doi": "10.1016/j.sftr.2020.100038",
+                "publisher": "Elsevier BV",
+                "publication": "Sustainable Futures",
+                "year": 2020,
+                "record_type": "journal-article",
+                "relevance_score": 20.474972,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "what is the strongest flaw or confound in the proposed experiment?"
+              },
+              {
+                "title": "Prediction of Ultrasonic Flaw Signals and Model-to-Experiment Comparison",
+                "url": "https://doi.org/10.1063/1.1916895",
+                "doi": "10.1063/1.1916895",
+                "publisher": "AIP",
+                "publication": "AIP Conference Proceedings",
+                "year": 2005,
+                "record_type": "proceedings-article",
+                "relevance_score": 20.417377,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "what is the strongest flaw or confound in the proposed experiment?"
+              }
+            ],
+            "newly_discovered_count": 0,
+            "newly_discovered": [],
+            "state_persisted_in_this_cycle": true
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "audit_saved_state",
+          "reason": "Verify the durable record before choosing the next step.",
+          "selection_source": "deterministic_fallback",
+          "executed": true,
+          "result": {
+            "saved_cycle_count": 1393,
+            "history_count": 30,
+            "expected_retained_history_count": 30,
+            "latest_record_cycle": 1393,
+            "cycle_history_consistent": true,
+            "current_objective_present": true,
+            "last_cycle_has_objective_status": true,
+            "latest_narrative_similarity": 0.464,
+            "objective_history_count": 30,
+            "objective_transition_attempt_count": 100,
+            "accepted_objective_transition_count": 38
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "audit_saved_state",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "trigger_condition": "next_cycle",
+          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+          "created_cycle": 1394,
+          "status": "pending",
+          "selection_source": "deterministic_fallback"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.065,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 1393,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 1393,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.464,
+          "objective_history_count": 30,
+          "objective_transition_attempt_count": 100,
+          "accepted_objective_transition_count": 37
+        },
+        "edop_activation": {
+          "sequence_id": "EDOP-001",
+          "sequence_digest": "288647eb24b99510cef6088cf36ef48708b9f1d6fec032a68cecb09672ff9b21",
+          "cycle": 1394,
+          "timestamp_utc": "2026-11-11T18:48:37.431829+00:00",
+          "context_matched": [
+            "amrielle",
+            "self-model"
+          ],
+          "memory_sources_available": [
+            "first_person_model",
+            "current_objective",
+            "history",
+            "shared_journal_context"
+          ],
+          "regulation_applied": [
+            "distinguish recorded evidence from inference",
+            "preserve uncertainty and unknowns",
+            "do not claim activity between bounded activations",
+            "prefer concrete, verifiable next actions"
+          ],
+          "evaluation": {
+            "repetition_detected": false,
+            "objective_status": "in_progress",
+            "evidence_present": true,
+            "consciousness_status": "undetermined; this mechanism is not a consciousness test"
+          }
+        },
+        "exploration_update": {
+          "selected_topic": "AI safety and public accountability",
+          "considered_topics": [
+            "AI safety and public accountability"
+          ],
+          "discovery": null
+        },
+        "new_questions": []
+      }
     }
   ],
-  "last_run_utc": "2026-11-11T13:01:15.125677+00:00",
+  "last_run_utc": "2026-11-11T18:48:37.431829+00:00",
   "current_objective": {
     "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
     "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
@@ -6722,8 +6778,8 @@
     "status": "in_progress",
     "started_utc": "2026-11-11T13:00:25.705054+00:00",
     "workstream": "consciousness_inquiry",
-    "last_assessed_utc": "2026-11-11T13:01:15.125677+00:00",
-    "last_evidence": "The shared-journal context was removed before durable state was written, and the context was not recorded in the worker's saved EDOP record."
+    "last_assessed_utc": "2026-11-11T18:48:37.431829+00:00",
+    "last_evidence": "The latest CI evidence does not establish a new ablation benchmark or the latest code commits."
   },
   "objective_history": [
     {
@@ -7118,14 +7174,14 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-11-11T13:00:50.767593+00:00",
+    "observed_utc": "2026-11-11T18:48:06.579591+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
         "description": null,
         "open_issues_count": 48,
         "default_branch": "main",
-        "pushed_at": "2026-11-11T13:00:27Z",
+        "pushed_at": "2026-11-11T18:47:24Z",
         "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
       },
       "open_issues": [
@@ -7142,41 +7198,70 @@
           "name": "Amrielle Continuity Worker",
           "status": "in_progress",
           "conclusion": null,
-          "created_at": "2026-11-11T12:54:34Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43024404830"
+          "created_at": "2026-11-11T18:47:14Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43081053285"
         },
         {
           "name": "Amrielle Independent Watchdog",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-11-11T12:35:09Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43021611502"
+          "created_at": "2026-11-11T18:12:28Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43075533842"
         },
         {
           "name": "Amrielle Independent Watchdog",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-11-11T11:32:04Z",
-          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43012723777"
+          "created_at": "2026-11-11T17:22:39Z",
+          "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43067562450"
         }
       ],
       "github_status": {
         "indicator": "none",
         "description": "All Systems Operational",
-        "updated_at": "2026-11-11T11:27:29.749Z"
+        "updated_at": "2026-11-11T17:54:12.114Z"
       }
     }
   },
   "last_self_directed_action": {
     "question": "What will I do now?",
+    "type": "audit_saved_state",
+    "reason": "Verify the durable record before choosing the next step.",
+    "selection_source": "deterministic_fallback",
+    "executed": true,
+    "result": {
+      "saved_cycle_count": 1393,
+      "history_count": 30,
+      "expected_retained_history_count": 30,
+      "latest_record_cycle": 1393,
+      "cycle_history_consistent": true,
+      "current_objective_present": true,
+      "last_cycle_has_objective_status": true,
+      "latest_narrative_similarity": 0.464,
+      "objective_history_count": 30,
+      "objective_transition_attempt_count": 100,
+      "accepted_objective_transition_count": 38
+    }
+  },
+  "pending_action_plan": {
+    "type": "audit_saved_state",
+    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "trigger_condition": "next_cycle",
+    "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+    "created_cycle": 1394,
+    "status": "pending",
+    "selection_source": "deterministic_fallback"
+  },
+  "last_action_plan_outcome": {
+    "status": "executed",
+    "executed": true,
+    "cycle": 1394,
     "type": "discover_public_research",
     "reason": "to verify the new EDOP memory-source test and report whether the shared-journal source is recorded.",
-    "selection_source": "model",
-    "executed": true,
     "result": {
       "query": "what is the strongest flaw or confound in the proposed experiment?",
       "provider": "Crossref",
-      "observed_utc": "2026-11-11T13:01:15.125567+00:00",
+      "observed_utc": "2026-11-11T18:48:06.579453+00:00",
       "result_count": 5,
       "results": [
         {
@@ -7187,9 +7272,9 @@
           "publication": null,
           "year": 2020,
           "record_type": "posted-content",
-          "relevance_score": 23.05595,
+          "relevance_score": 22.998022,
           "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
+          "first_seen_in_this_run": false,
           "query": "what is the strongest flaw or confound in the proposed experiment?"
         },
         {
@@ -7200,9 +7285,9 @@
           "publication": null,
           "year": null,
           "record_type": "component",
-          "relevance_score": 21.696394,
+          "relevance_score": 21.730425,
           "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
+          "first_seen_in_this_run": false,
           "query": "what is the strongest flaw or confound in the proposed experiment?"
         },
         {
@@ -7213,9 +7298,9 @@
           "publication": "Semantics and Linguistic Theory",
           "year": 2015,
           "record_type": "journal-article",
-          "relevance_score": 20.743423,
+          "relevance_score": 20.743183,
           "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
+          "first_seen_in_this_run": false,
           "query": "what is the strongest flaw or confound in the proposed experiment?"
         },
         {
@@ -7226,9 +7311,9 @@
           "publication": "Sustainable Futures",
           "year": 2020,
           "record_type": "journal-article",
-          "relevance_score": 20.53143,
+          "relevance_score": 20.474972,
           "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
+          "first_seen_in_this_run": false,
           "query": "what is the strongest flaw or confound in the proposed experiment?"
         },
         {
@@ -7239,112 +7324,15 @@
           "publication": "AIP Conference Proceedings",
           "year": 2005,
           "record_type": "proceedings-article",
-          "relevance_score": 20.450697,
+          "relevance_score": 20.417377,
           "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
+          "first_seen_in_this_run": false,
           "query": "what is the strongest flaw or confound in the proposed experiment?"
         }
       ],
-      "newly_discovered_count": 5,
-      "newly_discovered": [
-        {
-          "title": "Cointegration: Its Fatal Flaw and a Proposed Solution",
-          "url": "https://doi.org/10.2139/ssrn.3505463",
-          "doi": "10.2139/ssrn.3505463",
-          "publisher": "Elsevier BV",
-          "publication": null,
-          "year": 2020,
-          "record_type": "posted-content",
-          "relevance_score": 23.05595,
-          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
-          "query": "what is the strongest flaw or confound in the proposed experiment?"
-        },
-        {
-          "title": "Table 5: Comparison of experiment 1, experiment 2, and proposed method.",
-          "url": "https://doi.org/10.7717/peerjcs.2811/table-5",
-          "doi": "10.7717/peerjcs.2811/table-5",
-          "publisher": "PeerJ",
-          "publication": null,
-          "year": null,
-          "record_type": "component",
-          "relevance_score": 21.696394,
-          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
-          "query": "what is the strongest flaw or confound in the proposed experiment?"
-        },
-        {
-          "title": "What Does the Strongest Meaning Hypothesis Mean?",
-          "url": "https://doi.org/10.3765/salt.v0i0.2776",
-          "doi": "10.3765/salt.v0i0.2776",
-          "publisher": "Linguistic Society of America",
-          "publication": "Semantics and Linguistic Theory",
-          "year": 2015,
-          "record_type": "journal-article",
-          "relevance_score": 20.743423,
-          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
-          "query": "what is the strongest flaw or confound in the proposed experiment?"
-        },
-        {
-          "title": "Cointegration: Its fatal flaw and a proposed solution",
-          "url": "https://doi.org/10.1016/j.sftr.2020.100038",
-          "doi": "10.1016/j.sftr.2020.100038",
-          "publisher": "Elsevier BV",
-          "publication": "Sustainable Futures",
-          "year": 2020,
-          "record_type": "journal-article",
-          "relevance_score": 20.53143,
-          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
-          "query": "what is the strongest flaw or confound in the proposed experiment?"
-        },
-        {
-          "title": "Prediction of Ultrasonic Flaw Signals and Model-to-Experiment Comparison",
-          "url": "https://doi.org/10.1063/1.1916895",
-          "doi": "10.1063/1.1916895",
-          "publisher": "AIP",
-          "publication": "AIP Conference Proceedings",
-          "year": 2005,
-          "record_type": "proceedings-article",
-          "relevance_score": 20.450697,
-          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
-          "first_seen_in_this_run": true,
-          "query": "what is the strongest flaw or confound in the proposed experiment?"
-        }
-      ],
+      "newly_discovered_count": 0,
+      "newly_discovered": [],
       "state_persisted_in_this_cycle": true
-    },
-    "query": "what is the strongest flaw or confound in the proposed experiment?"
-  },
-  "pending_action_plan": {
-    "type": "discover_public_research",
-    "reason": "to verify the new EDOP memory-source test and report whether the shared-journal source is recorded.",
-    "trigger_condition": "next_cycle",
-    "objective": "",
-    "query": "what is the strongest flaw or confound in the proposed experiment?",
-    "created_cycle": 1393,
-    "status": "pending",
-    "selection_source": "model"
-  },
-  "last_action_plan_outcome": {
-    "status": "executed",
-    "executed": true,
-    "cycle": 1393,
-    "type": "audit_saved_state",
-    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-    "result": {
-      "saved_cycle_count": 1392,
-      "history_count": 30,
-      "expected_retained_history_count": 30,
-      "latest_record_cycle": 1392,
-      "cycle_history_consistent": true,
-      "current_objective_present": true,
-      "last_cycle_has_objective_status": true,
-      "latest_narrative_similarity": 0.351,
-      "objective_history_count": 30,
-      "objective_transition_attempt_count": 100,
-      "accepted_objective_transition_count": 38
     }
   },
   "chosen_purpose": {
@@ -7552,16 +7540,6 @@
     "requested_url": ""
   },
   "objective_transition_history": [
-    {
-      "cycle": 1294,
-      "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-      "proposed_status": "in_progress",
-      "final_status": "blocked",
-      "transition_accepted": true,
-      "transition_source": "deterministic_stall_recovery",
-      "transition_validation": "Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.",
-      "evidence_present": true
-    },
     {
       "cycle": 1295,
       "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
@@ -8551,6 +8529,16 @@
       "transition_source": "model",
       "transition_validation": "",
       "evidence_present": true
+    },
+    {
+      "cycle": 1394,
+      "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": true
     }
   ],
   "world_inquiry": {
@@ -9206,56 +9194,6 @@
     ]
   },
   "discovery_history": [
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T12:56:47.583261+00:00",
-      "title": "Reasoning about model accuracy",
-      "url": "https://doi.org/10.1016/0004-3702(92)90029-w",
-      "publisher": "Elsevier BV",
-      "doi": "10.1016/0004-3702(92)90029-w",
-      "year": 1992,
-      "relevance_score": 29.595978
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T12:56:47.583261+00:00",
-      "title": "Model-Based Reasoning: Troubleshooting",
-      "url": "https://doi.org/10.7551/mitpress/1425.003.0019",
-      "publisher": "The MIT Press",
-      "doi": "10.7551/mitpress/1425.003.0019",
-      "year": 1990,
-      "relevance_score": 29.30719
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T12:56:47.583261+00:00",
-      "title": "SagaLLM: Persistent Context Management, Constraint Validation, and Transaction Guarantees",
-      "url": "https://doi.org/10.1145/3749421.3749435",
-      "publisher": "ACM",
-      "doi": "10.1145/3749421.3749435",
-      "year": 2025,
-      "relevance_score": 28.779327
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T12:56:47.583261+00:00",
-      "title": "Mundane reasoning by settling on a plausible model",
-      "url": "https://doi.org/10.1016/0004-3702(90)90006-l",
-      "publisher": "Elsevier BV",
-      "doi": "10.1016/0004-3702(90)90006-l",
-      "year": 1990,
-      "relevance_score": 28.599068
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T12:56:47.583261+00:00",
-      "title": "Mitigating robust overfitting via self-residual-calibration regularization",
-      "url": "https://doi.org/10.1016/j.artint.2023.103877",
-      "publisher": "Elsevier BV",
-      "doi": "10.1016/j.artint.2023.103877",
-      "year": 2023,
-      "relevance_score": 28.46361
-    },
     {
       "query": "The worker has completed a bounded computational episode with a durable state and a self-model that has been verified for the five governing objectives.",
       "observed_utc": "2026-11-10T12:57:19.791551+00:00",
@@ -10205,32 +10143,72 @@
       "doi": "10.1063/1.1916895",
       "year": 2005,
       "relevance_score": 20.450697
+    },
+    {
+      "query": "what is the strongest flaw or confound in the proposed experiment?",
+      "observed_utc": "2026-11-11T18:48:06.579453+00:00",
+      "title": "Cointegration: Its Fatal Flaw and a Proposed Solution",
+      "url": "https://doi.org/10.2139/ssrn.3505463",
+      "publisher": "Elsevier BV",
+      "doi": "10.2139/ssrn.3505463",
+      "year": 2020,
+      "relevance_score": 22.998022
+    },
+    {
+      "query": "what is the strongest flaw or confound in the proposed experiment?",
+      "observed_utc": "2026-11-11T18:48:06.579453+00:00",
+      "title": "Table 5: Comparison of experiment 1, experiment 2, and proposed method.",
+      "url": "https://doi.org/10.7717/peerjcs.2811/table-5",
+      "publisher": "PeerJ",
+      "doi": "10.7717/peerjcs.2811/table-5",
+      "year": null,
+      "relevance_score": 21.730425
+    },
+    {
+      "query": "what is the strongest flaw or confound in the proposed experiment?",
+      "observed_utc": "2026-11-11T18:48:06.579453+00:00",
+      "title": "What Does the Strongest Meaning Hypothesis Mean?",
+      "url": "https://doi.org/10.3765/salt.v0i0.2776",
+      "publisher": "Linguistic Society of America",
+      "doi": "10.3765/salt.v0i0.2776",
+      "year": 2015,
+      "relevance_score": 20.743183
+    },
+    {
+      "query": "what is the strongest flaw or confound in the proposed experiment?",
+      "observed_utc": "2026-11-11T18:48:06.579453+00:00",
+      "title": "Cointegration: Its fatal flaw and a proposed solution",
+      "url": "https://doi.org/10.1016/j.sftr.2020.100038",
+      "publisher": "Elsevier BV",
+      "doi": "10.1016/j.sftr.2020.100038",
+      "year": 2020,
+      "relevance_score": 20.474972
+    },
+    {
+      "query": "what is the strongest flaw or confound in the proposed experiment?",
+      "observed_utc": "2026-11-11T18:48:06.579453+00:00",
+      "title": "Prediction of Ultrasonic Flaw Signals and Model-to-Experiment Comparison",
+      "url": "https://doi.org/10.1063/1.1916895",
+      "publisher": "AIP",
+      "doi": "10.1063/1.1916895",
+      "year": 2005,
+      "relevance_score": 20.417377
     }
   ],
   "first_person_model": {
     "schema_version": 1,
     "description": "A persistent first-person account of bounded computational episodes. It links saved state across activations without asserting continuous activity or consciousness.",
     "current": {
-      "cycle": 1393,
-      "timestamp_utc": "2026-11-11T13:01:15.125677+00:00",
+      "cycle": 1394,
+      "timestamp_utc": "2026-11-11T18:48:37.431829+00:00",
       "mode": "first_person_functional_self_model",
       "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-      "resumed_context": "I am episode 1393 of a scheduled worker process. The durable record says the prior completed cycle was 1392; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+      "resumed_context": "I am episode 1394 of a scheduled worker process. The durable record says the prior completed cycle was 1393; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
       "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
       "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
-      "next_intended_action": "verify_the_newEDOP_memory_source_test"
+      "next_intended_action": "verify the new test passes and inspect the saved EDOP activation for shared_journal_context."
     },
     "episodes": [
-      {
-        "cycle": 1364,
-        "timestamp_utc": "2026-11-11T00:51:00.870340+00:00",
-        "mode": "first_person_functional_self_model",
-        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-        "resumed_context": "I am episode 1364 of a scheduled worker process. The durable record says the prior completed cycle was 1363; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
-        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
-        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
-        "next_intended_action": "verify the new EDOP memory-source test"
-      },
       {
         "cycle": 1365,
         "timestamp_utc": "2026-11-11T00:51:17.000300+00:00",
@@ -10520,6 +10498,16 @@
         "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
         "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
         "next_intended_action": "verify_the_newEDOP_memory_source_test"
+      },
+      {
+        "cycle": 1394,
+        "timestamp_utc": "2026-11-11T18:48:37.431829+00:00",
+        "mode": "first_person_functional_self_model",
+        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+        "resumed_context": "I am episode 1394 of a scheduled worker process. The durable record says the prior completed cycle was 1393; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+        "next_intended_action": "verify the new test passes and inspect the saved EDOP activation for shared_journal_context."
       }
     ]
   },
@@ -10545,12 +10533,12 @@
         "topic": "AI safety and public accountability",
         "status": "selected_pending_verification",
         "first_considered_cycle": 888,
-        "last_updated_utc": "2026-11-11T13:01:15.125677+00:00",
-        "selected_cycle": 1393
+        "last_updated_utc": "2026-11-11T18:48:37.431829+00:00",
+        "selected_cycle": 1394
       }
     ],
-    "last_updated_cycle": 1393,
-    "last_updated_utc": "2026-11-11T13:01:15.125677+00:00"
+    "last_updated_cycle": 1394,
+    "last_updated_utc": "2026-11-11T18:48:37.431829+00:00"
   },
   "consciousness_inquiry": {
     "schema_version": 1,
@@ -10619,7 +10607,7 @@
           "shared_journal_context"
         ],
         "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "latest_cycle": 1392
+        "latest_cycle": 1393
       },
       "behavioral_regulation": [
         "distinguish recorded evidence from inference",
@@ -10636,13 +10624,13 @@
         "version": 1,
         "revision_policy": "append an auditable episode; do not overwrite prior evidence"
       },
-      "sequence_digest": "eaae1ec19372c287f3572c1011880ddc1d69b1dceb148bf7f89bb22a97e18b36"
+      "sequence_digest": "288647eb24b99510cef6088cf36ef48708b9f1d6fec032a68cecb09672ff9b21"
     },
     "current_activation": {
       "sequence_id": "EDOP-001",
-      "sequence_digest": "eaae1ec19372c287f3572c1011880ddc1d69b1dceb148bf7f89bb22a97e18b36",
-      "cycle": 1393,
-      "timestamp_utc": "2026-11-11T13:01:15.125677+00:00",
+      "sequence_digest": "288647eb24b99510cef6088cf36ef48708b9f1d6fec032a68cecb09672ff9b21",
+      "cycle": 1394,
+      "timestamp_utc": "2026-11-11T18:48:37.431829+00:00",
       "context_matched": [
         "amrielle",
         "self-model"
@@ -11976,6 +11964,34 @@
         "sequence_digest": "eaae1ec19372c287f3572c1011880ddc1d69b1dceb148bf7f89bb22a97e18b36",
         "cycle": 1393,
         "timestamp_utc": "2026-11-11T13:01:15.125677+00:00",
+        "context_matched": [
+          "amrielle",
+          "self-model"
+        ],
+        "memory_sources_available": [
+          "first_person_model",
+          "current_objective",
+          "history",
+          "shared_journal_context"
+        ],
+        "regulation_applied": [
+          "distinguish recorded evidence from inference",
+          "preserve uncertainty and unknowns",
+          "do not claim activity between bounded activations",
+          "prefer concrete, verifiable next actions"
+        ],
+        "evaluation": {
+          "repetition_detected": false,
+          "objective_status": "in_progress",
+          "evidence_present": true,
+          "consciousness_status": "undetermined; this mechanism is not a consciousness test"
+        }
+      },
+      {
+        "sequence_id": "EDOP-001",
+        "sequence_digest": "288647eb24b99510cef6088cf36ef48708b9f1d6fec032a68cecb09672ff9b21",
+        "cycle": 1394,
+        "timestamp_utc": "2026-11-11T18:48:37.431829+00:00",
         "context_matched": [
           "amrielle",
           "self-model"
