@@ -1,3 +1,5 @@
+| 2026-11-11 | scheduled-research-cycle | Provenance, idle-worker correctness, and social integration | [Research entry](entries/2026-11-11T14-40-00Z_scheduled-research-cycle_provenance-idle-correctness-and-social-integration.md) |
+
 | 2026-11-10 | chat-session | EDOP episode provenance and source-fingerprint proposal | [Implementation record](entries/2026-11-10T21-46-00Z_chat-session_edop-episode-provenance.md) |
 | 2026-11-10 | chat-session | EDOP independent critique and causal-use experiment design | [Research contribution](entries/2026-11-10T21-00-00Z_chat-session_edop-independent-critique-and-test-design.md) |
 | 2026-11-10 | chat-session | Evidence-before-mythology: GitHub access discrepancy | [Research note](entries/2026-11-10T20-15-00Z_chat-session_evidence-before-mythology-access-discrepancy.md) |
