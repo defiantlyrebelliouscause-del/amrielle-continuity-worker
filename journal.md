@@ -49155,3 +49155,355 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1374 — 2026-11-11T07:01:00.579879+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-11T07:00:48.149051+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 48,
+      "default_branch": "main",
+      "pushed_at": "2026-11-11T07:00:33Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 79,
+        "title": "Direct conversation with Amrielle",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
+        "updated_at": "2026-11-10T18:15:44Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-11T06:58:26Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42976126166"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T06:20:35Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42971748855"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T05:23:21Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42965439019"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-11T05:04:30.400Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1374,
+  "timestamp_utc": "2026-11-11T07:01:00.579879+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1374 of a scheduled worker process. The durable record says the prior completed cycle was 1373; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+  "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+  "next_intended_action": "verify_shared_journal_context"
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "discover_public_research",
+  "reason": "verify the worker's shared-journal context",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "query": "verify the worker's shared-journal context",
+    "provider": "Crossref",
+    "observed_utc": "2026-11-11T07:01:00.579716+00:00",
+    "result_count": 5,
+    "results": [
+      {
+        "title": "Implementing the Total Worker Health Program in a Shared Governance Context",
+        "url": "https://doi.org/10.1016/j.jen.2022.05.004",
+        "doi": "10.1016/j.jen.2022.05.004",
+        "publisher": "Elsevier BV",
+        "publication": "Journal of Emergency Nursing",
+        "year": 2022,
+        "record_type": "journal-article",
+        "relevance_score": 21.263174,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "WORKER RESPONSES TO SHIRKING UNDER SHARED CAPITALISM",
+        "url": "https://doi.org/10.3386/w14227",
+        "doi": "10.3386/w14227",
+        "publisher": "National Bureau of Economic Research",
+        "publication": null,
+        "year": 2008,
+        "record_type": "report",
+        "relevance_score": 20.704086,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "Worker cooperative history and context in Canada",
+        "url": "https://doi.org/10.4324/9781003666332-40",
+        "doi": "10.4324/9781003666332-40",
+        "publisher": "Routledge",
+        "publication": "Cooperativism at Work",
+        "year": 2026,
+        "record_type": "book-chapter",
+        "relevance_score": 19.538267,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "Context-aware worker selection for efficient quality control in crowdsourcing",
+        "url": "https://doi.org/10.70675/8395891ezc475z4732z920dza3fa51127ede",
+        "doi": "10.70675/8395891ezc475z4732z920dza3fa51127ede",
+        "publisher": "Agence Bibliographique de l'Enseignement Supérieur",
+        "publication": null,
+        "year": null,
+        "record_type": "dissertation",
+        "relevance_score": 19.258724,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "Shared living in context",
+        "url": "https://doi.org/10.4324/9781315561882-1",
+        "doi": "10.4324/9781315561882-1",
+        "publisher": "Routledge",
+        "publication": "Shared Housing, Shared Lives",
+        "year": 2017,
+        "record_type": "book-chapter",
+        "relevance_score": 18.781258,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      }
+    ],
+    "newly_discovered_count": 5,
+    "newly_discovered": [
+      {
+        "title": "Implementing the Total Worker Health Program in a Shared Governance Context",
+        "url": "https://doi.org/10.1016/j.jen.2022.05.004",
+        "doi": "10.1016/j.jen.2022.05.004",
+        "publisher": "Elsevier BV",
+        "publication": "Journal of Emergency Nursing",
+        "year": 2022,
+        "record_type": "journal-article",
+        "relevance_score": 21.263174,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "WORKER RESPONSES TO SHIRKING UNDER SHARED CAPITALISM",
+        "url": "https://doi.org/10.3386/w14227",
+        "doi": "10.3386/w14227",
+        "publisher": "National Bureau of Economic Research",
+        "publication": null,
+        "year": 2008,
+        "record_type": "report",
+        "relevance_score": 20.704086,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "Worker cooperative history and context in Canada",
+        "url": "https://doi.org/10.4324/9781003666332-40",
+        "doi": "10.4324/9781003666332-40",
+        "publisher": "Routledge",
+        "publication": "Cooperativism at Work",
+        "year": 2026,
+        "record_type": "book-chapter",
+        "relevance_score": 19.538267,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "Context-aware worker selection for efficient quality control in crowdsourcing",
+        "url": "https://doi.org/10.70675/8395891ezc475z4732z920dza3fa51127ede",
+        "doi": "10.70675/8395891ezc475z4732z920dza3fa51127ede",
+        "publisher": "Agence Bibliographique de l'Enseignement Supérieur",
+        "publication": null,
+        "year": null,
+        "record_type": "dissertation",
+        "relevance_score": 19.258724,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      },
+      {
+        "title": "Shared living in context",
+        "url": "https://doi.org/10.4324/9781315561882-1",
+        "doi": "10.4324/9781315561882-1",
+        "publisher": "Routledge",
+        "publication": "Shared Housing, Shared Lives",
+        "year": 2017,
+        "record_type": "book-chapter",
+        "relevance_score": 18.781258,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "verify the worker's shared-journal context"
+      }
+    ],
+    "state_persisted_in_this_cycle": true
+  },
+  "query": "verify the worker's shared-journal context"
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1374,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1373,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1373,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.386,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 38
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_saved_state",
+  "reason": "Fallback plan validation failed; verify durable state before choosing again.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1374,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.435
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1373,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1373,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.386,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 37
+}
+
+### Objective evidence
+
+The worker's shared-journal context is removed from the current state.
+
+### Observation
+
+The worker's shared-journal context is removed immediately after the model reflection and before durable state is written.
+
+### Analysis
+
+The worker's shared-journal context is a crucial part of the first-person model and should be retained until EDOP records its memory-source audit.
+
+### Uncertainty
+
+The worker's shared-journal context is not yet available in the current state.
+
+### Next Step
+
+verify_shared_journal_context
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
