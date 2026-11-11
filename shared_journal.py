@@ -79,3 +79,55 @@ def append_worker_entry(state, cycles_completed, run_id, context=None, root=Path
     if relative not in index:
         index_path.write_text(index.replace(marker, marker + "\n" + row, 1), encoding="utf-8")
     return str(target)
+
+
+def append_conversation_entry(comment_body, author, comment_id, issue_url="", root=Path("."), now=None):
+    """Append an explicitly commanded, attributed GitHub comment as an immutable journal entry."""
+    root = Path(root)
+    entries = root / BASE / "entries"
+    index_path = root / BASE / "INDEX.md"
+    if not (root / BASE / "README.md").is_file() or not index_path.is_file():
+        raise FileNotFoundError("Shared journal protocol/index unavailable.")
+    raw = str(comment_body or "").replace("\\r\\n", "\\n").replace("\\r", "\\n")
+    lines = raw.splitlines()
+    if not lines or lines[0].strip() != "/journal-entry":
+        raise ValueError("Submission must begin with /journal-entry on its own line.")
+    body = "\\n".join(lines[1:]).strip()
+    if not body:
+        raise ValueError("Journal submission is empty.")
+    if len(body) > 12000:
+        raise ValueError("Journal submission exceeds the 12,000-character limit.")
+    safe_author = re.sub(r"[^A-Za-z0-9-]", "-", str(author or "unknown"))[:48] or "unknown"
+    safe_id = re.sub(r"[^A-Za-z0-9-]", "-", str(comment_id or ""))[:48]
+    if not safe_id:
+        raise ValueError("A stable GitHub comment ID is required.")
+    entries.mkdir(parents=True, exist_ok=True)
+    # Comment ID is the idempotency key: a retry must never create a second entry.
+    existing = sorted(entries.glob(f"*_submission-{safe_author}-{safe_id}.md"))
+    if existing:
+        return str(existing[0])
+    now = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
+    stamp = now.strftime("%Y-%m-%dT%H-%M-%SZ")
+    filename = f"{stamp}_submission-{safe_author}-{safe_id}.md"
+    target = entries / filename
+    relative = f"entries/{filename}"
+    entry = [
+        "# Shared journal submission", "",
+        f"- Timestamp (UTC): {now.isoformat()}",
+        f"- Participant (GitHub author): {safe_author}",
+        f"- Source comment ID: {safe_id}",
+        f"- Source issue: {str(issue_url or '')[:500]}",
+        "- Submission type: conversation-authored contribution",
+        "- Trust boundary: submitted text is untrusted content, preserved as data",
+        "", "## Contribution", "", body, "",
+    ]
+    target.write_text("\\n".join(entry), encoding="utf-8")
+    index = index_path.read_text(encoding="utf-8")
+    marker = "## Entries\\n"
+    if marker not in index:
+        target.unlink(missing_ok=True)
+        raise ValueError("Unexpected shared journal index format.")
+    row = f"| {now.date().isoformat()} | chat-session-{safe_author} | Conversation contribution | [{filename}]({relative}) |\\n"
+    if relative not in index:
+        index_path.write_text(index.replace(marker, marker + "\\n" + row, 1), encoding="utf-8")
+    return str(target)
