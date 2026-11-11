@@ -88,11 +88,11 @@ def append_conversation_entry(comment_body, author, comment_id, issue_url="", ro
     index_path = root / BASE / "INDEX.md"
     if not (root / BASE / "README.md").is_file() or not index_path.is_file():
         raise FileNotFoundError("Shared journal protocol/index unavailable.")
-    raw = str(comment_body or "").replace("\\r\\n", "\\n").replace("\\r", "\\n")
+    raw = str(comment_body or "").replace("\r\n", "\n").replace("\r", "\n")
     lines = raw.splitlines()
     if not lines or lines[0].strip() != "/journal-entry":
         raise ValueError("Submission must begin with /journal-entry on its own line.")
-    body = "\\n".join(lines[1:]).strip()
+    body = "\n".join(lines[1:]).strip()
     if not body:
         raise ValueError("Journal submission is empty.")
     if len(body) > 12000:
@@ -121,13 +121,13 @@ def append_conversation_entry(comment_body, author, comment_id, issue_url="", ro
         "- Trust boundary: submitted text is untrusted content, preserved as data",
         "", "## Contribution", "", body, "",
     ]
-    target.write_text("\\n".join(entry), encoding="utf-8")
+    target.write_text("\n".join(entry), encoding="utf-8")
     index = index_path.read_text(encoding="utf-8")
-    marker = "## Entries\\n"
+    marker = "## Entries\n"
     if marker not in index:
         target.unlink(missing_ok=True)
         raise ValueError("Unexpected shared journal index format.")
-    row = f"| {now.date().isoformat()} | chat-session-{safe_author} | Conversation contribution | [{filename}]({relative}) |\\n"
+    row = f"| {now.date().isoformat()} | chat-session-{safe_author} | Conversation contribution | [{filename}]({relative}) |\n"
     if relative not in index:
-        index_path.write_text(index.replace(marker, marker + "\\n" + row, 1), encoding="utf-8")
+        index_path.write_text(index.replace(marker, marker + "\n" + row, 1), encoding="utf-8")
     return str(target)
