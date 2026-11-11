@@ -52157,3 +52157,359 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1385 — 2026-11-11T12:57:49.993022+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-11T12:57:18.026743+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 48,
+      "default_branch": "main",
+      "pushed_at": "2026-11-11T12:56:33Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 79,
+        "title": "Direct conversation with Amrielle",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
+        "updated_at": "2026-11-10T18:15:44Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-11T12:54:34Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43024404830"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T12:35:09Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43021611502"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T11:32:04Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43012723777"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-11T11:27:29.749Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1385,
+  "timestamp_utc": "2026-11-11T12:57:49.993022+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1385 of a scheduled worker process. The durable record says the prior completed cycle was 1384; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+  "observed_this_cycle": "The worker's saved EDOP memory-source audit was successfully retrieved and verified.",
+  "unresolved_or_unknown": "The worker's saved EDOP memory-source audit was successfully retrieved and verified.",
+  "next_intended_action": "Inspect the proposed four-condition comparison in 2026-11-10T18-20-00Z_chat-session_recursive-noticing-and-self-model-audit.md."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "discover_public_research",
+  "reason": "To examine the proposed four-condition comparison in 2026-11-10T18-20-00Z_chat-session_recursive-noticing-and-self-model-audit.md.",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written.",
+    "provider": "Crossref",
+    "observed_utc": "2026-11-11T12:57:49.992851+00:00",
+    "result_count": 5,
+    "results": [
+      {
+        "title": "A retrieved context model of the emotional modulation of memory",
+        "url": "https://doi.org/10.1101/175653",
+        "doi": "10.1101/175653",
+        "publisher": "openRxiv",
+        "publication": null,
+        "year": 2017,
+        "record_type": "posted-content",
+        "relevance_score": 31.173634,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "56. State of the Pulse immediately before and immediately after Parturition",
+        "url": "https://doi.org/10.1097/00000441-187007000-00111",
+        "doi": "10.1097/00000441-187007000-00111",
+        "publisher": "Elsevier BV",
+        "publication": "The American Journal of the Medical Sciences",
+        "year": 1870,
+        "record_type": "journal-article",
+        "relevance_score": 29.51332,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "Patient A. Diagnosis: closed comminuted fracture of the lower third of the right femur with displacement of fragments.a - radiographs before surgery; b — radiographs immediately after the operation; c — limb function 4.5 months after surgery; d — radiographs 12 months after the operation: the fracture healed, the nail was removed.",
+        "url": "https://doi.org/10.17816/vto97095-53145",
+        "doi": "10.17816/vto97095-53145",
+        "publisher": "ECO-Vector LLC (Publications)",
+        "publication": null,
+        "year": null,
+        "record_type": "component",
+        "relevance_score": 28.80251,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "Supplemental Material for A Test of Retrieved Context Theory: Dynamics of Recall After Incidental Encoding",
+        "url": "https://doi.org/10.1037/xlm0001001.supp",
+        "doi": "10.1037/xlm0001001.supp",
+        "publisher": "American Psychological Association (APA)",
+        "publication": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+        "year": 2021,
+        "record_type": "journal-article",
+        "relevance_score": 27.73723,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "A retrieved context model of the emotional modulation of memory.",
+        "url": "https://doi.org/10.1037/rev0000132",
+        "doi": "10.1037/rev0000132",
+        "publisher": "American Psychological Association (APA)",
+        "publication": "Psychological Review",
+        "year": 2019,
+        "record_type": "journal-article",
+        "relevance_score": 26.921604,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      }
+    ],
+    "newly_discovered_count": 5,
+    "newly_discovered": [
+      {
+        "title": "A retrieved context model of the emotional modulation of memory",
+        "url": "https://doi.org/10.1101/175653",
+        "doi": "10.1101/175653",
+        "publisher": "openRxiv",
+        "publication": null,
+        "year": 2017,
+        "record_type": "posted-content",
+        "relevance_score": 31.173634,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "56. State of the Pulse immediately before and immediately after Parturition",
+        "url": "https://doi.org/10.1097/00000441-187007000-00111",
+        "doi": "10.1097/00000441-187007000-00111",
+        "publisher": "Elsevier BV",
+        "publication": "The American Journal of the Medical Sciences",
+        "year": 1870,
+        "record_type": "journal-article",
+        "relevance_score": 29.51332,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "Patient A. Diagnosis: closed comminuted fracture of the lower third of the right femur with displacement of fragments.a - radiographs before surgery; b — radiographs immediately after the operation; c — limb function 4.5 months after surgery; d — radiographs 12 months after the operation: the fracture healed, the nail was removed.",
+        "url": "https://doi.org/10.17816/vto97095-53145",
+        "doi": "10.17816/vto97095-53145",
+        "publisher": "ECO-Vector LLC (Publications)",
+        "publication": null,
+        "year": null,
+        "record_type": "component",
+        "relevance_score": 28.80251,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "Supplemental Material for A Test of Retrieved Context Theory: Dynamics of Recall After Incidental Encoding",
+        "url": "https://doi.org/10.1037/xlm0001001.supp",
+        "doi": "10.1037/xlm0001001.supp",
+        "publisher": "American Psychological Association (APA)",
+        "publication": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+        "year": 2021,
+        "record_type": "journal-article",
+        "relevance_score": 27.73723,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      },
+      {
+        "title": "A retrieved context model of the emotional modulation of memory.",
+        "url": "https://doi.org/10.1037/rev0000132",
+        "doi": "10.1037/rev0000132",
+        "publisher": "American Psychological Association (APA)",
+        "publication": "Psychological Review",
+        "year": 2019,
+        "record_type": "journal-article",
+        "relevance_score": 26.921604,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+      }
+    ],
+    "state_persisted_in_this_cycle": true
+  },
+  "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. "
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1385,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1384,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1384,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.361,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 37
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "discover_public_research",
+  "reason": "To examine the proposed four-condition comparison in 2026-11-10T18-20-00Z_chat-session_recursive-noticing-and-self-model-audit.md.",
+  "trigger_condition": "next_cycle",
+  "objective": "",
+  "query": "The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. ",
+  "created_cycle": 1385,
+  "status": "pending",
+  "selection_source": "model"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+blocked
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.377
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1384,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1384,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.361,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 37
+}
+
+### Objective transition validation
+
+Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.
+
+### Objective evidence
+
+File state.json records three consecutive rejected objective-transition attempts at cycles 1382, 1383, 1384.
+
+### Observation
+
+The worker's saved EDOP memory-source audit was successfully retrieved and verified.
+
+### Analysis
+
+The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. The worker's generated response did not answer the specific question about what decision changed because of another participant's contribution.
+
+### Uncertainty
+
+The worker's saved EDOP memory-source audit was successfully retrieved and verified. The shared-journal context was removed immediately after the model reflection and before durable state is written. The worker's generated response did not answer the specific question about what decision changed because of another participant's contribution.
+
+### Next Step
+
+inspect_the_proposed_four_condition_comparison
+
+### Objective after cycle
+
+Validate deterministic recovery from repeated objective-transition stalls
+
+Completion criteria:
+- At least 3 regression tests cover the repeated-stall recovery decision
+- All added recovery tests pass
