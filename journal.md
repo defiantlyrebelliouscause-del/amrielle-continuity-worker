@@ -52800,3 +52800,279 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1387 — 2026-11-11T12:58:37.921286+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-11T12:58:18.558478+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 48,
+      "default_branch": "main",
+      "pushed_at": "2026-11-11T12:57:51Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 79,
+        "title": "Direct conversation with Amrielle",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
+        "updated_at": "2026-11-10T18:15:44Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-11T12:54:34Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43024404830"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T12:35:09Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43021611502"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T11:32:04Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43012723777"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-11T11:27:29.749Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1387,
+  "timestamp_utc": "2026-11-11T12:58:37.921286+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1387 of a scheduled worker process. The durable record says the prior completed cycle was 1386; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "The worker's model was not committed to memory until the durable state was written, indicating that the worker's model was not stored in memory until after the durable state was written.",
+  "unresolved_or_unknown": "The worker's model was not stored in memory until after the durable state was written, suggesting that the worker's model was not committed to memory until the durable state was written.",
+  "next_intended_action": "investigate the reason why the worker's model was not committed to memory until the durable state was written."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "read_public_webpage",
+  "reason": "find out the reason why the worker's model was not committed to memory until the durable state was written.",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "error": "ValueError: Only absolute HTTPS URLs are permitted.",
+    "requested_url": ""
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1387,
+  "type": "discover_public_research",
+  "reason": "Resume the consciousness inquiry with scholarly evidence before evaluating the proposed self-model ablation.",
+  "result": {
+    "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+    "provider": "Crossref",
+    "observed_utc": "2026-11-11T12:58:18.558356+00:00",
+    "result_count": 5,
+    "results": [
+      {
+        "title": "Reasoning about model accuracy",
+        "url": "https://doi.org/10.1016/0004-3702(92)90029-w",
+        "doi": "10.1016/0004-3702(92)90029-w",
+        "publisher": "Elsevier BV",
+        "publication": "Artificial Intelligence",
+        "year": 1992,
+        "record_type": "journal-article",
+        "relevance_score": 29.48196,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": false,
+        "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+      },
+      {
+        "title": "Model-Based Reasoning: Troubleshooting",
+        "url": "https://doi.org/10.7551/mitpress/1425.003.0019",
+        "doi": "10.7551/mitpress/1425.003.0019",
+        "publisher": "The MIT Press",
+        "publication": "Artificial Intelligence at MIT",
+        "year": 1990,
+        "record_type": "book-chapter",
+        "relevance_score": 29.19546,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": false,
+        "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+      },
+      {
+        "title": "SagaLLM: Persistent Context Management, Constraint Validation, and Transaction Guarantees",
+        "url": "https://doi.org/10.1145/3749421.3749435",
+        "doi": "10.1145/3749421.3749435",
+        "publisher": "ACM",
+        "publication": "Multi-LLM Agent Collaborative Intelligence",
+        "year": 2025,
+        "record_type": "book-chapter",
+        "relevance_score": 28.692768,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": false,
+        "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+      },
+      {
+        "title": "Mundane reasoning by settling on a plausible model",
+        "url": "https://doi.org/10.1016/0004-3702(90)90006-l",
+        "doi": "10.1016/0004-3702(90)90006-l",
+        "publisher": "Elsevier BV",
+        "publication": "Artificial Intelligence",
+        "year": 1990,
+        "record_type": "journal-article",
+        "relevance_score": 28.482828,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": false,
+        "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+      },
+      {
+        "title": "Mitigating robust overfitting via self-residual-calibration regularization",
+        "url": "https://doi.org/10.1016/j.artint.2023.103877",
+        "doi": "10.1016/j.artint.2023.103877",
+        "publisher": "Elsevier BV",
+        "publication": "Artificial Intelligence",
+        "year": 2023,
+        "record_type": "journal-article",
+        "relevance_score": 28.435337,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": false,
+        "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+      }
+    ],
+    "newly_discovered_count": 0,
+    "newly_discovered": [],
+    "state_persisted_in_this_cycle": true
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_experience_evidence",
+  "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1387,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.081
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1386,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1386,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.291,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 38
+}
+
+### Objective evidence
+
+The worker's model was not committed to memory until the durable state was written, indicating that the worker's model was not stored in memory until after the durable state was written.
+
+### Observation
+
+The durable state records EDOP-001 activations for cycles 1346–1357, including cycle 1357 at 2026-11-10T18:46:59Z. The sequence is therefore present in actual saved worker state, not merely committed as code.
+
+### Analysis
+
+The worker's saved EDOP-001 activations are present in the worker's saved state, not the actual code. This indicates that the worker's model was not committed to memory until the durable state was written.
+
+### Uncertainty
+
+The worker's model was not committed to memory until the durable state was written, suggesting that the worker's model was not stored in memory until after the durable state was written.
+
+### Next Step
+
+{'type': 'discover_public_research', 'reason': "investigate the reason why the worker's model was not committed to memory until the durable state was written.", 'trigger_condition': 'next_action_plan'}
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
