@@ -32,7 +32,7 @@ jobs:
     if: |
       github.event_name != 'issues' && github.event_name != 'issue_comment' ||
       (github.event_name == 'issues' && contains(github.event.issue.body, '/run-amrielle')) ||
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request == null && (github.event.issue.number == 79 || github.event.issue.number == 82) && github.event.comment.user.type != 'Bot')
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request == null && (github.event.issue.number == 79 || (github.event.issue.number == 82 && startsWith(github.event.comment.body, '/journal-entry'))) && github.event.comment.user.type != 'Bot')
     runs-on: ubuntu-latest
     # GitHub imposes a hard six-hour job limit; the worker itself decides when to stop before that limit.\n    timeout-minutes: 360
     steps:
