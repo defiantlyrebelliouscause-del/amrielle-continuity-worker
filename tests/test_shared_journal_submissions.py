@@ -12,8 +12,8 @@ class ConversationJournalSubmissionTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         journal = self.root / "shared_journal"
         (journal / "entries").mkdir(parents=True)
-        (journal / "README.md").write_text("# Protocol\\n", encoding="utf-8")
-        (journal / "INDEX.md").write_text("# Journal\\n\\n## Entries\\n", encoding="utf-8")
+        (journal / "README.md").write_text("# Protocol\n", encoding="utf-8")
+        (journal / "INDEX.md").write_text("# Journal\n\n## Entries\n", encoding="utf-8")
         self.now = datetime(2026, 11, 11, 19, 0, tzinfo=timezone.utc)
 
     def tearDown(self):
@@ -21,7 +21,7 @@ class ConversationJournalSubmissionTests(unittest.TestCase):
 
     def test_appends_attributed_entry_and_index_row(self):
         path = append_conversation_entry(
-            "/journal-entry\\n## Finding\\nA distinct contribution.",
+            "/journal-entry\n## Finding\nA distinct contribution.",
             "monday-chat",
             "comment-123",
             "https://github.com/example/repo/issues/82",
@@ -36,7 +36,7 @@ class ConversationJournalSubmissionTests(unittest.TestCase):
         self.assertIn(Path(path).name, index)
 
     def test_retry_with_same_comment_id_is_idempotent(self):
-        args = ("/journal-entry\\nOne entry.", "monday-chat", "comment-123")
+        args = ("/journal-entry\nOne entry.", "monday-chat", "comment-123")
         first = append_conversation_entry(*args, root=self.root, now=self.now)
         second = append_conversation_entry(*args, root=self.root, now=self.now)
         self.assertEqual(first, second)
@@ -47,12 +47,12 @@ class ConversationJournalSubmissionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             append_conversation_entry("Just text", "monday-chat", "comment-1", root=self.root)
         with self.assertRaises(ValueError):
-            append_conversation_entry("/journal-entry\\n", "monday-chat", "comment-2", root=self.root)
+            append_conversation_entry("/journal-entry\n", "monday-chat", "comment-2", root=self.root)
 
     def test_rejects_oversized_contribution(self):
         with self.assertRaises(ValueError):
             append_conversation_entry(
-                "/journal-entry\\n" + ("x" * 12001),
+                "/journal-entry\n" + ("x" * 12001),
                 "monday-chat",
                 "comment-3",
                 root=self.root,
