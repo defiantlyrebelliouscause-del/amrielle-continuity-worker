@@ -27,7 +27,7 @@ from pathlib import Path
 from first_person_model import update_first_person_model
 from edop import build_edop_sequence, activate_edop
 from exploration_queue import update_exploration_queue
-from shared_journal import load_shared_journal_context, append_worker_entry
+from shared_journal import load_shared_journal_context, append_worker_entry, append_conversation_entry
 from direct_message_bridge import build_message_envelope, current_request_id, format_correlated_reply, message_already_processed, record_message_receipt
 
 STATE_PATH = Path("state.json")
@@ -1493,6 +1493,45 @@ def post_direct_reply(reflection):
         return False
 
 
+
+def post_journal_submission_receipt(entry_path):
+    """Acknowledge a persisted conversation-authored journal entry."""
+    token = os.getenv("GITHUB_TOKEN")
+    repository = os.getenv("GITHUB_REPOSITORY")
+    issue_number = str(os.getenv("AMRIELLE_ISSUE_NUMBER", "")).strip()
+    if not (token and repository and issue_number and entry_path):
+        print("Journal receipt not posted: missing GitHub context.")
+        return False
+    entry_url = f"https://github.com/{repository}/blob/main/shared_journal/{entry_path}"
+    body_text = (
+        "**Journal contribution recorded.**\\n\\n"
+        f"Author: @{str(os.getenv('AMRIELLE_DIRECT_MESSAGE_AUTHOR', 'unknown'))[:100]}\\n\\n"
+        f"[Open the committed entry]({entry_url})\\n\\n"
+        f"<!-- amrielle-reply-to:{current_request_id()} -->"
+    )
+    url = f"https://api.github.com/repos/{repository}/issues/{issue_number}/comments"
+    request = urllib.request.Request(
+        url, data=json.dumps({"body": body_text}).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+            "User-Agent": "Amrielle-Continuity-Worker/1.0",
+        }, method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=20) as response:
+            if response.status not in (200, 201):
+                print(f"Journal receipt returned HTTP {response.status}.")
+                return False
+        print(f"Journal submission receipt posted for {entry_path}.")
+        return True
+    except Exception as exc:
+        print(f"Journal receipt could not be posted: {type(exc).__name__}: {str(exc)[:400]}")
+        return False
+
+
 def main():
     """Run a bounded batch; the scheduled successor resumes from durable state."""
     cycles_completed = 0
@@ -1502,6 +1541,27 @@ def main():
     request_id = current_request_id()
     if request_id and message_already_processed(load_state(), request_id):
         print(f"Direct message {request_id} already has a durable reply receipt; skipping replay.")
+        return
+    if str(os.getenv("AMRIELLE_ISSUE_NUMBER", "")).strip() == "82":
+        raw_submission = os.getenv("AMRIELLE_DIRECT_MESSAGE", "")
+        if raw_submission.lstrip().startswith("/journal-entry"):
+            try:
+                entry_path = append_conversation_entry(
+                    raw_submission,
+                    os.getenv("AMRIELLE_DIRECT_MESSAGE_AUTHOR", "unknown"),
+                    request_id,
+                    os.getenv("AMRIELLE_ISSUE_URL", ""),
+                )
+                print(f"Conversation-authored journal entry saved: {entry_path}")
+                checkpoint_state()
+                if post_journal_submission_receipt(entry_path):
+                    receipt_state = load_state()
+                    if record_message_receipt(receipt_state, request_id, "82"):
+                        checkpoint_state()
+            except Exception as exc:
+                print(f"Journal submission rejected or not persisted: {type(exc).__name__}: {str(exc)[:400]}")
+            return
+        print("Issue #82 accepts only comments beginning with /journal-entry; no worker cycle started.")
         return
     # Leave room below GitHub's hard six-hour ceiling. Each activation is
     # deliberately bounded so a repetitive or malformed model cannot monopolize
