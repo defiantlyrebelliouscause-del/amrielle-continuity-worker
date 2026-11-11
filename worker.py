@@ -1504,9 +1504,9 @@ def post_journal_submission_receipt(entry_path):
         return False
     entry_url = f"https://github.com/{repository}/blob/main/shared_journal/{entry_path}"
     body_text = (
-        "**Journal contribution recorded.**\\n\\n"
-        f"Author: @{str(os.getenv('AMRIELLE_DIRECT_MESSAGE_AUTHOR', 'unknown'))[:100]}\\n\\n"
-        f"[Open the committed entry]({entry_url})\\n\\n"
+        "**Journal contribution recorded.**\n\n"
+        f"Author: @{str(os.getenv('AMRIELLE_DIRECT_MESSAGE_AUTHOR', 'unknown'))[:100]}\n\n"
+        f"[Open the committed entry]({entry_url})\n\n"
         f"<!-- amrielle-reply-to:{current_request_id()} -->"
     )
     url = f"https://api.github.com/repos/{repository}/issues/{issue_number}/comments"
