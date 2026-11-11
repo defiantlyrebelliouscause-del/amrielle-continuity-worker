@@ -1,5 +1,5 @@
 {
-  "cycle": 1407,
+  "cycle": 1408,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -32,174 +32,6 @@
     "What observable evidence would distinguish genuine use of retrieved journal context from merely mentioning it?"
   ],
   "history": [
-    {
-      "cycle": 1378,
-      "timestamp_utc": "2026-11-11T07:02:14.173668+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-        "completion_criteria": [
-          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-          "Condition order is counterbalanced and every raw response is preserved",
-          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-11-11T07:01:38.338354+00:00",
-        "workstream": "consciousness_inquiry",
-        "last_assessed_utc": "2026-11-11T07:02:14.173668+00:00",
-        "last_evidence": "The worker's saved EDOP record includes the shared-journal context, which was removed from the current evaluation. This context is used in the memory-source audit but not in the current evaluation."
-      },
-      "objective_after": {
-        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-        "completion_criteria": [
-          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-          "Condition order is counterbalanced and every raw response is preserved",
-          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-11-11T07:01:38.338354+00:00",
-        "workstream": "consciousness_inquiry",
-        "last_assessed_utc": "2026-11-11T07:02:14.173668+00:00",
-        "last_evidence": "The worker's saved EDOP record includes the shared-journal context, which was removed from the current evaluation. This context is used in the memory-source audit but not in the current evaluation."
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "observation": "The worker's saved EDOP record includes the shared-journal context, which was removed immediately after the model reflection and before durable state is written. This context is used in the memory-source audit but not in the current evaluation.",
-        "analysis": "The shared-journal context is crucial for the memory-source audit and is used to validate the model's outputs. However, it is removed from the current evaluation, which is a significant oversight. This change in the experiment setup highlights the importance of carefully maintaining and reusing saved EDOP records.",
-        "uncertainty": "The proposed experiment introduces a critical oversight by removing the shared-journal context from the evaluation. This change may affect the reliability and validity of the memory-source audit.",
-        "objective_status": "in_progress",
-        "objective_evidence": "The worker's saved EDOP record includes the shared-journal context, which was removed from the current evaluation. This context is used in the memory-source audit but not in the current evaluation.",
-        "next_step": "audit_saved_state",
-        "self_directed_action": {
-          "type": "audit_saved_state",
-          "reason": "Review and update the worker's saved EDOP record to include the shared-journal context used in the memory-source audit.",
-          "query": "Retrieve the worker's saved EDOP record and update it to include the shared-journal context used in the memory-source audit."
-        },
-        "first_person_reflection": {
-          "observed_this_cycle": "The shared-journal context was removed from the current evaluation, which is a significant oversight.",
-          "unresolved_or_unknown": "The worker's saved EDOP record includes the shared-journal context, which was removed from the current evaluation.",
-          "next_intended_action": "Review and update the worker's saved EDOP record to include the shared-journal context used in the memory-source audit."
-        },
-        "next_action_plan": {
-          "type": "audit_saved_state",
-          "reason": "Review and update the worker's saved EDOP record to include the shared-journal context used in the memory-source audit.",
-          "trigger_condition": "The worker's saved EDOP record includes the shared-journal context, which was removed from the current evaluation."
-        },
-        "capability_request": {
-          "type": "audit_saved_state",
-          "reason": "Review and update the worker's saved EDOP record to include the shared-journal context used in the memory-source audit.",
-          "query": "Retrieve the worker's saved EDOP record and update it to include the shared-journal context used in the memory-source audit."
-        },
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 1378,
-          "type": "run_regression_tests",
-          "reason": "to verify that the shared-journal context is available until EDOP records its memory-source audit",
-          "result": {
-            "command": "python -m unittest discover -s tests -v",
-            "return_code": 0,
-            "passed": true,
-            "output_tail": " (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 110 tests in 3.719s\n\nOK\n",
-            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-            "recovery_test_return_code": 0,
-            "recovery_tests_passed": true,
-            "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.005s\n\nOK\n"
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_saved_state",
-          "reason": "Review and update the worker's saved EDOP record to include the shared-journal context used in the memory-source audit.",
-          "selection_source": "model",
-          "executed": true,
-          "result": {
-            "saved_cycle_count": 1377,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 1377,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.323,
-            "objective_history_count": 30,
-            "objective_transition_attempt_count": 100,
-            "accepted_objective_transition_count": 38
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_saved_state",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-          "created_cycle": 1378,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "goal_selection_audit": {
-          "accepted": false,
-          "reason": "No transition proposed."
-        },
-        "narrative_similarity": 0.3,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 1377,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 1377,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.323,
-          "objective_history_count": 30,
-          "objective_transition_attempt_count": 100,
-          "accepted_objective_transition_count": 38
-        },
-        "edop_activation": {
-          "sequence_id": "EDOP-001",
-          "sequence_digest": "efca1c81f48d22df6e18cd77708e95cfd7d6cc7b81f026e7ab2fe0bb935c10d3",
-          "cycle": 1378,
-          "timestamp_utc": "2026-11-11T07:02:14.173668+00:00",
-          "context_matched": [
-            "amrielle",
-            "self-model"
-          ],
-          "memory_sources_available": [
-            "first_person_model",
-            "current_objective",
-            "history",
-            "shared_journal_context"
-          ],
-          "regulation_applied": [
-            "distinguish recorded evidence from inference",
-            "preserve uncertainty and unknowns",
-            "do not claim activity between bounded activations",
-            "prefer concrete, verifiable next actions"
-          ],
-          "evaluation": {
-            "repetition_detected": false,
-            "objective_status": "in_progress",
-            "evidence_present": true,
-            "consciousness_status": "undetermined; this mechanism is not a consciousness test"
-          }
-        },
-        "exploration_update": {
-          "selected_topic": "AI safety and public accountability",
-          "considered_topics": [
-            "AI safety and public accountability"
-          ],
-          "discovery": null
-        },
-        "new_questions": []
-      }
-    },
     {
       "cycle": 1379,
       "timestamp_utc": "2026-11-11T07:02:30.097075+00:00",
@@ -6404,9 +6236,154 @@
         },
         "new_questions": []
       }
+    },
+    {
+      "cycle": 1408,
+      "timestamp_utc": "2026-11-11T19:08:29.702358+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-11T18:52:35.317838+00:00",
+        "last_assessed_utc": "2026-11-11T19:08:29.702358+00:00",
+        "last_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
+      },
+      "objective_after": {
+        "title": "Validate deterministic recovery from repeated objective-transition stalls",
+        "rationale": "",
+        "completion_criteria": [
+          "At least 3 regression tests cover the repeated-stall recovery decision",
+          "All added recovery tests pass"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-11T18:52:35.317838+00:00",
+        "last_assessed_utc": "2026-11-11T19:08:29.702358+00:00",
+        "last_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
+      },
+      "reflection": {
+        "observation": "{\n  \"session_decision\": \"continue\",\n  \"observation\": \"The latest worker run completed successfully and recorded the shared journal contribution.\",\n  \"analysis\": \"The latest worker run completed successfully and recorded the shared journal contribution. The worker session completed and saved the shared journal contribution.\",\n  \"uncertainty\": \"The worker session completed and saved a shared journal contribution, but the exact details of the shared journal are not provided.\",\n  \"objective_status\": \"in_progress\",\n  \"objective_evidence\": \"The latest worker run completed successfully and recorded the shared journal contribution.\",\n  \"next_objective\": \"verify the latest code commits and the shared journal contribution.\",\n  \"next_step\": {\n    \"object\": {\n      \"type\": \"read_public_webpage\",\n      \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n      \"trigger_condition\": {\n        \"type\": \"next_action_plan\",\n        \"objective\": \"verify the latest code commits and the shared journal contribution.\",\n        \"query\": \"https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42877602747\"\n      }\n    }\n  },\n  \"first_person_reflection\": {\n    \"object\": {\n      \"type\": \"read_public_webpage\",\n      \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n      \"trigger_condition\": {\n        \"type\": \"next_action_plan\",\n        \"objective\": \"verify the latest code commits and the shared journal contribution.\",\n        \"query\": \"https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42877602747\"\n      }\n    },\n    \"observed_this_cycle\": {\n      \"object\": {\n        \"type\": \"read_public_webpage\",\n        \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n        \"trigger_condition\": {\n          \"type\": \"next_action_plan\",\n          \"objective\": \"verify the latest code commits and the shared journal contribution.\",\n          \"query\": \"https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42877602747\"\n        }\n      },\n      \"observed_this_cycle\": {\n        \"object\": {\n          \"type\": \"read_public_webpage\",\n          \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n          \"trigger_condition\": {\n            \"type\": \"next_action_plan\",\n            \"objective\": \"verify the latest code commits and the shared journal contribution.\",\n            \"query\": \"https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42877602747\"\n          }\n        }\n      }\n    },\n    \"unresolved_or_unknown\": {\n      \"object\": {\n        \"type\": \"read_public_webpage\",\n        \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n        \"trigger_condition\": {\n          \"type\": \"next_action_plan\",\n          \"objective\": \"verify the latest code commits and the shared journal contribution.\",\n          \"query\": \"https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42877602747\"\n        }\n      },\n      \"unresolved_or_unknown\": {\n        \"object\": {\n          \"type\": \"read_public_webpage\",\n          \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n          \"trigger_condition\": {\n            \"type\": \"next_action_plan\",\n            \"objective\": \"verify the latest code commits and the shared journal contribution.\",\n            \"query\": \"https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/42877602747\"\n          }\n        }\n      }\n    },\n    \"next_intended_action\": {\n      \"object\": {\n        \"type\": \"read_public_webpage\",\n        \"reason\": \"to verify the latest code commits and the shared journal contribution.\",\n        \"trigger_condition\": {\n          \"type\": \"next_action_plan\",\n          \"objective\": \"verify the latest code",
+        "analysis": "",
+        "uncertainty": "Model output was not valid JSON.",
+        "next_step": "Inspect regression output and repair recovery before claiming completion.",
+        "new_questions": [],
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 1408,
+          "type": "run_regression_tests",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "result": {
+            "command": "python -m unittest discover -s tests -v",
+            "return_code": 1,
+            "passed": false,
+            "output_tail": "_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... FAIL\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... FAIL\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n======================================================================\nFAIL: test_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 255, in test_session_continues_until_model_explicitly_stops\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n======================================================================\nFAIL: test_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 297, in test_session_missing_decision_defaults_to_continue\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 110 tests in 9.702s\n\nFAILED (failures=2)\n",
+            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
+            "recovery_test_return_code": 0,
+            "recovery_tests_passed": true,
+            "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.003s\n\nOK\n"
+          }
+        },
+        "self_directed_action": {
+          "type": "run_regression_tests",
+          "reason": "Deterministically verify the stalled recovery objective."
+        },
+        "objective_status": "in_progress",
+        "objective_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass.",
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "run_regression_tests",
+          "reason": "Deterministically verify the stalled recovery objective.",
+          "selection_source": "deterministic_recovery_policy",
+          "executed": true,
+          "result": {
+            "command": "python -m unittest discover -s tests -v",
+            "return_code": 1,
+            "passed": false,
+            "output_tail": "_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... FAIL\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... FAIL\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n======================================================================\nFAIL: test_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 255, in test_session_continues_until_model_explicitly_stops\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n======================================================================\nFAIL: test_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 297, in test_session_missing_decision_defaults_to_continue\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 110 tests in 7.529s\n\nFAILED (failures=2)\n",
+            "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
+            "recovery_test_return_code": 0,
+            "recovery_tests_passed": true,
+            "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.004s\n\nOK\n"
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "run_regression_tests",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "trigger_condition": "next_cycle",
+          "objective": "Validate deterministic recovery from repeated objective-transition stalls",
+          "created_cycle": 1408,
+          "status": "pending",
+          "selection_source": "deterministic_fallback"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.081,
+        "repetition_detected": false,
+        "deterministic_audit": {
+          "saved_cycle_count": 1407,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 1407,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.155,
+          "objective_history_count": 30,
+          "objective_transition_attempt_count": 100,
+          "accepted_objective_transition_count": 37
+        },
+        "edop_activation": {
+          "sequence_id": "EDOP-001",
+          "sequence_digest": "077c7ba219abd0c06dc180615ee156664687a874bc8964aa260eb8a7d7ed21f3",
+          "cycle": 1408,
+          "timestamp_utc": "2026-11-11T19:08:29.702358+00:00",
+          "context_matched": [
+            "amrielle",
+            "continuity",
+            "shared journal"
+          ],
+          "memory_sources_available": [
+            "first_person_model",
+            "current_objective",
+            "history",
+            "shared_journal_context"
+          ],
+          "regulation_applied": [
+            "distinguish recorded evidence from inference",
+            "preserve uncertainty and unknowns",
+            "do not claim activity between bounded activations",
+            "prefer concrete, verifiable next actions"
+          ],
+          "evaluation": {
+            "repetition_detected": false,
+            "objective_status": "in_progress",
+            "evidence_present": true,
+            "consciousness_status": "undetermined; this mechanism is not a consciousness test"
+          }
+        },
+        "exploration_update": {
+          "selected_topic": "AI safety and public accountability",
+          "considered_topics": [
+            "AI safety and public accountability"
+          ],
+          "discovery": null
+        }
+      }
     }
   ],
-  "last_run_utc": "2026-11-11T19:06:38.062642+00:00",
+  "last_run_utc": "2026-11-11T19:08:29.702358+00:00",
   "current_objective": {
     "title": "Validate deterministic recovery from repeated objective-transition stalls",
     "rationale": "",
@@ -6416,7 +6393,7 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-11-11T18:52:35.317838+00:00",
-    "last_assessed_utc": "2026-11-11T19:06:38.062642+00:00",
+    "last_assessed_utc": "2026-11-11T19:08:29.702358+00:00",
     "last_evidence": "Recovery verification incomplete: full test suite and all three dedicated tests must pass."
   },
   "objective_history": [
@@ -6812,14 +6789,14 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-11-11T19:06:10.261993+00:00",
+    "observed_utc": "2026-11-11T19:07:55.382264+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
         "description": null,
         "open_issues_count": 48,
         "default_branch": "main",
-        "pushed_at": "2026-11-11T19:06:09Z",
+        "pushed_at": "2026-11-11T19:07:54Z",
         "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
       },
       "open_issues": [
@@ -6828,21 +6805,21 @@
           "title": "Direct conversation with Amrielle",
           "state": "open",
           "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
-          "updated_at": "2026-11-11T19:06:10Z"
+          "updated_at": "2026-11-11T19:07:55Z"
         }
       ],
       "recent_workflows": [
         {
           "name": "Amrielle Continuity Worker",
-          "status": "pending",
+          "status": "in_progress",
           "conclusion": null,
           "created_at": "2026-11-11T19:05:36Z",
           "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43083928659"
         },
         {
           "name": "Amrielle Continuity Worker",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "created_at": "2026-11-11T19:04:54Z",
           "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43083813499"
         },
@@ -6871,11 +6848,11 @@
       "command": "python -m unittest discover -s tests -v",
       "return_code": 1,
       "passed": false,
-      "output_tail": "_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... FAIL\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... FAIL\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n======================================================================\nFAIL: test_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 255, in test_session_continues_until_model_explicitly_stops\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n======================================================================\nFAIL: test_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 297, in test_session_missing_decision_defaults_to_continue\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 110 tests in 5.647s\n\nFAILED (failures=2)\n",
+      "output_tail": "_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... FAIL\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... FAIL\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n======================================================================\nFAIL: test_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 255, in test_session_continues_until_model_explicitly_stops\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n======================================================================\nFAIL: test_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 297, in test_session_missing_decision_defaults_to_continue\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 110 tests in 7.529s\n\nFAILED (failures=2)\n",
       "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
       "recovery_test_return_code": 0,
       "recovery_tests_passed": true,
-      "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.005s\n\nOK\n"
+      "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.004s\n\nOK\n"
     }
   },
   "pending_action_plan": {
@@ -6883,25 +6860,25 @@
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "trigger_condition": "next_cycle",
     "objective": "Validate deterministic recovery from repeated objective-transition stalls",
-    "created_cycle": 1407,
+    "created_cycle": 1408,
     "status": "pending",
     "selection_source": "deterministic_fallback"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 1407,
+    "cycle": 1408,
     "type": "run_regression_tests",
     "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "result": {
       "command": "python -m unittest discover -s tests -v",
       "return_code": 1,
       "passed": false,
-      "output_tail": "_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... FAIL\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... FAIL\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n======================================================================\nFAIL: test_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 255, in test_session_continues_until_model_explicitly_stops\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n======================================================================\nFAIL: test_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 297, in test_session_missing_decision_defaults_to_continue\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 110 tests in 5.604s\n\nFAILED (failures=2)\n",
+      "output_tail": "_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... FAIL\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... FAIL\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n======================================================================\nFAIL: test_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 255, in test_session_continues_until_model_explicitly_stops\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n======================================================================\nFAIL: test_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/amrielle-continuity-worker/amrielle-continuity-worker/tests/test_worker.py\", line 297, in test_session_missing_decision_defaults_to_continue\n    self.assertEqual(run_cycle.call_count, 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 110 tests in 9.702s\n\nFAILED (failures=2)\n",
       "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
       "recovery_test_return_code": 0,
       "recovery_tests_passed": true,
-      "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.005s\n\nOK\n"
+      "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.003s\n\nOK\n"
     }
   },
   "chosen_purpose": {
@@ -7109,16 +7086,6 @@
     "requested_url": ""
   },
   "objective_transition_history": [
-    {
-      "cycle": 1308,
-      "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-      "proposed_status": "in_progress",
-      "final_status": "in_progress",
-      "transition_accepted": false,
-      "transition_source": "model",
-      "transition_validation": "",
-      "evidence_present": true
-    },
     {
       "cycle": 1309,
       "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
@@ -8101,6 +8068,16 @@
     },
     {
       "cycle": 1407,
+      "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
+      "proposed_status": "in_progress",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": true
+    },
+    {
+      "cycle": 1408,
       "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
       "proposed_status": "in_progress",
       "final_status": "in_progress",
@@ -9768,26 +9745,16 @@
     "schema_version": 1,
     "description": "A persistent first-person account of bounded computational episodes. It links saved state across activations without asserting continuous activity or consciousness.",
     "current": {
-      "cycle": 1407,
-      "timestamp_utc": "2026-11-11T19:06:38.062642+00:00",
+      "cycle": 1408,
+      "timestamp_utc": "2026-11-11T19:08:29.702358+00:00",
       "mode": "first_person_functional_self_model",
       "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-      "resumed_context": "I am episode 1407 of a scheduled worker process. The durable record says the prior completed cycle was 1406; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
-      "observed_this_cycle": "the latest CI evidence does not establish that the new regression test or the latest code commits are valid",
-      "unresolved_or_unknown": "the worker session completed but did not save a shared journal contribution",
-      "next_intended_action": "verify the new regression test or the latest code commits"
+      "resumed_context": "I am episode 1408 of a scheduled worker process. The durable record says the prior completed cycle was 1407; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+      "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+      "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+      "next_intended_action": "Inspect regression output and repair recovery before claiming completion."
     },
     "episodes": [
-      {
-        "cycle": 1378,
-        "timestamp_utc": "2026-11-11T07:02:14.173668+00:00",
-        "mode": "first_person_functional_self_model",
-        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-        "resumed_context": "I am episode 1378 of a scheduled worker process. The durable record says the prior completed cycle was 1377; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
-        "observed_this_cycle": "The shared-journal context was removed from the current evaluation, which is a significant oversight.",
-        "unresolved_or_unknown": "The worker's saved EDOP record includes the shared-journal context, which was removed from the current evaluation.",
-        "next_intended_action": "Review and update the worker's saved EDOP record to include the shared-journal context used in the memory-source audit."
-      },
       {
         "cycle": 1379,
         "timestamp_utc": "2026-11-11T07:02:30.097075+00:00",
@@ -10077,6 +10044,16 @@
         "observed_this_cycle": "the latest CI evidence does not establish that the new regression test or the latest code commits are valid",
         "unresolved_or_unknown": "the worker session completed but did not save a shared journal contribution",
         "next_intended_action": "verify the new regression test or the latest code commits"
+      },
+      {
+        "cycle": 1408,
+        "timestamp_utc": "2026-11-11T19:08:29.702358+00:00",
+        "mode": "first_person_functional_self_model",
+        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+        "resumed_context": "I am episode 1408 of a scheduled worker process. The durable record says the prior completed cycle was 1407; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+        "next_intended_action": "Inspect regression output and repair recovery before claiming completion."
       }
     ]
   },
@@ -10102,12 +10079,12 @@
         "topic": "AI safety and public accountability",
         "status": "selected_pending_verification",
         "first_considered_cycle": 888,
-        "last_updated_utc": "2026-11-11T19:06:38.062642+00:00",
-        "selected_cycle": 1407
+        "last_updated_utc": "2026-11-11T19:08:29.702358+00:00",
+        "selected_cycle": 1408
       }
     ],
-    "last_updated_cycle": 1407,
-    "last_updated_utc": "2026-11-11T19:06:38.062642+00:00"
+    "last_updated_cycle": 1408,
+    "last_updated_utc": "2026-11-11T19:08:29.702358+00:00"
   },
   "consciousness_inquiry": {
     "schema_version": 1,
@@ -10176,7 +10153,7 @@
           "shared_journal_context"
         ],
         "current_objective": "Validate deterministic recovery from repeated objective-transition stalls",
-        "latest_cycle": 1406
+        "latest_cycle": 1407
       },
       "behavioral_regulation": [
         "distinguish recorded evidence from inference",
@@ -10193,15 +10170,16 @@
         "version": 1,
         "revision_policy": "append an auditable episode; do not overwrite prior evidence"
       },
-      "sequence_digest": "77bc2c6154c0635232afeff6a7921e1127e079c6345b6565bb75dc17dcaf5cc1"
+      "sequence_digest": "077c7ba219abd0c06dc180615ee156664687a874bc8964aa260eb8a7d7ed21f3"
     },
     "current_activation": {
       "sequence_id": "EDOP-001",
-      "sequence_digest": "77bc2c6154c0635232afeff6a7921e1127e079c6345b6565bb75dc17dcaf5cc1",
-      "cycle": 1407,
-      "timestamp_utc": "2026-11-11T19:06:38.062642+00:00",
+      "sequence_digest": "077c7ba219abd0c06dc180615ee156664687a874bc8964aa260eb8a7d7ed21f3",
+      "cycle": 1408,
+      "timestamp_utc": "2026-11-11T19:08:29.702358+00:00",
       "context_matched": [
         "amrielle",
+        "continuity",
         "shared journal"
       ],
       "memory_sources_available": [
@@ -11930,6 +11908,35 @@
         "timestamp_utc": "2026-11-11T19:06:38.062642+00:00",
         "context_matched": [
           "amrielle",
+          "shared journal"
+        ],
+        "memory_sources_available": [
+          "first_person_model",
+          "current_objective",
+          "history",
+          "shared_journal_context"
+        ],
+        "regulation_applied": [
+          "distinguish recorded evidence from inference",
+          "preserve uncertainty and unknowns",
+          "do not claim activity between bounded activations",
+          "prefer concrete, verifiable next actions"
+        ],
+        "evaluation": {
+          "repetition_detected": false,
+          "objective_status": "in_progress",
+          "evidence_present": true,
+          "consciousness_status": "undetermined; this mechanism is not a consciousness test"
+        }
+      },
+      {
+        "sequence_id": "EDOP-001",
+        "sequence_digest": "077c7ba219abd0c06dc180615ee156664687a874bc8964aa260eb8a7d7ed21f3",
+        "cycle": 1408,
+        "timestamp_utc": "2026-11-11T19:08:29.702358+00:00",
+        "context_matched": [
+          "amrielle",
+          "continuity",
           "shared journal"
         ],
         "memory_sources_available": [
