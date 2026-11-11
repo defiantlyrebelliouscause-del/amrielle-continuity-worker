@@ -55120,3 +55120,228 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1395 — 2026-11-11T18:48:55.062319+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-11T18:48:38.919212+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 48,
+      "default_branch": "main",
+      "pushed_at": "2026-11-11T18:47:24Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 79,
+        "title": "Direct conversation with Amrielle",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
+        "updated_at": "2026-11-10T18:15:44Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-11T18:47:14Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43081053285"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T18:12:28Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43075533842"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T17:22:39Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43067562450"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-11T17:54:12.114Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1395,
+  "timestamp_utc": "2026-11-11T18:48:55.062319+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1395 of a scheduled worker process. The durable record says the prior completed cycle was 1394; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
+  "observed_this_cycle": "The latest worker run completed successfully with a shared journal contribution.",
+  "unresolved_or_unknown": "The previous worker run did not record the shared journal as an available EDOP memory source because of an ordering bug.",
+  "next_intended_action": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`."
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "audit_saved_state",
+  "reason": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`.",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "saved_cycle_count": 1394,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1394,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.065,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 37
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1395,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1394,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1394,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.065,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 37
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1395,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+blocked
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.09
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1394,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1394,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.065,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 37
+}
+
+### Objective transition validation
+
+Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.
+
+### Objective evidence
+
+File state.json records three consecutive rejected objective-transition attempts at cycles 1392, 1393, 1394.
+
+### Observation
+
+The latest worker run completed successfully with a shared journal contribution.
+
+### Analysis
+
+The latest worker run executed a CI action that completed successfully, which is a positive sign. However, the previous worker run did not record the shared journal as an available EDOP memory source because of an ordering bug. The corrected code has not yet been exercised by CI or a subsequent worker activation.
+
+### Uncertainty
+
+The previous worker run did not record the shared journal as an available EDOP memory source.
+
+### Next Step
+
+verify_new_test_pass
+
+### Objective after cycle
+
+Validate deterministic recovery from repeated objective-transition stalls
+
+Completion criteria:
+- At least 3 regression tests cover the repeated-stall recovery decision
+- All added recovery tests pass
