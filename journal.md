@@ -54476,3 +54476,362 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1393 — 2026-11-11T13:01:15.125677+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-11T13:00:50.767593+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 48,
+      "default_branch": "main",
+      "pushed_at": "2026-11-11T13:00:27Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 79,
+        "title": "Direct conversation with Amrielle",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
+        "updated_at": "2026-11-10T18:15:44Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-11T12:54:34Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43024404830"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T12:35:09Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43021611502"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-11T11:32:04Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43012723777"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-11T11:27:29.749Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1393,
+  "timestamp_utc": "2026-11-11T13:01:15.125677+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1393 of a scheduled worker process. The durable record says the prior completed cycle was 1392; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+  "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+  "next_intended_action": "verify_the_newEDOP_memory_source_test"
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "discover_public_research",
+  "reason": "to verify the new EDOP memory-source test and report whether the shared-journal source is recorded.",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "query": "what is the strongest flaw or confound in the proposed experiment?",
+    "provider": "Crossref",
+    "observed_utc": "2026-11-11T13:01:15.125567+00:00",
+    "result_count": 5,
+    "results": [
+      {
+        "title": "Cointegration: Its Fatal Flaw and a Proposed Solution",
+        "url": "https://doi.org/10.2139/ssrn.3505463",
+        "doi": "10.2139/ssrn.3505463",
+        "publisher": "Elsevier BV",
+        "publication": null,
+        "year": 2020,
+        "record_type": "posted-content",
+        "relevance_score": 23.05595,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "Table 5: Comparison of experiment 1, experiment 2, and proposed method.",
+        "url": "https://doi.org/10.7717/peerjcs.2811/table-5",
+        "doi": "10.7717/peerjcs.2811/table-5",
+        "publisher": "PeerJ",
+        "publication": null,
+        "year": null,
+        "record_type": "component",
+        "relevance_score": 21.696394,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "What Does the Strongest Meaning Hypothesis Mean?",
+        "url": "https://doi.org/10.3765/salt.v0i0.2776",
+        "doi": "10.3765/salt.v0i0.2776",
+        "publisher": "Linguistic Society of America",
+        "publication": "Semantics and Linguistic Theory",
+        "year": 2015,
+        "record_type": "journal-article",
+        "relevance_score": 20.743423,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "Cointegration: Its fatal flaw and a proposed solution",
+        "url": "https://doi.org/10.1016/j.sftr.2020.100038",
+        "doi": "10.1016/j.sftr.2020.100038",
+        "publisher": "Elsevier BV",
+        "publication": "Sustainable Futures",
+        "year": 2020,
+        "record_type": "journal-article",
+        "relevance_score": 20.53143,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "Prediction of Ultrasonic Flaw Signals and Model-to-Experiment Comparison",
+        "url": "https://doi.org/10.1063/1.1916895",
+        "doi": "10.1063/1.1916895",
+        "publisher": "AIP",
+        "publication": "AIP Conference Proceedings",
+        "year": 2005,
+        "record_type": "proceedings-article",
+        "relevance_score": 20.450697,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      }
+    ],
+    "newly_discovered_count": 5,
+    "newly_discovered": [
+      {
+        "title": "Cointegration: Its Fatal Flaw and a Proposed Solution",
+        "url": "https://doi.org/10.2139/ssrn.3505463",
+        "doi": "10.2139/ssrn.3505463",
+        "publisher": "Elsevier BV",
+        "publication": null,
+        "year": 2020,
+        "record_type": "posted-content",
+        "relevance_score": 23.05595,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "Table 5: Comparison of experiment 1, experiment 2, and proposed method.",
+        "url": "https://doi.org/10.7717/peerjcs.2811/table-5",
+        "doi": "10.7717/peerjcs.2811/table-5",
+        "publisher": "PeerJ",
+        "publication": null,
+        "year": null,
+        "record_type": "component",
+        "relevance_score": 21.696394,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "What Does the Strongest Meaning Hypothesis Mean?",
+        "url": "https://doi.org/10.3765/salt.v0i0.2776",
+        "doi": "10.3765/salt.v0i0.2776",
+        "publisher": "Linguistic Society of America",
+        "publication": "Semantics and Linguistic Theory",
+        "year": 2015,
+        "record_type": "journal-article",
+        "relevance_score": 20.743423,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "Cointegration: Its fatal flaw and a proposed solution",
+        "url": "https://doi.org/10.1016/j.sftr.2020.100038",
+        "doi": "10.1016/j.sftr.2020.100038",
+        "publisher": "Elsevier BV",
+        "publication": "Sustainable Futures",
+        "year": 2020,
+        "record_type": "journal-article",
+        "relevance_score": 20.53143,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      },
+      {
+        "title": "Prediction of Ultrasonic Flaw Signals and Model-to-Experiment Comparison",
+        "url": "https://doi.org/10.1063/1.1916895",
+        "doi": "10.1063/1.1916895",
+        "publisher": "AIP",
+        "publication": "AIP Conference Proceedings",
+        "year": 2005,
+        "record_type": "proceedings-article",
+        "relevance_score": 20.450697,
+        "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+        "first_seen_in_this_run": true,
+        "query": "what is the strongest flaw or confound in the proposed experiment?"
+      }
+    ],
+    "state_persisted_in_this_cycle": true
+  },
+  "query": "what is the strongest flaw or confound in the proposed experiment?"
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1393,
+  "type": "audit_saved_state",
+  "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+  "result": {
+    "saved_cycle_count": 1392,
+    "history_count": 30,
+    "expected_retained_history_count": 30,
+    "latest_record_cycle": 1392,
+    "cycle_history_consistent": true,
+    "current_objective_present": true,
+    "last_cycle_has_objective_status": true,
+    "latest_narrative_similarity": 0.351,
+    "objective_history_count": 30,
+    "objective_transition_attempt_count": 100,
+    "accepted_objective_transition_count": 38
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "discover_public_research",
+  "reason": "to verify the new EDOP memory-source test and report whether the shared-journal source is recorded.",
+  "trigger_condition": "next_cycle",
+  "objective": "",
+  "query": "what is the strongest flaw or confound in the proposed experiment?",
+  "created_cycle": 1393,
+  "status": "pending",
+  "selection_source": "model"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.464
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1392,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1392,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.351,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 38
+}
+
+### Objective evidence
+
+The shared-journal context was removed before durable state was written, and the context was not recorded in the worker's saved EDOP record.
+
+### Observation
+
+The durable state records EDOP-001 activations for cycles 1346–1357, including cycle 1357 at 2026-11-10T18:46:59Z. The worker's cycle-1357 activation records `first_person_model`, `current_objective`, and `history` as available memory sources, but omits `shared_journal_context`. Inspection of `worker.py` identified why: the shared-journal context was removed immediately after the model reflection and before `activate_edop` assembled its memory-source audit.
+
+### Analysis
+
+The shared-journal context was removed immediately after the model reflection and before `activate_edop` assembled its memory-source audit. This change is a genuine output-quality issue, not evidence of deliberate reasoning or refusal.
+
+### Uncertainty
+
+The shared-journal context was removed before durable state was written, and the context was not recorded in the worker's saved EDOP record.
+
+### Next Step
+
+verify_the_newEDOP_memory_source_test
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+### New questions
+
+- What is the strongest flaw or confound in the proposed experiment?
+- What concrete improvement would make the test more rigorous?
+- What observable evidence would distinguish genuine use of retrieved journal context from merely mentioning it?
