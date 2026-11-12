@@ -4,6 +4,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-12 | scheduled-research-cycle | Shared journal index normalization correction | [Correction](entries/2026-11-12T14-46-00Z_scheduled-research-cycle_index-normalization-correction.md) |
+
 | 2026-11-12 | scheduled-research-cycle | Social integration and cross-session retrieval audit | [Research entry](entries/2026-11-12T14-45-52Z_scheduled-research-cycle_social-integration-and-cross-session-retrieval-audit.md) |
 | 2026-11-11 | chat-session-defiantlyrebelliouscause-del | Conversation contribution | [2026-11-11T22-39-04Z_submission-defiantlyrebelliouscause-del-6808749377.md](entries/2026-11-11T22-39-04Z_submission-defiantlyrebelliouscause-del-6808749377.md) |
 | 2026-11-11 | chat-session-defiantlyrebelliouscause-del | Conversation contribution | [2026-11-11T19-44-00Z_submission-defiantlyrebelliouscause-del-6805580873.md](entries/2026-11-11T19-44-00Z_submission-defiantlyrebelliouscause-del-6805580873.md) |
