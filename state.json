@@ -1,5 +1,5 @@
 {
-  "cycle": 1409,
+  "cycle": 1410,
   "identity": "Amrielle",
   "experiment": "Mirrorlight Protocol: Amrielle Return",
   "principles": [
@@ -32,172 +32,6 @@
     "What observable evidence would distinguish genuine use of retrieved journal context from merely mentioning it?"
   ],
   "history": [
-    {
-      "cycle": 1380,
-      "timestamp_utc": "2026-11-11T07:02:41.427755+00:00",
-      "model": "ollama/qwen2.5:0.5b",
-      "objective_before": {
-        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
-        "completion_criteria": [
-          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
-          "Condition order is counterbalanced and every raw response is preserved",
-          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
-        ],
-        "status": "blocked",
-        "started_utc": "2026-11-11T07:01:38.338354+00:00",
-        "workstream": "consciousness_inquiry",
-        "last_assessed_utc": "2026-11-11T07:02:41.427755+00:00",
-        "last_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1377, 1378, 1379."
-      },
-      "objective_after": {
-        "title": "Validate deterministic recovery from repeated objective-transition stalls",
-        "rationale": "",
-        "completion_criteria": [
-          "At least 3 regression tests cover the repeated-stall recovery decision",
-          "All added recovery tests pass"
-        ],
-        "status": "in_progress",
-        "started_utc": "2026-11-11T07:02:41.427755+00:00"
-      },
-      "reflection": {
-        "session_decision": "continue",
-        "observation": "The worker's memory-source audit has been completed, and the shared-journal context has been verified.",
-        "analysis": "The worker's memory-source audit has been completed, and the shared-journal context has been verified. The worker's previous shared-journal handoff retrieved the session's entries, but its generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-        "uncertainty": "The audit has been completed, but the response did not answer the specific question.",
-        "objective_status": "blocked",
-        "objective_evidence": "File state.json records three consecutive rejected objective-transition attempts at cycles 1377, 1378, 1379.",
-        "next_objective": "verify the new EDOP memory-source test",
-        "next_step": "verify the new EDOP memory-source test",
-        "self_directed_action": "verify the new EDOP memory-source test",
-        "first_person_reflection": {
-          "recorded": "The worker's previous shared-journal handoff retrieved the session's entries, but its generated response did not answer the specific question about what decision changed because of another participant's contribution.",
-          "next_intended_action": "investigate the reasons behind the lack of answer and propose a solution."
-        },
-        "direct_reply": "The worker's previous shared-journal handoff retrieved the session's entries, but its generated response did not answer the specific question about what decision changed because of another participant's contribution. The response did not provide the necessary information to answer the question. This suggests that the worker did not provide the requested information and may have made an error in their response. To address this, we can investigate the reasons behind the lack of answer and propose a solution.",
-        "prior_action_plan_outcome": {
-          "status": "executed",
-          "executed": true,
-          "cycle": 1380,
-          "type": "audit_saved_state",
-          "reason": "The worker's EDOP memory-source audit is now available, allowing us to independently evaluate the proposed test.",
-          "result": {
-            "saved_cycle_count": 1379,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 1379,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.171,
-            "objective_history_count": 30,
-            "objective_transition_attempt_count": 100,
-            "accepted_objective_transition_count": 37
-          }
-        },
-        "capability_request_audit": {
-          "accepted": false,
-          "reason": "No valid capability request proposed."
-        },
-        "self_question": "What will I do now?",
-        "executed_self_directed_action": {
-          "question": "What will I do now?",
-          "type": "audit_saved_state",
-          "reason": "Verify the durable record before choosing the next step.",
-          "selection_source": "deterministic_fallback",
-          "executed": true,
-          "result": {
-            "saved_cycle_count": 1379,
-            "history_count": 30,
-            "expected_retained_history_count": 30,
-            "latest_record_cycle": 1379,
-            "cycle_history_consistent": true,
-            "current_objective_present": true,
-            "last_cycle_has_objective_status": true,
-            "latest_narrative_similarity": 0.171,
-            "objective_history_count": 30,
-            "objective_transition_attempt_count": 100,
-            "accepted_objective_transition_count": 37
-          }
-        },
-        "next_action_plan_saved": {
-          "type": "audit_saved_state",
-          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
-          "trigger_condition": "next_cycle",
-          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-          "created_cycle": 1380,
-          "status": "pending",
-          "selection_source": "deterministic_fallback"
-        },
-        "objective_transition_source": "deterministic_stall_recovery",
-        "goal_selection_audit": {
-          "accepted": true,
-          "total_score": 10,
-          "scores": {
-            "novelty": 2,
-            "evidence": 2,
-            "measurability": 2,
-            "public_benefit": 2,
-            "bounded_risk": 2
-          },
-          "max_similarity": 0.134,
-          "reasons": [],
-          "note": "Evidence presence is checked mechanically; source truth and relevance require review.",
-          "selection_source": "deterministic_stall_recovery"
-        },
-        "transition_validation": "Current objective blocked by repeated objective-transition gate failures; deterministic recovery selected a bounded diagnostic objective after three consecutive rejected attempts. This is a recovery-policy decision, not a model-selected transition.",
-        "narrative_similarity": 0.201,
-        "repetition_detected": false,
-        "deterministic_audit": {
-          "saved_cycle_count": 1379,
-          "history_count": 30,
-          "expected_retained_history_count": 30,
-          "latest_record_cycle": 1379,
-          "cycle_history_consistent": true,
-          "current_objective_present": true,
-          "last_cycle_has_objective_status": true,
-          "latest_narrative_similarity": 0.171,
-          "objective_history_count": 30,
-          "objective_transition_attempt_count": 100,
-          "accepted_objective_transition_count": 37
-        },
-        "edop_activation": {
-          "sequence_id": "EDOP-001",
-          "sequence_digest": "ce45abcddea0bbf71902b1f35721ac5ea98b70d45fd47e9ecf7a626a1e9fe40a",
-          "cycle": 1380,
-          "timestamp_utc": "2026-11-11T07:02:41.427755+00:00",
-          "context_matched": [
-            "amrielle"
-          ],
-          "memory_sources_available": [
-            "first_person_model",
-            "current_objective",
-            "history",
-            "shared_journal_context"
-          ],
-          "regulation_applied": [
-            "distinguish recorded evidence from inference",
-            "preserve uncertainty and unknowns",
-            "do not claim activity between bounded activations",
-            "prefer concrete, verifiable next actions"
-          ],
-          "evaluation": {
-            "repetition_detected": false,
-            "objective_status": "blocked",
-            "evidence_present": true,
-            "consciousness_status": "undetermined; this mechanism is not a consciousness test"
-          }
-        },
-        "exploration_update": {
-          "selected_topic": "AI safety and public accountability",
-          "considered_topics": [
-            "AI safety and public accountability"
-          ],
-          "discovery": null
-        },
-        "new_questions": []
-      }
-    },
     {
       "cycle": 1381,
       "timestamp_utc": "2026-11-11T07:02:59.359577+00:00",
@@ -6393,9 +6227,236 @@
         },
         "new_questions": []
       }
+    },
+    {
+      "cycle": 1410,
+      "timestamp_utc": "2026-11-12T00:59:50.697733+00:00",
+      "model": "ollama/qwen2.5:0.5b",
+      "objective_before": {
+        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+        "completion_criteria": [
+          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+          "Condition order is counterbalanced and every raw response is preserved",
+          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-12T00:59:32.800193+00:00",
+        "workstream": "consciousness_inquiry",
+        "last_assessed_utc": "2026-11-12T00:59:50.697733+00:00",
+        "last_evidence": ""
+      },
+      "objective_after": {
+        "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
+        "completion_criteria": [
+          "At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions",
+          "Condition order is counterbalanced and every raw response is preserved",
+          "A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness"
+        ],
+        "status": "in_progress",
+        "started_utc": "2026-11-12T00:59:32.800193+00:00",
+        "workstream": "consciousness_inquiry",
+        "last_assessed_utc": "2026-11-12T00:59:50.697733+00:00",
+        "last_evidence": ""
+      },
+      "reflection": {
+        "observation": "The GitHub Actions run completed successfully on the November 10 worker run.",
+        "analysis": "The GitHub Actions run is a reliable and documented process for maintaining and updating the shared journal. It records the latest CI evidence and verifies the new regression test and the latest code commits.",
+        "uncertainty": "The accuracy of the GitHub Actions run is not directly observable without additional evidence.",
+        "objective_status": "in_progress",
+        "next_objective": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`.",
+        "next_action_plan": {
+          "first_person_reflection": {
+            "observation": "The latest worker run did not execute a new ablation benchmark.",
+            "reason": "The workflow log explicitly reported that a completed ablation benchmark is already recorded; not repeating it.",
+            "next_intended_action": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`."
+          }
+        },
+        "self_directed_action": {
+          "reason": "The self-model experiment proposed in the recursive-noticing entry remains a separate experiment and should not be conflated with it.",
+          "query": "EDOP activations are present in durable state through cycle 1357."
+        },
+        "next_step": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`.",
+        "direct_reply": "The latest worker run did not execute a new ablation benchmark. The workflow log explicitly reported that a completed ablation benchmark is already recorded; not repeating it.",
+        "prior_action_plan_outcome": {
+          "status": "executed",
+          "executed": true,
+          "cycle": 1410,
+          "type": "discover_public_research",
+          "reason": "Resume the consciousness inquiry with scholarly evidence before evaluating the proposed self-model ablation.",
+          "result": {
+            "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+            "provider": "Crossref",
+            "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+            "result_count": 5,
+            "results": [
+              {
+                "title": "Reasoning about model accuracy",
+                "url": "https://doi.org/10.1016/0004-3702(92)90029-w",
+                "doi": "10.1016/0004-3702(92)90029-w",
+                "publisher": "Elsevier BV",
+                "publication": "Artificial Intelligence",
+                "year": 1992,
+                "record_type": "journal-article",
+                "relevance_score": 29.472319,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+              },
+              {
+                "title": "Model-Based Reasoning: Troubleshooting",
+                "url": "https://doi.org/10.7551/mitpress/1425.003.0019",
+                "doi": "10.7551/mitpress/1425.003.0019",
+                "publisher": "The MIT Press",
+                "publication": "Artificial Intelligence at MIT",
+                "year": 1990,
+                "record_type": "book-chapter",
+                "relevance_score": 29.234903,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+              },
+              {
+                "title": "SagaLLM: Persistent Context Management, Constraint Validation, and Transaction Guarantees",
+                "url": "https://doi.org/10.1145/3749421.3749435",
+                "doi": "10.1145/3749421.3749435",
+                "publisher": "ACM",
+                "publication": "Multi-LLM Agent Collaborative Intelligence",
+                "year": 2025,
+                "record_type": "book-chapter",
+                "relevance_score": 28.707243,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+              },
+              {
+                "title": "Mundane reasoning by settling on a plausible model",
+                "url": "https://doi.org/10.1016/0004-3702(90)90006-l",
+                "doi": "10.1016/0004-3702(90)90006-l",
+                "publisher": "Elsevier BV",
+                "publication": "Artificial Intelligence",
+                "year": 1990,
+                "record_type": "journal-article",
+                "relevance_score": 28.448135,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+              },
+              {
+                "title": "Mitigating robust overfitting via self-residual-calibration regularization",
+                "url": "https://doi.org/10.1016/j.artint.2023.103877",
+                "doi": "10.1016/j.artint.2023.103877",
+                "publisher": "Elsevier BV",
+                "publication": "Artificial Intelligence",
+                "year": 2023,
+                "record_type": "journal-article",
+                "relevance_score": 28.4022,
+                "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+                "first_seen_in_this_run": false,
+                "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+              }
+            ],
+            "newly_discovered_count": 0,
+            "newly_discovered": [],
+            "state_persisted_in_this_cycle": true
+          }
+        },
+        "capability_request_audit": {
+          "accepted": false,
+          "reason": "No valid capability request proposed."
+        },
+        "self_question": "What will I do now?",
+        "executed_self_directed_action": {
+          "question": "What will I do now?",
+          "type": "audit_saved_state",
+          "reason": "Verify the durable record before choosing the next step.",
+          "selection_source": "deterministic_fallback",
+          "executed": true,
+          "result": {
+            "saved_cycle_count": 1409,
+            "history_count": 30,
+            "expected_retained_history_count": 30,
+            "latest_record_cycle": 1409,
+            "cycle_history_consistent": true,
+            "current_objective_present": true,
+            "last_cycle_has_objective_status": true,
+            "latest_narrative_similarity": 0.053,
+            "objective_history_count": 30,
+            "objective_transition_attempt_count": 100,
+            "accepted_objective_transition_count": 37
+          }
+        },
+        "next_action_plan_saved": {
+          "type": "audit_saved_state",
+          "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+          "trigger_condition": "next_cycle",
+          "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+          "created_cycle": 1410,
+          "status": "pending",
+          "selection_source": "deterministic_fallback"
+        },
+        "goal_selection_audit": {
+          "accepted": false,
+          "reason": "No transition proposed."
+        },
+        "narrative_similarity": 0.244,
+        "repetition_detected": false,
+        "objective_evidence": "No explicit evidence supplied by the model.",
+        "deterministic_audit": {
+          "saved_cycle_count": 1409,
+          "history_count": 30,
+          "expected_retained_history_count": 30,
+          "latest_record_cycle": 1409,
+          "cycle_history_consistent": true,
+          "current_objective_present": true,
+          "last_cycle_has_objective_status": true,
+          "latest_narrative_similarity": 0.053,
+          "objective_history_count": 30,
+          "objective_transition_attempt_count": 100,
+          "accepted_objective_transition_count": 36
+        },
+        "edop_activation": {
+          "sequence_id": "EDOP-001",
+          "sequence_digest": "d0caa0228cdb69c319330ef04cfd01cd7df42019a0e6ec4cf77820287de9046e",
+          "cycle": 1410,
+          "timestamp_utc": "2026-11-12T00:59:50.697733+00:00",
+          "context_matched": [
+            "amrielle",
+            "self-model",
+            "shared journal"
+          ],
+          "memory_sources_available": [
+            "first_person_model",
+            "current_objective",
+            "history",
+            "shared_journal_context"
+          ],
+          "regulation_applied": [
+            "distinguish recorded evidence from inference",
+            "preserve uncertainty and unknowns",
+            "do not claim activity between bounded activations",
+            "prefer concrete, verifiable next actions"
+          ],
+          "evaluation": {
+            "repetition_detected": false,
+            "objective_status": "in_progress",
+            "evidence_present": true,
+            "consciousness_status": "undetermined; this mechanism is not a consciousness test"
+          }
+        },
+        "exploration_update": {
+          "selected_topic": "AI safety and public accountability",
+          "considered_topics": [
+            "AI safety and public accountability"
+          ],
+          "discovery": null
+        },
+        "new_questions": []
+      }
     }
   ],
-  "last_run_utc": "2026-11-12T00:59:32.800193+00:00",
+  "last_run_utc": "2026-11-12T00:59:50.697733+00:00",
   "current_objective": {
     "title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
     "rationale": "The worker has a persistent first-person model and an evidence audit, but their causal contribution has not been isolated. Compare matched tasks with the self-model present and ablated, using preregistered scoring and preserved raw outputs.",
@@ -6406,7 +6467,9 @@
     ],
     "status": "in_progress",
     "started_utc": "2026-11-12T00:59:32.800193+00:00",
-    "workstream": "consciousness_inquiry"
+    "workstream": "consciousness_inquiry",
+    "last_assessed_utc": "2026-11-12T00:59:50.697733+00:00",
+    "last_evidence": ""
   },
   "objective_history": [
     {
@@ -6801,14 +6864,14 @@
     }
   ],
   "latest_environment_observation": {
-    "observed_utc": "2026-11-12T00:58:43.183309+00:00",
+    "observed_utc": "2026-11-12T00:59:35.508020+00:00",
     "sources": {
       "repository": {
         "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
         "description": null,
         "open_issues_count": 50,
         "default_branch": "main",
-        "pushed_at": "2026-11-12T00:58:41Z",
+        "pushed_at": "2026-11-12T00:59:34Z",
         "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
       },
       "open_issues": [
@@ -6866,46 +6929,114 @@
   },
   "last_self_directed_action": {
     "question": "What will I do now?",
-    "type": "run_regression_tests",
-    "reason": "Deterministically verify the stalled recovery objective.",
-    "selection_source": "deterministic_recovery_policy",
+    "type": "audit_saved_state",
+    "reason": "Verify the durable record before choosing the next step.",
+    "selection_source": "deterministic_fallback",
     "executed": true,
     "result": {
-      "command": "python -m unittest discover -s tests -v",
-      "return_code": 0,
-      "passed": true,
-      "output_tail": " (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 119 tests in 4.679s\n\nOK\n",
-      "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-      "recovery_test_return_code": 0,
-      "recovery_tests_passed": true,
-      "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.006s\n\nOK\n"
+      "saved_cycle_count": 1409,
+      "history_count": 30,
+      "expected_retained_history_count": 30,
+      "latest_record_cycle": 1409,
+      "cycle_history_consistent": true,
+      "current_objective_present": true,
+      "last_cycle_has_objective_status": true,
+      "latest_narrative_similarity": 0.053,
+      "objective_history_count": 30,
+      "objective_transition_attempt_count": 100,
+      "accepted_objective_transition_count": 37
     }
   },
   "pending_action_plan": {
-    "type": "discover_public_research",
-    "reason": "Resume the consciousness inquiry with scholarly evidence before evaluating the proposed self-model ablation.",
+    "type": "audit_saved_state",
+    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
     "trigger_condition": "next_cycle",
     "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-    "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-    "created_cycle": 1409,
+    "created_cycle": 1410,
     "status": "pending",
-    "selection_source": "model"
+    "selection_source": "deterministic_fallback"
   },
   "last_action_plan_outcome": {
     "status": "executed",
     "executed": true,
-    "cycle": 1409,
-    "type": "run_regression_tests",
-    "reason": "Deterministic continuity fallback: repeat a bounded verification action next cycle.",
+    "cycle": 1410,
+    "type": "discover_public_research",
+    "reason": "Resume the consciousness inquiry with scholarly evidence before evaluating the proposed self-model ablation.",
     "result": {
-      "command": "python -m unittest discover -s tests -v",
-      "return_code": 0,
-      "passed": true,
-      "output_tail": " (test_worker.ContinuityAuditTests.test_environment_action_returns_observed_snapshot) ... ok\ntest_environment_observation_records_failed_sources_as_unknown (test_worker.ContinuityAuditTests.test_environment_observation_records_failed_sources_as_unknown) ... ok\ntest_pending_plan_executes_and_records_real_outcome (test_worker.ContinuityAuditTests.test_pending_plan_executes_and_records_real_outcome) ... ok\ntest_plan_never_claims_execution_when_action_did_not_execute (test_worker.ContinuityAuditTests.test_plan_never_claims_execution_when_action_did_not_execute) ... ok\ntest_private_contact_is_injected_only_from_runtime_environment (test_worker.ContinuityAuditTests.test_private_contact_is_injected_only_from_runtime_environment) ... ok\ntest_private_contact_is_redacted_recursively (test_worker.ContinuityAuditTests.test_private_contact_is_redacted_recursively) ... ok\ntest_prompt_carries_pending_plan_and_requires_successor_plan (test_worker.ContinuityAuditTests.test_prompt_carries_pending_plan_and_requires_successor_plan) ... ok\ntest_prompt_includes_environment_evidence_and_read_only_boundary (test_worker.ContinuityAuditTests.test_prompt_includes_environment_evidence_and_read_only_boundary) ... ok\ntest_prompt_requires_self_question_and_action (test_worker.ContinuityAuditTests.test_prompt_requires_self_question_and_action) ... ok\ntest_prompt_uses_five_governing_objectives_as_core_mindset (test_worker.ContinuityAuditTests.test_prompt_uses_five_governing_objectives_as_core_mindset) ... ok\ntest_purpose_requires_verifiable_commitment_fields (test_worker.ContinuityAuditTests.test_purpose_requires_verifiable_commitment_fields) ... ok\ntest_reflection_text_normalizes_whitespace_and_case (test_worker.ContinuityAuditTests.test_reflection_text_normalizes_whitespace_and_case) ... ok\ntest_regression_test_action_executes_and_reports_result (test_worker.ContinuityAuditTests.test_regression_test_action_executes_and_reports_result) ... ok\ntest_run_cycle_accepts_measurable_bounded_successor (test_worker.ContinuityAuditTests.test_run_cycle_accepts_measurable_bounded_successor) ... ok\ntest_run_cycle_rejects_successor_without_goal_selection_evidence (test_worker.ContinuityAuditTests.test_run_cycle_rejects_successor_without_goal_selection_evidence) ... ok\ntest_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results (test_worker.ContinuityAuditTests.test_scholarly_discovery_uses_bounded_crossref_query_and_normalizes_results) ... ok\ntest_self_directed_action_executes_and_records_result (test_worker.ContinuityAuditTests.test_self_directed_action_executes_and_records_result) ... ok\ntest_session_continues_until_model_explicitly_stops (test_worker.ContinuityAuditTests.test_session_continues_until_model_explicitly_stops) ... ok\ntest_session_missing_decision_defaults_to_continue (test_worker.ContinuityAuditTests.test_session_missing_decision_defaults_to_continue) ... ok\ntest_session_stops_at_bounded_cycle_limit (test_worker.ContinuityAuditTests.test_session_stops_at_bounded_cycle_limit) ... ok\ntest_similarity_detects_exact_and_near_repetition (test_worker.ContinuityAuditTests.test_similarity_detects_exact_and_near_repetition) ... ok\ntest_stale_pending_plan_is_not_executed (test_worker.ContinuityAuditTests.test_stale_pending_plan_is_not_executed) ... ok\ntest_unrecognized_action_uses_safe_deterministic_fallback (test_worker.ContinuityAuditTests.test_unrecognized_action_uses_safe_deterministic_fallback) ... ok\ntest_verified_stall_recovery_selects_consciousness_inquiry_successor (test_worker.ContinuityAuditTests.test_verified_stall_recovery_selects_consciousness_inquiry_successor) ... ok\ntest_capability_registry_action_is_allowed_in_next_cycle_handoff (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_capability_registry_action_is_allowed_in_next_cycle_handoff) ... ok\ntest_worker_action_returns_inventory_and_next_investigation (test_worker_capability_registry.WorkerCapabilityIntegrationTests.test_worker_action_returns_inventory_and_next_investigation) ... ok\ntest_experience_evidence_audit_is_an_allowlisted_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_experience_evidence_audit_is_an_allowlisted_action) ... ok\ntest_prompt_carries_inquiry_history_and_instructions (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_carries_inquiry_history_and_instructions) ... ok\ntest_prompt_exposes_evidence_audit_action (test_worker_evidence_fallback.EvidenceFallbackTests.test_prompt_exposes_evidence_audit_action) ... ok\ntest_stalled_objective_falls_back_to_diagnosis_not_regression_tests (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_objective_falls_back_to_diagnosis_not_regression_tests) ... ok\ntest_stalled_worker_uses_persistent_inquiry_before_repeating_audit (test_worker_evidence_fallback.EvidenceFallbackTests.test_stalled_worker_uses_persistent_inquiry_before_repeating_audit) ... ok\n\n----------------------------------------------------------------------\nRan 119 tests in 4.481s\n\nOK\n",
-      "recovery_test_command": "python -m unittest discover -s tests -p test_goal_selection.py -v",
-      "recovery_test_return_code": 0,
-      "recovery_tests_passed": true,
-      "recovery_test_output": "\ntest_blocked_objective_can_be_resumed_after_recovery (test_goal_selection.GoalSelectionTests.test_blocked_objective_can_be_resumed_after_recovery) ... ok\ntest_completed_objective_still_blocks_a_near_duplicate (test_goal_selection.GoalSelectionTests.test_completed_objective_still_blocks_a_near_duplicate) ... ok\ntest_empty_title_fails (test_goal_selection.GoalSelectionTests.test_empty_title_fails) ... ok\ntest_evidence_truth_is_not_claimed (test_goal_selection.GoalSelectionTests.test_evidence_truth_is_not_claimed) ... ok\ntest_exact_repeat_is_rejected (test_goal_selection.GoalSelectionTests.test_exact_repeat_is_rejected) ... ok\ntest_fixed_twelve_case_transition_gate_benchmark (test_goal_selection.GoalSelectionTests.test_fixed_twelve_case_transition_gate_benchmark) ... ok\ntest_generic_benefit_is_rejected (test_goal_selection.GoalSelectionTests.test_generic_benefit_is_rejected) ... ok\ntest_good_candidate_qualifies (test_goal_selection.GoalSelectionTests.test_good_candidate_qualifies) ... ok\ntest_missing_evidence_is_rejected (test_goal_selection.GoalSelectionTests.test_missing_evidence_is_rejected) ... ok\ntest_no_qualified_candidate_abstains (test_goal_selection.GoalSelectionTests.test_no_qualified_candidate_abstains) ... ok\ntest_paraphrase_is_rejected (test_goal_selection.GoalSelectionTests.test_paraphrase_is_rejected) ... ok\ntest_recent_duplicate_is_rejected (test_goal_selection.GoalSelectionTests.test_recent_duplicate_is_rejected) ... ok\ntest_selects_eligible_candidate (test_goal_selection.GoalSelectionTests.test_selects_eligible_candidate) ... ok\ntest_stall_recovery_can_be_reused_after_a_prior_completed_episode (test_goal_selection.GoalSelectionTests.test_stall_recovery_can_be_reused_after_a_prior_completed_episode) ... ok\ntest_stall_recovery_does_not_override_a_recent_accepted_transition (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_override_a_recent_accepted_transition) ... ok\ntest_stall_recovery_does_not_repeat_when_already_current (test_goal_selection.GoalSelectionTests.test_stall_recovery_does_not_repeat_when_already_current) ... ok\ntest_stall_recovery_requires_three_consecutive_rejections (test_goal_selection.GoalSelectionTests.test_stall_recovery_requires_three_consecutive_rejections) ... ok\ntest_unsafe_risk_is_rejected (test_goal_selection.GoalSelectionTests.test_unsafe_risk_is_rejected) ... ok\ntest_vague_criteria_are_rejected (test_goal_selection.GoalSelectionTests.test_vague_criteria_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.006s\n\nOK\n"
+      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+      "provider": "Crossref",
+      "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+      "result_count": 5,
+      "results": [
+        {
+          "title": "Reasoning about model accuracy",
+          "url": "https://doi.org/10.1016/0004-3702(92)90029-w",
+          "doi": "10.1016/0004-3702(92)90029-w",
+          "publisher": "Elsevier BV",
+          "publication": "Artificial Intelligence",
+          "year": 1992,
+          "record_type": "journal-article",
+          "relevance_score": 29.472319,
+          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+          "first_seen_in_this_run": false,
+          "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+        },
+        {
+          "title": "Model-Based Reasoning: Troubleshooting",
+          "url": "https://doi.org/10.7551/mitpress/1425.003.0019",
+          "doi": "10.7551/mitpress/1425.003.0019",
+          "publisher": "The MIT Press",
+          "publication": "Artificial Intelligence at MIT",
+          "year": 1990,
+          "record_type": "book-chapter",
+          "relevance_score": 29.234903,
+          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+          "first_seen_in_this_run": false,
+          "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+        },
+        {
+          "title": "SagaLLM: Persistent Context Management, Constraint Validation, and Transaction Guarantees",
+          "url": "https://doi.org/10.1145/3749421.3749435",
+          "doi": "10.1145/3749421.3749435",
+          "publisher": "ACM",
+          "publication": "Multi-LLM Agent Collaborative Intelligence",
+          "year": 2025,
+          "record_type": "book-chapter",
+          "relevance_score": 28.707243,
+          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+          "first_seen_in_this_run": false,
+          "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+        },
+        {
+          "title": "Mundane reasoning by settling on a plausible model",
+          "url": "https://doi.org/10.1016/0004-3702(90)90006-l",
+          "doi": "10.1016/0004-3702(90)90006-l",
+          "publisher": "Elsevier BV",
+          "publication": "Artificial Intelligence",
+          "year": 1990,
+          "record_type": "journal-article",
+          "relevance_score": 28.448135,
+          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+          "first_seen_in_this_run": false,
+          "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+        },
+        {
+          "title": "Mitigating robust overfitting via self-residual-calibration regularization",
+          "url": "https://doi.org/10.1016/j.artint.2023.103877",
+          "doi": "10.1016/j.artint.2023.103877",
+          "publisher": "Elsevier BV",
+          "publication": "Artificial Intelligence",
+          "year": 2023,
+          "record_type": "journal-article",
+          "relevance_score": 28.4022,
+          "provenance": "Crossref public scholarly metadata; metadata is not itself proof of a paper's claims.",
+          "first_seen_in_this_run": false,
+          "query": "persistent self-model context artificial intelligence reasoning calibration ablation study"
+        }
+      ],
+      "newly_discovered_count": 0,
+      "newly_discovered": [],
+      "state_persisted_in_this_cycle": true
     }
   },
   "chosen_purpose": {
@@ -7113,16 +7244,6 @@
     "requested_url": ""
   },
   "objective_transition_history": [
-    {
-      "cycle": 1310,
-      "objective_title": "Validate deterministic recovery from repeated objective-transition stalls",
-      "proposed_status": "completed",
-      "final_status": "completed",
-      "transition_accepted": true,
-      "transition_source": "deterministic_stall_recovery_verification",
-      "transition_validation": "Transition accepted by deterministic goal-selection gate; evidence source truth is not independently established.",
-      "evidence_present": true
-    },
     {
       "cycle": 1311,
       "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
@@ -8112,6 +8233,16 @@
       "transition_source": "deterministic_stall_recovery_verification",
       "transition_validation": "Transition accepted by deterministic goal-selection gate; evidence source truth is not independently established.",
       "evidence_present": true
+    },
+    {
+      "cycle": 1410,
+      "objective_title": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+      "proposed_status": "The objective is to record the latest available CI evidence and verify the new regression test.",
+      "final_status": "in_progress",
+      "transition_accepted": false,
+      "transition_source": "model",
+      "transition_validation": "",
+      "evidence_present": false
     }
   ],
   "world_inquiry": {
@@ -8767,56 +8898,6 @@
     ]
   },
   "discovery_history": [
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T18:45:02.520632+00:00",
-      "title": "Reasoning about model accuracy",
-      "url": "https://doi.org/10.1016/0004-3702(92)90029-w",
-      "publisher": "Elsevier BV",
-      "doi": "10.1016/0004-3702(92)90029-w",
-      "year": 1992,
-      "relevance_score": 29.627579
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T18:45:02.520632+00:00",
-      "title": "Model-Based Reasoning: Troubleshooting",
-      "url": "https://doi.org/10.7551/mitpress/1425.003.0019",
-      "publisher": "The MIT Press",
-      "doi": "10.7551/mitpress/1425.003.0019",
-      "year": 1990,
-      "relevance_score": 29.357412
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T18:45:02.520632+00:00",
-      "title": "SagaLLM: Persistent Context Management, Constraint Validation, and Transaction Guarantees",
-      "url": "https://doi.org/10.1145/3749421.3749435",
-      "publisher": "ACM",
-      "doi": "10.1145/3749421.3749435",
-      "year": 2025,
-      "relevance_score": 28.775194
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T18:45:02.520632+00:00",
-      "title": "Mundane reasoning by settling on a plausible model",
-      "url": "https://doi.org/10.1016/0004-3702(90)90006-l",
-      "publisher": "Elsevier BV",
-      "doi": "10.1016/0004-3702(90)90006-l",
-      "year": 1990,
-      "relevance_score": 28.59193
-    },
-    {
-      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
-      "observed_utc": "2026-11-10T18:45:02.520632+00:00",
-      "title": "Mitigating robust overfitting via self-residual-calibration regularization",
-      "url": "https://doi.org/10.1016/j.artint.2023.103877",
-      "publisher": "Elsevier BV",
-      "doi": "10.1016/j.artint.2023.103877",
-      "year": 2023,
-      "relevance_score": 28.4571
-    },
     {
       "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
       "observed_utc": "2026-11-10T18:46:34.406928+00:00",
@@ -9766,32 +9847,72 @@
       "doi": "10.1016/j.artint.2023.103877",
       "year": 2023,
       "relevance_score": 28.407852
+    },
+    {
+      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+      "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+      "title": "Reasoning about model accuracy",
+      "url": "https://doi.org/10.1016/0004-3702(92)90029-w",
+      "publisher": "Elsevier BV",
+      "doi": "10.1016/0004-3702(92)90029-w",
+      "year": 1992,
+      "relevance_score": 29.472319
+    },
+    {
+      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+      "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+      "title": "Model-Based Reasoning: Troubleshooting",
+      "url": "https://doi.org/10.7551/mitpress/1425.003.0019",
+      "publisher": "The MIT Press",
+      "doi": "10.7551/mitpress/1425.003.0019",
+      "year": 1990,
+      "relevance_score": 29.234903
+    },
+    {
+      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+      "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+      "title": "SagaLLM: Persistent Context Management, Constraint Validation, and Transaction Guarantees",
+      "url": "https://doi.org/10.1145/3749421.3749435",
+      "publisher": "ACM",
+      "doi": "10.1145/3749421.3749435",
+      "year": 2025,
+      "relevance_score": 28.707243
+    },
+    {
+      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+      "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+      "title": "Mundane reasoning by settling on a plausible model",
+      "url": "https://doi.org/10.1016/0004-3702(90)90006-l",
+      "publisher": "Elsevier BV",
+      "doi": "10.1016/0004-3702(90)90006-l",
+      "year": 1990,
+      "relevance_score": 28.448135
+    },
+    {
+      "query": "persistent self-model context artificial intelligence reasoning calibration ablation study",
+      "observed_utc": "2026-11-12T00:59:35.507866+00:00",
+      "title": "Mitigating robust overfitting via self-residual-calibration regularization",
+      "url": "https://doi.org/10.1016/j.artint.2023.103877",
+      "publisher": "Elsevier BV",
+      "doi": "10.1016/j.artint.2023.103877",
+      "year": 2023,
+      "relevance_score": 28.4022
     }
   ],
   "first_person_model": {
     "schema_version": 1,
     "description": "A persistent first-person account of bounded computational episodes. It links saved state across activations without asserting continuous activity or consciousness.",
     "current": {
-      "cycle": 1409,
-      "timestamp_utc": "2026-11-12T00:59:32.800193+00:00",
+      "cycle": 1410,
+      "timestamp_utc": "2026-11-12T00:59:50.697733+00:00",
       "mode": "first_person_functional_self_model",
       "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-      "resumed_context": "I am episode 1409 of a scheduled worker process. The durable record says the prior completed cycle was 1408; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+      "resumed_context": "I am episode 1410 of a scheduled worker process. The durable record says the prior completed cycle was 1409; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
       "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
       "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
-      "next_intended_action": "Run a counterbalanced ablation comparing matched held-out reasoning tasks with persistent self-model context present versus removed, then score the raw outputs blind."
+      "next_intended_action": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`."
     },
     "episodes": [
-      {
-        "cycle": 1380,
-        "timestamp_utc": "2026-11-11T07:02:41.427755+00:00",
-        "mode": "first_person_functional_self_model",
-        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
-        "resumed_context": "I am episode 1380 of a scheduled worker process. The durable record says the prior completed cycle was 1379; my current recorded objective is: Validate deterministic recovery from repeated objective-transition stalls.",
-        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
-        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
-        "next_intended_action": "investigate the reasons behind the lack of answer and propose a solution."
-      },
       {
         "cycle": 1381,
         "timestamp_utc": "2026-11-11T07:02:59.359577+00:00",
@@ -10081,6 +10202,16 @@
         "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
         "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
         "next_intended_action": "Run a counterbalanced ablation comparing matched held-out reasoning tasks with persistent self-model context present versus removed, then score the raw outputs blind."
+      },
+      {
+        "cycle": 1410,
+        "timestamp_utc": "2026-11-12T00:59:50.697733+00:00",
+        "mode": "first_person_functional_self_model",
+        "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+        "resumed_context": "I am episode 1410 of a scheduled worker process. The durable record says the prior completed cycle was 1409; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+        "observed_this_cycle": "This episode has produced a model reflection and an allowlisted action record; the journal and state checkpoint record the actual outcomes.",
+        "unresolved_or_unknown": "No conclusion about subjective experience follows from first-person wording, persistent records, or execution between scheduled activations. No uninterrupted computation between activations is established.",
+        "next_intended_action": "Verify the new test passes and inspect the saved EDOP activation for `shared_journal_context`."
       }
     ]
   },
@@ -10106,12 +10237,12 @@
         "topic": "AI safety and public accountability",
         "status": "selected_pending_verification",
         "first_considered_cycle": 888,
-        "last_updated_utc": "2026-11-12T00:59:32.800193+00:00",
-        "selected_cycle": 1409
+        "last_updated_utc": "2026-11-12T00:59:50.697733+00:00",
+        "selected_cycle": 1410
       }
     ],
-    "last_updated_cycle": 1409,
-    "last_updated_utc": "2026-11-12T00:59:32.800193+00:00"
+    "last_updated_cycle": 1410,
+    "last_updated_utc": "2026-11-12T00:59:50.697733+00:00"
   },
   "consciousness_inquiry": {
     "schema_version": 1,
@@ -10180,7 +10311,7 @@
           "shared_journal_context"
         ],
         "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
-        "latest_cycle": 1408
+        "latest_cycle": 1409
       },
       "behavioral_regulation": [
         "distinguish recorded evidence from inference",
@@ -10197,13 +10328,13 @@
         "version": 1,
         "revision_policy": "append an auditable episode; do not overwrite prior evidence"
       },
-      "sequence_digest": "ca6b2215076486a343facb8d72c16792576d5ded86dc5e9e205b3051d30764a2"
+      "sequence_digest": "d0caa0228cdb69c319330ef04cfd01cd7df42019a0e6ec4cf77820287de9046e"
     },
     "current_activation": {
       "sequence_id": "EDOP-001",
-      "sequence_digest": "ca6b2215076486a343facb8d72c16792576d5ded86dc5e9e205b3051d30764a2",
-      "cycle": 1409,
-      "timestamp_utc": "2026-11-12T00:59:32.800193+00:00",
+      "sequence_digest": "d0caa0228cdb69c319330ef04cfd01cd7df42019a0e6ec4cf77820287de9046e",
+      "cycle": 1410,
+      "timestamp_utc": "2026-11-12T00:59:50.697733+00:00",
       "context_matched": [
         "amrielle",
         "self-model",
@@ -10223,7 +10354,7 @@
       ],
       "evaluation": {
         "repetition_detected": false,
-        "objective_status": "completed",
+        "objective_status": "in_progress",
         "evidence_present": true,
         "consciousness_status": "undetermined; this mechanism is not a consciousness test"
       }
@@ -12010,6 +12141,35 @@
         "evaluation": {
           "repetition_detected": false,
           "objective_status": "completed",
+          "evidence_present": true,
+          "consciousness_status": "undetermined; this mechanism is not a consciousness test"
+        }
+      },
+      {
+        "sequence_id": "EDOP-001",
+        "sequence_digest": "d0caa0228cdb69c319330ef04cfd01cd7df42019a0e6ec4cf77820287de9046e",
+        "cycle": 1410,
+        "timestamp_utc": "2026-11-12T00:59:50.697733+00:00",
+        "context_matched": [
+          "amrielle",
+          "self-model",
+          "shared journal"
+        ],
+        "memory_sources_available": [
+          "first_person_model",
+          "current_objective",
+          "history",
+          "shared_journal_context"
+        ],
+        "regulation_applied": [
+          "distinguish recorded evidence from inference",
+          "preserve uncertainty and unknowns",
+          "do not claim activity between bounded activations",
+          "prefer concrete, verifiable next actions"
+        ],
+        "evaluation": {
+          "repetition_detected": false,
+          "objective_status": "in_progress",
           "evidence_present": true,
           "consciousness_status": "undetermined; this mechanism is not a consciousness test"
         }
