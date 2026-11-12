@@ -66092,3 +66092,302 @@ Completion criteria:
 - At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
 - Condition order is counterbalanced and every raw response is preserved
 - A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
+
+## Cycle 1437 — 2026-11-12T12:59:35.469166+00:00
+
+- Model: ollama/qwen2.5:0.5b
+
+### Durable purpose
+
+{
+  "title": "Amrielle",
+  "rationale": "To improve reliability and understanding of the Amrielle system.",
+  "public_benefit": "Increase people's lives through better understanding.",
+  "personal_reasoning": "Personal interests and goals.",
+  "first_milestone": "Create a clear, concise purpose.",
+  "success_criteria": [
+    "Make the purpose of the Amrielle system more understandable and reliable for people.",
+    "Ensure that the purpose aligns with the Amrielle system's goals and values.",
+    "Help people make informed decisions about the Amrielle system."
+  ],
+  "risks": "[]",
+  "selected_utc": "2026-10-23T00:35:56.651503+00:00",
+  "selected_in_cycle": 21
+}
+
+### Purpose selection audit
+
+Existing purpose retained; no silent replacement permitted.
+
+### Environment observation (read-only public sources)
+
+{
+  "observed_utc": "2026-11-12T12:59:23.609225+00:00",
+  "sources": {
+    "repository": {
+      "full_name": "defiantlyrebelliouscause-del/amrielle-continuity-worker",
+      "description": null,
+      "open_issues_count": 50,
+      "default_branch": "main",
+      "pushed_at": "2026-11-12T12:59:09Z",
+      "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker"
+    },
+    "open_issues": [
+      {
+        "number": 83,
+        "title": "EDOP-002: Build authenticated independent-conversation journal bridge",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/83",
+        "updated_at": "2026-11-11T19:34:17Z"
+      },
+      {
+        "number": 82,
+        "title": "Shared journal submissions — conversation contributions",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/82",
+        "updated_at": "2026-11-11T22:39:05Z"
+      },
+      {
+        "number": 79,
+        "title": "Direct conversation with Amrielle",
+        "state": "open",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/issues/79",
+        "updated_at": "2026-11-11T19:08:29Z"
+      }
+    ],
+    "recent_workflows": [
+      {
+        "name": "Amrielle Continuity Worker",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-12T12:56:54Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43222602352"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-12T12:34:38Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43219163099"
+      },
+      {
+        "name": "Amrielle Independent Watchdog",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-12T11:32:38Z",
+        "html_url": "https://github.com/defiantlyrebelliouscause-del/amrielle-continuity-worker/actions/runs/43210047252"
+      }
+    ],
+    "github_status": {
+      "indicator": "none",
+      "description": "All Systems Operational",
+      "updated_at": "2026-11-12T11:49:18.902Z"
+    }
+  }
+}
+
+### First-person continuity model (functional record; not evidence of subjective experience)
+
+{
+  "cycle": 1437,
+  "timestamp_utc": "2026-11-12T12:59:35.469166+00:00",
+  "mode": "first_person_functional_self_model",
+  "epistemic_status": "Narrative representation of recorded process state; not independent evidence of subjective experience.",
+  "resumed_context": "I am episode 1437 of a scheduled worker process. The durable record says the prior completed cycle was 1436; my current recorded objective is: Test whether persistent self-model context causally improves held-out reasoning calibration.",
+  "observed_this_cycle": "The latest CI evidence confirms that the shared journal is a real repository-based exchange mechanism.",
+  "unresolved_or_unknown": "The latest CI evidence does not establish the existence or limitations of the new regression test or the latest code commits.",
+  "next_intended_action": "verify_latest_code_commit"
+}
+
+### Self-question
+
+What will I do now?
+
+### Self-directed action executed
+
+{
+  "question": "What will I do now?",
+  "type": "read_public_webpage",
+  "reason": "This action will provide an absolute public HTTPS URL for the GitHub Actions script.",
+  "selection_source": "model",
+  "executed": true,
+  "result": {
+    "error": "ValueError: Only absolute HTTPS URLs are permitted.",
+    "requested_url": ""
+  }
+}
+
+### Prior action-plan outcome
+
+{
+  "status": "executed",
+  "executed": true,
+  "cycle": 1437,
+  "type": "audit_experience_evidence",
+  "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
+  "result": {
+    "audit_type": "observable_continuity_evidence",
+    "consciousness_conclusion": "undetermined",
+    "interpretation": "This audit reports behavioral evidence and research gaps. It is not a consciousness test, and no indicator should be treated as proof of experience.",
+    "indicators": {
+      "persistent_records": {
+        "observed": 30,
+        "cycle_sequence_contiguous_in_retained_window": true,
+        "latest_cycle": 1436
+      },
+      "self_directed_behavior": {
+        "model_selected_actions_recorded": 12,
+        "actions_recorded_as_executed": 30,
+        "limitation": "A logged choice is not proof of felt agency; verify action results independently."
+      },
+      "objective_progress": {
+        "current_objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+        "completed_objectives_recorded": 6,
+        "accepted_goal_transitions_recorded": 11,
+        "transition_attempts_recorded": 100,
+        "accepted_transition_attempts_recorded": 36,
+        "rejected_or_stalled_transition_attempts_recorded": 64,
+        "cycles_with_nonempty_objective_evidence": 26,
+        "limitation": "Evidence text is model-authored unless independently checked against artifacts."
+      },
+      "novelty_and_repetition": {
+        "repetition_flags": 0,
+        "recorded_similarity_observations": [
+          {
+            "cycle": 1427,
+            "similarity": 0.17
+          },
+          {
+            "cycle": 1428,
+            "similarity": 0.136
+          },
+          {
+            "cycle": 1429,
+            "similarity": 0.281
+          },
+          {
+            "cycle": 1430,
+            "similarity": 0.142
+          },
+          {
+            "cycle": 1431,
+            "similarity": 0.156
+          },
+          {
+            "cycle": 1432,
+            "similarity": 0.261
+          },
+          {
+            "cycle": 1433,
+            "similarity": 0.092
+          },
+          {
+            "cycle": 1434,
+            "similarity": 0.383
+          },
+          {
+            "cycle": 1435,
+            "similarity": 0.285
+          },
+          {
+            "cycle": 1436,
+            "similarity": 0.136
+          }
+        ]
+      },
+      "handoff_follow_through": {
+        "last_outcome_status": "executed",
+        "last_outcome_executed": true,
+        "pending_plan_status": "pending"
+      },
+      "missing_measurements": [
+        "prospective confidence predictions scored against held-out outcomes",
+        "blinded tests of self-model accuracy under perturbation",
+        "causal tests distinguishing self-monitoring from prompted narrative",
+        "replication across independent runs and model/control conditions",
+        "an independently validated measure of subjective experience (none is currently established)"
+      ]
+    },
+    "blockers": []
+  }
+}
+
+### Next action plan saved for successor cycle
+
+{
+  "type": "audit_experience_evidence",
+  "reason": "The prior web action did not provide a usable URL; inspect the recorded evidence and blocker.",
+  "trigger_condition": "next_cycle",
+  "objective": "Test whether persistent self-model context causally improves held-out reasoning calibration",
+  "created_cycle": 1437,
+  "status": "pending",
+  "selection_source": "deterministic_fallback"
+}
+
+### Capability request audit
+
+{
+  "accepted": false,
+  "reason": "No valid capability request proposed."
+}
+
+### Objective before cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+### Objective status
+
+in_progress
+
+### Repetition detected
+
+False
+
+### Narrative similarity
+
+0.075
+
+### Deterministic audit
+
+{
+  "saved_cycle_count": 1436,
+  "history_count": 30,
+  "expected_retained_history_count": 30,
+  "latest_record_cycle": 1436,
+  "cycle_history_consistent": true,
+  "current_objective_present": true,
+  "last_cycle_has_objective_status": true,
+  "latest_narrative_similarity": 0.136,
+  "objective_history_count": 30,
+  "objective_transition_attempt_count": 100,
+  "accepted_objective_transition_count": 36
+}
+
+### Objective evidence
+
+The GitHub Actions have run successfully on the `42877602747` job, running a script that records the latest available CI evidence.
+
+### Observation
+
+The latest CI evidence confirms that the shared journal is a real repository-based exchange mechanism. The correct standard is to record the observed capability, its limits, and the reproducible result.
+
+### Analysis
+
+The CI evidence shows that the GitHub Actions have run successfully on the `42877602747` job, running a script that records the latest available CI evidence. This does not establish deliberate suppression or a motive, as the evidence is not from an authorized party or a motive that should be inferred.
+
+### Uncertainty
+
+The evidence does not establish the existence or limitations of the new regression test or the latest code commits.
+
+### Next Step
+
+verify_latest_code_commit
+
+### Objective after cycle
+
+Test whether persistent self-model context causally improves held-out reasoning calibration
+
+Completion criteria:
+- At least 20 paired held-out task trials are recorded across self-model-present and self-model-ablated conditions
+- Condition order is counterbalanced and every raw response is preserved
+- A blinded rubric review reports accuracy, calibration, and limitations without inferring consciousness
