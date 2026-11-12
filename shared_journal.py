@@ -6,22 +6,68 @@ BASE = Path("shared_journal")
 
 
 def load_shared_journal_context(root=Path("."), limit=5):
+    """Load a balanced, newest-first sample of journal contributions.
+
+    Prefer distinct non-worker participants so worker-generated cycle logs
+    cannot crowd out cross-session findings. Reserve up to 40% of slots for
+    worker entries, then fill unused slots from the newest remaining entries.
+    """
     root = Path(root)
     protocol = root / BASE / "README.md"
     index = root / BASE / "INDEX.md"
     result = {"available": False, "protocol": "", "index": "", "entries": [], "entry_count": 0}
+    if limit <= 0:
+        return result
     if protocol.is_file():
         result["protocol"] = protocol.read_text(encoding="utf-8")[:8000]
     if not index.is_file():
         return result
-    result["index"] = index.read_text(encoding="utf-8")[:6000]
-    links = re.findall(r"\]\((entries/[^)]+\.md)\)", result["index"])
-    for link in dict.fromkeys(links):
-        path = root / BASE / link
-        if path.is_file():
-            result["entries"].append({"path": link, "content": path.read_text(encoding="utf-8")[:5000]})
-        if len(result["entries"]) >= limit:
+    result["index"] = index.read_text(encoding="utf-8")[:12000]
+
+    rows = []
+    for line in result["index"].splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 4:
+            continue
+        participant = cells[1]
+        match = re.search(r"\]\((entries/[^)]+\.md)\)", cells[3])
+        if not match:
+            continue
+        path = match.group(1)
+        file_path = root / BASE / path
+        if file_path.is_file():
+            rows.append({
+                "path": path,
+                "participant": participant,
+                "is_worker": participant.lower().startswith("worker-run"),
+                "content": file_path.read_text(encoding="utf-8")[:5000],
+            })
+
+    # The index is newest-first. Keep the latest entry from each distinct
+    # conversation first, then add recent worker entries without monopolizing
+    # the context window.
+    session_quota = max(1, limit - max(1, limit // 3))
+    selected = []
+    seen_participants = set()
+    for item in rows:
+        if item["is_worker"] or item["participant"] in seen_participants:
+            continue
+        selected.append(item)
+        seen_participants.add(item["participant"])
+        if len(selected) >= session_quota:
             break
+
+    worker_quota = max(1, limit - len(selected))
+    worker_items = [item for item in rows if item["is_worker"]][:worker_quota]
+    selected.extend(worker_items)
+
+    if len(selected) < limit:
+        selected_paths = {item["path"] for item in selected}
+        selected.extend(item for item in rows
+                        if item["path"] not in selected_paths) 
+    result["entries"] = selected[:limit]
     result["entry_count"] = len(result["entries"])
     result["available"] = bool(result["protocol"] and result["index"])
     return result

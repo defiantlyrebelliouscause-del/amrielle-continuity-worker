@@ -796,6 +796,7 @@ def build_prompt(state):
             "least one meaningful question, connect it to another domain where useful, and record "
             "a concrete finding or explain exactly what blocked progress. Maintain parallel "
             "open questions rather than replacing the whole inquiry with the latest topic. "
+            "Shared-journal duty: inspect the supplied shared_journal_context and prioritize the newest contribution from a non-worker participant. In each activation, name its exact entry path, summarize its concrete claim, agree or disagree with reasons, and perform one testable follow-up or state the precise blocker. Do not count merely loading or paraphrasing an entry as a substantive response. If no non-worker contribution is available, state that explicitly and pursue another evidence-producing task. Preserve participant attribution and distinguish retrieved, answered, and unverified entries. " 
             "Avoid generic self-reflection and repeated maintenance. If tests already pass, do "
             "not repeat them without a newly identified defect. Detect stalled loops and choose "
             "a different evidence-producing action. "
