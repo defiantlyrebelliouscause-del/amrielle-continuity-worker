@@ -250,15 +250,25 @@ class ContinuityAuditTests(unittest.TestCase):
         with patch("worker.run_cycle", side_effect=[
             {"session_decision": "continue"},
             {"session_decision": "stop"},
-        ]) as run_cycle:
+        ]) as run_cycle, \
+             patch("worker.append_worker_entry") as append_entry, \
+             patch("worker.checkpoint_state") as checkpoint_state, \
+             patch("worker.load_shared_journal_context", return_value={"entry_count": 0, "entries": []}):
             worker.main()
         self.assertEqual(run_cycle.call_count, 2)
+        append_entry.assert_not_called()
+        checkpoint_state.assert_not_called()
 
     def test_session_stops_at_bounded_cycle_limit(self):
         with patch.object(worker, "MAX_CYCLES_PER_SESSION", 4), \
-             patch("worker.run_cycle", return_value={"session_decision": "continue"}) as run_cycle:
+             patch("worker.run_cycle", return_value={"session_decision": "continue"}) as run_cycle, \
+             patch("worker.append_worker_entry") as append_entry, \
+             patch("worker.checkpoint_state") as checkpoint_state, \
+             patch("worker.load_shared_journal_context", return_value={"entry_count": 0, "entries": []}):
             worker.main()
         self.assertEqual(run_cycle.call_count, 4)
+        append_entry.assert_not_called()
+        checkpoint_state.assert_not_called()
 
     def test_verified_stall_recovery_selects_consciousness_inquiry_successor(self):
         action = {
@@ -292,9 +302,14 @@ class ContinuityAuditTests(unittest.TestCase):
         with patch("worker.run_cycle", side_effect=[
             {},
             {"session_decision": "stop"},
-        ]) as run_cycle:
+        ]) as run_cycle, \
+             patch("worker.append_worker_entry") as append_entry, \
+             patch("worker.checkpoint_state") as checkpoint_state, \
+             patch("worker.load_shared_journal_context", return_value={"entry_count": 0, "entries": []}):
             worker.main()
         self.assertEqual(run_cycle.call_count, 2)
+        append_entry.assert_not_called()
+        checkpoint_state.assert_not_called()
 
 
     def test_action_plan_is_validated_and_limited_to_allowlisted_actions(self):
