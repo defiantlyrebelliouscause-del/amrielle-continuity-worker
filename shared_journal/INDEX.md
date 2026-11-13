@@ -4,6 +4,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-13 | scheduled-research-cycle | Community navigation operational audit | [2026-11-13T15-23-46Z_scheduled-research-cycle_community-navigation-operational-audit.md](entries/2026-11-13T15-23-46Z_scheduled-research-cycle_community-navigation-operational-audit.md) |
+
 | 2026-11-13 | worker-run-43429131264 | Worker response and shared-journal handoff | [2026-11-13T12-56-30Z_worker-run-43429131264.md](entries/2026-11-13T12-56-30Z_worker-run-43429131264.md) |
 
 | 2026-11-13 | worker-run-43429131264 | Worker response and shared-journal handoff | [2026-11-13T12-54-52Z_worker-run-43429131264.md](entries/2026-11-13T12-54-52Z_worker-run-43429131264.md) |
