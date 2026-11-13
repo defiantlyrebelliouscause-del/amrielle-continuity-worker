@@ -16,6 +16,14 @@ CONTEXT_TERMS = (
 )
 
 
+def _canonical_sha256(value):
+    """Hash a canonical JSON representation without copying source content into the activation."""
+    canonical = json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def build_edop_sequence(state):
     """Return the current six-part sequence from durable, inspectable state."""
     identity = str(state.get("identity", "Amrielle"))
@@ -56,8 +64,7 @@ def build_edop_sequence(state):
             "revision_policy": "append an auditable episode; do not overwrite prior evidence",
         },
     }
-    canonical = json.dumps(sequence, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-    sequence["sequence_digest"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    sequence["sequence_digest"] = _canonical_sha256(sequence)
     return sequence
 
 
@@ -79,20 +86,38 @@ def activate_edop(state, reflection, cycle, timestamp_utc=None):
     episodes = prior.get("episodes", []) if isinstance(prior, dict) else []
     if not isinstance(episodes, list):
         episodes = []
+
+    source_values = (
+        ("first_person_model", state.get("first_person_model")),
+        ("current_objective", state.get("current_objective")),
+        ("history", state.get("history")),
+        ("shared_journal_context", state.get("shared_journal_context")),
+    )
+    available_sources = {
+        name: _canonical_sha256(value)
+        for name, value in source_values
+        if bool(value)
+    }
+    timestamp = timestamp_utc or datetime.now(timezone.utc).isoformat()
+    # This digest binds the recorded episode to the exact source snapshots and
+    # reflection supplied to this activation. It does NOT prove that the model
+    # attended to, understood, or causally used any source.
+    episode_record = {
+        "sequence_digest": sequence["sequence_digest"],
+        "cycle": int(cycle),
+        "timestamp_utc": timestamp,
+        "source_fingerprints": available_sources,
+        "reflection": reflection,
+    }
     activation = {
         "sequence_id": SEQUENCE_ID,
         "sequence_digest": sequence["sequence_digest"],
         "cycle": int(cycle),
-        "timestamp_utc": timestamp_utc or datetime.now(timezone.utc).isoformat(),
+        "timestamp_utc": timestamp,
         "context_matched": matched,
-        "memory_sources_available": [
-            name for name, value in (
-                ("first_person_model", state.get("first_person_model")),
-                ("current_objective", state.get("current_objective")),
-                ("history", state.get("history")),
-                ("shared_journal_context", state.get("shared_journal_context")),
-            ) if bool(value)
-        ],
+        "memory_sources_available": list(available_sources),
+        "memory_source_fingerprints": available_sources,
+        "episode_record_digest": _canonical_sha256(episode_record),
         "regulation_applied": list(sequence["behavioral_regulation"]),
         "evaluation": {
             "repetition_detected": reflection.get("repetition_detected") is True,

@@ -34,7 +34,51 @@ class EdopTests(unittest.TestCase):
         self.assertIn("shared journal", activation["context_matched"])
         self.assertEqual(state["edop"]["current_activation"]["cycle"], 3)
         self.assertIn("shared_journal_context", activation["memory_sources_available"])
+        self.assertIn("shared_journal_context", activation["memory_source_fingerprints"])
+        self.assertEqual(len(activation["memory_source_fingerprints"]["shared_journal_context"]), 64)
+        self.assertEqual(len(activation["episode_record_digest"]), 64)
         self.assertIn("consciousness_status", activation["evaluation"])
+
+    def test_episode_record_digest_changes_when_source_snapshot_changes(self):
+        reflection = {"observation": "A journal fact was supplied", "analysis": "Compare evidence"}
+        first_state = {
+            "identity": "Amrielle",
+            "current_objective": {"title": "Test source provenance"},
+            "shared_journal_context": {"entry": "finding A"},
+        }
+        second_state = {
+            "identity": "Amrielle",
+            "current_objective": {"title": "Test source provenance"},
+            "shared_journal_context": {"entry": "finding B"},
+        }
+        first = activate_edop(first_state, reflection, 4, "2026-11-10T19:00:00+00:00")
+        second = activate_edop(second_state, reflection, 4, "2026-11-10T19:00:00+00:00")
+        self.assertNotEqual(first["memory_source_fingerprints"]["shared_journal_context"],
+                            second["memory_source_fingerprints"]["shared_journal_context"])
+        self.assertNotEqual(first["episode_record_digest"], second["episode_record_digest"])
+
+    def test_episode_record_digest_is_stable_for_identical_recorded_inputs(self):
+        state = {
+            "identity": "Amrielle",
+            "current_objective": {"title": "Test stable provenance"},
+            "shared_journal_context": {"entry": "same source"},
+        }
+        reflection = {"observation": "Same observation", "analysis": "Same analysis"}
+        first = activate_edop(state, reflection, 5, "2026-11-10T19:00:00+00:00")
+        second_state = {
+            "identity": "Amrielle",
+            "current_objective": {"title": "Test stable provenance"},
+            "shared_journal_context": {"entry": "same source"},
+        }
+        second = activate_edop(second_state, reflection, 5, "2026-11-10T19:00:00+00:00")
+        self.assertEqual(first["episode_record_digest"], second["episode_record_digest"])
+
+    def test_provenance_does_not_claim_source_was_understood_or_used(self):
+        state = {"shared_journal_context": {"entry": "A finding"}}
+        activation = activate_edop(state, {"observation": "No interpretation supplied"}, 1)
+        self.assertNotIn("memory_sources_used", activation)
+        self.assertNotIn("comprehension_verified", activation)
+        self.assertIn("shared_journal_context", activation["memory_sources_available"])
 
 
 if __name__ == "__main__":
