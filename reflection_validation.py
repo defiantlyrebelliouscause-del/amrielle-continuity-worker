@@ -72,4 +72,4 @@ def validate_reflection(reflection: Any) -> dict[str, Any]:
         },
         "interpretation": "Structural/provenance screening only; it does not verify source truth or consciousness.",
     }
-}
+
