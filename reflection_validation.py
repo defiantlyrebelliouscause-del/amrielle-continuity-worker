@@ -14,10 +14,10 @@ _PLACEHOLDER_VALUES = {
 }
 _PLACEHOLDER_URL_HOSTS = {"example.com", "www.example.com", "localhost", "127.0.0.1"}
 _EVIDENCE_ANCHOR = re.compile(
-    r"https?://|\\b(file|test|commit|issue|log|study|report|run|source|cycle|artifact|result)\\b",
+    r"https?://|\b(file|test|commit|issue|log|study|report|run|source|cycle|artifact|result)\b",
     re.IGNORECASE,
 )
-_URL = re.compile(r"https?://[^\\s)\\]}>]+", re.IGNORECASE)
+_URL = re.compile(r"https?://[^\s)\]}>]+", re.IGNORECASE)
 
 
 def _strings(value: Any):
@@ -50,12 +50,15 @@ def validate_reflection(reflection: Any) -> dict[str, Any]:
     if len(evidence) < 20 or not _EVIDENCE_ANCHOR.search(evidence):
         errors.append("objective_evidence needs a concrete source, artifact, run, test, or explicit result reference")
 
+    placeholder_urls = []
     for text in _strings(reflection):
         for url in _URL.findall(text):
             host = url.split("//", 1)[-1].split("/", 1)[0].split(":", 1)[0].lower()
             if host in _PLACEHOLDER_URL_HOSTS:
-                errors.append(f"placeholder URL is not valid evidence: {host}")
-                break
+                placeholder_urls.append(host)
+
+    if placeholder_urls:
+        errors.append("placeholder URL is not valid evidence: " + ", ".join(sorted(set(placeholder_urls))))
 
     return {
         "valid": not errors,
@@ -65,11 +68,7 @@ def validate_reflection(reflection: Any) -> dict[str, Any]:
             "next_step_present": len(str(reflection.get("next_step", "") or "").strip()) >= 12,
             "uncertainty_meaningful": uncertainty not in _PLACEHOLDER_VALUES and len(uncertainty) >= 12,
             "evidence_has_provenance_cue": bool(_EVIDENCE_ANCHOR.search(evidence)),
-            "placeholder_urls_absent": not any(
-                url.split("//", 1)[-1].split("/", 1)[0].split(":", 1)[0].lower()
-                in _PLACEHOLDER_URL_HOSTS
-                for text in _strings(reflection) for url in _URL.findall(text)
-            ),
+            "placeholder_urls_absent": not placeholder_urls,
         },
         "interpretation": "Structural/provenance screening only; it does not verify source truth or consciousness.",
     }
