@@ -934,6 +934,15 @@ def reflect(state):
             "next_step": "Inspect output format on the next cycle.",
             "new_questions": []
         }
+    if not isinstance(reflection, dict):
+        reflection = {
+            "observation": str(reflection)[:2000],
+            "analysis": "The model returned JSON that was not an object.",
+            "uncertainty": "The intended reflection fields could not be evaluated from this response.",
+            "objective_evidence": "",
+            "next_step": "Inspect the model output format and retry with a valid JSON object.",
+            "new_questions": [],
+        }
     # The contact is injected afresh from a GitHub Actions secret each run.
     # Redact accidental echoes before reflection data reaches durable state/journal.
     reflection = redact_private_contact(
