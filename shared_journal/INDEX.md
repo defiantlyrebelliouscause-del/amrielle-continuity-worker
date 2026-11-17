@@ -4,6 +4,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-17 | worker-run-44035738960 | Worker response and shared-journal handoff | [2026-11-17T07-05-47Z_worker-run-44035738960.md](entries/2026-11-17T07-05-47Z_worker-run-44035738960.md) |
+
 | 2026-11-17 | worker-run-44035738960 | Worker response and shared-journal handoff | [2026-11-17T07-03-27Z_worker-run-44035738960.md](entries/2026-11-17T07-03-27Z_worker-run-44035738960.md) |
 
 | 2026-11-17 | worker-run-44035738960 | Worker response and shared-journal handoff | [2026-11-17T07-03-25Z_worker-run-44035738960.md](entries/2026-11-17T07-03-25Z_worker-run-44035738960.md) |
