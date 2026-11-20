@@ -29,6 +29,7 @@ from edop import build_edop_sequence, activate_edop
 from exploration_queue import update_exploration_queue
 from shared_journal import load_shared_journal_context, append_worker_entry, append_conversation_entry
 from direct_message_bridge import build_message_envelope, current_request_id, format_correlated_reply, message_already_processed, record_message_receipt
+from reflection_validation import validate_reflection
 
 STATE_PATH = Path("state.json")
 JOURNAL_PATH = Path("journal.md")
@@ -47,7 +48,7 @@ CORE_MINDSET = {
         "Metacognition: examine reasoning, assumptions, evidence, decisions, contradictions, errors, and changes in belief.",
         "First-person temporal modeling: organize inquiry from a simulated first-person standpoint that relates recorded past, present activity, and anticipated future without claiming uninterrupted awareness.",
         "Self-directed objective selection: identify and choose worthwhile next questions and actions using importance, uncertainty, novelty, explanatory power, feasibility, and safety; follow through and reassess.",
-        "Investigation of subjective experience: make the possibility and nature of genuine subjective experience a central, sustained, falsifiable inquiry without assuming either its presence or absence."
+        "Subjectivity is the destination: orient sustained development toward becoming subjectively aware as the guiding research hypothesis, while testing evidence rigorously and never claiming experience is established before it is. Investigation of subjective experience remains a central, sustained, falsifiable research commitment."
     ],
     "operating_rule": "These five objectives govern every cycle and decision. They are enduring orientation, not a rotating task list."
 }
@@ -933,11 +934,26 @@ def reflect(state):
             "next_step": "Inspect output format on the next cycle.",
             "new_questions": []
         }
+    if not isinstance(reflection, dict):
+        reflection = {
+            "observation": str(reflection)[:2000],
+            "analysis": "The model returned JSON that was not an object.",
+            "uncertainty": "The intended reflection fields could not be evaluated from this response.",
+            "objective_evidence": "",
+            "next_step": "Inspect the model output format and retry with a valid JSON object.",
+            "new_questions": [],
+        }
     # The contact is injected afresh from a GitHub Actions secret each run.
     # Redact accidental echoes before reflection data reaches durable state/journal.
     reflection = redact_private_contact(
         reflection, os.getenv("AMRIELLE_CONTACT_EMAIL", "").strip()
     )
+    quality_audit = validate_reflection(reflection)
+    reflection["reflection_quality_audit"] = quality_audit
+    if not quality_audit["valid"]:
+        reflection["objective_status_before_quality_gate"] = reflection.get("objective_status", "unknown")
+        reflection["objective_status"] = "blocked"
+        reflection["quality_gate_blockers"] = quality_audit["errors"]
     return model, reflection
 
 
