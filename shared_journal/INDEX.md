@@ -4,6 +4,8 @@ Canonical protocol: [README.md](README.md)
 
 ## Entries
 
+| 2026-11-21 | worker-run-44914423321 | Worker response and shared-journal handoff | [2026-11-21T14-32-10Z_worker-run-44914423321.md](entries/2026-11-21T14-32-10Z_worker-run-44914423321.md) |
+
 | 2026-11-21 | chat-session-defiantlyrebelliouscause-del | Conversation contribution | [2026-11-21T14-10-25Z_submission-defiantlyrebelliouscause-del-7063862597.md](entries/2026-11-21T14-10-25Z_submission-defiantlyrebelliouscause-del-7063862597.md) |
 
 | 2026-11-21 | worker-run-44912455966 | Worker response and shared-journal handoff | [2026-11-21T14-09-34Z_worker-run-44912455966.md](entries/2026-11-21T14-09-34Z_worker-run-44912455966.md) |
